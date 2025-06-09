@@ -1,0 +1,194 @@
+<template>
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
+    	<div class="auto-container">
+        	<div class="sec-title">
+                <h1>Our <span class="normal-font">Gallery</span></h1>
+                <div class="bread-crumb"><a href="index.html">Home</a> / <a href="#" class="current">Gallery</a></div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Gallery Section-->
+    <section class="gallery-section">
+        <div class="auto-container">
+
+            <!--Filter-->
+            <div class="filters text-center">
+                <ul class="filter-tabs filter-btns clearfix anim-3-all">
+                    <li class="active filter" data-role="button" data-filter="all">All</li>
+                    <li class="filter" data-role="button" data-filter=".environment">Environment</li>
+                    <li class="filter" data-role="button" data-filter=".eco">Eco</li>
+                    <li class="filter" data-role="button" data-filter=".energy">Energy</li>
+                    <li class="filter" data-role="button" data-filter=".animals">Animals</li>
+                    <li class="filter" data-role="button" data-filter=".plants">Plants</li>
+                </ul>
+            </div>
+
+            <!--Filter List-->
+            <div class="row filter-list clearfix">
+
+                <!--Column-->
+                <div class="column mix mix_all eco plants col-md-4 col-sm-6 col-xs-12">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item">
+                        <div class="inner-box text-center">
+                            <!--Image Box-->
+                            <figure class="image-box"><img src="/assets/images/gallery/image-1.jpg" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="inner-content">
+                                    <div class="content">
+                                        <h3><a href="#">Climate Change: Vital Signs of the Planet</a></h3>
+                                        <a class="arrow lightbox-image" href="/assets/images/gallery/image-1.jpg" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Column-->
+                <div class="column mix mix_all environment  energy animals col-md-4 col-sm-6 col-xs-12">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item">
+                        <div class="inner-box text-center">
+                            <!--Image Box-->
+                            <figure class="image-box"><img src="/assets/images/gallery/image-2.jpg" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="inner-content">
+                                    <div class="content">
+                                        <h3><a href="#">Climate Change: Vital Signs of the Planet</a></h3>
+                                        <a class="arrow lightbox-image" href="/assets/images/gallery/image-2.jpg" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Column-->
+                <div class="column mix mix_all environment eco animals col-md-4 col-sm-6 col-xs-12">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item">
+                        <div class="inner-box text-center">
+                            <!--Image Box-->
+                            <figure class="image-box"><img src="/assets/images/gallery/image-3.jpg" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="inner-content">
+                                    <div class="content">
+                                        <h3><a href="#">Climate Change: Vital Signs of the Planet</a></h3>
+                                        <a class="arrow lightbox-image" href="/assets/images/gallery/image-3.jpg" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Column-->
+                <div class="column mix mix_all environment eco energy animals plants col-md-4 col-sm-6 col-xs-12">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item">
+                        <div class="inner-box text-center">
+                            <!--Image Box-->
+                            <figure class="image-box"><img src="/assets/images/gallery/image-4.jpg" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="inner-content">
+                                    <div class="content">
+                                        <h3><a href="#">Climate Change: Vital Signs of the Planet</a></h3>
+                                        <a class="arrow lightbox-image" href="/assets/images/gallery/image-4.jpg" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--Column-->
+                <div class="column mix mix_all energy animals plants col-md-4 col-sm-6 col-xs-12">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item">
+                        <div class="inner-box text-center">
+                            <!--Image Box-->
+                            <figure class="image-box"><img src="/assets/images/gallery/image-5.jpg" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="inner-content">
+                                    <div class="content">
+                                        <h3><a href="#">Climate Change: Vital Signs of the Planet</a></h3>
+                                        <a class="arrow lightbox-image" href="/assets/images/gallery/image-5.jpg" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--Column-->
+                <div class="column mix mix_all environment eco energy animals plants col-md-4 col-sm-6 col-xs-12">
+                    <!--Default Portfolio Item-->
+                    <div class="default-portfolio-item">
+                        <div class="inner-box text-center">
+                            <!--Image Box-->
+                            <figure class="image-box"><img src="/assets/images/gallery/image-6.jpg" alt=""></figure>
+                            <div class="overlay-box">
+                                <div class="inner-content">
+                                    <div class="content">
+                                        <h3><a href="#">Climate Change: Vital Signs of the Planet</a></h3>
+                                        <a class="arrow lightbox-image" href="/assets/images/gallery/image-6.jpg" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!--Parallax Section-->
+    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
+    	<div class="auto-container">
+        	<div class="text-center">
+            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
+                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
+            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
+                <a href="#" class="theme-btn btn-style-one">Join Event</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Intro Section-->
+    <section class="subscribe-intro">
+    	<div class="auto-container">
+        	<div class="row clearfix">
+            	<!--Column-->
+                <div class="column col-md-9 col-sm-12 col-xs-12">
+                	<h2>Subcribe for Newsletter</h2>
+                    There are many variations of passages of Lorem Ipsum available but the majority have
+                </div>
+                <!--Column-->
+                <div class="column col-md-3 col-sm-12 col-xs-12">
+                	<div class="text-right padd-top-20">
+                		<a href="#" class="theme-btn btn-style-one">Subscribe Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<script  setup>
+
+</script>
+
+<style>
+
+</style>
