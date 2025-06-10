@@ -45,6 +45,11 @@
                 </li>
                 <li class="no-sub mb-2">
                     <a class="" href="widget.html">
+                        <i class="iconoir-shield-check"></i> Role & Permissions
+                    </a>
+                </li>
+                <li class="no-sub mb-2">
+                    <a class="" href="widget.html">
                         <i class="iconoir-user"></i> Users
                     </a>
                 </li>

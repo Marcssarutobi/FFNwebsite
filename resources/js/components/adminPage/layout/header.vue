@@ -763,9 +763,9 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="mb-0 btn btn-light-danger btn-sm justify-content-center " href="sign_in.html" role="button">
+                                            <button class="mb-0 btn btn-light-danger btn-sm w-100 d-flex align-items-center justify-content-center " @click="LogoutFunction" role="button">
                                                 <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i> Log Out
-                                            </a>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
@@ -780,6 +780,36 @@
 </template>
 
 <script setup>
+
+    import { computed, onMounted, ref } from 'vue';
+    import { isAuthenticated } from '../../router';
+    import { RouterLink, useRouter } from 'vue-router';
+    import axiosInstance from '../../plugin/axios.js';
+
+    const currentUser = ref({})
+
+    const router = useRouter()
+
+    const CurrentUserFunction = async ()=>{
+        currentUser.value = await isAuthenticated()
+    }
+
+    const LogoutFunction = async ()=>{
+        const res = await axiosInstance.post('/logout',null,{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        })
+        if (res.status === 200) {
+            localStorage.removeItem('token')
+            currentUser.value = {}
+            router.push('/admins/login')
+        }
+    }
+
+    onMounted(()=>{
+        CurrentUserFunction()
+    })
 
 </script>
 
