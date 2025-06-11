@@ -35,7 +35,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h1><span class="normal-font">Go</span> Green</h1></div>
+                    data-endeasing="Power4.easeIn"><h1><span class="normal-font">Fungi </span> for Life</h1></div>
 
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
@@ -48,7 +48,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h3 class="bg-color">Save the world by planting tree</h3></div>
+                    data-endeasing="Power4.easeIn"><h3 class="bg-color">Save the world of mushrooms</h3></div>
 
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
@@ -151,7 +151,7 @@
     	<div class="auto-container">
         	<div class="title-box text-center">
             	<h1>30000+</h1>
-            	<h2>People Working With US</h2>
+            	<h2>Field of Intervention</h2>
                 <div class="text">Lorem ipsum dolor sit amet, pro in harum aperiri persecuti, eu mea minim platonem, mea cetero intellegam eu. Mel ferri</div>
             </div>
 
@@ -163,7 +163,7 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-illumination"></span></div>
                         </div>
-                        <h3>Eco System</h3>
+                        <h3>Fungal Biodiversity</h3>
                         <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
                     </article>
                 </div>
@@ -174,7 +174,7 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-arrows-3"></span></div>
                         </div>
-                        <h3>Recycling</h3>
+                        <h3>Environmental and climate protection</h3>
                         <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
                     </article>
                 </div>
@@ -185,7 +185,7 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-nature-1"></span></div>
                         </div>
-                        <h3>Water Refine</h3>
+                        <h3>Sustainable Agriculture</h3>
                         <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
                     </article>
                 </div>
@@ -196,7 +196,7 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-summer-3"></span></div>
                         </div>
-                        <h3>Solar SYSTEM</h3>
+                        <h3>Food Security</h3>
                         <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
                     </article>
                 </div>
@@ -255,7 +255,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-1.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C1.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -270,7 +270,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-2.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C2.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -285,7 +285,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-3.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C3.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -300,7 +300,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="900ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-4.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C4.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -323,7 +323,7 @@
     	<div class="outer clearfix">
 
 
-            <article class="column left-column" style="background-image:url(/assets/images/resource/fluid-image-3.jpg);">
+            <article class="column left-column" style="background-image:url(/assets/images/resource/c4.jpg);">
 
                 <div class="content-box pull-right">
                     <h2>Some <span class="normal-font theme_color">Facts</span></h2>
@@ -629,16 +629,7 @@
 
 
     <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
-    	<div class="auto-container">
-        	<div class="text-center">
-            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
-                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
-                <a href="#" class="theme-btn btn-style-one">Join Event</a>
-            </div>
-        </div>
-    </section>
+
 
 
     <!--Intro Section-->

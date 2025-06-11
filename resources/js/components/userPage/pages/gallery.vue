@@ -153,18 +153,6 @@
 
 
     <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
-    	<div class="auto-container">
-        	<div class="text-center">
-            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
-                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
-                <a href="#" class="theme-btn btn-style-one">Join Event</a>
-            </div>
-        </div>
-    </section>
-
-
     <!--Intro Section-->
     <section class="subscribe-intro">
     	<div class="auto-container">

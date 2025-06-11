@@ -85,77 +85,7 @@
 
 
     <!--Two Column Fluid -->
-    <section class="two-column-fluid">
 
-    	<div class="outer clearfix">
-
-            <article class="column left-column" style="background-image:url(/assets/images/resource/fluid-image-3.jpg);">
-
-                <div class="content-box pull-right">
-                    <h2>Some <span class="normal-font theme_color">Facts</span></h2>
-                    <div class="title-text">Lorem ipsum dolor some link sit amet, cum at inani interesset</div>
-                    <div class="text">We’re extremely proud of what we’ve achieved together with charitie lorem individuals, philanthropists and schools since the Big Give was founded in 2007, and here are some fact from our achivemnet.</div>
-                    <br>
-
-                    <div class="clearfix">
-                    	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-shapes-1"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="7845910" data-speed="1500">7,845,910</span></h4>
-                                <span class="title">Raised</span>
-                            </div>
-                        </div>
-
-                        <div class="icon-box">
-                        	<div class="icon"><span class="flaticon-tool-4"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="13360" data-speed="1500">12,360</span></h4>
-                                <span class="title">Projects</span>
-                            </div>
-                        </div>
-
-                        <div class="icon-box">
-                        	<div class="icon"><span class="flaticon-favorite"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="78459" data-speed="1500">225,580</span></h4>
-                                <span class="title">Donations</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-            </article>
-
-            <article class="column right-column" style="background-image:url(/assets/images/resource/fluid-image-4.jpg);">
-
-                <div class="content-box pull-left">
-                	<div class="outer-box">
-                    	<div class="quote-icon"><span class="fa fa-quote-left"></span></div>
-                        <h2>word from <span class="normal-font">CEO</span></h2>
-
-                        <!--Text Content-->
-                        <div class="text-content">
-                            <div class="text"><p>How to pursue pleasure rationally  consequences that are extremeely painful or again is there anyones who loves or  pursues or desires to obtain pain of itself because its sed great pleasure get well soon.</p></div>
-                            <div class="information clearfix">
-                                <div class="info">
-                                    <figure class="image-thumb"><img src="/assets/images/resource/ceo-thumb.jpg" alt=""></figure>
-                                    <h3>Alex Zender</h3>
-                                    <p>CEO of Go Green</p>
-                                </div>
-                                <div class="signature"><img src="/assets/images/resource/signature-image-1.png" alt=""></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-            </article>
-
-        </div>
-
-    </section>
 
 
     <!--Team Section-->
@@ -256,147 +186,11 @@
 
 
     <!--Testimonials-->
-    <section class="testimonials-section" style="background-image:url(/assets/images/background/testimonials-bg.jpg);">
-		<div class="auto-container">
 
-            <div class="sec-title text-center">
-                <h2>Testi<span class="normal-font theme_color">Monials</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interes setnisl omnium dolor amet amet qco modo cum text </div>
-            </div>
-
-            <!--Slider-->
-        	<div class="testimonials-slider testimonials-carousel">
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-1.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-2.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-3.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-
-            </div>
-
-        </div>
-    </section>
 
 
 
     <!--Blog News Section-->
-    <section class="blog-news-section latest-news">
-    	<div class="auto-container">
-
-            <div class="sec-title text-center">
-                <h2>Latest <span class="normal-font theme_color">News</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interessetnisl omnium dolor amet amet qco modo cum text </div>
-            </div>
-        	<div class="row clearfix">
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-1.jpg" alt=""></a>
-                            <div class="news-date">28<span class="month">OCT</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Melting ice</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-2.jpg" alt=""></a>
-                            <div class="news-date">22<span class="month">APR</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Deforestation is the threat</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-3.jpg" alt=""></a>
-                            <div class="news-date">23<span class="month">MAR</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Save the animals</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-
-            </div>
-        </div>
-    </section>
 
 
     <!--Sponsors Section-->
@@ -415,20 +209,6 @@
 
         </div>
     </section>
-
-
-    <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
-    	<div class="auto-container">
-        	<div class="text-center">
-            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
-                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
-                <a href="#" class="theme-btn btn-style-one">Join Event</a>
-            </div>
-        </div>
-    </section>
-
 
     <!--Intro Section-->
     <section class="subscribe-intro">

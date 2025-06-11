@@ -14,13 +14,13 @@
                                 <div class="footer-widget about-widget">
                                     <div class="logo"><a href="index.html"><img src="/assets/images/logo-2.png" class="img-responsive" alt=""></a></div>
                                     <div class="text">
-                                        <p>Lorem ipsum dolor sit amet, eu me.</p>
+                                        <p>Fungi for Life, Science, and the Planet.</p>
                                     </div>
 
                                     <ul class="contact-info">
-                                    	<li><span class="icon fa fa-map-marker"></span> 60 Grant Ave. Carteret NJ 0708</li>
-                                        <li><span class="icon fa fa-phone"></span> (880) 1723801729</li>
-                                        <li><span class="icon fa fa-envelope-o"></span> example@gmail.com</li>
+                                    	<li><span class="icon fa fa-map-marker"></span> Bénin, Parakou</li>
+                                        <li><span class="icon fa fa-phone"></span>(+229) 0196975772</li>
+                                        <li><span class="icon fa fa-envelope-o"></span>contact@fungifornature.com</li>
                                     </ul>
 
                                     <div class="social-links-two clearfix">
@@ -104,7 +104,7 @@
     	<div class="footer-bottom">
             <div class="auto-container clearfix">
                 <!--Copyright-->
-                <div class="copyright text-center">Copyright 2025 &copy; Theme Created By <a href="#">Template_path</a>  with love</div>
+                <div class="copyright text-center">Copyright 2025 &copy;  <a href="#">Fungi For Nature</a></div>
             </div>
         </div>
 
