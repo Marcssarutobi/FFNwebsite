@@ -597,7 +597,7 @@ ul,li{
 	z-index:999;
 	width:100%;
 	border-top:4px solid #262626;
-	border-bottom:4px solid #9dc527;
+	border-bottom:4px solid #179607;
 }
 
 .main-header .top-bar{
@@ -2667,7 +2667,7 @@ ul,li{
 .subscribe-intro{
 	position:relative;
 	padding:50px 0px 30px;
-	background:#69af24;
+	background:#179607;   
 	color:#ffffff;	
 }
 

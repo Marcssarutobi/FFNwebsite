@@ -20,11 +20,11 @@
                 <div class="column info-column col-lg-5 col-md-6 col-sm-12 col-xs-12">
                 	<article class="inner-box">
                 		<h3 class="margin-bott-20">Our Address</h3>
-                        <div class="text margin-bott-40">Lorem Ipsum is simply dummy text of the printing and typese tting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </div>
+                        <div class="text margin-bott-40">We're here for you! If you need help, advice, or just want to chat, don't hesitate to contact us.. </div>
                         <ul class="info-box">
-                            <li><span class="icon flaticon-location"></span><strong>Address</strong> Mirpur New Bazar Road, Block-c, Dhaka-1210</li>
-                            <li><span class="icon flaticon-technology-5"></span><strong>Phone</strong> (732) 803-01 03, (732) 806-01 04</li>
-                            <li><span class="icon flaticon-interface-1"></span><strong>Email</strong> smaple@gmail.com</li>
+                            <li><span class="icon flaticon-location"></span><strong>Address</strong>Parakou, Bénin</li>
+                            <li><span class="icon flaticon-technology-5"></span><strong>Phone</strong> (+229) 0196975772</li>
+                            <li><span class="icon flaticon-interface-1"></span><strong>Email</strong> contact@fungifornature.com</li>
                         </ul>
                     </article>
                 </div>
@@ -32,7 +32,7 @@
                 <!--Image Column-->
                 <div class="column image-column col-lg-7 col-md-6 col-sm-12 col-xs-12">
                 	<article class="inner-box">
-                		<figure class="image-box"><img src="/assets/images/resource/featured-image-34.jpg" alt=""></figure>
+                		<figure class="image-box"><img src="/assets/images/resource/C5.jpg" alt=""></figure>
                     </article>
                 </div>
 
@@ -114,7 +114,7 @@
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
                 	<h2>Subcribe for Newsletter</h2>
-                    There are many variations of passages of Lorem Ipsum available but the majority have
+                    Receive our latest news and special offers directly to your inbox.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">

@@ -20,8 +20,7 @@
                 <div class="column image-column col-md-6 col-sm-12 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                 		<figure class="image-box video-box">
-                        	<img src="/assets/images/resource/video-image-1.jpg" alt="">
-                            <a href="https://www.youtube.com/watch?v=OrJKD11Rmdg" class="lightbox-image video-link"><div class="icon-outer"><span class="img-circle fa fa-play"></span></div></a>
+                        	<img src="/assets/images/resource/c1.jpg" alt="">
                         </figure>
                     </article>
                 </div>
@@ -50,8 +49,10 @@
                 	<div class="text-block">
                     	<h3>Our Mission</h3>
                         <div class="text no-margin-bottom">
-                        	<p>There are many variations of passages of Lorem real lypsum available, but the in the majority have suffered alteration in some form, by injected </p>
-                            <p>humour, or lipuan domised words which don't look evenIpsum, you need to be sure there isn't theanything embarrassing hidden in the lorem middle of simply lorem dummy text.</p>
+                        	<p>
+                               The mission of Fungi For Nature is to support national and international policies on the restoration and sustainable management of natural resources through the conservation of wild fungi, with the goal of preserving the vital ecological services they provide to life on Earth.
+                            </p>
+                            
                         </div>
                     </div>
                 </div>
@@ -72,8 +73,11 @@
                 	<div class="text-block">
                     	<h3>Our Goal</h3>
                         <div class="text no-margin-bottom">
-                        	<p>There are many variations of passages of Lorem real lypsum available, but the in the majority have suffered alteration in some form, by injected </p>
-                            <p>humour, or lipuan domised words which don't look evenIpsum, you need to be sure there isn't theanything embarrassing hidden in the lorem middle of simply lorem dummy text.</p>
+                        	<p>To contribute to the knowledge and documentation of the diverse types of fungi.
+                            To promote the sustainable use of beneficial wild mushrooms. 
+                            To support producers in managing post-harvest losses caused by pathogenic fungi, thereby enhancing food security and protecting human health.
+                            To assist in the restoration of polluted ecosystems through mycoremediation.
+                            </p>
                         </div>
                     </div>
                 </div>
