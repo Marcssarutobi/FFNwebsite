@@ -8,7 +8,7 @@
                  <div class="info-outer">
                  	<!--Info Box-->
                     <ul class="info-box clearfix">
-                    	<li><span class="icon flaticon-interface"></span><a href="#">JACQUES</a></li>
+                    	<li><span class="icon flaticon-interface"></span><a href="#">JACQUES KOUGNILODE</a></li>
                     	<li><span class="icon flaticon-technology-5"></span><a href="#">(732) 803-010-03</a></li>
                         <li class="social-links-one">
                         	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
