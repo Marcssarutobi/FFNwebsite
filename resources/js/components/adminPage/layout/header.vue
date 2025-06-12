@@ -695,8 +695,8 @@
                                             </span>
                                             </div>
                                             <div class="text-center mt-2">
-                                                <h6 class="mb-0"> Laura Monaldo <img alt="instagram-check-mark" class="w-20 h-20" src="/admin/assets/images/profile-app/01.png"></h6>
-                                                <p class="f-s-12 mb-0 text-secondary">lauradesign@gmail.com</p>
+                                                <h6 class="mb-0"> {{currentUser.prenom}} {{ currentUser.nom }} <img alt="instagram-check-mark" class="w-20 h-20" src="/admin/assets/images/profile-app/01.png"></h6>
+                                                <p class="f-s-12 mb-0 text-secondary">{{ currentUser.email }}</p>
                                             </div>
                                         </li>
 

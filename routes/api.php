@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -43,6 +48,15 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/addpermission', [PermissionController::class, 'store']);
     Route::put('/updatepermission/{id}', [PermissionController::class, 'update']);
     Route::delete('/deletepermission/{id}', [PermissionController::class, 'destroy']);
+
+    //categories
+    Route::post('/addcategory', [CategoryController::class, 'store']);
+    Route::get('/categories', [CategoryController::class, 'index']);
+    Route::get('/category/{id}', [CategoryController::class, 'show']);
+    Route::put('/updatecategory/{id}', [CategoryController::class, 'update']);
+    Route::delete('/deletecategory/{id}', [CategoryController::class, 'destroy']);
+
+    
 
 
 });

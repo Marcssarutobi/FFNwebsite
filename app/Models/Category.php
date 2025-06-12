@@ -13,22 +13,22 @@ class Category extends Model
 
     public function events()
     {
-        return $this->morphedByMany(Event::class, 'categorizable');
+        return $this->hasMany(Event::class);
     }
 
     public function projects()
     {
-        return $this->morphedByMany(Project::class, 'categorizable');
+        return $this->hasMany(Project::class);
     }
 
     public function blogs()
     {
-        return $this->morphedByMany(Blog::class, 'categorizable');
+        return $this->hasMany(Blog::class);
     }
 
     public function galleries()
     {
-        return $this->morphedByMany(Gallery::class, 'categorizable');
+        return $this->hasMany(Gallery::class);
     }
 
 }

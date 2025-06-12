@@ -15,9 +15,9 @@ class Gallery extends Model
         'category_id',
     ];
 
-    public function categories()
+    public function category()
     {
-        return $this->morphToMany(Category::class, 'categorizable');
+        return $this->belongsTo(Category::class);
     }
 
 }

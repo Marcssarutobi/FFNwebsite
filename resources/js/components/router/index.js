@@ -62,6 +62,10 @@ const routes = [
                 path: 'projects',
                 component: ()=>import('../adminPage/pages/project.vue'),
             },
+            {
+                path: 'category',
+                component: ()=>import('../adminPage/pages/category.vue'),
+            },
         ]
     },
     {
