@@ -7,8 +7,8 @@
             <div class="tp-banner">
                 <ul>
 
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/1.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/1.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/37361.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/37361.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -35,7 +35,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h1><span class="normal-font">Go</span> Green</h1></div>
+                    data-endeasing="Power4.easeIn"><h1><span class="normal-font">Fungi</span> for Life</h1></div>
 
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
@@ -48,7 +48,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h3 class="bg-color">Save the world by planting tree</h3></div>
+                    data-endeasing="Power4.easeIn"><h3 class="bg-color">Save the world of mushrooms</h3></div>
 
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
@@ -61,7 +61,13 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><div class="text">Lorem ipsum dolor sit amet, debet dolore mollis his ad, ea usu <br>soleat detraxit.In vix agam moderatius. Modo partiendo.</div></div>
+                    data-endeasing="Power4.easeIn">
+                    <div class="text">
+                        Our NGO works to protect mushrooms, an essential yet often overlooked 
+                       <br> part of our ecosystems.
+                         Through scientific research, and community projects,
+                         <br> we highlight the ecological, nutritional, and medicinal importance of mushrooms.
+                    </div></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
@@ -78,8 +84,8 @@
 
                     </li>
 
-                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/2.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/2.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/C7.png"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/C7.png"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -106,7 +112,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2>to save the Animals</h2></div>
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
 
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -119,7 +125,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>All of our afford can bring back the life</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -151,8 +157,12 @@
     	<div class="auto-container">
         	<div class="title-box text-center">
             	<h1>30000+</h1>
-            	<h2>People Working With US</h2>
-                <div class="text">Lorem ipsum dolor sit amet, pro in harum aperiri persecuti, eu mea minim platonem, mea cetero intellegam eu. Mel ferri</div>
+            	<h2>Field of Intervention</h2>
+                <div class="text">
+                   At Fungi For Nature, we believe that fungi hold the key to solving many of today’s environmental, agricultural, and health challenges. Through science, advocacy, and sustainable action, we explore the untapped potential of fungi to support biodiversity, protect ecosystems, and enhance food systems.
+
+Below are the key fields in which we focus our efforts to create lasting impact.
+                </div>
             </div>
 
             <div class="row clearfix">
@@ -163,8 +173,10 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-illumination"></span></div>
                         </div>
-                        <h3>Eco System</h3>
-                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
+                        <h3>Fungal Biodiversity</h3>
+                        <div class="text">
+                            Advancing the discovery and protection of fungi to preserve their vital role in ecosystems and human well-being.
+                        </div>
                     </article>
                 </div>
 
@@ -174,8 +186,10 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-arrows-3"></span></div>
                         </div>
-                        <h3>Recycling</h3>
-                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
+                        <h3>Environmental and climate protection</h3>
+                        <div class="text">
+                           Using fungi-based solutions to restore polluted ecosystems and mitigate the effects of climate change sustainably
+                        </div>
                     </article>
                 </div>
 
@@ -185,8 +199,10 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-nature-1"></span></div>
                         </div>
-                        <h3>Water Refine</h3>
-                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
+                        <h3>Sustainable Agriculture</h3>
+                        <div class="text">
+                            Promoting organic farming through fungal bio-inoculants to enhance soil health and reduce dependence on synthetic inputs
+                        </div>
                     </article>
                 </div>
 
@@ -196,8 +212,10 @@
                     	<div class="icon-box">
                         	<div class="icon"><span class="flaticon-summer-3"></span></div>
                         </div>
-                        <h3>Solar SYSTEM</h3>
-                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea </div>
+                        <h3>Food Security</h3>
+                        <div class="text">
+                            Reducing post-harvest losses from pathogenic fungi to improve food availability and support global health
+                        </div>
                     </article>
                 </div>
 
@@ -255,7 +273,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-1.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C1.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -270,7 +288,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-2.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C2.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -285,7 +303,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-3.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C3.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -300,7 +318,7 @@
                 <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="900ms" data-wow-duration="1500ms">
                 		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-4.jpg" alt=""></a>
+                        	<a href="#"><img src="/assets/images/resource/C4.jpg" alt=""></a>
                         </figure>
                         <div class="content-box">
                         	<h3><a href="#">Project Name</a></h3>
@@ -323,7 +341,7 @@
     	<div class="outer clearfix">
 
 
-            <article class="column left-column" style="background-image:url(/assets/images/resource/fluid-image-3.jpg);">
+            <article class="column left-column" style="background-image:url(/assets/images/resource/c4.jpg);">
 
                 <div class="content-box pull-right">
                     <h2>Some <span class="normal-font theme_color">Facts</span></h2>
@@ -629,16 +647,7 @@
 
 
     <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
-    	<div class="auto-container">
-        	<div class="text-center">
-            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
-                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
-                <a href="#" class="theme-btn btn-style-one">Join Event</a>
-            </div>
-        </div>
-    </section>
+
 
 
     <!--Intro Section-->
@@ -648,7 +657,7 @@
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
                 	<h2>Subcribe for Newsletter</h2>
-                    There are many variations of passages of Lorem Ipsum available but the majority have
+                    Receive our latest news and special offers directly to your inbox.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">

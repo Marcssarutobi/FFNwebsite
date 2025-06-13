@@ -20,8 +20,7 @@
                 <div class="column image-column col-md-6 col-sm-12 col-xs-12">
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
                 		<figure class="image-box video-box">
-                        	<img src="/assets/images/resource/video-image-1.jpg" alt="">
-                            <a href="https://www.youtube.com/watch?v=OrJKD11Rmdg" class="lightbox-image video-link"><div class="icon-outer"><span class="img-circle fa fa-play"></span></div></a>
+                        	<img src="/assets/images/resource/c1.jpg" alt="">
                         </figure>
                     </article>
                 </div>
@@ -30,13 +29,17 @@
                 <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
                 	<article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                 		<h2>WE  Are Think <span class="theme_color normal-font">Ahead</span></h2>
-                        <div class="bigger-text">Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset</div>
-                        <div class="text"><p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p></div>
+                        <div class="bigger-text">Our NGO Fungi For Nature is committed to mycological conservation, research and education.</div>
+                        <div class="text">
+                            <p>
+                                Our NGO, Fungi For Nature, works to protect mushrooms, an essential but often overlooked component of our ecosystems. Through scientific research, public awareness, and community projects, we highlight the ecological, nutritional, and medicinal importance of mushrooms.
+
+                            </p></div>
                         <ul class="styled-list-one no-margin-bottom">
-                        	<li>Eco &amp; Wind Power</li>
-                            <li>Green Tree plantion </li>
-                            <li>Solar Energy</li>
-                            <li>Save White Tiger</li>
+                        	<li>Mycological Research and Documentation</li>
+                            <li>Promotion of Wild Mushroom Utilization </li>
+                            <li>Post-Harvest Loss Management</li>
+                            <li>Biodiversity Policy Advocacy</li>
                         </ul>
                     </article>
                 </div>
@@ -50,8 +53,10 @@
                 	<div class="text-block">
                     	<h3>Our Mission</h3>
                         <div class="text no-margin-bottom">
-                        	<p>There are many variations of passages of Lorem real lypsum available, but the in the majority have suffered alteration in some form, by injected </p>
-                            <p>humour, or lipuan domised words which don't look evenIpsum, you need to be sure there isn't theanything embarrassing hidden in the lorem middle of simply lorem dummy text.</p>
+                        	<p>
+                               The mission of Fungi For Nature is to support national and international policies on the restoration and sustainable management of natural resources through the conservation of wild fungi, with the goal of preserving the vital ecological services they provide to life on Earth.
+                            </p>
+                            
                         </div>
                     </div>
                 </div>
@@ -72,8 +77,11 @@
                 	<div class="text-block">
                     	<h3>Our Goal</h3>
                         <div class="text no-margin-bottom">
-                        	<p>There are many variations of passages of Lorem real lypsum available, but the in the majority have suffered alteration in some form, by injected </p>
-                            <p>humour, or lipuan domised words which don't look evenIpsum, you need to be sure there isn't theanything embarrassing hidden in the lorem middle of simply lorem dummy text.</p>
+                        	<p>To contribute to the knowledge and documentation of the diverse types of fungi.
+                            To promote the sustainable use of beneficial wild mushrooms. 
+                            To support producers in managing post-harvest losses caused by pathogenic fungi, thereby enhancing food security and protecting human health.
+                            To assist in the restoration of polluted ecosystems through mycoremediation.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -85,77 +93,7 @@
 
 
     <!--Two Column Fluid -->
-    <section class="two-column-fluid">
 
-    	<div class="outer clearfix">
-
-            <article class="column left-column" style="background-image:url(/assets/images/resource/fluid-image-3.jpg);">
-
-                <div class="content-box pull-right">
-                    <h2>Some <span class="normal-font theme_color">Facts</span></h2>
-                    <div class="title-text">Lorem ipsum dolor some link sit amet, cum at inani interesset</div>
-                    <div class="text">We’re extremely proud of what we’ve achieved together with charitie lorem individuals, philanthropists and schools since the Big Give was founded in 2007, and here are some fact from our achivemnet.</div>
-                    <br>
-
-                    <div class="clearfix">
-                    	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-shapes-1"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="7845910" data-speed="1500">7,845,910</span></h4>
-                                <span class="title">Raised</span>
-                            </div>
-                        </div>
-
-                        <div class="icon-box">
-                        	<div class="icon"><span class="flaticon-tool-4"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="13360" data-speed="1500">12,360</span></h4>
-                                <span class="title">Projects</span>
-                            </div>
-                        </div>
-
-                        <div class="icon-box">
-                        	<div class="icon"><span class="flaticon-favorite"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="78459" data-speed="1500">225,580</span></h4>
-                                <span class="title">Donations</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-            </article>
-
-            <article class="column right-column" style="background-image:url(/assets/images/resource/fluid-image-4.jpg);">
-
-                <div class="content-box pull-left">
-                	<div class="outer-box">
-                    	<div class="quote-icon"><span class="fa fa-quote-left"></span></div>
-                        <h2>word from <span class="normal-font">CEO</span></h2>
-
-                        <!--Text Content-->
-                        <div class="text-content">
-                            <div class="text"><p>How to pursue pleasure rationally  consequences that are extremeely painful or again is there anyones who loves or  pursues or desires to obtain pain of itself because its sed great pleasure get well soon.</p></div>
-                            <div class="information clearfix">
-                                <div class="info">
-                                    <figure class="image-thumb"><img src="/assets/images/resource/ceo-thumb.jpg" alt=""></figure>
-                                    <h3>Alex Zender</h3>
-                                    <p>CEO of Go Green</p>
-                                </div>
-                                <div class="signature"><img src="/assets/images/resource/signature-image-1.png" alt=""></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="clearfix"></div>
-            </article>
-
-        </div>
-
-    </section>
 
 
     <!--Team Section-->
@@ -256,147 +194,11 @@
 
 
     <!--Testimonials-->
-    <section class="testimonials-section" style="background-image:url(/assets/images/background/testimonials-bg.jpg);">
-		<div class="auto-container">
 
-            <div class="sec-title text-center">
-                <h2>Testi<span class="normal-font theme_color">Monials</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interes setnisl omnium dolor amet amet qco modo cum text </div>
-            </div>
-
-            <!--Slider-->
-        	<div class="testimonials-slider testimonials-carousel">
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-1.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-2.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-3.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-
-            </div>
-
-        </div>
-    </section>
 
 
 
     <!--Blog News Section-->
-    <section class="blog-news-section latest-news">
-    	<div class="auto-container">
-
-            <div class="sec-title text-center">
-                <h2>Latest <span class="normal-font theme_color">News</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interessetnisl omnium dolor amet amet qco modo cum text </div>
-            </div>
-        	<div class="row clearfix">
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-1.jpg" alt=""></a>
-                            <div class="news-date">28<span class="month">OCT</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Melting ice</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-2.jpg" alt=""></a>
-                            <div class="news-date">22<span class="month">APR</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Deforestation is the threat</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-3.jpg" alt=""></a>
-                            <div class="news-date">23<span class="month">MAR</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Save the animals</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-
-            </div>
-        </div>
-    </section>
 
 
     <!--Sponsors Section-->
@@ -416,20 +218,6 @@
         </div>
     </section>
 
-
-    <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
-    	<div class="auto-container">
-        	<div class="text-center">
-            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
-                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
-                <a href="#" class="theme-btn btn-style-one">Join Event</a>
-            </div>
-        </div>
-    </section>
-
-
     <!--Intro Section-->
     <section class="subscribe-intro">
     	<div class="auto-container">
@@ -437,7 +225,7 @@
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
                 	<h2>Subcribe for Newsletter</h2>
-                    There are many variations of passages of Lorem Ipsum available but the majority have
+                   Receive our latest news and special offers directly to your inbox.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">

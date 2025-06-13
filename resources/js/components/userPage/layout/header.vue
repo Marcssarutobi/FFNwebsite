@@ -8,8 +8,8 @@
                  <div class="info-outer">
                  	<!--Info Box-->
                     <ul class="info-box clearfix">
-                    	<li><span class="icon flaticon-interface"></span><a href="#">companyname@mail.com</a></li>
-                    	<li><span class="icon flaticon-technology-5"></span><a href="#">(732) 803-010-03</a></li>
+                    	<li><span class="icon flaticon-interface"></span><a href="mailto:contact@fungifornature.com">contact@fungifornature.com</a></li>
+                    	<li><span class="icon flaticon-technology-5"></span><a href="#">(+229) 0196975772</a></li>
                         <li class="social-links-one">
                         	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
                             <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>
@@ -51,27 +51,29 @@
                                 <li >
                                     <router-link exact-active-class="current" to="/">Home</router-link>
                                 </li>
-                                <li>
-                                    <router-link exact-active-class="current" to="about">About</router-link>
-                                </li>
+                                
                                 <li>
                                     <router-link exact-active-class="current" to="project">Projects</router-link>
                                 </li>
                                 <li>
                                     <router-link exact-active-class="current" to="event">Events</router-link>
                                 </li>
+                                
+                                <li>
+                                    <router-link exact-active-class="current" to="gallery">Gallery</router-link>
+                                </li>
                                 <li>
                                     <router-link exact-active-class="current" to="blog">BLog</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="gallery">Gallery</router-link>
+                                    <router-link exact-active-class="current" to="about">About</router-link>
                                 </li>
                                 <li>
                                     <router-link exact-active-class="current" to="contact">Contact Us</router-link>
                                 </li>
                             </ul>
                         </div>
-                    </nav><!-- Main Menu End-->
+                    </nav>
 
                 </div>
 
@@ -88,7 +90,7 @@
 
 <style>
     a.current {
-        color: #6ac610 !important;
+        color: #179607 !important;
         opacity: 1 !important;
     }
 </style>
