@@ -105,7 +105,7 @@
                 btn.className = 'btn btn-lg mt-4 btn-outline-danger custom-delete-btn rounded-0 me-4';
                 btn.addEventListener('click', () => {
                     console.log('Bouton Supprimer cliqué');
-                    props.DeleteAllFunction()
+                    props.DeleteAllFunction(Ids.value)
                 });
 
                 // 🧩 Ajouter le bouton puis la search box dans le wrapper
@@ -137,4 +137,14 @@
 
 <style>
 
+@import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
+/* Pour que la pagination et l'info soient sur la même ligne et visibles */
+.dt-paging .vertical-sidebar{
+    position: static !important; 
+    height: 50px !important;
+    width: 350px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 </style>

@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function index(){
         // 1. Récupérer toutes les catégories
-        $categories = Category::with(['events', 'projects', 'blogs', 'galleries'])->get();
+        $categories = Category::with(['events', 'projects', 'blogs', 'galleries'])->orderBy('id','desc')->get();
 
         // 2. Retourner la réponse JSON
         return response()->json([
