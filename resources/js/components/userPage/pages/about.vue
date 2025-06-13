@@ -29,13 +29,17 @@
                 <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
                 	<article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
                 		<h2>WE  Are Think <span class="theme_color normal-font">Ahead</span></h2>
-                        <div class="bigger-text">Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset</div>
-                        <div class="text"><p>There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use</p></div>
+                        <div class="bigger-text">Our NGO Fungi For Nature is committed to mycological conservation, research and education.</div>
+                        <div class="text">
+                            <p>
+                                Our NGO, Fungi For Nature, works to protect mushrooms, an essential but often overlooked component of our ecosystems. Through scientific research, public awareness, and community projects, we highlight the ecological, nutritional, and medicinal importance of mushrooms.
+
+                            </p></div>
                         <ul class="styled-list-one no-margin-bottom">
-                        	<li>Eco &amp; Wind Power</li>
-                            <li>Green Tree plantion </li>
-                            <li>Solar Energy</li>
-                            <li>Save White Tiger</li>
+                        	<li>Mycological Research and Documentation</li>
+                            <li>Promotion of Wild Mushroom Utilization </li>
+                            <li>Post-Harvest Loss Management</li>
+                            <li>Biodiversity Policy Advocacy</li>
                         </ul>
                     </article>
                 </div>
@@ -221,7 +225,7 @@
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
                 	<h2>Subcribe for Newsletter</h2>
-                    There are many variations of passages of Lorem Ipsum available but the majority have
+                   Receive our latest news and special offers directly to your inbox.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
