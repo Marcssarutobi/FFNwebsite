@@ -11,6 +11,16 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-3">
+                        <DataTable :data="allcat" :columns="columns" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <!--  Modal content for the Large example -->
         <div class="modal fade" id="addcat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -68,6 +78,7 @@
 
     import { ref,onMounted } from 'vue';
     import axiosInstance from '../../plugin/axios.js';
+    import DataTable from'../components/Datatable.vue'
 
     let addmodal;
     let updatemodal;
@@ -79,7 +90,54 @@
     const isEmpty = ref({})
     const msgInput = ref({})
     const isLoader = ref(false)
-    const modelItems = ref([])
+    const allcat = ref([])
+
+    const AllCategoryFunction = async ()=>{
+        const res = await axiosInstance.get('/categories',{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        })
+        if (res.status === 200) {
+            allcat.value = res.data.categories
+        }
+    }
+
+    const columns = [
+        { title: 'Name', data: 'name' },
+        {
+          title: 'Created', data: 'created_at', render: (data, type, row) => {
+            // Formater la date
+            const date = new Date(row.created_at); // Assure-toi que `created_at` est au format ISO ou timestamp
+            return new Intl.DateTimeFormat('fr-FR', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+            }).format(date); // Formater la date à la française
+          }
+        },
+        { title: 'Actions', data: null, render: (data, type, row) => {
+            // Personnalise ici l'affichage des actions si nécessaire
+            return `
+                <div class="dropdown dropdown-action">
+                    <a href="#" class=" btn-action-icon " data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <ul class="p-0">
+                            <li>
+                                <a class="dropdown-item" onClick="showCategorie(${row.id})" ><i class="far fa-edit me-2"></i>Edit</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" onClick="deleteCategorie(${row.id})" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+          }
+        }
+    ]
 
     const inputEmpty = ()=>{
         if (data.value.name.trim() === '') {
@@ -105,6 +163,7 @@
                 if (res.status === 200) {
                     isLoader.value = false
                     data.value.name = ''
+                    AllCategoryFunction()
                     addmodal.hide();
 
                     // Afficher le toast
@@ -126,10 +185,12 @@
 
     onMounted(() => {
         addmodal = new bootstrap.Modal(document.getElementById('addcat'))
+        AllCategoryFunction()
     })
 
 </script>
 
 <style>
+@import 'datatables.net-bs5';
 
 </style>

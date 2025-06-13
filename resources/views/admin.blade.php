@@ -37,6 +37,9 @@
     <!-- iconoir icon css  -->
     <link href="{{asset('admin/assets/vendor/ionio-icon/css/iconoir.css')}}" rel="stylesheet">
 
+    <!-- Data Table css-->
+    <link href="{{asset('admin/assets/vendor/datatable/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css">
+
     <!-- Animation css -->
     <link href="{{asset('admin/assets/vendor/animation/animate.min.css')}}" rel="stylesheet">
 
@@ -87,6 +90,12 @@
 
     <!-- Simple bar js-->
     <script src="{{asset('admin/assets/vendor/simplebar/simplebar.js')}}"></script>
+
+    <!-- latest jquery-->
+    <script src="{{asset('admin/assets/vendor/datatable/jquery-3.5.1.js')}}"></script>
+
+    <!-- latest jquery-->
+    <script src="{{asset('admin/assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
 
     <!-- apexcharts -->
     <script src="{{asset('admin/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
