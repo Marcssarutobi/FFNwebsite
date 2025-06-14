@@ -28,6 +28,19 @@ Route::post('/login',[UserController::class, 'login']);
 Route::post('/uploadimg', [UserController::class, 'uploadImg']);
 Route::post('/deleteimg', [UserController::class, 'deleteImage']);
 
+//Project Public
+Route::get('/allprojects', [ProjectController::class, 'allProject']);
+Route::get('/project/{slug}', [ProjectController::class, 'showUser']);
+
+//Event Public
+Route::get('/allevents', [EventController::class, 'allEvent']);
+Route::get('/event/{slug}', [EventController::class, 'showUser']);
+
+//Blogs Public
+Route::get('/allblogs', [BlogController::class, 'allBlog']);
+Route::get('/blog/{slug}', [BlogController::class, 'showUser']);
+
+
 Route::middleware('auth:sanctum')->group( function () {
 
     //CurrentUser
@@ -56,7 +69,28 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put('/updatecategory/{id}', [CategoryController::class, 'update']);
     Route::delete('/deletecategory/{id}', [CategoryController::class, 'destroy']);
 
-    
+    //projects
+    Route::get('/projects', [ProjectController::class, 'index']);
+    Route::get('/project/{id}', [ProjectController::class, 'show']);
+    Route::post('/addproject', [ProjectController::class, 'store']);
+    Route::put('/updateproject/{id}', [ProjectController::class, 'update']);
+    Route::delete('/deleteproject/{id}', [ProjectController::class, 'destroy']);
+
+    //Events
+    Route::get('/events', [EventController::class, 'index']);
+    Route::get('/event/{id}', [EventController::class, 'show']);
+    Route::post('/addevent', [EventController::class, 'store']);
+    Route::put('/updateevent/{id}', [EventController::class, 'update']);
+    Route::delete('/deleteevent/{id}', [EventController::class, 'destroy']);
+
+    //Blogs
+    Route::get('/blogs', [BlogController::class, 'index']);
+    Route::get('/blog/{id}', [BlogController::class, 'show']);
+    Route::post('/addblog', [BlogController::class, 'store']);
+    Route::put('/updateblog/{id}', [BlogController::class, 'update']);
+    Route::delete('/deleteblog/{id}', [BlogController::class, 'destroy']);
+
+
 
 
 });

@@ -129,8 +129,31 @@
         createButtonAndSearch()
     })
 
+    const applyCustomPagingStyle = () => {
+        const target = document.querySelector('.dt-paging nav');
+        if (target) {
+            target.style.setProperty('position', 'static', 'important');
+            target.style.setProperty('height', '50px', 'important');
+            target.style.setProperty('width', '350px', 'important');
+            target.style.setProperty('display', 'flex', 'important');
+            target.style.setProperty('align-items', 'center', 'important');
+            target.style.setProperty('justify-content', 'center', 'important');
+        }
+    };
+
     onMounted(()=>{
         selectAll()
+        applyCustomPagingStyle()
+
+        const tableElement = document.querySelector('.dataTable');
+        if (tableElement) {
+            tableElement.addEventListener('draw', () => {
+                selectAll();
+                createButtonAndSearch();
+                applyCustomPagingStyle(); // Réappliquer le style
+            });
+        }
+
     })
 
 </script>
@@ -139,12 +162,5 @@
 
 @import 'datatables.net-bs5/css/dataTables.bootstrap5.min.css';
 /* Pour que la pagination et l'info soient sur la même ligne et visibles */
-.dt-paging .vertical-sidebar{
-    position: static !important; 
-    height: 50px !important;
-    width: 350px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 </style>

@@ -5,7 +5,7 @@
         <div class="row mb-4">
             <div class="col-12 d-flex justify-content-between align-items-center">
                 <h4 class="main-title">List of projects</h4>
-                <button class="btn btn-primary mb-2" >
+                <button @click="showModal" class="btn btn-primary mb-2" >
                     <i class="iconoir-plus"></i> Create new project
                 </button>
             </div>
@@ -17,117 +17,7 @@
 
                 <div class="card-body p-3">
                     <div class="table-responsive">
-                        <table class="table align-middle mb-0">
-                            <thead class="table-primary">
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Office</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Salary</th>
-                                    <th scope="col">Contact</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <div class="d-flex align-items-center ">
-                                            <div class="h-30 w-30 d-flex-center b-r-50 overflow-hidden text-bg-primary me-2 simple-table-avtar">
-                                                <img alt="" class="img-fluid" src="/admin/assets/images/avtar/1.png">
-                                            </div>
-                                            <p class="mb-0 f-w-500 ">Tiger Nixon</p>
-                                        </div>
-                                    </td>
-                                    <td class="f-w-500">Architect</td>
-                                    <td class="text-secondary f-w-600">Edinburgh</td>
-                                    <td><span class="badge text-light-primary">active</span></td>
-                                    <td class="text-success f-w-500">$320,800</td>
-                                    <td>+1 (025) 466-7506</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="h-30 w-30 d-flex-center b-r-50 overflow-hidden text-bg-secondary me-2 simple-table-avtar">
-                                                <img alt="" class="img-fluid" src="/admin/assets/images/avtar/2.png">
-                                            </div>
-                                            <p class="mb-0 f-w-500 ">Garrett</p>
-                                        </div>
-                                    </td>
-                                    <td class="f-w-500">Accountant</td>
-                                    <td class="text-secondary f-w-600">Tokyo</td>
-                                    <td><span class="badge text-light-secondary">pending</span></td>
-                                    <td class="text-success f-w-500">$170,750</td>
-                                    <td>+1 (790) 476-9505</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="h-30 w-30 d-flex-center b-r-50 overflow-hidden text-bg-success me-2 simple-table-avtar">
-                                                <img alt="" class="img-fluid" src="/admin/assets/images/avtar/3.png">
-                                            </div>
-                                            <p class="mb-0 f-w-500 ">Ashton Cox</p>
-                                        </div>
-                                    </td>
-                                    <td class="f-w-500">Technical</td>
-                                    <td class="text-secondary f-w-600">Francisco</td>
-                                    <td><span class="badge text-light-success">pending</span></td>
-                                    <td class="text-success f-w-500">$86,000</td>
-                                    <td>+1 (227) 375-6641</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="h-30 w-30 d-flex-center b-r-50 overflow-hidden text-bg-info me-2 simple-table-avtar">
-                                                <img alt="" class="img-fluid" src="/admin/assets/images/avtar/4.png">
-                                            </div>
-                                            <p class="mb-0 f-w-500 ">Cedric Kelly</p>
-                                        </div>
-                                    </td>
-                                    <td class="f-w-500">Developer</td>
-                                    <td class="text-secondary f-w-600">Edinburgh</td>
-                                    <td><span class="badge text-light-info">active</span></td>
-                                    <td class="text-success f-w-500">$433,060</td>
-                                    <td>+1 (213) 619-7749</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="h-30 w-30 d-flex-center b-r-50 overflow-hidden text-bg-warning me-2 simple-table-avtar">
-                                                <img alt="" class="img-fluid" src="/admin/assets/images/avtar/5.png">
-                                            </div>
-                                            <p class="mb-0 f-w-500 ">Airi Satou</p>
-                                        </div>
-                                    </td>
-                                    <td class="f-w-500">Accountant</td>
-                                    <td class="text-secondary f-w-600">Tokyo</td>
-                                    <td><span class="badge text-light-warning">pending</span></td>
-                                    <td class="text-success f-w-500">$162,700</td>
-                                    <td>+1 (152) 465-2290</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="h-30 w-30 d-flex-center b-r-50 overflow-hidden text-bg-danger me-2 simple-table-avtar">
-                                                <img alt="" class="img-fluid" src="/admin/assets/images/avtar/6.png">
-                                            </div>
-                                            <p class="mb-0 f-w-500 ">Williamson</p>x
-                                        </div>
-                                    </td>
-                                    <td class="f-w-500">Integration</td>
-                                    <td class="text-secondary f-w-600">New York</td>
-                                    <td><span class="badge text-light-danger">active</span></td>
-                                    <td class="text-success f-w-500">$372,000</td>
-                                    <td>+1 (185) 793-6446</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <Datatable />
                     </div>
                 </div>
 
@@ -135,11 +25,232 @@
 
         </div>
 
+        <!--  Modal content for the Large example -->
+        <div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-xl ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Add Project</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+
+                            <div class="col-lg-6 mb-3">
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input v-model="data.title" type="text" class="form-control" id="title" placeholder="Enter title">
+                                    <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 mb-3">
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select class="form-select" v-model="data.category_id" id="category">
+                                        <option value="">Select a category</option>
+                                        <option v-for="category in allCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                                    </select>
+                                    <span v-if="isEmpty.category_id" class="text-danger">{{ msgInput.category_id }}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <div class="form-group">
+                                    <label for="brief_description">Brief Description</label>
+                                    <textarea v-model="data.brief_description" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
+                                    <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 mb-3">
+                                <div class="form-group">
+                                    <label for="content">Content</label>
+                                    <textarea v-model="data.content" row="5" id="my-editor" type="text" class="form-control" placeholder="Enter content"></textarea>
+                                    <span v-if="isEmpty.content" class="text-danger">{{ msgInput.content }}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger me-3" data-bs-dismiss="modal">Fermer</button>
+                        <button disabled v-if="isLoader" class="btn btn-primary">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        </button>
+                        <button v-else type="button" class="btn btn-primary" @click="AddCategorie">Save</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <!-- Toast de succès -->
+        <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1055">
+            <div id="successToast" class="toast align-items-center text-white  border-0" :class="classToast" role="alert">
+                <div class="d-flex">
+                <div class="toast-body">
+                    {{ msgToast }}
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        </div>
+
     </div>
   </main>
 </template>
 
 <script  setup>
+
+    import { onMounted, ref } from 'vue';
+    import Datatable from '../components/Datatable.vue';
+    import {postData, getData} from '../../plugin/api'
+    import {initTinyMCE,destroyTinyMCE} from '../../plugin/tinymce';
+
+    let addmodal;
+    let updatemodal;
+
+    const data = ref({
+        title:"",
+        brief_description:"",
+        content:"",
+        image:"",
+        category_id:"",
+        status:"",
+        user_id:"",
+    })
+    const isEmpty = ref({})
+    const msgInput = ref({})
+    const isLoader = ref(false)
+    const msgToast = ref("")
+    const classToast = ref("")
+    const allCategories = ref([])
+
+    const AllCategory = async ()=>{
+        try {
+            const response = await getData('/categories');
+            if (response.status === 200) {
+                allCategories.value = response.data.categories;
+                console.log("Categories fetched successfully:", allCategories.value);
+            }
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    }
+
+    const inputEmpty = ()=>{
+        if (data.value.title.trim() === '') {
+            isEmpty.value.title = true
+            msgInput.value.title = 'Ce champs est vide'
+        }else{
+            isEmpty.value.title = false
+            msgInput.value.title = ''
+        }
+        if (data.value.brief_description.trim() === '') {
+            isEmpty.value.brief_description = true
+            msgInput.value.brief_description = 'Ce champs est vide'
+        }else{
+            isEmpty.value.brief_description = false
+            msgInput.value.brief_description = ''
+        }
+        if (data.value.content.trim() === '') {
+            isEmpty.value.content = true
+            msgInput.value.content = 'Ce champs est vide'
+        }else{
+            isEmpty.value.content = false
+            msgInput.value.content = ''
+        }
+        if (data.value.image.trim() === '') {
+            isEmpty.value.image = true
+            msgInput.value.image = 'Ce champs est vide'
+        }else{
+            isEmpty.value.image = false
+            msgInput.value.image = ''
+        }
+        if (data.value.category_id === '') {
+            isEmpty.value.category_id = true
+            msgInput.value.category_id = 'Ce champs est vide'
+        }else{
+            isEmpty.value.category_id = false
+            msgInput.value.category_id = ''
+        }
+        if (data.value.status === '') {
+            isEmpty.value.status = true
+            msgInput.value.status = 'Ce champs est vide'
+        }else{
+            isEmpty.value.status = false
+            msgInput.value.status = ''
+        }
+    }
+
+    const AddProjectFunction = async ()=>{
+        inputEmpty()
+        const allEmpty = Object.values(isEmpty.value).every(value => value === false)
+        if (allEmpty) {
+            isLoader.value = true
+            postData('/addproject', data.value)
+                .then(response =>{
+                    if (response.status === 200) {
+                        isLoader.value = false
+                        data.value = {
+                            title:"",
+                            brief_description:"",
+                            content:"",
+                            image:"",
+                            category_id:"",
+                            status:"",
+                            user_id:"",
+                        }
+                        msgToast.value = "Project added successfully"
+                        classToast.value = "bg-success"
+
+                        // Afficher le toast
+                        const toastEl = document.getElementById('successToast');
+                        const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
+                        toast.show();
+                    }
+                })
+                .catch(error => {
+                    isLoader.value = false
+                    console.error("Error adding project:", error);
+                    msgToast.value = "An error occurred while adding the project."
+                    classToast.value = "bg-danger"
+                    const toastEl = document.getElementById('successToast');
+                    const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
+                    toast.show();
+                });
+        }
+    }
+
+    const showModal = () => {
+        addmodal.show()
+    }
+
+    onMounted(()=>{
+        addmodal = new bootstrap.Modal(document.getElementById('addproject'))
+
+        // Lorsque le modal est affiché, init TinyMCE
+        document.getElementById('addproject').addEventListener('shown.bs.modal', () => {
+            const editor = document.getElementById('my-editor');
+            if (editor) {
+                initTinyMCE(editor,{
+                    height: 300,
+                    setup: (editor) => {
+                        editor.on('init', () => {
+                            editor.setContent(data.value.content);
+                        });
+                        editor.on('change', () => {
+                            data.value.content = editor.getContent();
+                        });
+                    }
+                })
+            }
+        });
+
+        AllCategory()
+    })
 
 </script>
 
