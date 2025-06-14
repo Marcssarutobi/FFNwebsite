@@ -39,7 +39,7 @@
                             <div class="col-lg-6 mb-3">
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input v-model="data.title" type="text" class="form-control" id="title" placeholder="Enter title">
+                                    <input v-model="data.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
                                     <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                             <div class="col-lg-6 mb-3">
                                 <div class="form-group">
                                     <label for="category">Category</label>
-                                    <select class="form-select" v-model="data.category_id" id="category">
+                                    <select class="form-select" :class="{ 'is-invalid': isEmpty.title }" v-model="data.category_id" id="category">
                                         <option value="">Select a category</option>
                                         <option v-for="category in allCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
                                     </select>
@@ -58,7 +58,7 @@
                             <div class="col-lg-12 mb-3">
                                 <div class="form-group">
                                     <label for="brief_description">Brief Description</label>
-                                    <textarea v-model="data.brief_description" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
+                                    <textarea v-model="data.brief_description" :class="{ 'is-invalid': isEmpty.title }" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
                                     <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             <div class="col-lg-12 mb-3">
                                 <div class="form-group">
                                     <label for="content">Content</label>
-                                    <textarea v-model="data.content" row="5" id="my-editor" type="text" class="form-control" placeholder="Enter content"></textarea>
+                                    <textarea v-model="data.content" :class="{ 'is-invalid': isEmpty.title }" row="5" id="my-editor" type="text" class="form-control" placeholder="Enter content"></textarea>
                                     <span v-if="isEmpty.content" class="text-danger">{{ msgInput.content }}</span>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                             <span class="visually-hidden">Loading...</span>
                         </div>
                         </button>
-                        <button v-else type="button" class="btn btn-primary" @click="AddCategorie">Save</button>
+                        <button v-else type="button" class="btn btn-primary" @click="AddProjectFunction">Save</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -206,6 +206,8 @@
                         msgToast.value = "Project added successfully"
                         classToast.value = "bg-success"
 
+                        addmodal.hide()
+
                         // Afficher le toast
                         const toastEl = document.getElementById('successToast');
                         const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
@@ -235,8 +237,8 @@
         document.getElementById('addproject').addEventListener('shown.bs.modal', () => {
             const editor = document.getElementById('my-editor');
             if (editor) {
-                initTinyMCE(editor,{
-                    height: 300,
+                initTinyMCE('my-editor',{
+                    height: 500,
                     setup: (editor) => {
                         editor.on('init', () => {
                             editor.setContent(data.value.content);
@@ -249,11 +251,17 @@
             }
         });
 
+        document.getElementById('addproject').addEventListener('hidden.bs.modal', () => {
+            destroyTinyMCE('my-editor');
+        });
+
         AllCategory()
     })
 
 </script>
 
 <style>
-
+    .tox-promotion{
+        display: none !important;
+    }
 </style>

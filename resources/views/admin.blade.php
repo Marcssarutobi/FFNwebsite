@@ -83,7 +83,9 @@
     <div id="app"></div>
 
     <!-- latest jquery-->
-    <script src="{{asset('admin/assets/js/jquery-3.6.3.min.js')}}"></script>-
+    <script src="{{asset('admin/assets/js/jquery-3.6.3.min.js')}}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/tinymce.min.js" integrity="sha512-bib7srucEhHYYWglYvGY+EQb0JAAW0qSOXpkPTMgCgW8eLtswHA/K4TKyD4+FiXcRHcy8z7boYxk0HTACCTFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Bootstrap js-->
     <script src="{{asset('admin/assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
