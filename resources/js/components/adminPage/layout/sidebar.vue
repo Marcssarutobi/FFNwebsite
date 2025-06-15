@@ -19,6 +19,11 @@
                     </router-link>
                 </li>
                 <li class="no-sub mb-2">
+                    <router-link exact-active-class="active" to="/admins/category">
+                        <i class="iconoir-box"></i> Category
+                    </router-link>
+                </li>
+                <li class="no-sub mb-2">
                     <router-link exact-active-class="active" to="/admins/projects">
                         <i class="iconoir-task-list"></i> Projects
                     </router-link>
@@ -41,6 +46,11 @@
                 <li class="no-sub mb-2">
                     <a class="" href="widget.html">
                         <i class="iconoir-mail"></i> Contacts
+                    </a>
+                </li>
+                <li class="no-sub mb-2">
+                    <a class="" href="widget.html">
+                        <i class="iconoir-shield-check"></i> Role & Permissions
                     </a>
                 </li>
                 <li class="no-sub mb-2">

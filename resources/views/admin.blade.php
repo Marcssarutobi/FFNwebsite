@@ -37,6 +37,9 @@
     <!-- iconoir icon css  -->
     <link href="{{asset('admin/assets/vendor/ionio-icon/css/iconoir.css')}}" rel="stylesheet">
 
+    <!-- Data Table css-->
+    <link href="{{asset('admin/assets/vendor/datatable/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css">
+
     <!-- Animation css -->
     <link href="{{asset('admin/assets/vendor/animation/animate.min.css')}}" rel="stylesheet">
 
@@ -82,11 +85,19 @@
     <!-- latest jquery-->
     <script src="{{asset('admin/assets/js/jquery-3.6.3.min.js')}}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.1/tinymce.min.js" integrity="sha512-bib7srucEhHYYWglYvGY+EQb0JAAW0qSOXpkPTMgCgW8eLtswHA/K4TKyD4+FiXcRHcy8z7boYxk0HTACCTFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Bootstrap js-->
     <script src="{{asset('admin/assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Simple bar js-->
     <script src="{{asset('admin/assets/vendor/simplebar/simplebar.js')}}"></script>
+
+    <!-- latest jquery-->
+    <script src="{{asset('admin/assets/vendor/datatable/jquery-3.5.1.js')}}"></script>
+
+    <!-- latest jquery-->
+    <script src="{{asset('admin/assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
 
     <!-- apexcharts -->
     <script src="{{asset('admin/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
