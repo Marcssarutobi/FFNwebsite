@@ -36,6 +36,17 @@
                     <div class="modal-body">
                         <div class="row">
 
+                            <div class="col-lg-12 mb-3">
+
+                                <label for="input-file" id="drop-area">
+                                    <input type="file" accept="image/*" id="input-file" hidden>
+                                    <i class="fas fa-cloud-arrow-up"></i>
+                                    <p>Drag and drop or click here to upload image</p>
+                                    <span>Upload any images from desktop</span>
+                                </label>
+
+                            </div>
+
                             <div class="col-lg-6 mb-3">
                                 <div class="form-group">
                                     <label for="title">Title</label>
@@ -108,6 +119,7 @@
     import Datatable from '../components/Datatable.vue';
     import {postData, getData} from '../../plugin/api'
     import {initTinyMCE,destroyTinyMCE} from '../../plugin/tinymce';
+    import {isAuthenticated} from '../../router/index';
 
     let addmodal;
     let updatemodal;
@@ -127,6 +139,7 @@
     const msgToast = ref("")
     const classToast = ref("")
     const allCategories = ref([])
+    const currentUser = ref({})
 
     const AllCategory = async ()=>{
         try {
@@ -187,6 +200,9 @@
 
     const AddProjectFunction = async ()=>{
         inputEmpty()
+        data.value.status = "draft"
+        currentUser.value = await isAuthenticated()
+        data.value.user_id = currentUser.value.id
         const allEmpty = Object.values(isEmpty.value).every(value => value === false)
         if (allEmpty) {
             isLoader.value = true
@@ -264,4 +280,31 @@
     .tox-promotion{
         display: none !important;
     }
+    #drop-area{
+        width: 100%;
+        height: 200px;
+        padding: 30px;
+        background-color: #fff;
+        text-align: center;
+        border-radius: 20px;
+        border: 2px dashed #e1e1e1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 10px;
+    }
+
+    #drop-area i {
+        font-size: 60px;
+    }
+    #drop-area p {
+        font-size: 25px;
+    }
+    #drop-area span {
+        color: #a3a3a3;
+        font-size: 15px;
+    }
+
 </style>
