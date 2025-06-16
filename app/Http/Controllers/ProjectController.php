@@ -84,4 +84,46 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function uploadImg(Request $request){ # Uploder une image dans un dossier
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5048'
+        ]);
+
+        if ($request->hasFile('image')) {
+
+            // Génération d'un nom unique pour l'image
+            $picName = time() . '.' . $request->file('image')->extension();
+
+            // Déplacement du fichier vers le répertoire public/images
+            $request->file('image')->move(public_path('images/Project'), $picName);
+
+            // Retourner l'URL de l'image téléchargée
+            return response()->json(['image_url' => "/images/Project/$picName"]);
+
+        } else {
+            // Aucun fichier image n'a été téléchargé, retourner une erreur
+            return response()->json(['error' => "Aucune image n'a été téléchargée."], 400);
+        }
+
+    }
+
+    public function deleteImage(Request $request, $hasFullPath = false){
+
+        $request->validate([
+            'image'=>'required'
+        ]);
+
+        if (!$hasFullPath) {
+            $filePath = public_path() .$request->image;
+        }
+
+        if(file_exists($filePath)){
+            @unlink($filePath);
+        }
+
+        return 'done';
+
+    }
+
 }

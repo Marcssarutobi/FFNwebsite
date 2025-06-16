@@ -31,6 +31,8 @@ Route::post('/deleteimg', [UserController::class, 'deleteImage']);
 //Project Public
 Route::get('/allprojects', [ProjectController::class, 'allProject']);
 Route::get('/project/{slug}', [ProjectController::class, 'showUser']);
+Route::post('/uploadprojectimg', [ProjectController::class, 'uploadImg']);
+Route::post('/deleteprojectimg', [ProjectController::class, 'deleteImage']);
 
 //Event Public
 Route::get('/allevents', [EventController::class, 'allEvent']);
