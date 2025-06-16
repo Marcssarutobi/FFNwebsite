@@ -677,4 +677,83 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
 <style>
 
+@media screen and (max-width: 991px) {
+
+    .featured-fluid-section .column,
+    .featured-fluid-section .image-column,
+    .featured-fluid-section .text-column {
+        width: 100%;
+        float: none;
+        position: relative;
+        display: block;
+    }
+
+    .featured-fluid-section .image-column {
+        height: 300px;
+        position: relative; /* plus absolute */
+    }
+
+    .featured-fluid-section .text-column .content-box {
+        padding: 40px 20px;
+    }
+
+    .featured-fluid-section .dark-column:before {
+        background: rgba(25, 25, 25, 0.85);
+    }
+
+    .two-column-fluid .column,
+    .two-column-fluid .left-column,
+    .two-column-fluid .right-column {
+        width: 100%;
+        float: none;
+        position: relative;
+        display: block;
+        min-height: auto;
+    }
+
+    .two-column-fluid .left-column .content-box,
+    .two-column-fluid .right-column .content-box {
+        padding: 40px 20px;
+        float: none;
+        max-width: 100%;
+    }
+
+    .two-column-fluid .right-column .quote-icon {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 20px;
+    }
+
+    .two-column-fluid .right-column .info {
+        padding-left: 80px;
+    }
+
+    .two-column-fluid .right-column .info .image-thumb {
+        left: 0;
+        top: 0;
+    }
+
+    .two-column-fluid .right-column .info .image-thumb img {
+        width: 60px;
+    }
+
+    .two-column-fluid .right-column .text-content {
+        text-align: left;
+    }
+
+    .two-column-fluid .icon-box {
+        float: none;
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .two-column-fluid .icon-box .lower-box {
+        border: none;
+        padding: 0;
+    }
+}
+
+
 </style>

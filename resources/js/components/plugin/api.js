@@ -10,6 +10,16 @@ export const getData = async (endpoint) => {
     }
 }
 
+export const getSingleData = async (endpoint) => {
+    try {
+        const response = await axiosInstance.get(endpoint);
+        return response;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    }
+}
+
 export const postData = async (endpoint, data) => {
     try {
         const response = await axiosInstance.post(endpoint, data);

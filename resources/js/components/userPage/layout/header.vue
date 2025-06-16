@@ -38,10 +38,8 @@
 
                         <div class="navbar-header">
                             <!-- Toggle Button -->
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
+                            <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse" style="font-size: 18px; background-color: #179607; color: #fff;">
+                                <i class="fas fa-bars"></i>
                             </button>
                         </div>
 
@@ -93,4 +91,95 @@
         color: #179607 !important;
         opacity: 1 !important;
     }
+    @media screen and (max-width: 767px) {
+
+    .main-header .top-bar .info-outer {
+        position: relative;
+        text-align: center;
+        padding: 10px 15px;
+        border-radius: 0;
+    }
+
+    .main-header .top-bar .info-outer:before {
+        display: none;
+    }
+
+    .main-header .top-bar .info-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-header .top-bar .info-box li {
+        float: none;
+        padding-left: 15px;
+        margin: 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .main-header .top-bar .info-box li:after {
+        display: none;
+    }
+
+    .main-header .top-bar .info-box li .icon {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin-right: 8px;
+    }
+
+    .main-header .top-bar .info-box li.social-links-one {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .main-header .top-bar .info-box li.social-links-one a {
+        margin: 0;
+    }
+
+    .main-header .nav-outer {
+        text-align: center;
+        margin-top: 0px !important;
+    }
+
+    .main-header .logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .main-header .header-upper .auto-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-header .theme-btn.btn-donate {
+        display: inline-block;
+        margin: 10px 0;
+    }
+
+    .main-header .main-menu {
+        width: 100%;
+    }
+
+    .main-header .main-menu .navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .main-header .main-menu .navigation li {
+        float: none;
+        width: 100%;
+    }
+}
+
 </style>

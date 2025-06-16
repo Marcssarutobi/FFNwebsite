@@ -23,12 +23,27 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show($id){
+    public function show($id)
+    {
+        if (is_null($id)) {
+            return response()->json([
+                'error' => 'ID invalide ou manquant.'
+            ], 400);
+        }
+
         $data = Project::with('category')->find($id);
+
+        if (!$data) {
+            return response()->json([
+                'error' => 'Projet non trouvé.'
+            ], 404);
+        }
+
         return response()->json([
-            "data"=>$data
+            "data" => $data
         ]);
     }
+
 
     public function showUser($slug){
         $data = Project::with('category')->where('slug',$slug)->first();

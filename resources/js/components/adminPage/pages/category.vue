@@ -172,8 +172,8 @@
         { title: 'Actions', data: null, render: (data, type, row) => {
             // Personnalise ici l'affichage des actions si nécessaire
             return `
-                <a class="btn btn-secondary" onClick="GetCategorieFunction(${row.id})" ><i class="far fa-edit me-2"></i>Edit</a>
-                <a class="btn btn-danger" onClick="DeleteCategoryFunction(${row.id})" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                <a class="btn btn-secondary" onClick="GetCategorieFunction(${row.id})" ><i class="far fa-edit"></i></a>
+                <a class="btn btn-danger" onClick="DeleteCategoryFunction(${row.id})" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="far fa-trash-alt"></i></a>
             `;
           }
         }

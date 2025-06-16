@@ -110,6 +110,91 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+        <!--  Modal content for the Large example -->
+        <div class="modal fade" id="updateproject" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-xl ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Update Project</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form @submit.prevent="AddProjectFunction">
+                        <div class="modal-body">
+                            <div class="row">
+
+                                <div class="col-lg-12 mb-3" @dragover.prevent="handleDragOver" @dragleave="handleDragLeave" @drop.prevent="handleDrop">
+
+                                    <label for="input-fileUplode" id="drop-area" :class="{ 'border border-primary': isDragging }" v-if=" getProject.image === '' || getProject.image === null">
+                                        <input type="file" accept="image/*" @change="handleFileImg" id="input-fileUplode" hidden>
+                                        <i class="fas fa-cloud-arrow-up"></i>
+                                        <p>Drag and drop or click here to upload image</p>
+                                        <span>Upload any images from desktop</span>
+                                    </label>
+                                    <div class="img-view" v-else>
+                                        <div class="btns">
+                                            <a @click="delImage" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                        <img :src="getProject.image" alt="">
+                                    </div>
+                                    <div v-if="isEmpty.image" class=" text-danger">
+                                        {{ msgInput.image }}
+                                    </div>
+                                    <div class="progress mt-3" v-if="ShowProgress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: percent + '%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ percent }}%</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input v-model="getProject.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
+                                        <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select class="form-select" :class="{ 'is-invalid': isEmpty.title }" v-model="getProject.category_id" id="category">
+                                            <option value="">Select a category</option>
+                                            <option v-for="category in allCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                                        </select>
+                                        <span v-if="isEmpty.category_id" class="text-danger">{{ msgInput.category_id }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="brief_description">Brief Description</label>
+                                        <textarea v-model="getProject.brief_description" :class="{ 'is-invalid': isEmpty.title }" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
+                                        <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="content">Content</label>
+                                        <textarea v-model="getProject.content" :class="{ 'is-invalid': isEmpty.title }" row="5" id="my-Updateditor" type="text" class="form-control" placeholder="Enter content"></textarea>
+                                        <span v-if="isEmpty.content" class="text-danger">{{ msgInput.content }}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger me-3" data-bs-dismiss="modal">Fermer</button>
+                            <button disabled v-if="isLoader" class="btn btn-primary">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            </button>
+                            <button v-else type="submit" class="btn btn-primary" >Save</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <!-- Toast de succès -->
         <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1055">
             <div id="successToast" class="toast align-items-center text-white  border-0" :class="classToast" role="alert">
@@ -130,7 +215,7 @@
 
     import { nextTick, onMounted, ref } from 'vue';
     import Datatable from '../components/Datatable.vue';
-    import {postData, getData} from '../../plugin/api'
+    import {postData, getData, getSingleData} from '../../plugin/api'
     import {initTinyMCE,destroyTinyMCE} from '../../plugin/tinymce';
     import {isAuthenticated} from '../../router/index';
     import axiosInstance from '../../plugin/axios';
@@ -156,6 +241,7 @@ import { all } from 'axios';
     const allCategories = ref([])
     const currentUser = ref({})
     const allProject = ref([])
+    const getProject = ref({})
 
     const ShowProgress = ref(false)
     const ShowUploded = ref(false)
@@ -197,7 +283,16 @@ import { all } from 'axios';
             },
             width: "40px"
         },
-        { title: 'Title', data: 'title' },
+        { 
+            title: 'Title', 
+            data: 'title',
+            render: (data, type, row) => {
+                return `<div style="display:flex; align-items:center; justify-content: flex-start;">
+                        <img src="${row.image}" alt="Project Image" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 10px;">
+                        <span class="fw-bold">${row.title}</span>
+                    </div>`;
+            }
+        },
         {
             title: 'Category', data: 'category.name', render: (data, type, row) => {
                 return row.category ? row.category.name : 'N/A'; // Assure-toi que `row.category` existe
@@ -221,6 +316,28 @@ import { all } from 'axios';
             }).format(date); // Formater la date à la française
           }
         },
+        {
+            title: 'Actions',
+            data: null,
+            orderable: false,
+            searchable: false,
+            render: function (data, type, row) {
+                return `
+                    <div class="d-flex justify-content-center">
+                        <div class="dropdown dropdown-action">
+                            <a href="#" class="btn-action-icon" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="/admin/project/${row.id}"><i class="fas fa-eye"></i> View</a>
+                                <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="dropdown-item delete-project" data-id="${row.id}"><i class="fas fa-trash"></i> Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
     ];
 
     const handleDragOver = () => {
@@ -407,6 +524,18 @@ import { all } from 'axios';
         }
     }
 
+    const GetProjectFunction = async (id) => {
+        const res = await axiosInstance.get('/project/'+id,{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        })
+        if (res.status === 200) {
+            //updatemodal.show()
+            getProject.value = res.data.data
+        }
+    }
+
     const showModal = () => {
         addmodal.show()
     }
@@ -435,6 +564,32 @@ import { all } from 'axios';
         document.getElementById('addproject').addEventListener('hidden.bs.modal', () => {
             destroyTinyMCE('my-editor');
         });
+
+        updatemodal = new bootstrap.Modal(document.getElementById('updateproject'))
+
+        // Lorsque le modal de modification est affiché, init TinyMCE
+        document.getElementById('updateproject').addEventListener('shown.bs.modal', () => {
+            const editor = document.getElementById('my-Updateditor');
+            if (editor) {
+                initTinyMCE('my-Updateditor',{
+                    height: 500,
+                    setup: (editor) => {
+                        editor.on('init', () => {
+                            editor.setContent(getProject.value.content || '');
+                        });
+                        editor.on('change', () => {
+                            getProject.value.content = editor.getContent();
+                        });
+                    }
+                })
+            }
+        });
+
+        document.getElementById('updateproject').addEventListener('hidden.bs.modal', () => {
+            destroyTinyMCE('my-Updateditor');
+        });
+
+        window.GetProjectFunction = GetProjectFunction
 
         AllProjectFunction()
         AllCategory()
