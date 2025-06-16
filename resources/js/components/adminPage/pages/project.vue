@@ -16,8 +16,8 @@
             <div class="card">
 
                 <div class="card-body p-3">
-                    <div class="table-responsive">
-                        <Datatable :data="allProject" :columns="columns" />
+                    <div class="table">
+                        <Datatable :data="allProject" :columns="columns" :DeleteAllFunction="DeleteMultipleFunction" />
                     </div>
                 </div>
 
@@ -118,21 +118,21 @@
                         <h4 class="modal-title" id="myLargeModalLabel">Update Project</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form @submit.prevent="AddProjectFunction">
+                    <form @submit.prevent="UpdateProjectFunction">
                         <div class="modal-body">
                             <div class="row">
 
-                                <div class="col-lg-12 mb-3" @dragover.prevent="handleDragOver" @dragleave="handleDragLeave" @drop.prevent="handleDrop">
+                                <div class="col-lg-12 mb-3" @dragover.prevent="handleDragOverUpdate" @dragleave="handleDragLeaveUpdate" @drop.prevent="handleDropUpdate">
 
                                     <label for="input-fileUplode" id="drop-area" :class="{ 'border border-primary': isDragging }" v-if=" getProject.image === '' || getProject.image === null">
-                                        <input type="file" accept="image/*" @change="handleFileImg" id="input-fileUplode" hidden>
+                                        <input type="file" accept="image/*" @change="handleFileImgUpdate" id="input-fileUplode" hidden>
                                         <i class="fas fa-cloud-arrow-up"></i>
                                         <p>Drag and drop or click here to upload image</p>
                                         <span>Upload any images from desktop</span>
                                     </label>
                                     <div class="img-view" v-else>
                                         <div class="btns">
-                                            <a @click="delImage" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            <a @click="delImageUpdate" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
                                         <img :src="getProject.image" alt="">
                                     </div>
@@ -188,7 +188,7 @@
                                 <span class="visually-hidden">Loading...</span>
                             </div>
                             </button>
-                            <button v-else type="submit" class="btn btn-primary" >Save</button>
+                            <button v-else type="submit" class="btn btn-primary" >Save Change</button>
                         </div>
                     </form>
                 </div><!-- /.modal-content -->
@@ -215,11 +215,12 @@
 
     import { nextTick, onMounted, ref } from 'vue';
     import Datatable from '../components/Datatable.vue';
-    import {postData, getData, getSingleData} from '../../plugin/api'
+    import {postData, getData, getSingleData, putData} from '../../plugin/api'
     import {initTinyMCE,destroyTinyMCE} from '../../plugin/tinymce';
     import {isAuthenticated} from '../../router/index';
     import axiosInstance from '../../plugin/axios';
 import { all } from 'axios';
+import Swal from 'sweetalert2';
 
     let addmodal;
     let updatemodal;
@@ -283,8 +284,8 @@ import { all } from 'axios';
             },
             width: "40px"
         },
-        { 
-            title: 'Title', 
+        {
+            title: 'Title',
             data: 'title',
             render: (data, type, row) => {
                 return `<div style="display:flex; align-items:center; justify-content: flex-start;">
@@ -329,9 +330,10 @@ import { all } from 'axios';
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="/admin/project/${row.id}"><i class="fas fa-eye"></i> View</a>
+                                <a class="dropdown-item" href="/admin/project/${row.id}"><i class="fas fa-eye"></i> Preview</a>
+                                <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-send"></i> Approbation</a>
                                 <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
-                                <button class="dropdown-item delete-project" data-id="${row.id}"><i class="fas fa-trash"></i> Delete</button>
+                                <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                             </div>
                         </div>
                     </div>
@@ -412,7 +414,7 @@ import { all } from 'axios';
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    
+
                 }
             }
         }
@@ -480,7 +482,7 @@ import { all } from 'axios';
     }
 
     const AddProjectFunction = async ()=>{
-       
+
         data.value.status = "draft"
         data.value.user_id = currentUser.value.id
 
@@ -504,12 +506,17 @@ import { all } from 'axios';
                         msgToast.value = "Project added successfully"
                         classToast.value = "bg-success"
 
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Add performed",
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+
                         addmodal.hide()
 
-                        // Afficher le toast
-                        const toastEl = document.getElementById('successToast');
-                        const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
-                        toast.show();
+                        AllProjectFunction()
                     }
                 })
                 .catch(error => {
@@ -525,15 +532,239 @@ import { all } from 'axios';
     }
 
     const GetProjectFunction = async (id) => {
-        const res = await axiosInstance.get('/project/'+id,{
+        const res = await axiosInstance.get('/showproject/'+id,{
             headers:{
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
         })
         if (res.status === 200) {
-            //updatemodal.show()
             getProject.value = res.data.data
+            updatemodal.show()
         }
+    }
+
+    const handleDragOverUpdate = () => {
+        isDragging.value = true;
+    };
+
+    const handleDragLeaveUpdate = () => {
+        isDragging.value = false;
+    };
+
+    const handleDropUpdate = (event) => {
+        isDragging.value = false;
+        const droppedFiles = event.dataTransfer.files;
+        if (droppedFiles.length > 0) {
+            // Recrée un event simulé pour ton handleFileImg
+            const simulatedEvent = { target: { files: droppedFiles } };
+            handleFileImgUpdate(simulatedEvent);
+        }
+    };
+
+    const handleFileImgUpdate = async (event)=>{
+        const selectImg = event.target.files[0]
+        if (selectImg && selectImg.type.startsWith('image/')){
+            const formData = new FormData()
+            formData.append('image',selectImg)
+
+            try {
+
+                const res = await axiosInstance.post('/uploadprojectimg',formData,{
+                    onUploadProgress: (ProgressEvent)=>{
+                        const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
+                        percent.value = percentCompleted
+                        names.value = selectImg.name
+
+                        if (percent.value < 100) {
+                            ShowProgress.value = true
+                        }else if(percent.value && selectImg.name){
+                            ShowProgress.value= false
+                            ShowUploded.value = true
+                        }
+
+                        if (selectImg.size < 1000) {
+                            size.value = selectImg.size + " o";
+                        } else if (selectImg.size >= 1000 && selectImg.size < 1000000) {
+                            size.value = (selectImg.size / 1000).toFixed(2) + " ko";
+                        } else if (selectImg.size >= 1000000) {
+                            size.value = (selectImg.size / 1000000).toFixed(2) + " Mo";
+                        }
+
+                    }
+                })
+
+                if (res.status === 200) {
+                    getProject.value.image = res.data.image_url
+                }
+
+            } catch (error) {
+                console.log(error)
+                if (error.response.status === 422) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Image size must not exceed 5MB',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            }
+        }
+    }
+
+    const delImageUpdate = async () =>{
+        const res = await axiosInstance.post('/deleteprojectimg',{image: getProject.value.image})
+        if (res.status === 200) {
+            getProject.value.image = ""
+        }
+    }
+
+    const UpdateProjectFunction = async () =>{
+        isLoader.value = true
+        await putData('/updateproject/'+getProject.value.id, getProject.value)
+            .then(response =>{
+                if (response.status === 200) {
+                    isLoader.value = false
+                    getProject.value = {}
+                    msgToast.value = "Project updated successfully"
+                    classToast.value = "bg-success"
+
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Update performed",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                    updatemodal.hide()
+                    AllProjectFunction()
+                }
+            })
+            .catch(error => {
+                console.error("Error updating project:", error);
+                msgToast.value = "An error occurred while updating the project."
+                classToast.value = "bg-danger"
+                const toastEl = document.getElementById('successToast');
+                const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
+                toast.show();
+            });
+    }
+
+    const DeleteProjectFunction = async (id)=>{
+        Swal.fire({
+            title: "Do you want to delete this Project?",
+            text: "You can't go back!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Delete",
+            cancelButtonText: "Close"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                // Affiche un loader pendant la suppression
+                Swal.fire({
+                    title: "Deletion in progress...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                await getSingleData('/showproject/'+id)
+                    .then(async(response)=>{
+                        if (response.status === 200) {
+                            const project = response.data.data;
+                            if (project.image) {
+                                await axiosInstance.post('/deleteprojectimg', { image: project.image });
+                            }
+                            const deleteResponse = await axiosInstance.delete('/deleteproject/'+project.id);
+                            if (deleteResponse.status === 200) {
+                                msgToast.value = "Project deleted successfully"
+                                classToast.value = "bg-success"
+
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Deletion performed",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+
+                                AllProjectFunction()
+                            }
+                        }
+                    })
+            }
+        })
+    }
+
+    const DeleteMultipleFunction = async (ids= []) =>{
+        if (ids.length === 0) return;
+
+        Swal.fire({
+            title: `Delete ${ids.length} categories ?`,
+            text: "This action is irreversible!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete !",
+            cancelButtonText: "Cancel"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                // Affiche un loader pendant la suppression
+                Swal.fire({
+                    title: "Deletion in progress...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                try {
+                    for (let i = 0; i < ids.length; i++) {
+                        const id = ids[i];
+                        const response = await getSingleData('/showproject/' + id);
+                        if (response.status === 200) {
+                            const project = response.data.data;
+                            if (project.image) {
+                                await axiosInstance.post('/deleteprojectimg', { image: project.image });
+                            }
+                            await axiosInstance.delete('/deleteproject/' + project.id);
+                        }
+                    }
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Suppression réussie",
+                        text: `${ids.length} catégories supprimées.`,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                    AllCategoryFunction(); // 🔄 recharge les données
+
+                } catch (error) {
+                    Swal.fire("Erreur", "Une erreur est survenue pendant la suppression.", "error");
+                    console.error(error);
+                }
+            }
+        });
+
     }
 
     const showModal = () => {
@@ -590,6 +821,7 @@ import { all } from 'axios';
         });
 
         window.GetProjectFunction = GetProjectFunction
+        window.DeleteProjectFunction = DeleteProjectFunction
 
         AllProjectFunction()
         AllCategory()

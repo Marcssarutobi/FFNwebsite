@@ -96,7 +96,7 @@
 
         <!-- Toast de succès -->
         <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1055">
-            <div id="successToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+            <div id="successToast" class="toast align-items-center text-white  border-0" :class="classToast" role="alert">
                 <div class="d-flex">
                 <div class="toast-body">
                     {{ msgToast }}
@@ -130,6 +130,7 @@
     const allcat = ref([])
     const getcat = ref({})
     const msgToast = ref("")
+    const classToast = ref("")
 
     const AllCategoryFunction = async ()=>{
         const res = await axiosInstance.get('/categories',{
@@ -205,8 +206,9 @@
                     data.value.name = ''
                     AllCategoryFunction()
                     addmodal.hide();
-                    
+
                     msgToast.value = "Registration completed successfully."
+                    classToast.value = "bg-success"
 
                     // Afficher le toast
                     const toastEl = document.getElementById('successToast');
@@ -295,19 +297,19 @@
         if (ids.length === 0) return;
 
         Swal.fire({
-            title: `Supprimer ${ids.length} catégories ?`,
-            text: "Cette action est irréversible !",
+            title: `Delete ${ids.length} categories ?`,
+            text: "This action is irreversible!",
             icon: "warning",
             showCancelButton: true,
             cancelButtonColor: "#d33",
             confirmButtonColor: "#3085d6",
-            confirmButtonText: "Oui, supprimer !",
-            cancelButtonText: "Annuler"
+            confirmButtonText: "Yes, delete !",
+            cancelButtonText: "Cancel"
         }).then(async (result) => {
             if (result.isConfirmed) {
                 // Affiche un loader pendant la suppression
                 Swal.fire({
-                    title: "Suppression en cours...",
+                    title: "Deletion in progress...",
                     allowOutsideClick: false,
                     allowEscapeKey: false,
                     didOpen: () => {

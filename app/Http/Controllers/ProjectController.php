@@ -25,11 +25,6 @@ class ProjectController extends Controller
 
     public function show($id)
     {
-        if (is_null($id)) {
-            return response()->json([
-                'error' => 'ID invalide ou manquant.'
-            ], 400);
-        }
 
         $data = Project::with('category')->find($id);
 
@@ -40,7 +35,7 @@ class ProjectController extends Controller
         }
 
         return response()->json([
-            "data" => $data
+            "data" => $data,
         ]);
     }
 

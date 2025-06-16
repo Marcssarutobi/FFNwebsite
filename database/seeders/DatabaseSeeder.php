@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             PermissionsTableSeeder::class,
             UserAndRoleSeeder::class,
             CategorySeeder::class,
+            ProjectSeeder::class,
         ]);
     }
 }
