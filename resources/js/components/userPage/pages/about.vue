@@ -207,11 +207,13 @@
             <div class="slider-outer">
                 <!--Sponsors Slider-->
                 <ul class="sponsors-slider">
-                    <li><a href="#"><img src="/assets/images/clients/1.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/2.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/3.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/4.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/2.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="/assets/images/clients/01.png" alt=""></a></li>
+                    <li><a href="#"><img src="/assets/images/clients/02.png" alt=""></a></li>
+                    <li><a href="#"><img src="/assets/images/clients/03.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
+                    <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li> 
+                    <li><a href="#"><img src="/assets/images/clients/06.png" alt=""></a></li>
+                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>    
                 </ul>
             </div>
 
