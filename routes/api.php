@@ -77,6 +77,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/addproject', [ProjectController::class, 'store']);
     Route::put('/updateproject/{id}', [ProjectController::class, 'update']);
     Route::delete('/deleteproject/{id}', [ProjectController::class, 'destroy']);
+    Route::get('/sendApprovalproject/{id}', [ProjectController::class, 'SendApprobationMail']);
 
     //Events
     Route::get('/events', [EventController::class, 'index']);

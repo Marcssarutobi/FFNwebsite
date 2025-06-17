@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApprobationMail;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -133,6 +136,42 @@ class ProjectController extends Controller
         }
 
         return 'done';
+
+    }
+
+    public function SendApprobationMail($id){
+        $project = Project::find($id);
+        $user = User::whereHas('role',function($query){
+            $query->where('name','approver');
+        })->first();
+
+        if (!$project || !$user) {
+            return response()->json([
+                'error' => 'Projet ou utilisateur non trouvé.'
+            ], 404);
+        }
+
+        $dataId = $project->id;
+        $subject = "Approval of a new project";
+        $message = "A new project has been created and needs your approval. <br><br>" .
+           "Please click the link below to review the project: <br><br>" .
+           "<a href='" . url("/projectpreview/$dataId") . "'>View Project</a><br><br>" .
+           "Thank you for your attention.";
+           
+        try {
+
+            Mail::to($user->email)->send(new ApprobationMail($subject, $message));
+
+            return response()->json([
+                'message' => 'Email sent successfully.',
+                "data"=> $project
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Mail error: ' . $e->getMessage(),
+            ], 500);
+        }
 
     }
 

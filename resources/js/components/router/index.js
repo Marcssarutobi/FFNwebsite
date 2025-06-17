@@ -46,6 +46,11 @@ const routes = [
                 path: 'contact',
                 component: ()=>import('../userPage/pages/contact.vue'),
             },
+            {
+                path: 'projectpreview/:id',
+                meta: {requiresAuth: true},
+                component: ()=>import('../userPage/pages/projectpreview.vue'),
+            },
         ]
     },
     {

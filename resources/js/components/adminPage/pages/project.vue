@@ -330,8 +330,10 @@ import Swal from 'sweetalert2';
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="/admin/project/${row.id}"><i class="fas fa-eye"></i> Preview</a>
-                                <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-send"></i> Approbation</a>
+                                <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
+                                ${row.status === 'draft' ? `
+                                    <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
+                                ` : ''}
                                 <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                 <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                             </div>
@@ -756,7 +758,7 @@ import Swal from 'sweetalert2';
                         timer: 2000
                     });
 
-                    AllCategoryFunction(); // 🔄 recharge les données
+                    AllProjectFunction(); // 🔄 recharge les données
 
                 } catch (error) {
                     Swal.fire("Erreur", "Une erreur est survenue pendant la suppression.", "error");
@@ -765,6 +767,53 @@ import Swal from 'sweetalert2';
             }
         });
 
+    }
+
+    const sendApproverMail = async (id)=>{
+        // ✅ Afficher un loader
+        Swal.fire({
+            title: "Please wait...",
+            text: "Sending in progress...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        await getSingleData('/sendApprovalproject/'+id)
+            .then(async (response)=>{
+                if (response.status === 200) {
+                    getProject.value = response.data.data
+
+                    getProject.value.status = "approbation"
+
+                    await putData('/updateproject/'+getProject.value.id,{
+                        status: getProject.value.status
+                    }).then(res=>{
+                        if (res.status === 200) {
+                            AllProjectFunction()
+                        }
+                    })
+
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Email sent successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+            .catch(error=>{
+                console.error("Error sending approval email:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong while sending the email!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
     }
 
     const showModal = () => {
@@ -822,6 +871,7 @@ import Swal from 'sweetalert2';
 
         window.GetProjectFunction = GetProjectFunction
         window.DeleteProjectFunction = DeleteProjectFunction
+        window.sendApproverMail = sendApproverMail
 
         AllProjectFunction()
         AllCategory()

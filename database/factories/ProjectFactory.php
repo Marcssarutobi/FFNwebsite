@@ -30,7 +30,7 @@ class ProjectFactory extends Factory
             'title' => $title,
             'brief_description' => $this->faker->paragraph,
             'content' => '<p>' . implode('</p><p>', $this->faker->paragraphs(5)) . '</p>', // HTML rich text
-            'image' => 'https://via.placeholder.com/640x480.png?text=' . urlencode($title), // Fake image URL
+            'image' => 'https://picsum.photos/500', // Fake image URL
             'category_id' => rand(1, 3),
             'status' => $this->faker->randomElement(['draft', 'published', 'approbation']),
             'user_id' => User::inRandomOrder()->first()?->id ?? 1, // Assure-toi qu’il y a au moins un user
