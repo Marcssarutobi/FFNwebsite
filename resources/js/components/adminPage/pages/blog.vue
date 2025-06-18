@@ -4,36 +4,32 @@
 
         <div class="row mb-4">
             <div class="col-12 d-flex justify-content-between align-items-center">
-                <h4 class="main-title">List of projects</h4>
+                <h4 class="main-title">List of blogs</h4>
                 <button @click="showModal" class="btn btn-primary mb-2" >
-                    <i class="iconoir-plus"></i> Create new project
+                    <i class="iconoir-plus"></i> Create new blog
                 </button>
             </div>
         </div>
 
         <div class="row m-1">
-
             <div class="card">
-
                 <div class="card-body p-3">
                     <div class="table">
-                        <Datatable :data="allProject" :columns="columns" :DeleteAllFunction="DeleteMultipleFunction" />
+                        <Datatable :data="allblog" :columns="columns"   />
                     </div>
                 </div>
-
             </div>
-
         </div>
 
         <!--  Modal content for the Large example -->
-        <div class="modal fade" id="addproject" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade" id="addblog" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog  modal-xl ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Add Project</h4>
+                        <h4 class="modal-title" id="myLargeModalLabel">Add Blog</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form @submit.prevent="AddProjectFunction">
+                    <form @submit.prevent="AddBlogFunction">
                         <div class="modal-body">
                             <div class="row">
 
@@ -111,20 +107,20 @@
         </div><!-- /.modal -->
 
         <!--  Modal content for the Large example -->
-        <div class="modal fade" id="updateproject" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade" id="updateblog" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog  modal-xl ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myLargeModalLabel">Update Project</h4>
+                        <h4 class="modal-title" id="myLargeModalLabel">Update Blog</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <form @submit.prevent="UpdateProjectFunction">
+                    <form @submit.prevent="UpdateBlogFunction">
                         <div class="modal-body">
                             <div class="row">
 
                                 <div class="col-lg-12 mb-3" @dragover.prevent="handleDragOverUpdate" @dragleave="handleDragLeaveUpdate" @drop.prevent="handleDropUpdate">
 
-                                    <label for="input-fileUplode" id="drop-area" :class="{ 'border border-primary': isDragging }" v-if=" getProject.image === '' || getProject.image === null">
+                                    <label for="input-fileUplode" id="drop-area" :class="{ 'border border-primary': isDragging }" v-if=" getblog.image === '' || getblog.image === null">
                                         <input type="file" accept="image/*" @change="handleFileImgUpdate" id="input-fileUplode" hidden>
                                         <i class="fas fa-cloud-arrow-up"></i>
                                         <p>Drag and drop or click here to upload image</p>
@@ -134,7 +130,7 @@
                                         <div class="btns">
                                             <a @click="delImageUpdate" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </div>
-                                        <img :src="getProject.image" alt="">
+                                        <img :src="getblog.image" alt="">
                                     </div>
                                     <div v-if="isEmpty.image" class=" text-danger">
                                         {{ msgInput.image }}
@@ -147,7 +143,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label for="title">Title</label>
-                                        <input v-model="getProject.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
+                                        <input v-model="getblog.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
                                         <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
                                     </div>
                                 </div>
@@ -155,7 +151,7 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label for="category">Category</label>
-                                        <select class="form-select" :class="{ 'is-invalid': isEmpty.title }" v-model="getProject.category_id" id="category">
+                                        <select class="form-select" :class="{ 'is-invalid': isEmpty.title }" v-model="getblog.category_id" id="category">
                                             <option value="">Select a category</option>
                                             <option v-for="category in allCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
                                         </select>
@@ -166,7 +162,7 @@
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
                                         <label for="brief_description">Brief Description</label>
-                                        <textarea v-model="getProject.brief_description" :class="{ 'is-invalid': isEmpty.title }" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
+                                        <textarea v-model="getblog.brief_description" :class="{ 'is-invalid': isEmpty.title }" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
                                         <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
                                     </div>
                                 </div>
@@ -174,7 +170,7 @@
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
                                         <label for="content">Content</label>
-                                        <textarea v-model="getProject.content" :class="{ 'is-invalid': isEmpty.title }" row="5" id="my-Updateditor" type="text" class="form-control" placeholder="Enter content"></textarea>
+                                        <textarea v-model="getblog.content" :class="{ 'is-invalid': isEmpty.title }" row="5" id="my-Updateditor" type="text" class="form-control" placeholder="Enter content"></textarea>
                                         <span v-if="isEmpty.content" class="text-danger">{{ msgInput.content }}</span>
                                     </div>
                                 </div>
@@ -194,18 +190,6 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
-
-        <!-- Toast de succès -->
-        <div class="position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1055">
-            <div id="successToast" class="toast align-items-center text-white  border-0" :class="classToast" role="alert">
-                <div class="d-flex">
-                <div class="toast-body">
-                    {{ msgToast }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                </div>
-            </div>
-        </div>
 
     </div>
   </main>
@@ -233,15 +217,14 @@
         status:"",
         user_id:"",
     })
+
     const isEmpty = ref({})
     const msgInput = ref({})
     const isLoader = ref(false)
-    const msgToast = ref("")
-    const classToast = ref("")
     const allCategories = ref([])
     const currentUser = ref({})
-    const allProject = ref([])
-    const getProject = ref({})
+    const allblog = ref([])
+    const getblog = ref({})
 
     const ShowProgress = ref(false)
     const ShowUploded = ref(false)
@@ -261,12 +244,12 @@
         }
     }
 
-    const AllProjectFunction = async ()=>{
-        const response = await getData('/projects');
+    const AllBlogFunction = async ()=>{
+        const response = await getData('/blogs');
         if (response.status === 200) {
-            allProject.value = response.data.data;
+            allblog.value = response.data.data;
         } else {
-            console.error("Error fetching projects:", response);
+            console.error("Error fetching Blog:", response);
         }
     }
 
@@ -332,8 +315,8 @@
                                 <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
                                 ${row.status === 'draft' ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
-                                    <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
-                                    <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
+                                    <a class="dropdown-item" onClick="GetBlogFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
+                                    <button class="dropdown-item delete-project" onClick="DeleteBlogFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                                 ` : ''}
 
                             </div>
@@ -370,7 +353,7 @@
 
             try {
 
-                const res = await axiosInstance.post('/uploadprojectimg',formData,{
+                const res = await axiosInstance.post('/uploadblogimg',formData,{
                     onUploadProgress: (ProgressEvent)=>{
                         const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
                         percent.value = percentCompleted
@@ -422,6 +405,22 @@
         }
     }
 
+    const delImage = async () =>{
+        const res = await axiosInstance.post('/deleteblogimg',{image: data.value.image})
+        if (res.status === 200) {
+            data.value.image = ""
+        }
+    }
+
+    const CurrentUserFunction = async () => {
+        currentUser.value = await isAuthenticated();
+        if (currentUser.value) {
+            data.value.user_id = currentUser.value.id;
+        } else {
+            console.error("User not authenticated");
+        }
+    }
+
     const inputEmpty = ()=>{
         if (data.value.title.trim() === '') {
             isEmpty.value.title = true
@@ -467,23 +466,7 @@
         }
     }
 
-    const delImage = async () =>{
-        const res = await axiosInstance.post('/deleteprojectimg',{image: data.value.image})
-        if (res.status === 200) {
-            data.value.image = ""
-        }
-    }
-
-    const CurrentUserFunction = async () => {
-        currentUser.value = await isAuthenticated();
-        if (currentUser.value) {
-            data.value.user_id = currentUser.value.id;
-        } else {
-            console.error("User not authenticated");
-        }
-    }
-
-    const AddProjectFunction = async ()=>{
+    const AddBlogFunction = async ()=>{
 
         data.value.status = "draft"
         data.value.user_id = currentUser.value.id
@@ -492,7 +475,7 @@
         const allEmpty = Object.values(isEmpty.value).every(value => value === false)
         if (allEmpty) {
             isLoader.value = true
-            postData('/addproject', data.value)
+            postData('/addblog', data.value)
                 .then(response =>{
                     if (response.status === 200) {
                         isLoader.value = false
@@ -505,8 +488,6 @@
                             status:"",
                             user_id:"",
                         }
-                        msgToast.value = "Project added successfully"
-                        classToast.value = "bg-success"
 
                         Swal.fire({
                             position: "center",
@@ -518,29 +499,25 @@
 
                         addmodal.hide()
 
-                        AllProjectFunction()
+                        AllBlogFunction()
                     }
                 })
                 .catch(error => {
                     isLoader.value = false
-                    console.error("Error adding project:", error);
-                    msgToast.value = "An error occurred while adding the project."
-                    classToast.value = "bg-danger"
-                    const toastEl = document.getElementById('successToast');
-                    const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
-                    toast.show();
+                    console.error("Error adding blog:", error);
+
                 });
         }
     }
 
-    const GetProjectFunction = async (id) => {
-        const res = await axiosInstance.get('/showproject/'+id,{
+    const GetBlogFunction = async (id) => {
+        const res = await axiosInstance.get('/showblog/'+id,{
             headers:{
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
         })
         if (res.status === 200) {
-            getProject.value = res.data.data
+            getblog.value = res.data.data
             updatemodal.show()
         }
     }
@@ -571,7 +548,7 @@
 
             try {
 
-                const res = await axiosInstance.post('/uploadprojectimg',formData,{
+                const res = await axiosInstance.post('/uploadblogimg',formData,{
                     onUploadProgress: (ProgressEvent)=>{
                         const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
                         percent.value = percentCompleted
@@ -596,7 +573,7 @@
                 })
 
                 if (res.status === 200) {
-                    getProject.value.image = res.data.image_url
+                    getblog.value.image = res.data.image_url
                 }
 
             } catch (error) {
@@ -624,20 +601,20 @@
     }
 
     const delImageUpdate = async () =>{
-        const res = await axiosInstance.post('/deleteprojectimg',{image: getProject.value.image})
+        const res = await axiosInstance.post('/deleteblogimg',{image: getblog.value.image})
         if (res.status === 200) {
-            getProject.value.image = ""
+            getblog.value.image = ""
         }
     }
 
-    const UpdateProjectFunction = async () =>{
+    const UpdateBlogFunction = async () =>{
         isLoader.value = true
-        await putData('/updateproject/'+getProject.value.id, getProject.value)
+        await putData('/updateblog/'+getblog.value.id, getblog.value)
             .then(response =>{
                 if (response.status === 200) {
                     isLoader.value = false
-                    getProject.value = {}
-                    msgToast.value = "Project updated successfully"
+                    getblog.value = {}
+                    msgToast.value = "Blog updated successfully"
                     classToast.value = "bg-success"
 
                     Swal.fire({
@@ -649,22 +626,17 @@
                     })
 
                     updatemodal.hide()
-                    AllProjectFunction()
+                    AllBlogFunction()
                 }
             })
             .catch(error => {
                 console.error("Error updating project:", error);
-                msgToast.value = "An error occurred while updating the project."
-                classToast.value = "bg-danger"
-                const toastEl = document.getElementById('successToast');
-                const toast = new bootstrap.Toast(toastEl, { delay: 1500 });
-                toast.show();
             });
     }
 
-    const DeleteProjectFunction = async (id)=>{
+    const DeleteBlogFunction = async (id)=>{
         Swal.fire({
-            title: "Do you want to delete this Project?",
+            title: "Do you want to delete this Blog?",
             text: "You can't go back!",
             icon: "warning",
             showCancelButton: true,
@@ -685,17 +657,15 @@
                     }
                 });
 
-                await getSingleData('/showproject/'+id)
+                await getSingleData('/showblog/'+id)
                     .then(async(response)=>{
                         if (response.status === 200) {
-                            const project = response.data.data;
-                            if (project.image) {
-                                await axiosInstance.post('/deleteprojectimg', { image: project.image });
+                            const blog = response.data.data;
+                            if (blog.image) {
+                                await axiosInstance.post('/deleteblogimg', { image: blog.image });
                             }
-                            const deleteResponse = await axiosInstance.delete('/deleteproject/'+project.id);
+                            const deleteResponse = await axiosInstance.delete('/deleteblog/'+blog.id);
                             if (deleteResponse.status === 200) {
-                                msgToast.value = "Project deleted successfully"
-                                classToast.value = "bg-success"
 
                                 Swal.fire({
                                     position: "center",
@@ -705,7 +675,7 @@
                                     timer: 1500
                                 })
 
-                                AllProjectFunction()
+                                AllBlogFunction()
                             }
                         }
                     })
@@ -713,118 +683,16 @@
         })
     }
 
-    const DeleteMultipleFunction = async (ids= []) =>{
-        if (ids.length === 0) return;
-
-        Swal.fire({
-            title: `Delete ${ids.length} projects ?`,
-            text: "This action is irreversible!",
-            icon: "warning",
-            showCancelButton: true,
-            cancelButtonColor: "#d33",
-            confirmButtonColor: "#3085d6",
-            confirmButtonText: "Yes, delete !",
-            cancelButtonText: "Cancel"
-        }).then(async (result) => {
-            if (result.isConfirmed) {
-                // Affiche un loader pendant la suppression
-                Swal.fire({
-                    title: "Deletion in progress...",
-                    allowOutsideClick: false,
-                    allowEscapeKey: false,
-                    didOpen: () => {
-                        Swal.showLoading();
-                    }
-                });
-
-                try {
-                    for (let i = 0; i < ids.length; i++) {
-                        const id = ids[i];
-                        const response = await getSingleData('/showproject/' + id);
-                        if (response.status === 200) {
-                            const project = response.data.data;
-                            if (project.image) {
-                                await axiosInstance.post('/deleteprojectimg', { image: project.image });
-                            }
-                            await axiosInstance.delete('/deleteproject/' + project.id);
-                        }
-                    }
-
-                    Swal.fire({
-                        icon: "success",
-                        title: "Deletion successful",
-                        text: `${ids.length} projects deleted.`,
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-
-                    AllProjectFunction(); // 🔄 recharge les données
-
-                } catch (error) {
-                    Swal.fire("Error", "An error occurred during deletion.", "error");
-                    console.error(error);
-                }
-            }
-        });
-
-    }
-
-    const sendApproverMail = async (id)=>{
-        // ✅ Afficher un loader
-        Swal.fire({
-            title: "Please wait...",
-            text: "Sending in progress...",
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
-        await getSingleData('/sendApprovalproject/'+id)
-            .then(async (response)=>{
-                if (response.status === 200) {
-                    getProject.value = response.data.data
-
-                    getProject.value.status = "approbation"
-
-                    await putData('/updateproject/'+getProject.value.id,{
-                        status: getProject.value.status
-                    }).then(res=>{
-                        if (res.status === 200) {
-                            AllProjectFunction()
-                        }
-                    })
-
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Email sent successfully",
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-            })
-            .catch(error=>{
-                console.error("Error sending approval email:", error);
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong while sending the email!',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            })
-    }
-
     const showModal = () => {
         addmodal.show()
     }
 
     onMounted(()=>{
-        addmodal = new bootstrap.Modal(document.getElementById('addproject'))
+
+        addmodal = new bootstrap.Modal(document.getElementById('addblog'))
 
         // Lorsque le modal est affiché, init TinyMCE
-        document.getElementById('addproject').addEventListener('shown.bs.modal', () => {
+        document.getElementById('addblog').addEventListener('shown.bs.modal', () => {
             const editor = document.getElementById('my-editor');
             if (editor) {
                 initTinyMCE('my-editor',{
@@ -841,47 +709,47 @@
             }
         });
 
-        document.getElementById('addproject').addEventListener('hidden.bs.modal', () => {
+        document.getElementById('addblog').addEventListener('hidden.bs.modal', () => {
             destroyTinyMCE('my-editor');
         });
 
-        updatemodal = new bootstrap.Modal(document.getElementById('updateproject'))
+        updatemodal = new bootstrap.Modal(document.getElementById('updateblog'))
 
         // Lorsque le modal de modification est affiché, init TinyMCE
-        document.getElementById('updateproject').addEventListener('shown.bs.modal', () => {
+        document.getElementById('updateblog').addEventListener('shown.bs.modal', () => {
             const editor = document.getElementById('my-Updateditor');
             if (editor) {
                 initTinyMCE('my-Updateditor',{
                     height: 500,
                     setup: (editor) => {
                         editor.on('init', () => {
-                            editor.setContent(getProject.value.content || '');
+                            editor.setContent(getblog.value.content || '');
                         });
                         editor.on('change', () => {
-                            getProject.value.content = editor.getContent();
+                            getblog.value.content = editor.getContent();
                         });
                     }
                 })
             }
         });
 
-        document.getElementById('updateproject').addEventListener('hidden.bs.modal', () => {
+        document.getElementById('updateblog').addEventListener('hidden.bs.modal', () => {
             destroyTinyMCE('my-Updateditor');
         });
 
-        window.GetProjectFunction = GetProjectFunction
-        window.DeleteProjectFunction = DeleteProjectFunction
-        window.sendApproverMail = sendApproverMail
+        window.GetBlogFunction = GetBlogFunction;
+        window.DeleteBlogFunction = DeleteBlogFunction;
 
-        AllProjectFunction()
-        AllCategory()
+        AllCategory();
+        AllBlogFunction();
         CurrentUserFunction()
     })
+
 
 </script>
 
 <style>
-    .tox-promotion{
+.tox-promotion{
         display: none !important;
     }
     #drop-area{
@@ -944,5 +812,4 @@
         height: 100%;
         object-fit: cover;
     }
-
 </style>

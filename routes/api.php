@@ -43,6 +43,8 @@ Route::post('/deleteeventimg', [EventController::class, 'deleteImage']);
 //Blogs Public
 Route::get('/allblogs', [BlogController::class, 'allBlog']);
 Route::get('/blog/{slug}', [BlogController::class, 'showUser']);
+Route::post('/uploadblogimg', [BlogController::class, 'uploadImg']);
+Route::post('/deleteblogimg', [BlogController::class, 'deleteImage']);
 
 
 Route::middleware('auth:sanctum')->group( function () {
@@ -93,7 +95,7 @@ Route::middleware('auth:sanctum')->group( function () {
 
     //Blogs
     Route::get('/blogs', [BlogController::class, 'index']);
-    Route::get('/blog/{id}', [BlogController::class, 'show']);
+    Route::get('/showblog/{id}', [BlogController::class, 'show']);
     Route::post('/addblog', [BlogController::class, 'store']);
     Route::put('/updateblog/{id}', [BlogController::class, 'update']);
     Route::delete('/deleteblog/{id}', [BlogController::class, 'destroy']);

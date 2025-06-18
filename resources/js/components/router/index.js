@@ -80,6 +80,10 @@ const routes = [
                 path: 'events',
                 component: ()=>import('../adminPage/pages/event.vue'),
             },
+            {
+                path: 'blogs',
+                component: ()=>import('../adminPage/pages/blog.vue'),
+            },
         ]
     },
     {
