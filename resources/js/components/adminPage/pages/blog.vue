@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-body p-3">
                     <div class="table">
-                        <Datatable :data="allblog" :columns="columns"   />
+                        <Datatable :data="allblog" :columns="columns" :DeleteAllFunction="DeleteMultipleFunction" />
                     </div>
                 </div>
             </div>
@@ -681,6 +681,62 @@
                     })
             }
         })
+    }
+
+    const DeleteMultipleFunction = async (ids= []) =>{
+        if (ids.length === 0) return;
+
+        Swal.fire({
+            title: `Delete ${ids.length} Blog ?`,
+            text: "This action is irreversible!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete !",
+            cancelButtonText: "Cancel"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                // Affiche un loader pendant la suppression
+                Swal.fire({
+                    title: "Deletion in progress...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                try {
+                    for (let i = 0; i < ids.length; i++) {
+                        const id = ids[i];
+                        const response = await getSingleData('/showblog/' + id);
+                        if (response.status === 200) {
+                            const project = response.data.data;
+                            if (project.image) {
+                                await axiosInstance.post('/deleteblogimg', { image: project.image });
+                            }
+                            await axiosInstance.delete('/deleteblog/' + project.id);
+                        }
+                    }
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Deletion successful",
+                        text: `${ids.length} blog deleted.`,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                    AllBlogFunction(); // 🔄 recharge les données
+
+                } catch (error) {
+                    Swal.fire("Error", "An error occurred during deletion.", "error");
+                    console.error(error);
+                }
+            }
+        });
+
     }
 
     const showModal = () => {
