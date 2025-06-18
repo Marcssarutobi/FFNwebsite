@@ -37,6 +37,8 @@ Route::post('/deleteprojectimg', [ProjectController::class, 'deleteImage']);
 //Event Public
 Route::get('/allevents', [EventController::class, 'allEvent']);
 Route::get('/event/{slug}', [EventController::class, 'showUser']);
+Route::post('/uploadeventtimg', [EventController::class, 'uploadImg']);
+Route::post('/deleteeventimg', [EventController::class, 'deleteImage']);
 
 //Blogs Public
 Route::get('/allblogs', [BlogController::class, 'allBlog']);
@@ -78,10 +80,11 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put('/updateproject/{id}', [ProjectController::class, 'update']);
     Route::delete('/deleteproject/{id}', [ProjectController::class, 'destroy']);
     Route::get('/sendApprovalproject/{id}', [ProjectController::class, 'SendApprobationMail']);
+    Route::post('/sendDeclenedproject/{id}', [ProjectController::class, 'SendDeclenedMail']);
 
     //Events
     Route::get('/events', [EventController::class, 'index']);
-    Route::get('/event/{id}', [EventController::class, 'show']);
+    Route::get('/showevent/{id}', [EventController::class, 'show']);
     Route::post('/addevent', [EventController::class, 'store']);
     Route::put('/updateevent/{id}', [EventController::class, 'update']);
     Route::delete('/deleteevent/{id}', [EventController::class, 'destroy']);

@@ -71,6 +71,10 @@ const routes = [
                 path: 'category',
                 component: ()=>import('../adminPage/pages/category.vue'),
             },
+            {
+                path: 'events',
+                component: ()=>import('../adminPage/pages/event.vue'),
+            },
         ]
     },
     {

@@ -157,7 +157,7 @@ class ProjectController extends Controller
            "Please click the link below to review the project: <br><br>" .
            "<a href='" . url("/projectpreview/$dataId") . "'>View Project</a><br><br>" .
            "Thank you for your attention.";
-           
+
         try {
 
             Mail::to($user->email)->send(new ApprobationMail($subject, $message));
@@ -173,6 +173,44 @@ class ProjectController extends Controller
             ], 500);
         }
 
+    }
+
+    public function SendDeclenedMail($id, Request $request){
+        $request->validate([
+            'reason' => 'required|string|max:1000',
+        ]);
+
+        $project = Project::find($id);
+        $user = User::whereHas('role',function($query){
+            $query->where('name','author');
+        })->where('id',$project->user_id)->first();
+
+        if (!$project || !$user) {
+            return response()->json([
+                'error' => 'Projet ou utilisateur non trouvé.'
+            ], 404);
+        }
+        $title = $project->title;
+        $subject = "Project Rejected";
+        $reasons = $request->reason;
+        $message = "The project article <strong>" . $title . "</strong> has been rejected. <br><br>" .
+           "Here are the reasons: <br><br>" .
+            $reasons ."<br><br>" .
+           "Thank you for your attention.";
+
+        try {
+
+            Mail::to($user->email)->send(new ApprobationMail($subject, $message));
+
+            return response()->json([
+                'message' => 'Email sent successfully.',
+                "data"=> $project
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Mail error: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 
 }

@@ -1,5 +1,5 @@
 <template>
-  
+
     <!--Page Title-->
     <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
     	<div class="auto-container">
@@ -24,11 +24,15 @@
 
                         <div class="collapse mt-3" id="collapseExample">
                             <div class="card card-body">
-                                <div class="form-group">
-                                    <label for="declineReason">Reason for Decline</label>
-                                    <textarea id="declineReason" class="form-control" placeholder="Enter reason for decline" rows="5" style="font-size: 18px;"></textarea>
-                                </div>
-                                <button class="btn btn-dark mt-3 p-4" style="font-size: 18px; width: 100px;">Submit</button>
+                                <form @submit.prevent="DeclenedProject">
+                                    <div class="form-group">
+                                        <label for="declineReason">Reason for Decline</label>
+                                        <textarea id="declineReason" :class="{ 'is-invalid': isEmpty.reasonForDecline }" v-model="reasonForDecline" class="form-control" placeholder="Enter reason for decline" rows="5" style="font-size: 18px;"></textarea>
+                                        <span v-if="isEmpty.reasonForDecline" class="text-danger">{{ msgInput.reasonForDecline }}</span>
+                                    </div>
+                                    <button class="btn btn-dark mt-3 p-4" style="font-size: 18px; width: 100px;">Submit</button>
+                                </form>
+
                             </div>
                         </div>
 
@@ -48,10 +52,10 @@
                                         <div class="col-md-12 col-sm-12">
                                             <h2>{{ projectData.title }}</h2>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="text" style="text-align: justify !important;" v-html="projectData.content">
-                                        
+
                                     </div>
 
 
@@ -136,11 +140,15 @@
 <script setup>
     import { onMounted, ref } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
-    import { getSingleData, putData } from '../../plugin/api';
+    import { getSingleData, postData, putData } from '../../plugin/api';
+import Swal from 'sweetalert2';
 
     const route = useRoute();
     const getID = ref(route.params.id)
     const projectData = ref({});
+    const reasonForDecline = ref('');
+    const isEmpty = ref({})
+    const msgInput = ref({})
 
     const GetProject = async ()=>{
         await getSingleData('/showproject/' + getID.value)
@@ -174,6 +182,72 @@
         }).catch((error) => {
             console.error('Error approving project:', error);
         });
+    }
+
+    const inputEmpty = ()=>{
+        if (reasonForDecline.value === '') {
+            isEmpty.value.reasonForDecline = true;
+            msgInput.value.reasonForDecline = "Please enter a reason for decline";
+        } else {
+            isEmpty.value.reasonForDecline = false;
+            msgInput.value.reasonForDecline = "";
+        }
+    }
+
+    const DeclenedProject = async ()=>{
+
+        inputEmpty();
+
+        const allEmpty = Object.values(isEmpty.value).every(value => value === false)
+
+        if (allEmpty) {
+
+            // ✅ Afficher un loader
+            Swal.fire({
+                title: "Please wait...",
+                text: "Sending in progress...",
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            await postData('/sendDeclenedproject/'+projectData.value.id,{
+                reason: reasonForDecline.value
+            }).then(async (response)=>{
+                if (response.status === 200) {
+                    projectData.value.status = "draft";
+                    await putData('/updateproject/'+projectData.value.id,{
+                        status: projectData.value.status
+                    }).then((response) => {
+                        if (response.status === 200) {
+                            GetProject();
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Project declined successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    }).catch((error) => {
+                        console.error('Error updating project status:', error);
+                    });
+                }
+            }).catch((error)=>{
+                console.error('Error sending declined project:', error);
+                Swal.fire({
+                    position: "center",
+                    icon: "error",
+                    title: "Error sending declined project",
+                    showConfirmButton: true,
+                })
+            })
+
+        }
+
+
     }
 
     onMounted(()=>{

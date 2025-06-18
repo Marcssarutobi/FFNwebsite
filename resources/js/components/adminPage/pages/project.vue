@@ -219,8 +219,7 @@
     import {initTinyMCE,destroyTinyMCE} from '../../plugin/tinymce';
     import {isAuthenticated} from '../../router/index';
     import axiosInstance from '../../plugin/axios';
-import { all } from 'axios';
-import Swal from 'sweetalert2';
+    import Swal from 'sweetalert2';
 
     let addmodal;
     let updatemodal;
