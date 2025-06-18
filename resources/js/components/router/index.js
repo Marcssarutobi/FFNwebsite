@@ -51,6 +51,11 @@ const routes = [
                 meta: {requiresAuth: true},
                 component: ()=>import('../userPage/pages/projectpreview.vue'),
             },
+            {
+                path: 'eventpreview/:id',
+                meta: {requiresAuth: true},
+                component: ()=>import('../userPage/pages/eventpreview.vue'),
+            },
         ]
     },
     {

@@ -390,7 +390,7 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
+                                <a class="dropdown-item" target="_blank" href="/eventpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
                                 ${row.status === 'draft' ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
                                     <a class="dropdown-item" onClick="GetEventFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
