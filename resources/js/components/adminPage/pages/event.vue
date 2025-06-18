@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-body p-3">
                     <div class="table">
-                        <Datatable  :data="allEvents" :columns="columns" />
+                        <Datatable  :data="allEvents" :columns="columns" :DeleteAllFunction="DeleteAllEventFunction" />
                     </div>
                 </div>
             </div>
@@ -78,15 +78,15 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label for="">Start Date</label>
-                                        <input v-model="data.start_date" :class="{ 'is-invalid': isEmpty.start_date }" type="date" class="form-control" id="start_date" placeholder="Enter start date">
+                                        <input v-model="data.start_date" :class="{ 'is-invalid': isEmpty.start_date }" type="datetime-local" class="form-control" id="start_date" placeholder="Enter start date">
                                         <span v-if="isEmpty.start_date" class="text-danger">{{ msgInput.start_date }}</span>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
-                                    <div class="form-grou">
+                                    <div class="form-group">
                                         <label for="">End Date (Optional)</label>
-                                        <input v-model="data.end_date" type="date" class="form-control" id="end_date" placeholder="Enter end date">
+                                        <input v-model="data.end_date" type="datetime-local" class="form-control" id="end_date" placeholder="Enter end date">
                                     </div>
                                 </div>
 
@@ -99,9 +99,9 @@
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
-                                        <label for="brief_description">Brief Description</label>
-                                        <textarea v-model="data.brief_description" :class="{ 'is-invalid': isEmpty.title }" row="5" style="height: 150px;" type="text" class="form-control" id="brief_description" placeholder="Enter brief description"> </textarea>
-                                        <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
+                                        <label for="brefdescription">Brief Description</label>
+                                        <textarea v-model="data.brefdescription" :class="{ 'is-invalid': isEmpty.brefdescription }" row="5" style="height: 150px;" type="text" class="form-control" id="brefdescription" placeholder="Enter brief description"> </textarea>
+                                        <span v-if="isEmpty.brefdescription" class="text-danger">{{ msgInput.brefdescription }}</span>
                                     </div>
                                 </div>
 
@@ -129,6 +129,113 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
+        <!--  Modal content for the Large example -->
+        <div class="modal fade" id="updateevent" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog  modal-xl ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myLargeModalLabel">Update Event</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form @submit.prevent="UpdateEventsFunction">
+                        <div class="modal-body">
+                            <div class="row">
+
+                                <div class="col-lg-12 mb-3" @dragover.prevent="handleDragOverUpdate" @dragleave="handleDragLeaveUpdate" @drop.prevent="handleDropUpdate">
+
+                                    <label for="input-file" id="drop-area" :class="{ 'border border-primary': isDragging }" v-if=" getEvent.image === ''">
+                                        <input type="file" accept="image/*" @change="handleFileImgUpdate" id="input-file" hidden>
+                                        <i class="fas fa-cloud-arrow-up"></i>
+                                        <p>Drag and drop or click here to upload image</p>
+                                        <span>Upload any images from desktop</span>
+                                    </label>
+                                    <div class="img-view" v-else>
+                                        <div class="btns">
+                                            <a @click="delImageUpdate" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                        <img :src="getEvent.image" alt="">
+                                    </div>
+                                    <div v-if="isEmpty.image" class=" text-danger">
+                                        {{ msgInput.image }}
+                                    </div>
+                                    <div class="progress mt-3" v-if="ShowProgress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" :style="{ width: percent + '%' }" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{ percent }}%</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="title">Title</label>
+                                        <input v-model="getEvent.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
+                                        <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="category">Category</label>
+                                        <select class="form-select" :class="{ 'is-invalid': isEmpty.title }" v-model="getEvent.category_id" id="category">
+                                            <option value="">Select a category</option>
+                                            <option v-for="category in allCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                                        </select>
+                                        <span v-if="isEmpty.category_id" class="text-danger">{{ msgInput.category_id }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="">Start Date</label>
+                                        <input v-model="getEvent.start_date" :class="{ 'is-invalid': isEmpty.start_date }" type="datetime-local" class="form-control" id="start_date" placeholder="Enter start date">
+                                        <span v-if="isEmpty.start_date" class="text-danger">{{ msgInput.start_date }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="">End Date (Optional)</label>
+                                        <input v-model="getEvent.end_date" type="datetime-local" class="form-control" id="end_date" placeholder="Enter end date">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Location (Optional)</label>
+                                        <input v-model="getEvent.location" type="text" class="form-control" id="location" placeholder="Enter location">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="brefdescription">Brief Description</label>
+                                        <textarea v-model="getEvent.brefdescription" :class="{ 'is-invalid': isEmpty.brefdescription }" row="5" style="height: 150px;" type="text" class="form-control" id="brefdescription" placeholder="Enter brief description"> </textarea>
+                                        <span v-if="isEmpty.brefdescription" class="text-danger">{{ msgInput.brefdescription }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="content">Content</label>
+                                        <textarea v-model="getEvent.content" :class="{ 'is-invalid': isEmpty.title }" row="5" id="my-editorUpdate" type="text" class="form-control" placeholder="Enter content"></textarea>
+                                        <span v-if="isEmpty.content" class="text-danger">{{ msgInput.content }}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-danger me-3" data-bs-dismiss="modal">Fermer</button>
+                            <button disabled v-if="isLoader" class="btn btn-primary">
+                            <div class="spinner-border text-light" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            </button>
+                            <button v-else type="submit" class="btn btn-primary" >Save Change</button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
     </div>
 
   </main>
@@ -149,7 +256,7 @@
 
     const data = ref({
         title:"",
-        brief_description:"",
+        brefdescription:"",
         content:"",
         image:"",
         start_date:"",
@@ -179,7 +286,6 @@
             const response = await getData('/categories');
             if (response.status === 200) {
                 allCategories.value = response.data.categories;
-                console.log("Categories fetched successfully:", allCategories.value);
             }
         } catch (error) {
             console.error("Error fetching categories:", error);
@@ -240,7 +346,7 @@
                 };
 
                 const start = formatDate(row.start_date);
-                const end = row.end_date ? formatDate(row.end_date) : 'Non défini';
+                const end = row.end_date ? formatDate(row.end_date) : 'Undefined';
 
                 return `${start} → ${end}`;
             }
@@ -287,9 +393,10 @@
                                 <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
                                 ${row.status === 'draft' ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
+                                    <a class="dropdown-item" onClick="GetEventFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
+                                    <button class="dropdown-item delete-project" onClick="DeleteEventFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                                 ` : ''}
-                                <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
-                                <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -391,12 +498,12 @@
             isEmpty.value.title = false
             msgInput.value.title = ''
         }
-        if (data.value.brief_description.trim() === '') {
-            isEmpty.value.brief_description = true
-            msgInput.value.brief_description = 'Ce champs est vide'
+        if (data.value.brefdescription.trim() === '') {
+            isEmpty.value.brefdescription = true
+            msgInput.value.brefdescription = 'Ce champs est vide'
         }else{
-            isEmpty.value.brief_description = false
-            msgInput.value.brief_description = ''
+            isEmpty.value.brefdescription = false
+            msgInput.value.brefdescription = ''
         }
         if (data.value.content.trim() === '') {
             isEmpty.value.content = true
@@ -459,7 +566,7 @@
                         isLoader.value = false
                         data.value = {
                             title:"",
-                            brief_description:"",
+                            brefdescription:"",
                             content:"",
                             image:"",
                             start_date:"",
@@ -483,6 +590,274 @@
                     }
                 })
         }
+    }
+
+    const GetEventFunction = async (id) => {
+        const res = await axiosInstance.get('/showevent/'+id,{
+            headers:{
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        })
+        if (res.status === 200) {
+            getEvent.value = res.data.data
+            updatemodal.show()
+        }
+    }
+
+    const handleDragOverUpdate = () => {
+        isDragging.value = true;
+    };
+
+    const handleDragLeaveUpdate = () => {
+        isDragging.value = false;
+    };
+
+    const handleDropUpdate = (event) => {
+        isDragging.value = false;
+        const droppedFiles = event.dataTransfer.files;
+        if (droppedFiles.length > 0) {
+            // Recrée un event simulé pour ton handleFileImg
+            const simulatedEvent = { target: { files: droppedFiles } };
+            handleFileImgUpdate(simulatedEvent);
+        }
+    };
+
+    const handleFileImgUpdate = async (event)=>{
+        const selectImg = event.target.files[0]
+        if (selectImg && selectImg.type.startsWith('image/')){
+            const formData = new FormData()
+            formData.append('image',selectImg)
+
+            try {
+
+                const res = await axiosInstance.post('/uploadeventtimg',formData,{
+                    onUploadProgress: (ProgressEvent)=>{
+                        const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
+                        percent.value = percentCompleted
+                        names.value = selectImg.name
+
+                        if (percent.value < 100) {
+                            ShowProgress.value = true
+                        }else if(percent.value && selectImg.name){
+                            ShowProgress.value= false
+                            ShowUploded.value = true
+                        }
+
+                        if (selectImg.size < 1000) {
+                            size.value = selectImg.size + " o";
+                        } else if (selectImg.size >= 1000 && selectImg.size < 1000000) {
+                            size.value = (selectImg.size / 1000).toFixed(2) + " ko";
+                        } else if (selectImg.size >= 1000000) {
+                            size.value = (selectImg.size / 1000000).toFixed(2) + " Mo";
+                        }
+
+                    }
+                })
+
+                if (res.status === 200) {
+                    getEvent.value.image = res.data.image_url
+                }
+
+            } catch (error) {
+                console.log(error)
+                if (error.response.status === 422) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Image size must not exceed 5MB',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            }
+        }
+    }
+
+    const delImageUpdate = async () =>{
+        const res = await axiosInstance.post('/deleteeventimg',{image: getEvent.value.image})
+        if (res.status === 200) {
+            getEvent.value.image = ""
+        }
+    }
+
+    const UpdateEventsFunction = async ()=>{
+        isLoader.value = true
+        await putData('/updateevent/'+getEvent.value.id,getEvent.value)
+            .then(response=>{
+                if (response.status === 200) {
+                    isLoader.value = false
+                    getEvent.value = {}
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Update performed",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    AllEventsFunction();
+                    updatemodal.hide();
+                }
+            })
+    }
+
+    const DeleteEventFunction = async (id)=>{
+        Swal.fire({
+            title: "Do you want to delete this Event?",
+            text: "You can't go back!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Delete",
+            cancelButtonText: "Close"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                // Affiche un loader pendant la suppression
+                Swal.fire({
+                    title: "Deletion in progress...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                await getSingleData('/showevent/'+id)
+                    .then(async(response)=>{
+                        if (response.status === 200) {
+                            const event = response.data.data;
+                            if (event.image) {
+                                await axiosInstance.post('/deleteeventimg', { image: event.image });
+                            }
+                            const deleteResponse = await axiosInstance.delete('/deleteevent/'+event.id);
+                            if (deleteResponse.status === 200) {
+
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Deletion performed",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+
+                                AllEventsFunction()
+                            }
+                        }
+                    })
+            }
+        })
+    }
+
+    const DeleteAllEventFunction = async (ids=[])=>{
+        if (ids.length === 0) return;
+
+        Swal.fire({
+            title: `Delete ${ids.length} events ?`,
+            text: "This action is irreversible!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Yes, delete !",
+            cancelButtonText: "Cancel"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                // Affiche un loader pendant la suppression
+                Swal.fire({
+                    title: "Deletion in progress...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                try {
+                    for (let i = 0; i < ids.length; i++) {
+                        const id = ids[i];
+                        const response = await getSingleData('/showevent/' + id);
+                        if (response.status === 200) {
+                            const event = response.data.data;
+                            if (event.image) {
+                                await axiosInstance.post('/deleteeventimg', { image: event.image });
+                            }
+                            await axiosInstance.delete('/deleteevent/' + event.id);
+                        }
+                    }
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Deletion successful",
+                        text: `${ids.length} events deleted.`,
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+
+                    AllEventsFunction(); // 🔄 recharge les données
+
+                } catch (error) {
+                    Swal.fire("Error", "An error occurred during deletion.", "error");
+                    console.error(error);
+                }
+            }
+        });
+    }
+
+    const sendApproverMail = async (id)=>{
+        // ✅ Afficher un loader
+        Swal.fire({
+            title: "Please wait...",
+            text: "Sending in progress...",
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        await getSingleData('/sendApprovalevent/'+id)
+            .then(async (response)=>{
+                if (response.status === 200) {
+                    getEvent.value = response.data.data
+
+                    getEvent.value.status = "approbation"
+
+                    await putData('/updateevent/'+getEvent.value.id,{
+                        status: getEvent.value.status
+                    }).then(res=>{
+                        if (res.status === 200) {
+                            AllEventsFunction()
+                        }
+                    })
+
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Email sent successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+            .catch(error=>{
+                console.error("Error sending approval email:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong while sending the email!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
     }
 
     const showModal = () => {
@@ -514,6 +889,34 @@
         document.getElementById('addevent').addEventListener('hidden.bs.modal', () => {
             destroyTinyMCE('my-editor');
         });
+
+        updatemodal = new bootstrap.Modal(document.getElementById('updateevent'));
+
+        // Lorsque le modal est affiché, init TinyMCE
+        document.getElementById('updateevent').addEventListener('shown.bs.modal', () => {
+            const editor = document.getElementById('my-editorUpdate');
+            if (editor) {
+                initTinyMCE('my-editorUpdate',{
+                    height: 500,
+                    setup: (editor) => {
+                        editor.on('init', () => {
+                            editor.setContent(getEvent.value.content);
+                        });
+                        editor.on('change', () => {
+                            getEvent.value.content = editor.getContent();
+                        });
+                    }
+                })
+            }
+        });
+
+        document.getElementById('updateevent').addEventListener('hidden.bs.modal', () => {
+            destroyTinyMCE('my-editorUpdate');
+        });
+
+        window.GetEventFunction = GetEventFunction;
+        window.DeleteEventFunction = DeleteEventFunction;
+        window.sendApproverMail = sendApproverMail;
 
         AllCategory();
         AllEventsFunction()

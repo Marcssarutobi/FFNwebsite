@@ -332,9 +332,10 @@
                                 <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
                                 ${row.status === 'draft' ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
+                                    <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
+                                    <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                                 ` : ''}
-                                <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
-                                <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
+                                
                             </div>
                         </div>
                     </div>
@@ -716,7 +717,7 @@
         if (ids.length === 0) return;
 
         Swal.fire({
-            title: `Delete ${ids.length} categories ?`,
+            title: `Delete ${ids.length} projects ?`,
             text: "This action is irreversible!",
             icon: "warning",
             showCancelButton: true,
@@ -751,8 +752,8 @@
 
                     Swal.fire({
                         icon: "success",
-                        title: "Suppression réussie",
-                        text: `${ids.length} catégories supprimées.`,
+                        title: "Deletion successful",
+                        text: `${ids.length} projects deleted.`,
                         showConfirmButton: false,
                         timer: 2000
                     });
@@ -760,7 +761,7 @@
                     AllProjectFunction(); // 🔄 recharge les données
 
                 } catch (error) {
-                    Swal.fire("Erreur", "Une erreur est survenue pendant la suppression.", "error");
+                    Swal.fire("Error", "An error occurred during deletion.", "error");
                     console.error(error);
                 }
             }

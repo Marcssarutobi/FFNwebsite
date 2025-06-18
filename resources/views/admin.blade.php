@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-light.css">
 
-    <title>Laravel | Admin</title>
+    <title>Fungi for Nature | Admin</title>
 
     <!-- iconoir icon css  -->
     <link href="{{asset('admin/assets/vendor/ionio-icon/css/iconoir.css')}}" rel="stylesheet">

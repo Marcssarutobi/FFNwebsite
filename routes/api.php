@@ -88,6 +88,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/addevent', [EventController::class, 'store']);
     Route::put('/updateevent/{id}', [EventController::class, 'update']);
     Route::delete('/deleteevent/{id}', [EventController::class, 'destroy']);
+    Route::get('/sendApprovalevent/{id}', [EventController::class, 'SendApprobationMail']);
+    Route::post('/sendDeclenedevent/{id}', [EventController::class, 'SendDeclenedMail']);
 
     //Blogs
     Route::get('/blogs', [BlogController::class, 'index']);

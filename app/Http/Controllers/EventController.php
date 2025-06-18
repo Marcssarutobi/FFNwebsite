@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApprobationMail;
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class EventController extends Controller
@@ -43,8 +46,6 @@ class EventController extends Controller
             'brefdescription'=>'required',
             'content'=>'required',
             'start_date'=>'required',
-            'end_date'=>'required',
-            'location'=>'required',
             'image'=>'required',
             'category_id'=>'required',
             'status'=>'required',
@@ -57,7 +58,7 @@ class EventController extends Controller
         $Event = Event::create([
             'slug' => $baseSlug,
             'title' => $request->title,
-            'brief_description' => $request->brief_description,
+            'brefdescription' => $request->brefdescription,
             'content' => $request->content,
             'start_date'=>$request->start_date,
             'end_date'=>$request->end_date,
@@ -102,7 +103,7 @@ class EventController extends Controller
             $picName = time() . '.' . $request->file('image')->extension();
 
             // Déplacement du fichier vers le répertoire public/images
-            $request->file('image')->move(public_path('images/Project'), $picName);
+            $request->file('image')->move(public_path('images/Events'), $picName);
 
             // Retourner l'URL de l'image téléchargée
             return response()->json(['image_url' => "/images/Events/$picName"]);
@@ -130,6 +131,80 @@ class EventController extends Controller
 
         return 'done';
 
+    }
+
+    public function SendApprobationMail($id){
+        $event = Event::find($id);
+        $user = User::whereHas('role',function($query){
+            $query->where('name','approver');
+        })->first();
+
+        if (!$event || !$user) {
+            return response()->json([
+                'error' => 'Événement ou utilisateur non trouvé.'
+            ], 404);
+        }
+
+        $dataId = $event->id;
+        $subject = "Approval of a new event";
+        $message = "A new event has been created and needs your approval. <br><br>" .
+           "Please click the link below to review the event: <br><br>" .
+           "<a href='" . url("/eventpreview/$dataId") . "'>View Event</a><br><br>" .
+           "Thank you for your attention.";
+
+        try {
+
+            Mail::to($user->email)->send(new ApprobationMail($subject, $message));
+
+            return response()->json([
+                'message' => 'Email sent successfully.',
+                "data"=> $event
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Mail error: ' . $e->getMessage(),
+            ], 500);
+        }
+
+    }
+
+    public function SendDeclenedMail($id, Request $request){
+        $request->validate([
+            'reason' => 'required|string|max:1000',
+        ]);
+
+        $event = Event::find($id);
+        $user = User::whereHas('role',function($query){
+            $query->where('name','author');
+        })->where('id',$event->user_id)->first();
+
+        if (!$event || !$user) {
+            return response()->json([
+                'error' => 'Événement ou utilisateur non trouvé.'
+            ], 404);
+        }
+        $title = $event->title;
+        $subject = "Event Rejected";
+        $reasons = $request->reason;
+        $message = "The event article <strong>" . $title . "</strong> has been rejected. <br><br>" .
+           "Here are the reasons: <br><br>" .
+            $reasons ."<br><br>" .
+           "Thank you for your attention.";
+
+        try {
+
+            Mail::to($user->email)->send(new ApprobationMail($subject, $message));
+
+            return response()->json([
+                'message' => 'Email sent successfully.',
+                "data"=> $event
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Mail error: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 
 
