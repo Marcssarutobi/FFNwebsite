@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApprobationMail;
 use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class BlogController extends Controller
@@ -23,7 +26,7 @@ class BlogController extends Controller
     }
 
     public function show($id){
-        $data = Blog::with('category')->find($id);
+        $data = Blog::with(['category','user'])->find($id);
         return response()->json([
             "data"=>$data
         ]);
@@ -124,4 +127,79 @@ class BlogController extends Controller
         return 'done';
 
     }
+
+    public function SendApprobationMail($id){
+        $blog = Blog::find($id);
+        $user = User::whereHas('role',function($query){
+            $query->where('name','approver');
+        })->first();
+
+        if (!$blog || !$user) {
+            return response()->json([
+                'error' => 'Blog ou utilisateur non trouvé.'
+            ], 404);
+        }
+
+        $dataId = $blog->id;
+        $subject = "Approval of a new blog";
+        $message = "A new blog has been created and needs your approval. <br><br>" .
+           "Please click the link below to review the blog: <br><br>" .
+           "<a href='" . url("/blogpreview/$dataId") . "'>View Blog</a><br><br>" .
+           "Thank you for your attention.";
+
+        try {
+
+            Mail::to($user->email)->send(new ApprobationMail($subject, $message));
+
+            return response()->json([
+                'message' => 'Email sent successfully.',
+                "data"=> $blog
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Mail error: ' . $e->getMessage(),
+            ], 500);
+        }
+
+    }
+
+    public function SendDeclenedMail($id, Request $request){
+        $request->validate([
+            'reason' => 'required|string|max:1000',
+        ]);
+
+        $blog = Blog::find($id);
+        $user = User::whereHas('role',function($query){
+            $query->where('name','author');
+        })->where('id',$blog->user_id)->first();
+
+        if (!$blog || !$user) {
+            return response()->json([
+                'error' => 'Blog ou utilisateur non trouvé.'
+            ], 404);
+        }
+        $title = $blog->title;
+        $subject = "Blog Rejected";
+        $reasons = $request->reason;
+        $message = "The blog article <strong>" . $title . "</strong> has been rejected. <br><br>" .
+           "Here are the reasons: <br><br>" .
+            $reasons ."<br><br>" .
+           "Thank you for your attention.";
+
+        try {
+
+            Mail::to($user->email)->send(new ApprobationMail($subject, $message));
+
+            return response()->json([
+                'message' => 'Email sent successfully.',
+                "data"=> $blog
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Mail error: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+
 }

@@ -99,6 +99,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/addblog', [BlogController::class, 'store']);
     Route::put('/updateblog/{id}', [BlogController::class, 'update']);
     Route::delete('/deleteblog/{id}', [BlogController::class, 'destroy']);
+    Route::get('/sendApprovalblog/{id}', [BlogController::class, 'SendApprobationMail']);
+    Route::post('/sendDeclenedblog/{id}', [BlogController::class, 'SendDeclenedMail']);
 
 
 

@@ -1,69 +1,82 @@
 <template>
-
+  
     <!--Page Title-->
     <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>SIngle <span class="normal-font">Project</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/project">Projects</RouterLink> / <a href="#" class="current">Single Project</a></div>
+                <h1>Blog <span class="normal-font">Details</span></h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <a href="#" class="current">Blog Details</a></div>
             </div>
         </div>
     </section>
-
+    
     <!--Sidebar Page-->
     <div class="sidebar-page">
     	<div class="auto-container">
         	<div class="row clearfix">
 
+                <div class="btns mb-3" style="margin-bottom: 1.5rem !important;" v-if="blogData.status === 'approbation'">
+                    <button @click="ApprovedBlog" class="btn btn-success p-3 btn-lg me-3" style="margin-right: 1rem !important; font-size: 18px;">Approved</button>
+                    <button class="btn btn-danger p-3 btn-lg " style="font-size: 18px;" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Declined</button>
+
+                    <div class="collapse mt-3" id="collapseExample">
+                        <div class="card card-body">
+                            <form @submit.prevent="DeclenedBlog">
+                                <div class="form-group">
+                                    <label for="declineReason">Reason for Decline</label>
+                                    <textarea id="declineReason" :class="{ 'is-invalid': isEmpty.reasonForDecline }" v-model="reasonForDecline" class="form-control" placeholder="Enter reason for decline" rows="5" style="font-size: 18px;"></textarea>
+                                    <span v-if="isEmpty.reasonForDecline" class="text-danger">{{ msgInput.reasonForDecline }}</span>
+                                </div>
+                                <button class="btn btn-dark mt-3 p-4" style="font-size: 18px; width: 100px;">Submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
                 <!--Content Side-->
                 <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
 
-                    <div class="btns mb-3" style="margin-bottom: 1.5rem !important;" v-if="projectData.status === 'approbation'">
-                        <button @click="ApprovedProject" class="btn btn-success p-3 btn-lg me-3" style="margin-right: 1rem !important; font-size: 18px;">Approved</button>
-                        <button class="btn btn-danger p-3 btn-lg " style="font-size: 18px;" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Declined</button>
-
-                        <div class="collapse mt-3" id="collapseExample">
-                            <div class="card card-body">
-                                <form @submit.prevent="DeclenedProject">
-                                    <div class="form-group">
-                                        <label for="declineReason">Reason for Decline</label>
-                                        <textarea id="declineReason" :class="{ 'is-invalid': isEmpty.reasonForDecline }" v-model="reasonForDecline" class="form-control" placeholder="Enter reason for decline" rows="5" style="font-size: 18px;"></textarea>
-                                        <span v-if="isEmpty.reasonForDecline" class="text-danger">{{ msgInput.reasonForDecline }}</span>
-                                    </div>
-                                    <button class="btn btn-dark mt-3 p-4" style="font-size: 18px; width: 100px;">Submit</button>
-                                </form>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-
                     <!--Projects Section-->
-                    <section class="projects-section project-details no-padd-bottom no-padd-top padd-right-20">
+                    <section class="blog-news-section blog-detail no-padd-bottom no-padd-top padd-right-20">
 
-                        <div class="column default-featured-column">
+                        <!--News Column-->
+                        <div class="column blog-news-column">
                             <article class="inner-box">
-                                <figure class="image-box" >
-                                    <img :src="projectData.image" alt="">
+                                <figure class="image-box">
+                                    <img :src="blogData.image" alt="">
+                                    <div class="news-date">{{ formattedDate.day }}<span class="month">{{ formattedDate.month }}</span></div>
                                 </figure>
-                                <div class="content-box padd-top-40">
-                                    <div class="row detail-header clearfix">
-                                        <div class="col-md-12 col-sm-12">
-                                            <h2>{{ projectData.title }}</h2>
-                                        </div>
-
+                                <div class="content-box padd-top-30">
+                                    <h3>{{ blogData.title }}</h3>
+                                    <div class="post-info clearfix">
+                                        <div class="post-author">Posted by {{ blogData.user?.nom }} {{ blogData.user?.prenom }}</div>
+                                        <!-- <div class="post-options clearfix">
+                                            <a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
+                                            <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
+                                        </div> -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" v-html="projectData.content">
-
-                                    </div>
-
-
+                                    <div class="text" style="text-align: justify !important;" v-html="blogData.content"></div>
                                 </div>
+
+                                <div class="post-share-options clearfix">
+                                	<div class="pull-left tags"><strong>Share this post</strong> : </div>
+                                    <div class="pull-right social-links-two clearfix">
+                                    	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
+                                        <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>
+                                        <a href="#" class="google-plus img-circle"><span class="fa fa-google-plus"></span></a>
+                                        <a href="#" class="linkedin img-circle"><span class="fa fa-pinterest-p"></span></a>
+                                        <a href="#" class="linkedin img-circle"><span class="fa fa-linkedin"></span></a>
+                                    </div>
+                                </div>
+
                             </article>
                         </div>
 
                     </section>
+
 
                 </div>
                 <!--Content Side-->
@@ -122,7 +135,7 @@
                                 <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
                             </article>
 
-                        </div>
+                        </div>                        
 
                     </aside>
 
@@ -138,49 +151,62 @@
 </template>
 
 <script setup>
-    import { onMounted, ref } from 'vue';
+    import { computed, onMounted, ref } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
-    import { getSingleData, postData, putData } from '../../plugin/api';
+    import { getData, getSingleData, postData, putData } from '../../plugin/api';
     import Swal from 'sweetalert2';
+
 
     const route = useRoute();
     const getID = ref(route.params.id)
-    const projectData = ref({});
+    const blogData = ref({});
     const reasonForDecline = ref('');
     const isEmpty = ref({})
     const msgInput = ref({})
 
-    const GetProject = async ()=>{
-        await getSingleData('/showproject/' + getID.value)
+    const GetBlog = async ()=>{
+        await getSingleData('/showblog/' + getID.value)
             .then((response) => {
                 if (response.status === 200) {
-                    projectData.value = response.data.data;
+                    blogData.value = response.data.data;
                 } else {
-                    console.error('Error fetching project data:', response);
+                    console.error('Error fetching blog data:', response);
                 }
             })
             .catch((error) => {
-                console.error('Error fetching project data:', error);
+                console.error('Error fetching blog data:', error);
             });
     }
 
-    const ApprovedProject = async ()=>{
-        projectData.value.status = "published";
-        await putData('/updateproject/'+projectData.value.id,{
-            status: projectData.value.status
+    // Formatage de la date
+    const formattedDate = computed(() => {
+        const date = new Date(blogData.value.created_at)
+        const day = date.getDate().toString().padStart(2, '0')
+
+        const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                            "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+        const month = monthNames[date.getMonth()]
+
+        return { day, month }
+    })
+
+    const ApprovedBlog = async ()=>{
+        blogData.value.status = "published";
+        await putData('/updateblog/'+blogData.value.id,{
+            status: blogData.value.status
         }).then((response) => {
             if (response.status === 200) {
                 GetProject();
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "Project approved successfully",
+                    title: "Blog approved successfully",
                     showConfirmButton: false,
                     timer: 1500
                 })
             }
         }).catch((error) => {
-            console.error('Error approving project:', error);
+            console.error('Error approving blog:', error);
         });
     }
 
@@ -194,7 +220,7 @@
         }
     }
 
-    const DeclenedProject = async ()=>{
+    const DeclenedBlog = async ()=>{
 
         inputEmpty();
 
@@ -213,34 +239,34 @@
                 }
             });
 
-            await postData('/sendDeclenedproject/'+projectData.value.id,{
+            await postData('/sendDeclenedblog/'+blogData.value.id,{
                 reason: reasonForDecline.value
             }).then(async (response)=>{
                 if (response.status === 200) {
-                    projectData.value.status = "draft";
-                    await putData('/updateproject/'+projectData.value.id,{
-                        status: projectData.value.status
+                    blogData.value.status = "draft";
+                    await putData('/updateblog/'+blogData.value.id,{
+                        status: blogData.value.status
                     }).then((response) => {
                         if (response.status === 200) {
-                            GetProject();
+                            GetBlog();
                             Swal.fire({
                                 position: "center",
                                 icon: "success",
-                                title: "Project declined successfully",
+                                title: "Blog declined successfully",
                                 showConfirmButton: false,
                                 timer: 1500
                             })
                         }
                     }).catch((error) => {
-                        console.error('Error updating project status:', error);
+                        console.error('Error updating blog status:', error);
                     });
                 }
             }).catch((error)=>{
-                console.error('Error sending declined project:', error);
+                console.error('Error sending declined blog:', error);
                 Swal.fire({
                     position: "center",
                     icon: "error",
-                    title: "Error sending declined project",
+                    title: "Error sending declined blog",
                     showConfirmButton: true,
                 })
             })
@@ -250,9 +276,9 @@
 
     }
 
-    onMounted(()=>{
-        GetProject();
-    })
+    onMounted(() => {
+        GetBlog();
+    });
 
 </script>
 
