@@ -110,13 +110,17 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-1.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
                         <div class="member-info">
-                            <h3>Boris Olou</h3>
-                            <div class="designation">Senior Worker</div>
+                            <h3>Boris Armel Olou</h3>
+                            <div class="designation">Chief Executive Officer</div>
                         </div>
                         <div class="content">
-                            <div class="text"><p>Cras dapibus. Vivamus element modo semper Aenean vulementum semper Aenean vulputate set tellus.</p></div>
+                            <div class="text">
+                                <p>
+                                    Visionary CEO with extensive experience in sustainable development and biodiversity, leading strategic initiatives for impactful environmental action and organizational growth.
+                                </p>
+                            </div>
                             <div class="social-links">
                                 <a href="https://web.facebook.com/boris.olou"><span class="fa fa-facebook-f"></span></a>
                                 <a href="https://twitter.com/BorisOlou"><span class="fa fa-twitter"></span></a>
@@ -133,10 +137,14 @@
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Basile Gbetondji Hounwanou</h3>
-                            <div class="designation">Senior Worker</div>
+                            <div class="designation">Program Lead</div>
                         </div>
                         <div class="content">
-                            <div class="text"><p>Cras dapibus. Vivamus element modo semper Aenean vulementum semper Aenean vulputate set tellus.</p></div>
+                            <div class="text">
+                                <p>
+                                    Program Lead managing research and community initiatives focused on fungal biodiversity, ecosystem restoration, and sustainable development in local and regional contexts.
+                                </p>
+                            </div>
                             <div class="social-links">
                                 <a href="https://www.facebook.com/share/1LCcqXvftL/"><span class="fa fa-facebook-f"></span></a>
                                 <a href="#"><span class="fa fa-twitter"></span></a>
@@ -150,13 +158,18 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-3.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
                         <div class="member-info">
-                            <h3>Henna</h3>
-                            <div class="designation">Senior Worker</div>
+                            <h3>François Olalèyè CHABI</h3>
+                            <div class="designation"> Executive Assistant</div>
                         </div>
                         <div class="content">
-                            <div class="text"><p>Cras dapibus. Vivamus element modo semper Aenean vulementum semper Aenean vulputate set tellus.</p></div>
+                            <div class="text">
+                                <p>
+                                    Legal Director with 8+ years in corporate law, compliance, governance, and contract negotiation. Expert advisor to executive leadership.
+
+                                </p>
+                            </div>
                             <div class="social-links">
                                 <a href="#"><span class="fa fa-facebook-f"></span></a>
                                 <a href="#"><span class="fa fa-twitter"></span></a>
@@ -170,13 +183,17 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-4.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
                         <div class="member-info">
-                            <h3>Muhibbur Rashid</h3>
-                            <div class="designation">Senior Worker</div>
+                            <h3>DAÏRO Ogoudaré Julios  </h3>
+                            <div class="designation">Finance Lead</div>
                         </div>
                         <div class="content">
-                            <div class="text"><p>Cras dapibus. Vivamus element modo semper Aenean vulementum semper Aenean vulputate set tellus.</p></div>
+                            <div class="text">
+                                <p>
+                                    Executive Assistant & Legal Expert with 8+ years' experience in corporate law, contract negotiation, compliance, and executive support across various sectors.
+                                </p>
+                            </div>
                             <div class="social-links">
                                 <a href="#"><span class="fa fa-facebook-f"></span></a>
                                 <a href="#"><span class="fa fa-twitter"></span></a>
