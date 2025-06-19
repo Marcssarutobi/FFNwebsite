@@ -54,11 +54,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" v-html="projectData.content">
-
-                                    </div>
-
-
+                                    <div class="text" style="text-align: justify !important;" v-html="projectData.content"></div>
                                 </div>
                             </article>
                         </div>
@@ -142,6 +138,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getSingleData, postData, putData } from '../../plugin/api';
     import Swal from 'sweetalert2';
+    import {themeInit} from '../../plugin/themeInit'
 
     const route = useRoute();
     const getID = ref(route.params.id)

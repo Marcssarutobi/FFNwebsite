@@ -46,49 +46,22 @@
                     <hr>
 
                     <!--Related Posts Section-->
-                    <section class="related-posts-section padd-right-20">
+                    <section class="related-posts-section padd-right-20" v-if="categoryData.length > 0">
+
                     	<h2>Related <span class="normal-font">Projects</span></h2>
 
                         <!--Related Posts Carousel-->
                         <div class="related-posts-carousel">
                         	<!--Post-->
-                            <div class="column default-featured-column">
+                            <div class="column default-featured-column" v-for="(project, index) in categoryData" :key="index">
                                 <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-14.jpg" alt=""></a>
+                                    <figure class="image-boxe">
+                                        <img :src="project.image" alt="">
                                     </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Save Animals</a></h3>
+                                    <div class="content-boxe">
+                                        <h3 class="title"><RouterLink :to="`/singleproject/${project.slug}`">{{ project.title }}</RouterLink></h3>
                                         <div class="column-info">Environment, Go Green Company</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!--Post-->
-                            <div class="column default-featured-column">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-15.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Melting Ice</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!--Post-->
-                            <div class="column default-featured-column">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-16.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Solar Panels</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
+                                        <RouterLink :to="`/singleproject/${project.slug}`" class="theme-btn btn-style-three">Learn More</RouterLink>
                                     </div>
                                 </article>
                             </div>
@@ -104,7 +77,7 @@
                     <aside class="sidebar">
 
                         <!-- Search Form -->
-                        <div class="widget search-box">
+                        <!-- <div class="widget search-box">
 
                             <form method="post" action="index.html">
                                 <div class="form-group">
@@ -113,7 +86,7 @@
                                 </div>
                             </form>
 
-                        </div>
+                        </div> -->
 
                         <!-- Popular Categories -->
                         <div class="widget popular-categories wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
@@ -132,53 +105,14 @@
 
 
                         <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" v-if="categoryData.length > 0">
                             <div class="sidebar-title"><h3>Latest Posts</h3></div>
 
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-6.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
+                            <article class="post" v-for="(project, index) in categoryData" :key="index">
+                            	<figure class="post-thumb"><img :src="project.image" alt=""></figure>
+                                <h4><RouterLink :to="`/singleproject/${project.slug}`">{{ project.title }}</RouterLink></h4>
+                                <div class="post-info"><span class="icon flaticon-people-1"></span> By {{ project.user?.nom }} {{ project.user?.prenom }} </div>
                             </article>
-
-                             <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-7.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-8.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                        </div>
-
-                        <!-- Archives -->
-                        <div class="widget archives-list wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Archives</h3></div>
-
-                            <ul class="list">
-                            	<li><a href="#">April 2016</a></li>
-                                <li><a href="#">March  2016</a></li>
-                                <li><a href="#">February 2016</a></li>
-                                <li><a href="#">January 2016</a></li>
-                                <li><a href="#">December 2015</a></li>
-                                <li><a href="#">November 2015</a></li>
-                            </ul>
-
-                        </div>
-
-                        <!-- Popular Tags -->
-                        <div class="widget popular-tags">
-                            <div class="sidebar-title"><h3>KeyWords</h3></div>
-
-                            <a href="#">Child</a>
-                            <a href="#">Water</a>
-                            <a href="#">Donate</a>
-                            <a href="#">Money</a>
-                            <a href="#">Volunteer</a>
 
                         </div>
 
@@ -228,17 +162,18 @@
 </template>
 
 <script setup>
-    import { onMounted, ref } from 'vue';
+    import { computed, nextTick, onMounted, ref, watch } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { getSingleData } from '../../plugin/api';
-    import Swal from 'sweetalert2';
+    import {themeInit} from '../../plugin/themeInit'
 
     const route = useRoute();
     const projectData = ref({});
-    const projectSlug = route.params.slug;
+    const projectSlug = computed(() => route.params.slug);
+    const categoryData = ref({});
 
     const GetProject = async ()=>{
-        await getSingleData('/project/' + projectSlug)
+        await getSingleData('/project/' + projectSlug.value)
             .then((response) => {
                 if (response.status === 200) {
                     projectData.value = response.data.data;
@@ -249,11 +184,40 @@
             .catch((error) => {
                 console.error('Error fetching project data:', error);
             });
+
+        if (projectData.value) {
+            await getSingleData('/showcategory/'+ projectData.value.category_id)
+            .then((response) => {
+                if (response.status === 200) {
+                    categoryData.value = response.data.category.projects
+                        .filter(project => project.id !== projectData.value.id)
+                        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                        .slice(0, 3);
+                    
+                    nextTick(); // wait for DOM updates
+                    setTimeout(() => {
+                        themeInit();
+                    }, 0);
+
+                } else {
+                    console.error('Error fetching category data:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching category data:', error);
+            });
+        }
     }
+
+    watch(projectSlug,()=>{
+        GetProject();
+    })
+    
 
     onMounted(() => {
         GetProject();
     });
+
 
 
 </script>
@@ -273,5 +237,29 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.image-boxe{
+    width: 419.38px;
+    height: 296.66px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-boxe img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content-boxe .title{
+    width: 100%;
+    height: 50.41px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 </style>

@@ -46,6 +46,9 @@ Route::get('/blog/{slug}', [BlogController::class, 'showUser']);
 Route::post('/uploadblogimg', [BlogController::class, 'uploadImg']);
 Route::post('/deleteblogimg', [BlogController::class, 'deleteImage']);
 
+//Categorie
+Route::get('/showcategory/{id}', [CategoryController::class, 'show']);
+
 
 Route::middleware('auth:sanctum')->group( function () {
 
