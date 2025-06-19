@@ -27,7 +27,7 @@ const routes = [
                 component: ()=>import('../userPage/pages/event.vue'),
             },
             {
-                path: 'eventsingle',
+                path: 'eventsingle/:slug',
                 component: ()=>import('../userPage/pages/eventsingle.vue'),
             },
             {

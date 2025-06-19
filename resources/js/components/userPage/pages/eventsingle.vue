@@ -23,47 +23,34 @@
 
                         <div class="column default-featured-column style-two">
                             <article class="inner-box">
-                                <figure class="image-box">
-                                    <a href="#"><img src="/assets/images/resource/featured-image-33.jpg" alt=""></a>
+                                <figure class="image-boxs">
+                                    <img :src="eventData.image" alt="">
                                 </figure>
                                 <div class="content-box padd-top-40">
                                     <div class="row detail-header clearfix">
-                                        <div class="col-md-8 col-sm-12">
-                                            <h3><a href="#">One Tree Thousand Hope</a></h3>
-                                            <div class="column-info no-margin-bottom">13-14 Feb in Sanfransico, CA</div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <h3><a href="#">{{ eventData.title }}</a></h3>
+                                            <div class="column-info no-margin-bottom">In {{ eventData.location }}</div>
                                         </div>
-                                        <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">Join With Us</a></div>
+                                        <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">Join With Us</a></div> -->
                                     </div>
                                     <hr>
 
-                                    <div class="text">
-                                    	<br>
-                                        <p class="bigger-text">Lorem ipsum dolor sit amet, quo odio atqui tamquam eu, duo ex amet elitr. <strong class="theme_color">Ne essent feugiat vim, et soluta reprimique instructior mel</strong>, ne nonumes deserunt. Vix in dico vivendum forensibus. Munere tamquam referrentur ad duo, ei tibique dissentias.</p>
-                                        <p>Lorem ipsum dolor sit amet, et electram comprehensam sit. Quo an splendide siniferman vix sententiae instructior laudem corrumpit dolor amet.</p>
-                                        <p>alienum corrumpit ullamcorper. Vel ea fabulas instructior, agam falli sit an.Ad cum amet graeco consequat, sed ei veri novum appellantur. Qui in quod ubique euismod, consul seo noster disputationi eos no, nec te latine repudiare. Te pro dolor volutpat.</p>
+                                    <div class="text mt-4" v-html="eventData.content">
+
                                     </div>
 
                                     <br>
-
-                                    <ul class="styled-list-one normal-font">
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                    </ul>
-
-                                    <br><br>
 
                                     <div class="other-info">
                                     	<div class="row clearfix">
                                         	<!--Info Column-->
                                             <div class="info-column column col-md-6 col-xs-12">
                                             	<h3>Event Details</h3>
-                                        		<div class="text">Lorem ipsum dolor sit amet, usu an quem augue admodum.</div>
                                                 <ul class="info-box">
-                                                    <li><span class="icon fa fa-map-marker"></span><strong>Location</strong> Luna Park, Melbourne, Australia</li>
-                                                    <li><span class="icon fa fa-calendar"></span><strong>Date</strong> 15 March 2015 - 17 March 2015</li>
-                                                    <li><span class="icon fa fa-clock-o"></span><strong>Time</strong> 10:00 am - 2:00 pm</li>
+                                                    <li><span class="icon fa fa-map-marker"></span><strong>Location</strong> {{ eventData.location }}</li>
+                                                    <li><span class="icon fa fa-calendar"></span><strong>Date</strong> {{ formatDateWithMonthName(eventData.start_date) }} - {{ formatDateWithMonthName(eventData.end_date) }}</li>
+                                                    <!-- <li><span class="icon fa fa-clock-o"></span><strong>Time</strong> 10:00 am - 2:00 pm</li> -->
                                                 </ul>
                                             </div>
 
@@ -102,29 +89,17 @@
                 <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                     <aside class="sidebar">
 
-                        <!-- Search Form -->
-                        <div class="widget search-box">
-
-                            <form method="post" action="index.html">
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="Enter keyword">
-                                    <button type="submit"><span class="icon flaticon-tool-5"></span></button>
-                                </div>
-                            </form>
-
-                        </div>
-
                         <!-- Popular Categories -->
                         <div class="widget popular-categories wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <div class="sidebar-title"><h3>Categories</h3></div>
 
                             <ul class="list">
-                            	<li><a class="clearfix" href="#">Environment</a></li>
-                                <li><a class="clearfix" href="#">Forest</a></li>
+                            	<li v-for="(cat,index) in allcategory" :key="index"><a class="clearfix" href="#">{{ cat.name }}</a></li>
+                                <!-- <li><a class="clearfix" href="#">Forest</a></li>
                                 <li><a class="clearfix" href="#">Water</a></li>
                                 <li><a class="clearfix" href="#">Nature</a></li>
                                 <li><a class="clearfix" href="#">Soler</a></li>
-                                <li><a class="clearfix" href="#">Eco Energy</a></li>
+                                <li><a class="clearfix" href="#">Eco Energy</a></li> -->
                             </ul>
 
                         </div>
@@ -132,52 +107,15 @@
 
                         <!-- Recent Posts -->
                         <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Latest Posts</h3></div>
+                            <div class="sidebar-title"><h3>Latest Events</h3></div>
 
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-6.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
+                            <article class="post" v-for="(event, index) in categoryData" :key="index">
+                            	<figure class="post-thumb"><img :src="event.image" alt=""></figure>
+                                <h4><RouterLink :to="'/eventsingle/'+event.slug">{{ event.title }}</RouterLink></h4>
+                                <div class="post-info"><span class="icon flaticon-people-1"></span> By {{ event.user?.nom }} {{ event.user?.prenom }} </div>
                             </article>
 
-                             <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-7.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
 
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-8.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                        </div>
-
-                        <!-- Archives -->
-                        <div class="widget archives-list wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Archives</h3></div>
-
-                            <ul class="list">
-                            	<li><a href="#">April 2016</a></li>
-                                <li><a href="#">March  2016</a></li>
-                                <li><a href="#">February 2016</a></li>
-                                <li><a href="#">January 2016</a></li>
-                                <li><a href="#">December 2015</a></li>
-                                <li><a href="#">November 2015</a></li>
-                            </ul>
-
-                        </div>
-
-                        <!-- Popular Tags -->
-                        <div class="widget popular-tags">
-                            <div class="sidebar-title"><h3>KeyWords</h3></div>
-
-                            <a href="#">Child</a>
-                            <a href="#">Water</a>
-                            <a href="#">Donate</a>
-                            <a href="#">Money</a>
-                            <a href="#">Volunteer</a>
 
                         </div>
 
@@ -227,10 +165,136 @@
 
 </template>
 
-<script lang="ts" setup>
+<script setup>
+
+    import { computed, nextTick, onMounted, ref, watch } from 'vue';
+    import { RouterLink, useRoute } from 'vue-router';
+    import { getData, getSingleData } from '../../plugin/api';
+    import {themeInit} from '../../plugin/themeInit'
+
+    const route = useRoute();
+    const eventData = ref({});
+    const eventSlug = computed(() => route.params.slug);
+    const categoryData = ref({});
+    const categoryName = ref('');
+    const allcategory = ref([])
+
+    const GetEvent = async ()=>{
+        await getSingleData('/event/' + eventSlug.value)
+            .then((response) => {
+                if (response.status === 200) {
+                    eventData.value = response.data.data;
+                } else {
+                    console.error('Error fetching project data:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching project data:', error);
+            });
+
+            if (eventData.value) {
+            await getSingleData('/showcategory/'+ eventData.value.category_id)
+            .then((response) => {
+                if (response.status === 200) {
+                    categoryName.value = response.data.category.name;
+                    categoryData.value = response.data.category.events
+                        .filter(project => project.id !== eventData.value.id)
+                        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                        .slice(0, 3);
+
+                    nextTick(); // wait for DOM updates
+                    setTimeout(() => {
+                        themeInit();
+                    }, 0);
+
+                } else {
+                    console.error('Error fetching category data:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching category data:', error);
+            });
+        }
+
+
+    }
+
+    const AllCategorieFunction = async ()=>{
+        await getData('/allcategories')
+                .then(response => {
+                    if (response.status === 200) {
+                        allcategory.value = response.data.categories.slice(0, 5);
+
+                    }
+                })
+    }
+
+    function formatDateWithMonthName(data) {
+        if (!data) return null;
+        const date = new Date(data);
+        if (isNaN(date)) return null;
+
+        const options = {
+            year: 'numeric',
+            month: 'long',  // mois en toutes lettres
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        };
+
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    watch(eventSlug,()=>{
+        GetEvent();
+    })
+
+
+    onMounted(() => {
+        GetEvent();
+        AllCategorieFunction();
+    });
 
 </script>
 
-<style>
-
+<style scoped>
+.image-boxs{
+    width: 850px;
+    height: 516.89px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-boxs img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.image-boxe{
+    width: 419.38px;
+    height: 296.66px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-boxe img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content-boxe .title{
+    width: 100%;
+    height: 50.41px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 </style>

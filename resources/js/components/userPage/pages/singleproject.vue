@@ -60,7 +60,7 @@
                                     </figure>
                                     <div class="content-boxe">
                                         <h3 class="title"><RouterLink :to="`/singleproject/${project.slug}`">{{ project.title }}</RouterLink></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
+                                        <div class="column-info">{{ categoryName }}</div>
                                         <RouterLink :to="`/singleproject/${project.slug}`" class="theme-btn btn-style-three">Learn More</RouterLink>
                                     </div>
                                 </article>
@@ -93,12 +93,12 @@
                             <div class="sidebar-title"><h3>Categories</h3></div>
 
                             <ul class="list">
-                            	<li><a class="clearfix" href="#">Environment</a></li>
-                                <li><a class="clearfix" href="#">Forest</a></li>
+                            	<li v-for="(cat,index) in allcategory" :key="index"><a class="clearfix" href="#">{{ cat.name }}</a></li>
+                                <!-- <li><a class="clearfix" href="#">Forest</a></li>
                                 <li><a class="clearfix" href="#">Water</a></li>
                                 <li><a class="clearfix" href="#">Nature</a></li>
                                 <li><a class="clearfix" href="#">Soler</a></li>
-                                <li><a class="clearfix" href="#">Eco Energy</a></li>
+                                <li><a class="clearfix" href="#">Eco Energy</a></li> -->
                             </ul>
 
                         </div>
@@ -164,13 +164,15 @@
 <script setup>
     import { computed, nextTick, onMounted, ref, watch } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
-    import { getSingleData } from '../../plugin/api';
+    import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
 
     const route = useRoute();
     const projectData = ref({});
     const projectSlug = computed(() => route.params.slug);
     const categoryData = ref({});
+    const categoryName = ref('');
+    const allcategory = ref([])
 
     const GetProject = async ()=>{
         await getSingleData('/project/' + projectSlug.value)
@@ -189,11 +191,12 @@
             await getSingleData('/showcategory/'+ projectData.value.category_id)
             .then((response) => {
                 if (response.status === 200) {
+                    categoryName.value = response.data.category.name;
                     categoryData.value = response.data.category.projects
                         .filter(project => project.id !== projectData.value.id)
                         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                         .slice(0, 3);
-                    
+
                     nextTick(); // wait for DOM updates
                     setTimeout(() => {
                         themeInit();
@@ -209,13 +212,23 @@
         }
     }
 
+    const AllCategorieFunction = async ()=>{
+        await getData('/allcategories')
+                .then(response => {
+                    if (response.status === 200) {
+                        allcategory.value = response.data.categories.slice(0, 5);
+                    }
+                })
+    }
+
     watch(projectSlug,()=>{
         GetProject();
     })
-    
+
 
     onMounted(() => {
         GetProject();
+        AllCategorieFunction();
     });
 
 

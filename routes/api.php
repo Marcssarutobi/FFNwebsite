@@ -48,6 +48,7 @@ Route::post('/deleteblogimg', [BlogController::class, 'deleteImage']);
 
 //Categorie
 Route::get('/showcategory/{id}', [CategoryController::class, 'show']);
+Route::get('/allcategories', [CategoryController::class, 'index']);
 
 
 Route::middleware('auth:sanctum')->group( function () {

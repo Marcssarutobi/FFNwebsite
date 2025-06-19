@@ -41,7 +41,7 @@ class CategoryController extends Controller
 
     public function show ($id){
         // 1. Récupérer la catégorie par son ID
-        $category = Category::with(['events', 'projects.user', 'blogs', 'galleries'])->find($id);
+        $category = Category::with(['events.user', 'projects.user', 'blogs', 'galleries'])->find($id);
 
         // 2. Retourner la réponse JSON
         return response()->json([
