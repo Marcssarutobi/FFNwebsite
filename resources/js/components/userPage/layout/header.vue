@@ -51,23 +51,23 @@
                                 </li>
                                 
                                 <li>
-                                    <router-link exact-active-class="current" to="project">Projects</router-link>
+                                    <router-link exact-active-class="current" to="/project">Projects</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="event">Events</router-link>
+                                    <router-link exact-active-class="current" to="/event">Events</router-link>
                                 </li>
                                 
                                 <li>
-                                    <router-link exact-active-class="current" to="gallery">Gallery</router-link>
+                                    <router-link exact-active-class="current" to="/gallery">Gallery</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="blog">BLog</router-link>
+                                    <router-link exact-active-class="current" to="/blog">BLog</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="about">About</router-link>
+                                    <router-link exact-active-class="current" to="/about">About</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="contact">Contact Us</router-link>
+                                    <router-link exact-active-class="current" to="/contact">Contact Us</router-link>
                                 </li>
                             </ul>
                         </div>

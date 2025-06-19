@@ -20,7 +20,7 @@ class ProjectController extends Controller
     }
 
     public function allProject () {
-        $data = Project::with('category')->orderBy('id','desc')->paginate(6);
+        $data = Project::with(['category'])->where('status', 'published')->orderBy('id','desc')->paginate(6);
         return response()->json([
             "data"=>$data
         ]);

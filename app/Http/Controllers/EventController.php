@@ -20,7 +20,7 @@ class EventController extends Controller
     }
 
     public function allEvent () {
-        $data = Event::with('category')->orderBy('id','desc')->paginate(9);
+        $data = Event::with('category')->where('status', 'published')->orderBy('id','desc')->paginate(9);
         return response()->json([
             "data"=>$data
         ]);

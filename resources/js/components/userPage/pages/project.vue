@@ -25,107 +25,36 @@
                         <div class="row clearfix">
 
                             <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12">
+                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12" v-for="project in allproject" :key="project.id">
                                 <article class="inner-box">
                                     <figure class="image-box">
-                                        <router-link to="/singleproject"><img src="/assets/images/resource/featured-image-3.jpg" alt=""></router-link>
+                                        <router-link :to="`/singleproject/${project.slug}`"><img :src="project.image" alt=""></router-link>
                                     </figure>
                                     <div class="content-box">
-                                        <h3><router-link to="/singleproject">Tree Plantation</router-link></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                                        <router-link to="/singleproject" class="theme-btn btn-style-three">Learn More</router-link>
+                                        <h3 class="title"><router-link :to="`/singleproject/${project.slug}`">{{ project.title }}</router-link></h3>
+                                        <div class="column-info">{{ project.category?.name }}</div>
+                                        <div class="text">{{ project.brief_description }}</div>
+                                        <router-link :to="`/singleproject/${project.slug}`" class="theme-btn btn-style-three">Learn More</router-link>
                                     </div>
                                 </article>
                             </div>
 
-                            <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-12.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Fresh Nature</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-13.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Save Forest</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-14.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Save Animals</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-15.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Melting Ice</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12">
-                                <article class="inner-box">
-                                    <figure class="image-box">
-                                        <a href="#"><img src="/assets/images/resource/featured-image-16.jpg" alt=""></a>
-                                    </figure>
-                                    <div class="content-box">
-                                        <h3><a href="#">Solar Panels</a></h3>
-                                        <div class="column-info">Environment, Go Green Company</div>
-                                        <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                                        <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                                    </div>
-                                </article>
-                            </div>
+                            
 
                         </div>
 
                         <!-- Styled Pagination -->
                         <div class="styled-pagination padd-top-20 margin-bott-40">
-                            <ul>
+                            <Paginate v-model="currentPage" :page-count="totalPage" :clickHandler="AllProjectFunction" :prevText="' <span class=\'fa fa-angle-left\'></span>&ensp;Prev'" :nextText="'Next&ensp;<span class=\'fa fa-angle-right\'></span>'" :container-class="''" :page-class="'page-item'" :active-class="'active'" :tag-name="'ul'"></Paginate>
+                            <!-- <ul>
                                 <li><a class="prev" href="#"><span class="fa fa-angle-left"></span>&ensp;Prev</a></li>
                                 <li><a href="#">1</a></li>
                                 <li><a href="#" class="active">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a class="next" href="#">Next&ensp;<span class="fa fa-angle-right"></span></a></li>
-                            </ul>
+                            </ul> -->
                         </div>
+                        
                     </section>
 
 
@@ -249,8 +178,70 @@
 
 <script setup>
 
+    import { onMounted, ref } from 'vue';
+    import { getData } from '../../plugin/api';
+    import Paginate from 'vuejs-paginate-next'
+
+    const allproject = ref([]);
+    const currentPage = ref(1);
+    const totalPage = ref(0);
+
+    const AllProjectFunction = async (page) =>{
+        await getData('/allprojects?page='+page)
+            .then((response) => {
+                allproject.value = response.data.data.data;
+                totalPage.value = response.data.data.last_page;
+                currentPage.value = response.data.data.current_page;
+            })
+            .catch((error) => {
+                console.error('Error fetching projects:', error);
+            });
+    }
+
+    onMounted(() => {
+        AllProjectFunction();
+    });
+
 </script>
 
-<style>
-
+<style scoped >
+    .image-box{
+        width: 419.38px;
+        height: 296.66px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image-box img{
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .content-box .title{
+        width: 100%;
+        height: 50.41px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Nombre de lignes max */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .content-box .text{
+        width: 100%;
+        height: 75.61px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Nombre de lignes max */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    li.active{
+        background: #3A3A3A !important;
+    }
+    li.active a{
+        color: #fff !important;
+    }
 </style>

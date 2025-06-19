@@ -20,6 +20,7 @@
         "jszip": "^3.10.1",
         "pdfmake": "^0.2.19",
         "sweetalert2": "^11.21.0",
+        "vuejs-paginate-next": "^1.0.2",
         "@vitejs/plugin-vue": "^5.2.4",
         "vue": "^3.5.16",
         "vue-router": "^4.5.1"

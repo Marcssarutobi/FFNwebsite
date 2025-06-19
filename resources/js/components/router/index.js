@@ -19,7 +19,7 @@ const routes = [
                 component: ()=>import('../userPage/pages/project.vue'),
             },
             {
-                path: 'singleproject',
+                path: 'singleproject/:slug',
                 component: ()=>import('../userPage/pages/singleproject.vue'),
             },
             {

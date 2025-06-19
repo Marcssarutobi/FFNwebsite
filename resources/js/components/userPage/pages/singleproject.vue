@@ -3,7 +3,7 @@
     <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>SIngle <span class="normal-font">Project</span></h1>
+                <h1>Single <span class="normal-font">Project</span></h1>
                 <div class="bread-crumb"><a href="index.html">Home</a> / <a href="index.html">Projects</a> / <a href="#" class="current">Single Project</a></div>
             </div>
         </div>
@@ -23,32 +23,19 @@
 
                         <div class="column default-featured-column">
                             <article class="inner-box">
-                                <figure class="image-box">
-                                    <a href="#"><img src="/assets/images/resource/featured-image-17.jpg" alt=""></a>
+                                <figure class="image-boxs">
+                                    <img :src="projectData.image" alt="">
                                 </figure>
                                 <div class="content-box padd-top-40">
                                     <div class="row detail-header clearfix">
-                                        <div class="col-md-8 col-sm-12">
-                                            <h2>Wind Mill Energy</h2>
+                                        <div class="col-md-12 ">
+                                            <h2>{{ projectData.title }}</h2>
                                         </div>
-                                        <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div>
+                                        <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text">
-                                        <br>
-                                        <p class="bigger-text">Lorem ipsum dolor sit amet, quo odio atqui tamquam eu, duo ex amet elitr. <strong class="theme_color">Ne essent feugiat vim, et soluta reprimique instructior mel</strong>, ne nonumes deserunt. Vix in dico vivendum forensibus. Munere tamquam referrentur ad duo, ei tibique dissentias.</p>
-                                        <p>Lorem ipsum dolor sit amet, et electram comprehensam sit. Quo an splendide siniferman vix sententiae instructior laudem corrumpit dolor amet.</p>
-                                        <p>alienum corrumpit ullamcorper. Vel ea fabulas instructior, agam falli sit an.Ad cum amet graeco consequat, sed ei veri novum appellantur. Qui in quod ubique euismod, consul seo noster disputationi eos no, nec te latine repudiare. Te pro dolor volutpat.</p>
+                                    <div class="text" style="text-align: justify !important;" v-html="projectData.content">
+
                                     </div>
-
-                                    <br>
-                                    <h3 class="text-uppercase">Project Target</h3>
-
-                                    <ul class="styled-list-two">
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                        <li>Lorem ipsum dolor sit amet, usu an quem augue admodum. </li>
-                                    </ul>
 
                                 </div>
                             </article>
@@ -241,9 +228,50 @@
 </template>
 
 <script setup>
+    import { onMounted, ref } from 'vue';
+    import { RouterLink, useRoute } from 'vue-router';
+    import { getSingleData } from '../../plugin/api';
+    import Swal from 'sweetalert2';
+
+    const route = useRoute();
+    const projectData = ref({});
+    const projectSlug = route.params.slug;
+
+    const GetProject = async ()=>{
+        await getSingleData('/project/' + projectSlug)
+            .then((response) => {
+                if (response.status === 200) {
+                    projectData.value = response.data.data;
+                } else {
+                    console.error('Error fetching project data:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching project data:', error);
+            });
+    }
+
+    onMounted(() => {
+        GetProject();
+    });
+
 
 </script>
 
-<style>
-
+<style scoped>
+.image-boxs{
+    width: 850px;
+    height: 516.89px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-boxs img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 </style>

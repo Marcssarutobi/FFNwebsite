@@ -19,7 +19,7 @@ class BlogController extends Controller
     }
 
     public function allBlog () {
-        $data = Blog::with('category')->orderBy('id','desc')->paginate(9);
+        $data = Blog::with('category')->where('status', 'published')->orderBy('id','desc')->paginate(9);
         return response()->json([
             "data"=>$data
         ]);
