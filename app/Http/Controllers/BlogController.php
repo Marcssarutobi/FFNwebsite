@@ -33,7 +33,7 @@ class BlogController extends Controller
     }
 
     public function showUser($slug){
-        $data = Blog::with('category')->where('slug',$slug)->first();
+        $data = Blog::with(['category','user'])->where('slug',$slug)->first();
         return response()->json([
             "data"=>$data
         ]);

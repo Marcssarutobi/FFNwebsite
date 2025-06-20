@@ -25,45 +25,26 @@
                         <div class="column blog-news-column">
                             <article class="inner-box">
                                 <figure class="image-box">
-                                    <a href="#"><img src="/assets/images/resource/blog-image-7.jpg" alt=""></a>
-                                    <div class="news-date">28<span class="month">OCT</span></div>
+                                    <img :src="blogData.image" alt="">
+                                    <div class="news-date">{{ formattedDate.day }}<span class="month">{{ formattedDate.month }}</span></div>
                                 </figure>
                                 <div class="content-box padd-top-30">
-                                    <h3><a href="#">Save the animals and make the world balance</a></h3>
+                                    <h3>{{ blogData.title }}</h3>
                                     <div class="post-info clearfix">
-                                        <div class="post-author">Posted by Rashed Kabir</div>
+                                        <div class="post-author">Posted by {{ blogData.user?.nom }} {{ blogData.user?.prenom }}</div>
                                         <div class="post-options clearfix">
                                             <a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
                                             <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
                                         </div>
                                     </div>
-                                    <div class="text">
-                                    	<p>Lorem ipsum dolor sit amet, te minim conceptam usu, his ne elit nonumes. Ex mei consul persius, eu sit homero eruditi, summo assueverit duo ei. Sed ei modo alia brute, ex cum eligendi abhorreant. Sed ea aeque delectus senserit, sea feugiat denique id, ad fabulas dolorem vituperata eam..</p>
-                                        <p> Te vim dico putant. Omnesque pertinax platonem an eos. Ne nam iudico oportere. Eum laboramus consectetuer ne.Quo eu clita deseruisse, cum cu quot salutandi vulputate, vel quem detracto voluptua ea. Cu nobis salutatus vis, ne per modo graece delicatissimi. Unum forensibus sea no. In eam eius ludus, ea mundi dicam petentium vel. </p>
-                                    	<br>
-                                        <div class="row clearfix">
-                                        	<div class="col-lg-4 col-md-6 col-xs-12">
-                                            	<figure><img class="img-responsive" src="/assets/images/resource/featured-image-18.jpg" alt=""></figure>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-xs-12">
-                                            	<blockquote>
-                                                	<p> Lorem ipsum dolor sit amet, tota aliquip vel eu, cum cu velaccumsan molestiae, ius etia mazim.</p>
-                                                    <p>Erant appellantur vel ei. Ad <a href="#">volutpat necessitati</a> bus vis oiTe vim dico putant. Omnesque pertinexo platonem an eos ne nam iudico qco. </p>
-                                                </blockquote>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <p>Ut porro argumentum usu, dicat equidem pertinax ne mea. Interesset referrentur mediocritatem quo an. Ridens everti recusabo vis ne, vel ex integre recteque. Ceteros fuisset his eu, an tota essent debitis qui, iuvaret electram necessitatibus et qui. Ea probo prompta usu, ei doming facilis usu. Mel summo ridens an.</p>
-                                    </div>
+                                    <div class="text" style="text-align: justify;" v-html="blogData.content"></div>
                                 </div>
 
-                                <div class="post-share-options clearfix">
-                                	<div class="pull-left tags"><strong>Tag</strong> : <a href="#">Environment</a>, <a href="#">Seed</a>, <a href="#">Nature</a></div>
+                               <div class="post-share-options clearfix">
+                                	<div class="pull-left tags"><strong>Share this post</strong> : </div>
                                     <div class="pull-right social-links-two clearfix">
                                     	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
-                                        <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>
-                                        <a href="#" class="google-plus img-circle"><span class="fa fa-google-plus"></span></a>
-                                        <a href="#" class="linkedin img-circle"><span class="fa fa-pinterest-p"></span></a>
+                                        <a href="#" class="twitter img-circle"><span class="fa fa-x-twitter"></span></a>
                                         <a href="#" class="linkedin img-circle"><span class="fa fa-linkedin"></span></a>
                                     </div>
                                 </div>
@@ -161,12 +142,12 @@
                             <div class="sidebar-title"><h3>Categories</h3></div>
 
                             <ul class="list">
-                            	<li><a class="clearfix" href="#">Environment</a></li>
-                                <li><a class="clearfix" href="#">Forest</a></li>
+                            	<li v-for="(cat,index) in allcategory" :key="index"><a class="clearfix" href="#">{{ cat.name }}</a></li>
+                                <!-- <li><a class="clearfix" href="#">Forest</a></li>
                                 <li><a class="clearfix" href="#">Water</a></li>
                                 <li><a class="clearfix" href="#">Nature</a></li>
                                 <li><a class="clearfix" href="#">Soler</a></li>
-                                <li><a class="clearfix" href="#">Eco Energy</a></li>
+                                <li><a class="clearfix" href="#">Eco Energy</a></li> -->
                             </ul>
 
                         </div>
@@ -176,50 +157,12 @@
                         <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <div class="sidebar-title"><h3>Latest Posts</h3></div>
 
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-6.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
+                            <article class="post" v-for="(blog, index) in categoryData" :key="index">
+                            	<figure class="post-thumb"><img :src="blog.image" alt=""></figure>
+                                <h4><RouterLink :to="'/blogsingle/'+blog.slug">{{ blog.title }}</RouterLink></h4>
+                                <div class="post-info"><span class="icon flaticon-people-1"></span> By {{ blog.user?.nom }} {{ blog.user?.prenom }} </div>
                             </article>
 
-                             <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-7.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-8.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                        </div>
-
-                        <!-- Archives -->
-                        <div class="widget archives-list wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Archives</h3></div>
-
-                            <ul class="list">
-                            	<li><a href="#">April 2016</a></li>
-                                <li><a href="#">March  2016</a></li>
-                                <li><a href="#">February 2016</a></li>
-                                <li><a href="#">January 2016</a></li>
-                                <li><a href="#">December 2015</a></li>
-                                <li><a href="#">November 2015</a></li>
-                            </ul>
-
-                        </div>
-
-                        <!-- Popular Tags -->
-                        <div class="widget popular-tags">
-                            <div class="sidebar-title"><h3>KeyWords</h3></div>
-
-                            <a href="#">Child</a>
-                            <a href="#">Water</a>
-                            <a href="#">Donate</a>
-                            <a href="#">Money</a>
-                            <a href="#">Volunteer</a>
 
                         </div>
 
@@ -327,10 +270,21 @@
                 .then(response => {
                     if (response.status === 200) {
                         allcategory.value = response.data.categories.slice(0, 5);
-
                     }
                 })
     }
+
+    // Formatage de la date
+    const formattedDate = computed(() => {
+        const date = new Date(blogData.value.created_at)
+        const day = date.getDate().toString().padStart(2, '0')
+
+        const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                            "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+        const month = monthNames[date.getMonth()]
+
+        return { day, month }
+    })
 
     watch(blogSlug,()=>{
         GetBlog();
@@ -345,7 +299,7 @@
 </script>
 
 <style scoped>
-.image-boxs{
+.image-box{
     width: 850px;
     height: 516.89px;
     overflow: hidden;
@@ -353,9 +307,9 @@
     align-items: center;
     justify-content: center;
 }
-.image-boxs img{
-    max-width: 100%;
-    max-height: 100%;
+.image-box img{
+    min-width: 100%;
+    min-height: 100%;
     width: 100%;
     height: 100%;
     object-fit: cover;
