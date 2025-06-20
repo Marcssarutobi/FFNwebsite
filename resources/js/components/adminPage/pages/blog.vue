@@ -468,7 +468,7 @@
 
     const AddBlogFunction = async ()=>{
 
-        data.value.status = "draft"
+        data.value.status = "published"
         data.value.user_id = currentUser.value.id
 
         inputEmpty()

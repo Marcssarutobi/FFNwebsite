@@ -555,7 +555,7 @@
 
     const AddEventsFunction = async () =>{
         data.value.user_id = currentUser.value.id;
-        data.value.status = 'draft';
+        data.value.status = 'published';
         inputEmpty();
         const allEmpty = Object.values(isEmpty.value).every(value => value === false)
         if (allEmpty) {
