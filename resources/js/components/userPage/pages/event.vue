@@ -162,10 +162,18 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    li.active{
-        background: #3A3A3A !important;
+    ::v-deep(.page-item){
+        border-radius: 5px !important;
     }
-    li.active a{
-        color: #fff !important;
+    ::v-deep(.page-item.active .page-link){
+        background: #3A3A3A !important;
+        color: white !important;
+        width: 40px !important;
+        height: 40px !important;
+        padding: 6px 5px !important;
+        border-radius: 3px !important;
+    }
+    ::v-deep(.page-item .page-link){
+        padding: 6px 25px !important;
     }
 </style>

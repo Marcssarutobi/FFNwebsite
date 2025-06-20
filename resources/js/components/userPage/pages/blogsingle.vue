@@ -270,8 +270,118 @@
 
 <script setup>
 
+    import { computed, nextTick, onMounted, ref, watch } from 'vue';
+    import { RouterLink, useRoute } from 'vue-router';
+    import { getData, getSingleData } from '../../plugin/api';
+    import {themeInit} from '../../plugin/themeInit'
+
+    const route = useRoute();
+    const blogData = ref({});
+    const blogSlug = computed(() => route.params.slug);
+    const categoryData = ref({});
+    const categoryName = ref('');
+    const allcategory = ref([]);
+
+     const GetBlog = async ()=>{
+        await getSingleData('/blog/' + blogSlug.value)
+            .then((response) => {
+                if (response.status === 200) {
+                    blogData.value = response.data.data;
+                } else {
+                    console.error('Error fetching blog data:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching blog data:', error);
+            });
+
+            if (blogData.value) {
+            await getSingleData('/showcategory/'+ blogData.value.category_id)
+            .then((response) => {
+                if (response.status === 200) {
+                    categoryName.value = response.data.category.name;
+                    categoryData.value = response.data.category.blogs
+                        .filter(blog => blog.id !== blogData.value.id)
+                        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                        .slice(0, 3);
+
+                    nextTick(); // wait for DOM updates
+                    setTimeout(() => {
+                        themeInit();
+                    }, 0);
+
+                } else {
+                    console.error('Error fetching category data:', response);
+                }
+            })
+            .catch((error) => {
+                console.error('Error fetching category data:', error);
+            });
+        }
+
+
+    }
+
+    const AllCategorieFunction = async ()=>{
+        await getData('/allcategories')
+                .then(response => {
+                    if (response.status === 200) {
+                        allcategory.value = response.data.categories.slice(0, 5);
+
+                    }
+                })
+    }
+
+    watch(blogSlug,()=>{
+        GetBlog();
+    })
+
+
+    onMounted(() => {
+        GetBlog();
+        AllCategorieFunction();
+    });
+
 </script>
 
-<style>
-
+<style scoped>
+.image-boxs{
+    width: 850px;
+    height: 516.89px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-boxs img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.image-boxe{
+    width: 419.38px;
+    height: 296.66px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-boxe img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.content-boxe .title{
+    width: 100%;
+    height: 50.41px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 </style>

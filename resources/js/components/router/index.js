@@ -35,7 +35,7 @@ const routes = [
                 component: ()=>import('../userPage/pages/blog.vue'),
             },
             {
-                path: 'blogsingle',
+                path: 'blogsingle/:slug',
                 component: ()=>import('../userPage/pages/blogsingle.vue'),
             },
             {
