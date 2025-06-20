@@ -261,70 +261,25 @@ Below are the key fields in which we focus our efforts to create lasting impact.
             <div class="sec-title clearfix">
             	<div class="pull-left">
                     <h2>RECENT <span class="normal-font theme_color">Project</span></h2>
-                    <div class="text">Lorem ipsum dolor sit amet, cum at inani interesset, nisl fugit munere ad mel,vix an omnium dolor amet </div>
+                    <div class="text">Explore our recent projects devoted to promoting fungi as key allies in ecological balance and sustainability. </div>
                 </div>
                 <div class="pull-right padd-top-30">
-                	<a href="#" class="theme-btn btn-style-three">See All Projects</a>
+                	<RouterLink to="/event" class="theme-btn btn-style-three">See All Projects</RouterLink>
                 </div>
             </div>
         	<div class="row clearfix">
 
                 <!--Default Featured Column-->
-                <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
+                <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12" v-for="project in allproject" :key="project.id" >
                 	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/C1.jpg" alt=""></a>
+                		<figure class="image-box project">
+                        	<router-link :to="`/singleproject/${project.slug}`"><img :src="project.image" alt=""></router-link>
                         </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Project Name</a></h3>
-                            <div class="column-info">Environment, Go Green Company</div>
-                            <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                            <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--Default Featured Column-->
-                <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
-                	<article class="inner-box wow fadeInLeft" data-wow-delay="300ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/C2.jpg" alt=""></a>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Project Name</a></h3>
-                            <div class="column-info">Environment, Go Green Company</div>
-                            <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                            <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--Default Featured Column-->
-                <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
-                	<article class="inner-box wow fadeInLeft" data-wow-delay="600ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/C3.jpg" alt=""></a>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Project Name</a></h3>
-                            <div class="column-info">Environment, Go Green Company</div>
-                            <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                            <a href="#" class="theme-btn btn-style-three">Learn More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--Default Featured Column-->
-                <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12">
-                	<article class="inner-box wow fadeInLeft" data-wow-delay="900ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/C4.jpg" alt=""></a>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Project Name</a></h3>
-                            <div class="column-info">Environment, Go Green Company</div>
-                            <div class="text">Lorem ipsum dolor sit amet et siu amet amet audiam copiosaei mei purto dolor timeam mea ne.</div>
-                            <a href="#" class="theme-btn btn-style-three">Learn More</a>
+                        <div class="content-box project-content">
+                        	<h3 class="title"><a href="#">{{ project.title }}</a></h3>
+                            <div class="column-info">{{ project.category?.name }}</div>
+                            <div class="text">{{ project.brief_description }}</div>
+                            <router-link :to="`/singleproject/${project.slug}`" class="theme-btn btn-style-three">Learn More</router-link>
                         </div>
                     </article>
                 </div>
@@ -415,69 +370,25 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
             <div class="sec-title text-center">
                 <h2>Latest <span class="normal-font theme_color">Event</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interes setnisl omnium dolor amet amet qco modo cum text </div>
+                <div class="text">From forest walks to expert talks, our recent events celebrate fungi and their vital role in ecosystems. Come see what we've been up to! </div>
             </div>
         	<div class="row clearfix">
 
                 <!--Featured Column-->
-                <div class="column default-featured-column style-two col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="column default-featured-column style-two col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(event, index) in allevent" :key="index">
                 	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-5.jpg" alt=""></a>
-                            <div class="post-tag">Featured</div>
+                		<figure class="image-box blogs">
+                        	<router-link :to="'/eventsingle/'+event.slug"><img :src="event.image" alt=""></router-link>
+                            <div class="post-tag" v-if="event.eventstatus === 'Upcoming'">{{ event.eventstatus }}</div>
                         </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">One Tree Thousand Hope</a></h3>
-                            <div class="column-info">13-14 Feb in Sanfransico, CA</div>
-                            <div class="text">Lorem ipsum dolor sit amet, eu qui modo expeten dis reformidans, ex sit appetere sententiae.. </div>
-                            <a href="#" class="theme-btn btn-style-three">Read More</a>
+                        <div class="content-box blog-content">
+                        	<h3 class="title"><router-link :to="'/eventsingle/'+event.slug">{{ event.title }}</router-link></h3>
+                            <div class="column-info">In {{ event.location }}</div>
+                            <div class="text">{{ event.brefdescription }} </div>
+                            <router-link :to="'/eventsingle/'+event.slug" class="theme-btn btn-style-three">Read More</router-link>
                         </div>
                     </article>
                 </div>
-
-                <!--Featured Column-->
-                <div class="column default-featured-column style-two col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/featured-image-6.jpg" alt=""></a>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">One Tree Thousand Hope</a></h3>
-                            <div class="column-info">13-14 Feb in Sanfransico, CA</div>
-                            <div class="text">Lorem ipsum dolor sit amet, eu qui modo expeten dis reformidans, ex sit appetere sententiae.. </div>
-                            <a href="#" class="theme-btn btn-style-three">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--Cause Column-->
-                <div class="column default-featured-column links-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box">
-                		<div class="vertical-links-outer">
-                        	<div class="link-block">
-                            	<div class="default inner"><figure class="image-thumb"><img src="/assets/images/resource/post-thumb-1.jpg" alt=""></figure><strong>Togather we can change the</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></div>
-                                <a href="#" class="alternate"><strong>Togather we can change the</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></a>
-                            </div>
-
-                            <div class="link-block">
-                            	<div class="default inner"><figure class="image-thumb"><img src="/assets/images/resource/post-thumb-2.jpg" alt=""></figure><strong>Urgent Clothe Needed</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></div>
-                               <a href="#" class="alternate"><strong>Urgent Clothe Needed</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></a>
-                            </div>
-
-                            <div class="link-block">
-                            	<div class="default inner"><figure class="image-thumb"><img src="/assets/images/resource/post-thumb-3.jpg" alt=""></figure><strong>Let’s plant 200 tree each...</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></div>
-                                <a href="#" class="alternate"><strong>Let’s plant 200 tree each...</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></a>
-                            </div>
-
-                            <div class="link-block">
-                            	<div class="default inner"><figure class="image-thumb"><img src="/assets/images/resource/post-thumb-1.jpg" alt=""></figure><strong>Keep your house envirome..</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></div>
-                                <a href="#" class="alternate"><strong>Keep your house envirome..</strong><span class="desc">Lorem ipsum dolor sit amet et siu amet sio audiam si copiosaei mei purto </span></a>
-                            </div>
-
-                        </div>
-                    </article>
-                </div>
-
 
             </div>
         </div>
@@ -552,75 +463,32 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
             <div class="sec-title text-center">
                 <h2>Latest <span class="normal-font theme_color">News</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interessetnisl omnium dolor amet amet qco modo cum text </div>
+                <div class="text">Stay up to date with our recent blog posts exploring the wonders of fungi, sustainability, and nature's hidden connections. </div>
             </div>
         	<div class="row clearfix">
 
                 <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(blog,index) in allblog" :key="index">
                 	<article class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-1.jpg" alt=""></a>
-                            <div class="news-date">28<span class="month">OCT</span></div>
+                		<figure class="image-box blogs">
+                        	<router-link :to="`/blogsingle/${blog.slug}`"><img :src="blog.image" alt=""></router-link>
+                            <div class="news-date">{{ formattedDates[index].day }}<span class="month">{{ formattedDates[index].month }}</span></div>
                         </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Melting ice</a></h3>
+                        <div class="content-box blog-content">
+                        	<h3 class="title"><router-link :to="`/blogsingle/${blog.slug}`">{{ blog.title }}</router-link></h3>
                         	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
+                            	<div class="post-author">Posted by {{ blog.user?.nom }} {{ blog.user?.prenom }}</div>
                                 <div class="post-options clearfix">
                                 	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
                                     <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
                                 </div>
                             </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
+                            <div class="text">{{ blog.brief_description }}</div>
+                            <router-link :to="`/blogsingle/${blog.slug}`" class="theme-btn btn-style-three">Read More</router-link>
                         </div>
                     </article>
                 </div>
 
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-2.jpg" alt=""></a>
-                            <div class="news-date">22<span class="month">APR</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Deforestation is the threat</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12">
-                	<article class="inner-box wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
-                		<figure class="image-box">
-                        	<a href="#"><img src="/assets/images/resource/blog-image-3.jpg" alt=""></a>
-                            <div class="news-date">23<span class="month">MAR</span></div>
-                        </figure>
-                        <div class="content-box">
-                        	<h3><a href="#">Save the animals</a></h3>
-                        	<div class="post-info clearfix">
-                            	<div class="post-author">Posted by Rashed Kabir</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
-                            </div>
-                            <div class="text">Lorem ipsum dolor sit amet, consectetur adipi elit sed do eiusmod tempor incididunt ut modo labore et dolore magna aliqua veniam...</div>
-                            <a href="#" class="theme-btn read-more">Read More</a>
-                        </div>
-                    </article>
-                </div>
 
 
             </div>
@@ -675,9 +543,160 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
 <script setup>
 
+    import { computed, onMounted, ref } from 'vue';
+    import { getData } from '../../plugin/api';
+import { RouterLink } from 'vue-router';
+
+    const allproject = ref([]);
+    const allblog = ref([]);
+    const allevent = ref([]);
+
+    const AllProjectFunction = async () =>{
+        await getData('/allprojects')
+            .then((response) => {
+                allproject.value = response.data.data.data.slice(0,4);
+            })
+            .catch((error) => {
+                console.error('Error fetching projects:', error);
+            });
+    }
+
+    const AllBlogFunction = async () =>{
+        await getData('/allblogs')
+            .then((response) => {
+                allblog.value = response.data.data.data.slice(0,3);
+                console.log(allblog.value)
+            })
+            .catch((error) => {
+                console.error('Error fetching projects:', error);
+            });
+    }
+
+    const AllEventsFunction = async () =>{
+        await getData('/allevents')
+            .then((response) => {
+                allevent.value = response.data.data.data.slice(0,3);
+
+                allevent.value.forEach((event) => {
+                    const now = new Date();
+                    const endDate = event.end_date ? new Date(event.end_date) : null;
+                    const startDate = new Date(event.start_date);
+
+                    if (endDate && endDate < now){
+                        event.eventstatus = 'Pass';
+                    } else if (!endDate && startDate < now) {
+                        event.eventstatus = 'In progress';
+                    } else {
+                        event.eventstatus = 'Upcoming';
+                    }
+
+                });
+
+            })
+            .catch((error) => {
+                console.error('Error fetching projects:', error);
+            });
+    }
+
+    const formattedDates = computed(() => {
+        return allblog.value.map(blog => {
+            const date = new Date(blog.created_at);
+            const day = date.getDate().toString().padStart(2, '0');
+
+            const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                                "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+            const month = monthNames[date.getMonth()];
+
+            return { day, month };
+        });
+    });
+
+    onMounted(()=>{
+        AllProjectFunction()
+        AllBlogFunction()
+        AllEventsFunction()
+    })
+
+
 </script>
 
-<style>
+<style scoped>
+
+.blogs a{
+    width: 380px;
+    height: 271.42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.blogs a img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-content .title{
+    width: 100%;
+    height: 60.41px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.blog-content   .text{
+    width: 100%;
+    height: 75.61px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project a{
+    width: 281.25px;
+    height: 187.42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.project a img{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-content .title{
+    width: 100%;
+    height: 50.41px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.project-content .text{
+    width: 100%;
+    height: 75.61px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;        /* Nombre de lignes max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
 
 @media screen and (max-width: 991px) {
 
