@@ -25,18 +25,19 @@
         	<div class="auto-container clearfix">
             	<!-- Logo -->
                 <div class="logo">
-                    <router-link to="/"><img src="/assets/images/logo-1.png" alt="Greenture"></router-link>
+                    <router-link to="/"><img src="/assets/images/logo.png" alt="Greenture"></router-link>
                  </div>
 
                  <!--Nav Outer-->
                 <div class="nav-outer clearfix">
 
-                    <a href="#" class="theme-btn btn-donate" data-toggle="modal" data-target="#donate-popup">Donate Now!</a>
+
 
                     <!-- Main Menu -->
                     <nav class="main-menu">
 
                         <div class="navbar-header">
+                            <div class="gtranslate_wrapper mobile"></div>
                             <!-- Toggle Button -->
                             <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse" style="font-size: 18px; background-color: #179607; color: #fff;">
                                 <i class="fas fa-bars"></i>
@@ -49,14 +50,14 @@
                                 <li >
                                     <router-link exact-active-class="current" to="/">Home</router-link>
                                 </li>
-                                
+
                                 <li>
                                     <router-link exact-active-class="current" to="/project">Projects</router-link>
                                 </li>
                                 <li>
                                     <router-link exact-active-class="current" to="/event">Events</router-link>
                                 </li>
-                                
+
                                 <li>
                                     <router-link exact-active-class="current" to="/gallery">Gallery</router-link>
                                 </li>
@@ -71,7 +72,11 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <div class="gtranslate_wrapper desktop"></div>
                     </nav>
+
+
 
                 </div>
 
@@ -84,102 +89,173 @@
 
 <script setup>
 
+    import { onMounted } from 'vue';
+
+    onMounted(() => {
+        // Injecter les paramètres de configuration
+        window.gtranslateSettings = {
+            default_language: "en",
+            languages: ["en", "fr"],
+            wrapper_selector: ".gtranslate_wrapper",
+            switcher_horizontal_position: "inline",
+            alt_flags: {
+            en: "usa"
+            }
+        };
+
+        // Éviter d’ajouter plusieurs fois le script si déjà présent
+        if (!document.querySelector('script[src="https://cdn.gtranslate.net/widgets/latest/dwf.js"]')) {
+            const script = document.createElement("script");
+            script.src = "https://cdn.gtranslate.net/widgets/latest/dwf.js";
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+    })
 </script>
 
 <style>
+
+    /* ----- Desktop (par défaut) ----- */
+    .nav-outer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0px !important;
+    }
+
+    .main-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+        width: 100%;
+    }
+
+    .navbar-collapse {
+        flex: 1;
+    }
+
+    .navigation {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .gtranslate_wrapper {
+        min-width: 80px;
+        max-width: 150px;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: 10px;
+    }
+
+    .desktop{
+        display: block !important;
+    }
+
+    .mobile{
+        display: none !important;
+    }
+
+    .logo a{
+        width: 250px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+
+    }
+    .logo a img{
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+
+
     a.current {
         color: #179607 !important;
         opacity: 1 !important;
     }
+
     @media screen and (max-width: 767px) {
+        .nav-outer {
+            width: 100%;
+        }
 
-    .main-header .top-bar .info-outer {
-        position: relative;
-        text-align: center;
-        padding: 10px 15px;
-        border-radius: 0;
+        .top-bar{
+            display: none !important;
+        }
+
+        /* Étape clé : vertical stacking */
+        .main-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .navbar-header{
+            display: flex !important;
+            flex-direction: row-reverse;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+
+        .navbar-header button{
+            margin: 0px !important;
+        }
+
+        .desktop{
+            display: none !important;
+        }
+
+        .mobile{
+            display: block !important;
+        }
+
+        .navbar-header {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .navbar-toggle {
+            margin: 0 auto;
+        }
+
+        .navbar-collapse {
+            width: 100%;
+            background-color: #f8f8f8;
+            padding: 10px 0;
+        }
+
+        .navigation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            gap: 10px;
+        }
+
+        .gtranslate_wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
     }
 
-    .main-header .top-bar .info-outer:before {
-        display: none;
-    }
 
-    .main-header .top-bar .info-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 0;
-        margin: 0;
-    }
 
-    .main-header .top-bar .info-box li {
-        float: none;
-        padding-left: 15px;
-        margin: 5px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-    }
-
-    .main-header .top-bar .info-box li:after {
-        display: none;
-    }
-
-    .main-header .top-bar .info-box li .icon {
-        position: relative;
-        left: 0;
-        top: 0;
-        margin-right: 8px;
-    }
-
-    .main-header .top-bar .info-box li.social-links-one {
-        display: flex;
-        gap: 10px;
-        justify-content: center;
-    }
-
-    .main-header .top-bar .info-box li.social-links-one a {
-        margin: 0;
-    }
-
-    .main-header .nav-outer {
-        text-align: center;
-        margin-top: 0px !important;
-    }
-
-    .main-header .logo {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .main-header .header-upper .auto-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .main-header .theme-btn.btn-donate {
-        display: inline-block;
-        margin: 10px 0;
-    }
-
-    .main-header .main-menu {
-        width: 100%;
-    }
-
-    .main-header .main-menu .navigation {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .main-header .main-menu .navigation li {
-        float: none;
-        width: 100%;
-    }
-}
 
 </style>

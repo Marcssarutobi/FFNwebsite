@@ -39,7 +39,7 @@
                                 </article>
                             </div>
 
-                            
+
 
                         </div>
 
@@ -54,7 +54,7 @@
                                 <li><a class="next" href="#">Next&ensp;<span class="fa fa-angle-right"></span></a></li>
                             </ul> -->
                         </div>
-                        
+
                     </section>
 
 
@@ -249,5 +249,19 @@
     ::v-deep(.page-item .page-link){
         padding: 6px 25px !important;
     }
-    
+
+    @media screen and (max-width: 991px){
+        .image-box{
+            width: 100%;
+            height: 296.66px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .padd-right-20{
+            padding-right: 0 !important;
+        }
+    }
+
 </style>

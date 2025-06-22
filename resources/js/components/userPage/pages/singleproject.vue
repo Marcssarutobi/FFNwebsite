@@ -275,4 +275,25 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+@media screen and (max-width: 991px){
+    .image-boxs{
+        width: 100%;
+        height: 316.89px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .image-boxe{
+        width: 100%;
+        height: 296.66px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .padd-right-20{
+        padding-right: 0 !important;
+    }
+}
 </style>

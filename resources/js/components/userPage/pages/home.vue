@@ -63,7 +63,7 @@
                     data-endspeed="1200"
                     data-endeasing="Power4.easeIn">
                     <div class="text">
-                        Our NGO works to protect mushrooms, an essential yet often overlooked 
+                        Our NGO works to protect mushrooms, an essential yet often overlooked
                        <br> part of our ecosystems.
                          Through scientific research, and community projects,
                          <br> we highlight the ecological, nutritional, and medicinal importance of mushrooms.
@@ -267,16 +267,16 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                 	<RouterLink to="/event" class="theme-btn btn-style-three">See All Projects</RouterLink>
                 </div>
             </div>
-        	<div class="row clearfix">
+        	<div class="row clearfix" v-if="allproject.length > 0">
 
                 <!--Default Featured Column-->
-                <div class="column default-featured-column col-md-3 col-sm-6 col-xs-12" v-for="project in allproject" :key="project.id" >
-                	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<figure class="image-box project">
-                        	<router-link :to="`/singleproject/${project.slug}`"><img :src="project.image" alt=""></router-link>
+                <div class="column default-featured-column col-md-3 col-sm-3 col-xs-12" v-for="project in allproject" :key="project.id">
+                    <article class="inner-box">
+                        <figure class="image-box project">
+                            <router-link :to="`/singleproject/${project.slug}`"><img :src="project.image" alt=""></router-link>
                         </figure>
                         <div class="content-box project-content">
-                        	<h3 class="title"><a href="#">{{ project.title }}</a></h3>
+                            <h3 class="title"><router-link :to="`/singleproject/${project.slug}`">{{ project.title }}</router-link></h3>
                             <div class="column-info">{{ project.category?.name }}</div>
                             <div class="text">{{ project.brief_description }}</div>
                             <router-link :to="`/singleproject/${project.slug}`" class="theme-btn btn-style-three">Learn More</router-link>
@@ -468,8 +468,8 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         	<div class="row clearfix">
 
                 <!--News Column-->
-                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(blog,index) in allblog" :key="index">
-                	<article class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(blog, index) in allblog" :key="index">
+                	<article class="inner-box">
                 		<figure class="image-box blogs">
                         	<router-link :to="`/blogsingle/${blog.slug}`"><img :src="blog.image" alt=""></router-link>
                             <div class="news-date">{{ formattedDates[index].day }}<span class="month">{{ formattedDates[index].month }}</span></div>
@@ -543,9 +543,10 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
 <script setup>
 
-    import { computed, onMounted, ref } from 'vue';
+    import { computed, onMounted, ref, nextTick } from 'vue';
     import { getData } from '../../plugin/api';
-import { RouterLink } from 'vue-router';
+    import { RouterLink } from 'vue-router';
+    import {themeInit} from '../../plugin/themeInit'
 
     const allproject = ref([]);
     const allblog = ref([]);
@@ -555,6 +556,10 @@ import { RouterLink } from 'vue-router';
         await getData('/allprojects')
             .then((response) => {
                 allproject.value = response.data.data.data.slice(0,4);
+                nextTick(); // wait for DOM updates
+                setTimeout(() => {
+                    themeInit();
+                }, 0);
             })
             .catch((error) => {
                 console.error('Error fetching projects:', error);
@@ -565,7 +570,6 @@ import { RouterLink } from 'vue-router';
         await getData('/allblogs')
             .then((response) => {
                 allblog.value = response.data.data.data.slice(0,3);
-                console.log(allblog.value)
             })
             .catch((error) => {
                 console.error('Error fetching projects:', error);
@@ -699,6 +703,15 @@ import { RouterLink } from 'vue-router';
 
 
 @media screen and (max-width: 991px) {
+
+    .project a{
+        width: 100% !important;
+        height: 307.42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
 
     .featured-fluid-section .column,
     .featured-fluid-section .image-column,

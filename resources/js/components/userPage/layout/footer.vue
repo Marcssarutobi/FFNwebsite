@@ -39,12 +39,7 @@
                                 <h2>Our Project</h2>
                                 <div class="footer-widget links-widget">
                                     <ul>
-                                        <li><a href="#">Water Surve</a></li>
-                                        <li><a href="#">Education for all</a></li>
-                                        <li><a href="#">Treatment</a></li>
-                                        <li><a href="#">Food Serving</a></li>
-                                        <li><a href="#">Cloth</a></li>
-                                        <li><a href="#">Selter Project</a></li>
+                                        <li v-for="project in allproject" :key="project.id"><router-link :to="`/singleproject/${project.slug}`">{{ project.title }}</router-link></li>
                                     </ul>
 
                                 </div>
@@ -61,17 +56,10 @@
                                 	<h2>Latest News</h2>
 
                                     <!--News Post-->
-                                    <div class="news-post">
+                                    <div class="news-post" v-for="(blog, index) in allblog" :key="index">
                                     	<div class="icon"></div>
-                                        <div class="news-content"><figure class="image-thumb"><img src="/assets/images/resource/post-thumb-4.jpg" alt=""></figure><a href="#">If you need a crown or lorem an implant you will pay it gap it</a></div>
-                                        <div class="time">July 2, 2014</div>
-                                    </div>
-
-                                    <!--News Post-->
-                                    <div class="news-post">
-                                    	<div class="icon"></div>
-                                        <div class="news-content"><figure class="image-thumb"><img src="/assets/images/resource/post-thumb-5.jpg" alt=""></figure><a href="#">If you need a crown or lorem an implant you will pay it gap it</a></div>
-                                        <div class="time">July 2, 2014</div>
+                                        <div class="news-content"><figure class="image-thumb"><img style="width: 65px; height: 65px; object-fit: cover;" :src="blog.image" alt=""></figure><router-link :to="`/blogsingle/${blog.slug}`">{{ blog.title }}</router-link></div>
+                                        <div style="font-style: italic; font-size: 12px;" class="post-author">Posted by {{ blog.user?.nom }} {{ blog.user?.prenom }}</div>
                                     </div>
 
                                 </div>
@@ -112,6 +100,43 @@
 </template>
 
 <script setup>
+
+    import { computed, onMounted, ref, nextTick } from 'vue';
+    import { getData } from '../../plugin/api';
+    import { RouterLink } from 'vue-router';
+    import {themeInit} from '../../plugin/themeInit'
+
+    const allproject = ref([]);
+    const allblog = ref([]);
+
+    const AllProjectFunction = async () =>{
+        await getData('/allprojects')
+            .then((response) => {
+                allproject.value = response.data.data.data.slice(0,4);
+                nextTick(); // wait for DOM updates
+                setTimeout(() => {
+                    themeInit();
+                }, 0);
+            })
+            .catch((error) => {
+                console.error('Error fetching projects:', error);
+            });
+    }
+
+    const AllBlogFunction = async () =>{
+        await getData('/allblogs')
+            .then((response) => {
+                allblog.value = response.data.data.data.slice(0,2);
+            })
+            .catch((error) => {
+                console.error('Error fetching projects:', error);
+            });
+    }
+
+    onMounted(()=>{
+        AllProjectFunction()
+        AllBlogFunction()
+    })
 
 </script>
 
