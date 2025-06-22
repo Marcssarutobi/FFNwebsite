@@ -89,6 +89,10 @@ const routes = [
                 path: 'blogs',
                 component: ()=>import('../adminPage/pages/blog.vue'),
             },
+            {
+                path: 'gallery',
+                component: ()=>import('../adminPage/pages/gallery.vue'),
+            },
         ]
     },
     {

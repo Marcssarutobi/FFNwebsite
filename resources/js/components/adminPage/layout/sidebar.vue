@@ -39,9 +39,9 @@
                     </RouterLink>
                 </li>
                 <li class="no-sub mb-2">
-                    <a class="" href="widget.html">
+                    <RouterLink exact-active-class="active" to="/admins/gallery">
                         <i class="iconoir-media-image-list"></i> Gallery
-                    </a>
+                    </RouterLink>
                 </li>
                 <li class="no-sub mb-2">
                     <a class="" href="widget.html">

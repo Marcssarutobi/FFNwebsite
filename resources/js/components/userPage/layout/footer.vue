@@ -127,7 +127,6 @@
         await getData('/allblogs')
             .then((response) => {
                 allblog.value = response.data.data.data.slice(0,2);
-                console.log(allblog.value)
             })
             .catch((error) => {
                 console.error('Error fetching projects:', error);

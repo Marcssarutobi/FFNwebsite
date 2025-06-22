@@ -396,7 +396,7 @@
                                     <a class="dropdown-item" onClick="GetEventFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                     <button class="dropdown-item delete-project" onClick="DeleteEventFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                                 ` : ''}
-                                
+
                             </div>
                         </div>
                     </div>
@@ -555,7 +555,7 @@
 
     const AddEventsFunction = async () =>{
         data.value.user_id = currentUser.value.id;
-        data.value.status = 'published';
+        data.value.status = 'draft';
         inputEmpty();
         const allEmpty = Object.values(isEmpty.value).every(value => value === false)
         if (allEmpty) {

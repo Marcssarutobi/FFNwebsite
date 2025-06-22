@@ -485,7 +485,7 @@
 
     const AddProjectFunction = async ()=>{
 
-        data.value.status = "published"
+        data.value.status = "draft"
         data.value.user_id = currentUser.value.id
 
         inputEmpty()
