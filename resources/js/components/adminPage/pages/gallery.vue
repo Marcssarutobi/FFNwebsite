@@ -11,16 +11,19 @@
             </div>
         </div>
 
-        <div class="rows" style="margin-top: 50px !important; justify-content: start !important;">
+        <div class="rows" style="margin-top: 50px !important; justify-content: start !important;" v-if="allImage.length > 0">
 
             <div  class="pic " v-for="(src,index) in allImage" :key="index">
                 <img :src="src.image" />
                 <div class="overlay">
-                    <button class="btn btn-primary me-3" @click="viewPhoto(src.id)"><i class="fas fa-eye"></i></button>
                     <button class="btn btn-danger" @click="DeleteTmage(src.id)" ><i class="fas fa-trash"></i></button>
                 </div>
             </div>
 
+        </div>
+
+        <div class=" d-flex align-items-center justify-content-center text-center" style="width: 100%; height: 400px;" v-else>
+            <h4 class="text-muted">No Images Found</h4>
         </div>
 
         <!--  Modal content for the Large example -->
@@ -37,7 +40,7 @@
                           <div class="col-lg-12">
                               <div class="form d-flex align-items-center justify-content-center ">
                                   <label for="file" class="btn btn-primary btn-lg rounded-0 m-0  p-3" >
-                                    <i class="fas fa-upload"></i> Choose a photo 
+                                    <i class="fas fa-upload"></i> Choose a photo
                                     <input type="file" id="file" accept="image/*" multiple hidden @change="handleFileImg">
                                   </label>
                               </div>
@@ -75,7 +78,7 @@
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
-        
+
 
     </div>
   </main>
@@ -119,6 +122,15 @@ import Swal from 'sweetalert2';
       }
     }
 
+    Swal.fire({
+        title: "Upload in progress...",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+
     try {
       const res = await axiosInstance.post('/uploadimagesgal', formData, {
           headers: {
@@ -127,6 +139,7 @@ import Swal from 'sweetalert2';
       });
       if (res.status === 200) {
           data.value.image = res.data.image_urls
+          Swal.close();
       }
     } catch (error) {
         console.log(error)
@@ -155,6 +168,13 @@ import Swal from 'sweetalert2';
           })
           if (res.status === 200) {
               data.value.image = []
+              Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Add performed",
+                    showConfirmButton: false,
+                    timer: 1500
+             })
               addmodal.hide()
               AllImageFunction()
           }

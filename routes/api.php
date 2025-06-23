@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PermissionController;
@@ -55,6 +56,9 @@ Route::get('/allimages', [GalleryController::class, 'index']);
 Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
 Route::post('/uploadimagesgal', [GalleryController::class, 'UploadImage']);
 Route::post('/delimagesgal', [GalleryController::class, 'SuppImage']);
+
+//Contact
+Route::post('/addcontact', [ContactController::class, 'store']);
 
 
 Route::middleware('auth:sanctum')->group( function () {
@@ -115,6 +119,12 @@ Route::middleware('auth:sanctum')->group( function () {
     //Gallery
     Route::post('/addimages', [GalleryController::class, 'createGallery']);
     Route::delete('/delimages/{id}', [GalleryController::class, 'deleteImage']);
+
+    //Contacts
+    Route::get('/contacts', [ContactController::class, 'index']);
+    Route::get('/showcontact/{id}', [ContactController::class, 'show']);
+    Route::put('/updatecontact/{id}', [ContactController::class, 'markAsRead']);
+    Route::delete('/deletecontact/{id}', [ContactController::class, 'destroy']);
 
 
 });

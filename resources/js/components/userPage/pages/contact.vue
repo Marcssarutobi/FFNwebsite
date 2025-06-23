@@ -75,24 +75,32 @@
                 	<h2>Send Message</h2>
                 	<!--COntact Form-->
                 	<div class="inner-box contact-form">
-                    	<form method="post" action="sendemail.php" id="contact-form">
+                    	<form @submit.prevent="AddContact" >
                         	<div class="row clearfix">
                             	<!--Form Group-->
                                 <div class="form-group col-md-6 col-xs-12">
-                                	<input type="text" name="username" value="" placeholder="Your Name">
+                                	<input type="text" :class="{ 'is-invalid': isEmpty.name }" v-model="data.name" name="username" value="" placeholder="Your Name">
+                                    <span v-if="isEmpty.name" class="invalid-feedback">{{ msgInput.name }}</span>
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-xs-12">
-                                	<input type="text" name="email" value="" placeholder="Your Email">
+                                	<input type="text" :class="{ 'is-invalid': isEmpty.email }" v-model="data.email" name="email" value="" placeholder="Your Email">
+                                    <span v-if="isEmpty.email" class="invalid-feedback">{{ msgInput.email }}</span>
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-xs-12">
-                                	<textarea name="message" placeholder="Message"></textarea>
+                                	<textarea :class="{ 'is-invalid': isEmpty.message }" v-model="data.message" name="message" placeholder="Message"></textarea>
+                                    <span v-if="isEmpty.message" class="invalid-feedback">{{ msgInput.message }}</span>
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-xs-12">
-                                	<div class="text-right"><button type="submit" class="theme-btn btn-style-two">Send</button></div>
+                                	<div class="text-right">
+                                        <button type="button" class="theme-btn btn-style-two"  v-if="isloader" >
+                                            <span>Sending...</span>
+                                        </button>
+                                        <button v-else type="submit" class="theme-btn btn-style-two">Send</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -128,6 +136,88 @@
 </template>
 
 <script setup>
+
+    import { ref } from 'vue';
+    import {postData} from '../../plugin/api'
+    import Swal from 'sweetalert2';
+
+    const data = ref({
+        name: '',
+        email: '',
+        message: '',
+        is_read: false,
+    });
+    const isEmpty = ref({})
+    const msgInput = ref({})
+    const isloader = ref(false)
+
+    const inputEmpty = ()=>{
+        if (data.value.name.trim() === '') {
+            isEmpty.value.name = true
+            msgInput.value.name = 'This field is required'
+        }else{
+            isEmpty.value.name = false
+            msgInput.value.name = ''
+        }
+        if (data.value.email.trim() === '') {
+            isEmpty.value.email = true
+            msgInput.value.email = 'This field is required'
+        }else{
+            isEmpty.value.email = false
+            msgInput.value.email = ''
+        }
+        if (data.value.message.trim() === '') {
+            isEmpty.value.message = true
+            msgInput.value.message = 'This field is required'
+        }else{
+            isEmpty.value.message = false
+            msgInput.value.message = ''
+        }
+    }
+
+    const AddContact = async ()=>{
+        inputEmpty();
+        const allEmpty = Object.values(isEmpty.value).every(value => value === false)
+        if (allEmpty) {
+            isloader.value = true;
+            await postData('/addcontact', data.value)
+                .then((response) => {
+                    if (response.status === 200) {
+                        isloader.value = false;
+                        data.value.name = '';
+                        data.value.email = '';
+                        data.value.message = '';
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Your message has been sent successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    } else {
+                        isloader.value = false;
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "An error occurred while sending your message",
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
+                .catch((error) => {
+                    isloader.value = false;
+                    console.error(error);
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "An error occurred while sending your message",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                });
+        }
+    }
 
 </script>
 

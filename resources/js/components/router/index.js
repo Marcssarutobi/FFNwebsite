@@ -90,6 +90,10 @@ const routes = [
                 component: ()=>import('../adminPage/pages/blog.vue'),
             },
             {
+                path: 'contact',
+                component: ()=>import('../adminPage/pages/contact.vue'),
+            },
+            {
                 path: 'gallery',
                 component: ()=>import('../adminPage/pages/gallery.vue'),
             },

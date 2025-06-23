@@ -27,7 +27,7 @@
             </div>
 
             <!--Filter List-->
-            <div class="row filter-list clearfix">
+            <div class="row filter-list clearfix" v-if="allimage.length > 0">
 
                 <!--Column-->
                 <div class="column mix mix_all eco plants col-md-4 col-sm-6 col-xs-12" v-for="(img,index) in allimage" :key="index">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
 
-                           
+
 
 
             </div>
