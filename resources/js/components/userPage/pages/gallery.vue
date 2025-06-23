@@ -30,7 +30,7 @@
             <div class="row filter-list clearfix">
 
                 <!--Column-->
-                <div class="column mix mix_all eco plants col-md-4 col-sm-6 col-xs-12">
+                <div class="column mix mix_all eco plants col-md-4 col-sm-6 col-xs-12" v-for="(img,index) in allimage" :key="index">
                     <!--Default Portfolio Item-->
                     <div class="default-portfolio-item">
                         <div class="inner-box text-center">
@@ -422,6 +422,23 @@
 </template>
 
 <script  setup>
+    import { onMounted, ref } from 'vue';
+    import { getData } from '../../plugin/api';
+
+    const allimage = ref([])
+
+    const AllImageFunction = async ()=>{
+        await getData('/allimages')
+                .then(response=>{
+                    if (response.status === 200) {
+                        allimage.value = response.data.gly
+                    }
+                })
+    }
+
+    onMounted(()=>{
+        AllImageFunction()
+    })
 
 </script>
 

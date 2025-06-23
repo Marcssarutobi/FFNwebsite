@@ -50,6 +50,12 @@ Route::post('/deleteblogimg', [BlogController::class, 'deleteImage']);
 Route::get('/showcategory/{id}', [CategoryController::class, 'show']);
 Route::get('/allcategories', [CategoryController::class, 'index']);
 
+//Gallery
+Route::get('/allimages', [GalleryController::class, 'index']);
+Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
+Route::post('/uploadimagesgal', [GalleryController::class, 'UploadImage']);
+Route::post('/delimagesgal', [GalleryController::class, 'SuppImage']);
+
 
 Route::middleware('auth:sanctum')->group( function () {
 
@@ -106,7 +112,9 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/sendApprovalblog/{id}', [BlogController::class, 'SendApprobationMail']);
     Route::post('/sendDeclenedblog/{id}', [BlogController::class, 'SendDeclenedMail']);
 
-
+    //Gallery
+    Route::post('/addimages', [GalleryController::class, 'createGallery']);
+    Route::delete('/delimages/{id}', [GalleryController::class, 'deleteImage']);
 
 
 });
