@@ -100,6 +100,9 @@ const routes = [
             {
                 path: 'user',
                 component: ()=>import('../adminPage/pages/user.vue'),
+                meta:{
+                    roles:['superadmin']
+                }
             },
         ]
     },
@@ -158,10 +161,12 @@ router.beforeEach(async (to, from, next) => {
                     return next('/admins/login');
                 }
 
-                // const requiredRoles = to.meta.roles;
-                // if (requiredRoles && !requiredRoles.includes(auth.role)) {
-                //     return next('/unauthorized')
-                // }
+                const requiredRoles = to.meta.roles;
+                const userRole = auth.role?.name ;
+
+                if (requiredRoles && !requiredRoles.includes(userRole)) {
+                    return next('/unauthorized'); // page d'accès interdit
+                }
 
                 next()
             }else{

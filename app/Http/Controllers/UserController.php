@@ -31,7 +31,7 @@ class UserController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|comfirmed',
+            'password' => 'required|string|min:8|confirmed',
             'image' => 'nullable|string',
             'telephone' => 'nullable|string|max:15',
             'role_id' => 'required|exists:roles,id',
@@ -96,7 +96,7 @@ class UserController extends Controller
     }
 
     public function getUser(Request $request){
-        $user = User::find(Auth::id());
+        $user = User::with('role')->find(Auth::id());
         return response()->json([
             "user" => $user,
         ]);
@@ -156,6 +156,6 @@ class UserController extends Controller
 
     }
 
-    
+
 
 }
