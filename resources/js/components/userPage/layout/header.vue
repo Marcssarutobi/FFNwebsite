@@ -25,7 +25,7 @@
         	<div class="auto-container clearfix">
             	<!-- Logo -->
                 <div class="logo">
-                    <router-link to="/"><img src="/assets/images/logo.png" alt="Greenture"></router-link>
+                    <router-link to="/"><img src="/assets/images/logo.png" alt="Fungi For Nature"></router-link>
                  </div>
 
                  <!--Nav Outer-->

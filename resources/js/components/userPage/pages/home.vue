@@ -300,7 +300,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
                 <div class="content-box pull-right">
                     <h2>Some <span class="normal-font theme_color">Facts</span></h2>
-                    <div class="title-text">Lorem ipsum dolor some link sit amet, cum at inani interesset</div>
+                    <div class="title-text">
+                        We’re proud of the impact Fungi For Nature is making in preserving fungal biodiversity and promoting ecological sustainability
+                    </div>
                     <div class="text">We’re extremely proud of what we’ve achieved together with charitie lorem individuals, philanthropists and schools since the Big Give was founded in 2007, and here are some fact from our achivemnet.</div>
                     <br>
 
@@ -343,14 +345,18 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
                         <!--Text Content-->
                         <div class="text-content">
-                            <div class="text"><p>How to pursue pleasure rationally  consequences that are extremeely painful or again is there anyones who loves or  pursues or desires to obtain pain of itself because its sed great pleasure get well soon.</p></div>
+                            <div class="text">
+                                <p>
+                                    At Fungi For Nature, we believe fungi are not just organisms, but vital allies in restoring ecological balance. Our mission is to protect and promote fungal biodiversity, empower communities, and drive sustainable innovation through nature. Together, we can transform how we see and care for the world beneath our feet
+                                </p>
+                            </div>
                             <div class="information clearfix">
                                 <div class="info">
-                                    <figure class="image-thumb"><img src="/assets/images/resource/ceo-thumb.jpg" alt=""></figure>
-                                    <h3>Alex Zender</h3>
-                                    <p>CEO of Go Green</p>
+                                    <figure class="image-thumb"><img src="/assets/images/resource/Boris-Olou-ID-Photo.jpg" alt=""></figure>
+                                    <h3>Boris Armel Olou</h3>
+                                    <p>CEO of Fungi For Nature</p>
                                 </div>
-                                <div class="signature"><img src="/assets/images/resource/signature-image-1.png" alt=""></div>
+                                
                             </div>
                         </div>
 
@@ -508,7 +514,15 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                     <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li> 
                     <li><a href="#"><img src="/assets/images/clients/06.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>    
+                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>  
+                    <li><a href="#"><img src="/assets/images/clients/image001.jpg" alt=""></a></li>  
+                    <li><a href="#"><img src="/assets/images/clients/image003.png" alt=""></a></li>    
+                    <li><a href="#"><img src="/assets/images/clients/image007.jpg" alt=""></a></li>  
+                    <li><a href="#"><img src="/assets/images/clients/WhatsApp.jpeg" alt=""></a></li>       
+
+
+
+
                 </ul>
             </div>
 
