@@ -126,5 +126,11 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put('/updatecontact/{id}', [ContactController::class, 'markAsRead']);
     Route::delete('/deletecontact/{id}', [ContactController::class, 'destroy']);
 
+    //User
+    Route::get('/alluser', [UserController::class, 'index']);
+    Route::get('/showuser/{id}', [UserController::class, 'show']);
+    Route::post('/adduser', [UserController::class, 'store']);
+    Route::put('/updateuser/{id}', [UserController::class, 'update']);
+    Route::delete('/deleteuser/{id}', [UserController::class, 'destroy']);
 
 });

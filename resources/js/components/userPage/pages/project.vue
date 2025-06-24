@@ -12,7 +12,7 @@
 
 
     <!--Sidebar Page-->
-    <div class="sidebar-page">
+    <div class="events-section latest-events">
     	<div class="auto-container">
         	<div class="row clearfix">
 
@@ -78,7 +78,7 @@
                         </div>
 
                         <!-- Popular Categories -->
-                        <div class="widget popular-categories wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="widget popular-categories  " >
                             <div class="sidebar-title"><h3>Categories</h3></div>
 
                             <ul class="list">
@@ -89,58 +89,6 @@
                                 <li><a class="clearfix" href="#">Soler</a></li>
                                 <li><a class="clearfix" href="#">Eco Energy</a></li>
                             </ul>
-
-                        </div>
-
-
-                        <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Latest Posts</h3></div>
-
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-6.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                             <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-7.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                            <article class="post">
-                            	<figure class="post-thumb"><img src="/assets/images/resource/post-thumb-8.jpg" alt=""></figure>
-                                <h4><a href="#">Deforestation is threating by  activites...</a></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By Rashed Kabir </div>
-                            </article>
-
-                        </div>
-
-                        <!-- Archives -->
-                        <div class="widget archives-list wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <div class="sidebar-title"><h3>Archives</h3></div>
-
-                            <ul class="list">
-                            	<li><a href="#">April 2016</a></li>
-                                <li><a href="#">March  2016</a></li>
-                                <li><a href="#">February 2016</a></li>
-                                <li><a href="#">January 2016</a></li>
-                                <li><a href="#">December 2015</a></li>
-                                <li><a href="#">November 2015</a></li>
-                            </ul>
-
-                        </div>
-
-                        <!-- Popular Tags -->
-                        <div class="widget popular-tags">
-                            <div class="sidebar-title"><h3>KeyWords</h3></div>
-
-                            <a href="#">Child</a>
-                            <a href="#">Water</a>
-                            <a href="#">Donate</a>
-                            <a href="#">Money</a>
-                            <a href="#">Volunteer</a>
 
                         </div>
 

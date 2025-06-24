@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -45,6 +47,14 @@ class ContactController extends Controller
             'is_read' => $request->is_read,
             'message' => $request->message,
         ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+        ];
+
+        Mail::to('contact@fungifornature.com')->send(new ContactMail($data));
 
         return response()->json([
             'status' => 200,
@@ -96,7 +106,8 @@ class ContactController extends Controller
         } else {
             return response()->json([
                 'status' => 404,
-                'message' => 'Contact not found'
+                'message' => 'Contact not found',
+                'data'=>$contact
             ]);
         }
     }

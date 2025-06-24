@@ -97,6 +97,10 @@ const routes = [
                 path: 'gallery',
                 component: ()=>import('../adminPage/pages/gallery.vue'),
             },
+            {
+                path: 'user',
+                component: ()=>import('../adminPage/pages/user.vue'),
+            },
         ]
     },
     {
