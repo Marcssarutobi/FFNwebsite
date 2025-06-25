@@ -130,7 +130,18 @@
 
                     isLoader.value = false
 
-                    router.push('/admins')
+                    // Rediriger vers la route sauvegardée ou par défaut
+                    const redirectUrl = localStorage.getItem('redirectAfterLogin');
+                    if (redirectUrl) {
+                        // Forcer une redirection complète du navigateur
+                        window.location.href = redirectUrl;
+                        localStorage.removeItem('redirectAfterLogin');
+                    } else {
+                        //router.push('/');
+                        window.location.href = "/admins"
+                    }
+
+                    //router.push('/admins')
                 }
 
             } catch (error) {
