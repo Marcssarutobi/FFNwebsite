@@ -44,19 +44,19 @@
                     </RouterLink>
                 </li>
                 <li class="no-sub mb-2">
-                    <a class="" href="widget.html">
+                    <RouterLink exact-active-class="active" to="/admins/contact">
                         <i class="iconoir-mail"></i> Contacts
-                    </a>
+                    </RouterLink>
                 </li>
-                <li class="no-sub mb-2">
+                <!-- <li class="no-sub mb-2">
                     <a class="" href="widget.html">
                         <i class="iconoir-shield-check"></i> Role & Permissions
                     </a>
-                </li>
+                </li> -->
                 <li class="no-sub mb-2">
-                    <a class="" href="widget.html">
+                    <RouterLink exact-active-class="active"  class="" to="/admins/user">
                         <i class="iconoir-user"></i> Users
-                    </a>
+                    </RouterLink>
                 </li>
 
 

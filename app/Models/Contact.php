@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Gallery extends Model
+class Contact extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'image',
+        'name',
+        'email',
+        'message',
+        'is_read',
     ];
-
-    
-
 }

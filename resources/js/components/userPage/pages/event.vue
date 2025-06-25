@@ -14,28 +14,6 @@
     <section class="events-section latest-events">
     	<div class="auto-container">
 
-            <!--Filters Section-->
-            <div class="filters-section">
-            	<div class="filter-form">
-                	<form method="post" action="index.html">
-                    	<div class="row clearfix">
-                        	<div class="form-group col-md-5 col-sm-5 col-xs-12">
-                            	<div class="field-label">Event From</div>
-                                <input type="text" name="date" class="datepicker" value="" placeholder="Date">
-                            </div>
-                            <div class="form-group col-md-5 col-sm-5 col-xs-12">
-                            	<div class="field-label">Search</div>
-                                <input type="text" name="keyword" value="" placeholder="Keyword">
-                            </div>
-                            <div class="form-group col-md-2 col-sm-2 col-xs-12">
-                            	<div class="field-label">&nbsp;</div>
-                                <button type="button" class="theme-btn btn-style-two">Find Events</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
         	<div class="row clearfix">
 
                 <!--Featured Column-->

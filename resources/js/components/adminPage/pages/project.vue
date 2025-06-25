@@ -213,7 +213,7 @@
 
 <script  setup>
 
-    import { nextTick, onMounted, ref } from 'vue';
+    import { nextTick, onMounted, ref, watchEffect } from 'vue';
     import Datatable from '../components/Datatable.vue';
     import {postData, getData, getSingleData, putData} from '../../plugin/api'
     import {initTinyMCE,destroyTinyMCE} from '../../plugin/tinymce';
@@ -269,6 +269,10 @@
             console.error("Error fetching projects:", response);
         }
     }
+
+    watchEffect(async()=>{
+        currentUser.value = await isAuthenticated()
+    })
 
     const columns = [
         {
@@ -330,7 +334,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
-                                ${row.status === 'draft' ? `
+                                ${row.status === 'draft' || (row.status === 'published' && currentUser.value.role?.name === 'viewer') ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
                                     <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                     <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>

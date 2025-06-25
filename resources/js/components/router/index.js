@@ -72,33 +72,69 @@ const routes = [
                 path: '',
                 name: 'adminHome',
                 component: ()=>import('../adminPage/pages/home.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
             },
             {
                 path: 'projects',
                 component: ()=>import('../adminPage/pages/project.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
             },
             {
                 path: 'category',
                 component: ()=>import('../adminPage/pages/category.vue'),
+                meta:{
+                    roles:['superadmin','admin']
+                }
             },
             {
                 path: 'events',
                 component: ()=>import('../adminPage/pages/event.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
             },
             {
                 path: 'blogs',
                 component: ()=>import('../adminPage/pages/blog.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
+                path: 'contact',
+                component: ()=>import('../adminPage/pages/contact.vue'),
+                meta:{
+                    roles:['superadmin','admin']
+                }
             },
             {
                 path: 'gallery',
                 component: ()=>import('../adminPage/pages/gallery.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
+                path: 'user',
+                component: ()=>import('../adminPage/pages/user.vue'),
+                meta:{
+                    roles:['superadmin','admin']
+                }
             },
         ]
     },
     {
         path:'/admins/login',
         component: ()=>import('../adminPage/pages/login.vue'),
-    }
+    },
+    {
+        path:'/admins/unauthorized',
+        component: ()=>import('../adminPage/pages/unauthorized.vue'),
+    },
 ]
 
 
@@ -150,13 +186,16 @@ router.beforeEach(async (to, from, next) => {
                     return next('/admins/login');
                 }
 
-                // const requiredRoles = to.meta.roles;
-                // if (requiredRoles && !requiredRoles.includes(auth.role)) {
-                //     return next('/unauthorized')
-                // }
+                const requiredRoles = to.meta.roles;
+                const userRole = auth.role?.name ;
+
+                if (requiredRoles && !requiredRoles.includes(userRole)) {
+                    return next('/admins/unauthorized'); // page d'accès interdit
+                }
 
                 next()
             }else{
+                localStorage.setItem('redirectAfterLogin', to.fullPath); // <- ici
                 next('/admins/login')
             }
         } catch (error) {
