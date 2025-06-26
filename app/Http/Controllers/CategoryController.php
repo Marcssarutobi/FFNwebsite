@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
     public function index(){
         // 1. Récupérer toutes les catégories
-        $categories = Category::with(['events', 'projects', 'blogs', 'galleries'])->orderBy('id','desc')->get();
+        $categories = Category::with(['events', 'projects', 'blogs'])->orderBy('id','desc')->get();
 
         // 2. Retourner la réponse JSON
         return response()->json([
@@ -41,7 +41,7 @@ class CategoryController extends Controller
 
     public function show ($id){
         // 1. Récupérer la catégorie par son ID
-        $category = Category::with(['events.user', 'projects.user', 'blogs', 'galleries'])->find($id);
+        $category = Category::with(['events.user', 'projects.user', 'blogs'])->find($id);
 
         // 2. Retourner la réponse JSON
         return response()->json([
