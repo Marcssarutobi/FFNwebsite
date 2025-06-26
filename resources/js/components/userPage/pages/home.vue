@@ -713,7 +713,20 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     text-overflow: ellipsis;
 }
 
-
+.sponsors-slider li a {
+    width: 292px;
+    height: 126px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sponsors-slider li a img{
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
 
 
 @media screen and (max-width: 991px) {
