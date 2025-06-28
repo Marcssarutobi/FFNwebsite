@@ -2,9 +2,9 @@
   <!-- Menu Navigation starts -->
   <nav>
         <div class="app-logo">
-            <a class="logo d-inline-block" href="index.html">
-                <img alt="#" src="/admin/assets/images/logo/1.png">
-            </a>
+            <RouterLink class="logo d-inline-block" to="/admins">
+                <img alt="#" src="/assets/images/logo.png">
+            </RouterLink>
 
             <span class="bg-light-primary toggle-semi-nav">
                 <i class="ti ti-chevrons-right f-s-20"></i>

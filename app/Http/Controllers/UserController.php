@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -41,7 +42,7 @@ class UserController extends Controller
             'nom' => $request->nom,
             'prenom' => $request->prenom,
             'email' => $request->email,
-            'password' => bcrypt($request->password),
+            'password' => Hash::make($request->password),
             'image' => $request->image,
             'telephone' => $request->telephone,
             'role_id' => $request->role_id,
@@ -153,6 +154,32 @@ class UserController extends Controller
         }
 
         return 'done';
+
+    }
+
+    public function changePassword(Request $request,$id){
+        $request->validate([
+            "current_password"=>"required",
+            "new_password"=>"required|confirmed"
+        ]);
+
+         // Récupérer l'utilisateur par son ID
+        $user = User::find($id);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json([
+                'error'=>'Le mot de passe actuel est incorrect.'
+            ],403);
+        }
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        // Retourner une réponse de succès
+        return response()->json([
+            'message' => 'Le mot de passe a été changé avec succès.'
+        ]);
 
     }
 

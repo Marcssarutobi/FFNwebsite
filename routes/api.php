@@ -131,6 +131,8 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/showuser/{id}', [UserController::class, 'show']);
     Route::post('/adduser', [UserController::class, 'store']);
     Route::put('/updateuser/{id}', [UserController::class, 'update']);
+    Route::put('/updatepwd/{id}', [UserController::class, 'changePassword']);
     Route::delete('/deleteuser/{id}', [UserController::class, 'destroy']);
+
 
 });

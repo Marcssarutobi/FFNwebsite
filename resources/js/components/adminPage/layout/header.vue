@@ -168,15 +168,9 @@
                                         </li>
 
                                         <li>
-                                            <a class="f-w-500" href="profile.html" target="_blank">
-                                                <i class="iconoir-user-love pe-1 f-s-20"></i> Profile
-                                                Details
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="f-w-500" href="setting.html" target="_blank">
-                                                <i class="iconoir-settings pe-1 f-s-20"></i> Settings
-                                            </a>
+                                            <RouterLink class="f-w-500" to="/admins/settings" >
+                                                <i class="ph ph-gear pe-1 f-s-20"></i> Settings
+                                            </RouterLink>
                                         </li>
                                         <li class="app-divider-v dotted py-1"></li>
                                         <li>

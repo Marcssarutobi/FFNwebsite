@@ -10,7 +10,7 @@
                     <div class="form-container ">
                         <div class="signup-content mt-4">
                 <span>
-                  <img alt="" class="img-fluid " src="/admin/assets/images/logo/1.png">
+                  <img alt="" class="img-fluid " src="/assets/images/logo.png">
                 </span>
                         </div>
 

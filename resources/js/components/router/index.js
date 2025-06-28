@@ -119,6 +119,23 @@ const routes = [
                 }
             },
             {
+                path: 'settings',
+                component: ()=>import('../adminPage/pages/setting.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                },
+                children:[
+                    {
+                        path:'',
+                        component: ()=>import('../adminPage/pages/profils.vue'),
+                    },
+                    {
+                        path:'password',
+                        component: ()=>import('../adminPage/pages/password.vue'),
+                    },
+                ]
+            },
+            {
                 path: 'user',
                 component: ()=>import('../adminPage/pages/user.vue'),
                 meta:{
