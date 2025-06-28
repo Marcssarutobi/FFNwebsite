@@ -48,17 +48,17 @@ const routes = [
             },
             {
                 path: 'projectpreview/:id',
-                meta: {requiresAuth: true},
+                meta: {requiresAuth: true,roles:['superadmin','approver']},
                 component: ()=>import('../userPage/pages/projectpreview.vue'),
             },
             {
                 path: 'eventpreview/:id',
-                meta: {requiresAuth: true},
+                meta: {requiresAuth: true,roles:['superadmin','approver']},
                 component: ()=>import('../userPage/pages/eventpreview.vue'),
             },
             {
                 path: 'blogpreview/:id',
-                meta: {requiresAuth: true},
+                meta: {requiresAuth: true,roles:['superadmin','approver']},
                 component: ()=>import('../userPage/pages/blogpreview.vue'),
             },
         ]

@@ -139,18 +139,30 @@
     .navigation {
         display: flex;
         align-items: center;
-        gap: 15px;
+        gap: 0px;
     }
 
     .gtranslate_wrapper {
         min-width: 80px;
-        max-width: 150px;
+        max-width: 135px;
         font-size: 13px;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        margin-left: 10px;
     }
+
+    .gtranslate_wrapper .gt_switcher{
+        min-width: 80px;
+        max-width: 135px;
+    }
+
+    .gtranslate_wrapper .gt_switcher .gt_selected,
+    .gtranslate_wrapper .gt_switcher .gt_selected a{
+        min-width: 80px;
+        max-width: 135px;
+    }
+
+
 
     .desktop{
         display: block !important;
