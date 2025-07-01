@@ -4,8 +4,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
         <div class="auto-container">
             <div class="sec-title">
-                <h1>About Us</h1>
-                <div class="bread-crumb"><a href="index.html">Home</a> / <a href="#" class="current">About Us</a></div>
+                <h1>Advisor</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="domain" class="current">About Us</RouterLink></div>
             </div>
         </div>
     </section>
@@ -56,7 +56,7 @@
                         	<p>
                                The mission of Fungi For Nature is to support national and international policies on the restoration and sustainable management of natural resources through the conservation of wild fungi, with the goal of preserving the vital ecological services they provide to life on Earth.
                             </p>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     	<h3>Our Goal</h3>
                         <div class="text no-margin-bottom">
                         	<p>To contribute to the knowledge and documentation of the diverse types of fungi.
-                            To promote the sustainable use of beneficial wild mushrooms. 
+                            To promote the sustainable use of beneficial wild mushrooms.
                             To support producers in managing post-harvest losses caused by pathogenic fungi, thereby enhancing food security and protecting human health.
                             To assist in the restoration of polluted ecosystems through mycoremediation.
                             </p>
@@ -228,9 +228,9 @@
                     <li><a href="#"><img src="/assets/images/clients/02.png" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/03.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li> 
+                    <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/06.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>    
+                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>
                 </ul>
             </div>
 
@@ -260,6 +260,8 @@
 </template>
 
 <script  setup>
+import { RouterLink } from 'vue-router';
+
 
 </script>
 

@@ -11,8 +11,16 @@ const routes = [
                 component: ()=>import('../userPage/pages/home.vue'),
             },
             {
-                path: 'about',
-                component: ()=>import('../userPage/pages/about.vue'),
+                path: 'domain',
+                component: ()=>import('../userPage/pages/domain.vue'),
+            },
+            {
+                path: 'advisor',
+                component: ()=>import('../userPage/pages/advisor.vue'),
+            },
+            {
+                path: 'team',
+                component: ()=>import('../userPage/pages/team.vue'),
             },
             {
                 path: 'project',

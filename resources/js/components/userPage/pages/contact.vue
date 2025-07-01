@@ -4,7 +4,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Contact <span class="normal-font">Us</span></h1>
-                <div class="bread-crumb"><a href="index.html">Home</a> / <a href="#" class="current">Contact Us</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#" class="current">Contact Us</a></div>
             </div>
         </div>
     </section>

@@ -50,22 +50,26 @@
                                 <li >
                                     <router-link exact-active-class="current" to="/">Home</router-link>
                                 </li>
-
+                                <li class="dropdown" @mouseenter="openDropdownAbout = true" @mouseleave="openDropdownAbout = false">
+                                    <a href="#" @click.prevent>About</a>
+                                    <ul v-show="openDropdownAbout" style="display: block;">
+                                        <li><router-link  to="/domain">Area of ​​intervention</router-link></li>
+                                        <li><router-link  to="/advisor">Advisor</router-link></li>
+                                        <li><router-link  to="/team">Teams</router-link></li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <router-link exact-active-class="current" to="/project">Projects</router-link>
                                 </li>
-                                <li>
-                                    <router-link exact-active-class="current" to="/event">Events</router-link>
-                                </li>
-
-                                <li>
-                                    <router-link exact-active-class="current" to="/gallery">Gallery</router-link>
+                                <li class="dropdown" @mouseenter="openDropdown = true" @mouseleave="openDropdown = false">
+                                    <a href="#" @click.prevent>Media & New </a>
+                                    <ul v-show="openDropdown" style="display: block;">
+                                        <li><router-link exact-active-class="current" to="/event">Events</router-link></li>
+                                        <li><router-link exact-active-class="current" to="/gallery">Gallery</router-link></li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <router-link exact-active-class="current" to="/blog">BLog</router-link>
-                                </li>
-                                <li>
-                                    <router-link exact-active-class="current" to="/about">About</router-link>
                                 </li>
                                 <li>
                                     <router-link exact-active-class="current" to="/contact">Contact Us</router-link>
@@ -89,7 +93,11 @@
 
 <script setup>
 
-    import { onMounted } from 'vue';
+    import { onMounted, ref } from 'vue';
+
+    const openDropdown = ref(false)
+    const openDropdownAbout = ref(false)
+
 
     onMounted(() => {
         // Injecter les paramètres de configuration
