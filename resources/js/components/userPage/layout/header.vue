@@ -39,40 +39,40 @@
                         <div class="navbar-header">
                             <div class="gtranslate_wrapper mobile"></div>
                             <!-- Toggle Button -->
-                            <button type="button" class="navbar-toggle " data-toggle="collapse" data-target=".navbar-collapse" style="font-size: 18px; background-color: #179607; color: #fff;">
+                            <button type="button" @click="isMenuOpen = !isMenuOpen" class="navbar-toggle "  style="font-size: 18px; background-color: #179607; color: #fff;">
                                 <i class="fas fa-bars"></i>
                             </button>
                         </div>
 
-                        <div class="navbar-collapse collapse clearfix">
+                        <div class="navbar-collapse collapse clearfix" :class="{ show: isMenuOpen }">
                             <ul class="navigation">
 
                                 <li >
-                                    <router-link exact-active-class="current" to="/">Home</router-link>
+                                    <router-link exact-active-class="current" @click="closeMenu" to="/">Home</router-link>
                                 </li>
                                 <li class="dropdown" @mouseenter="openDropdownAbout = true" @mouseleave="openDropdownAbout = false">
                                     <a href="#" @click.prevent>About</a>
-                                    <ul v-show="openDropdownAbout" style="display: block;">
-                                        <li><router-link  to="/domain">Area of ​​intervention</router-link></li>
-                                        <li><router-link  to="/advisor">Advisor</router-link></li>
-                                        <li><router-link  to="/team">Teams</router-link></li>
+                                    <ul v-show="openDropdownAbout" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
+                                        <li><router-link @click="closeDropdowns"  to="/domain">Area of ​​intervention</router-link></li>
+                                        <li><router-link @click="closeDropdowns"  to="/advisor">Advisor</router-link></li>
+                                        <li><router-link @click="closeDropdowns"  to="/team">Teams</router-link></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="/project">Projects</router-link>
+                                    <router-link exact-active-class="current" @click="closeMenu" to="/project">Projects</router-link>
                                 </li>
                                 <li class="dropdown" @mouseenter="openDropdown = true" @mouseleave="openDropdown = false">
                                     <a href="#" @click.prevent>Media & New </a>
-                                    <ul v-show="openDropdown" style="display: block;">
-                                        <li><router-link exact-active-class="current" to="/event">Events</router-link></li>
-                                        <li><router-link exact-active-class="current" to="/gallery">Gallery</router-link></li>
+                                    <ul v-show="openDropdown" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
+                                        <li><router-link @click="closeDropdowns" to="/event">Events</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/gallery">Gallery</router-link></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="/blog">BLog</router-link>
+                                    <router-link exact-active-class="current" @click="closeMenu" to="/blog">BLog</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact-active-class="current" to="/contact">Contact Us</router-link>
+                                    <router-link exact-active-class="current" @click="closeMenu" to="/contact">Contact Us</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -98,6 +98,18 @@
     const openDropdown = ref(false)
     const openDropdownAbout = ref(false)
 
+    const closeDropdowns = () => {
+        openDropdown.value = false
+        openDropdownAbout.value = false
+    }
+
+    const isMobile = () => window.innerWidth <= 767
+    const isMenuOpen = ref(false)
+
+    const closeMenu = () => {
+        isMenuOpen.value = false
+        closeDropdowns()
+    }
 
     onMounted(() => {
         // Injecter les paramètres de configuration
@@ -122,6 +134,13 @@
 </script>
 
 <style>
+
+    .dropdown-mobile {
+        position: static !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding-left: 20px;
+    }
 
     /* ----- Desktop (par défaut) ----- */
     .nav-outer {
