@@ -7,8 +7,8 @@
             <div class="tp-banner">
                 <ul>
 
-                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/37361.jpg"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/37361.jpg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/direct.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/direct.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -142,9 +142,877 @@
 
                     </li>
 
+                    <!--Main Features 1-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00662.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00662.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
 
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 2-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00680.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00680.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 3-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00712.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00712.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 4-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00743.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00743.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 5-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00764.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00764.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 6-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00810.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00810.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 7-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00823.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00823.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 8-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00883.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC00883.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 9-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01008.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01008.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 10-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01032.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01032.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 11-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01067.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01067.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+
+                    <!--Main Features 12-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01071.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01071.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 13-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01111.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01111.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 14-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01169.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01169.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
+                    <!--Main Features 15-->
+                    <li data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC01178.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img src="/assets/images/main-slider/DSC01178.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-120"
+                    data-speed="1500"
+                    data-start="500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="-30"
+                    data-speed="1500"
+                    data-start="1000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+
+                    <div class="tp-caption sfl sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="50"
+                    data-speed="1500"
+                    data-start="1500"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+
+                    <div class="tp-caption sfr sfb tp-resizeme"
+                    data-x="center" data-hoffset="0"
+                    data-y="center" data-voffset="120"
+                    data-speed="1500"
+                    data-start="2000"
+                    data-easing="easeOutExpo"
+                    data-splitin="none"
+                    data-splitout="none"
+                    data-elementdelay="0.01"
+                    data-endelementdelay="0.3"
+                    data-endspeed="1200"
+                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+
+                    </li>
                 </ul>
 
             </div>
@@ -306,31 +1174,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                     <div class="text">We’re extremely proud of what we’ve achieved together with charitie lorem individuals, philanthropists and schools since the Big Give was founded in 2007, and here are some fact from our achivemnet.</div>
                     <br>
 
-                    <div class="clearfix">
-                    	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-shapes-1"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="7845910" data-speed="1500">7,845,910</span></h4>
-                                <span class="title">Raised</span>
-                            </div>
-                        </div>
-
-                        <div class="icon-box">
-                        	<div class="icon"><span class="flaticon-tool-4"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="13360" data-speed="1500">12,360</span></h4>
-                                <span class="title">Projects</span>
-                            </div>
-                        </div>
-
-                        <div class="icon-box">
-                        	<div class="icon"><span class="flaticon-favorite"></span></div>
-                            <div class="lower-box">
-                            	<h4>$<span class="count-text" data-stop="78459" data-speed="1500">225,580</span></h4>
-                                <span class="title">Donations</span>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div class="clearfix"></div>
@@ -402,66 +1246,6 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
 
     <!--Testimonials-->
-    <section class="testimonials-section" style="background-image:url(/assets/images/background/testimonials-bg.jpg);">
-		<div class="auto-container">
-
-            <div class="sec-title text-center">
-                <h2>Testi<span class="normal-font theme_color">Monials</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interes setnisl omnium dolor amet amet qco modo cum text </div>
-            </div>
-
-            <!--Slider-->
-        	<div class="testimonials-slider testimonials-carousel">
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-1.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-2.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-                <!--Slide-->
-                <article class="slide-item">
-
-                    <div class="info-box">
-                    	<figure class="image-box"><img src="/assets/images/resource/testi-image-3.jpg" alt=""></figure>
-                    	<h3>Mark Pine</h3>
-                        <p class="designation">Rome, Italy</p>
-                    </div>
-
-                    <div class="slide-text">
-                        <p>“But I must explain to you the how all this mistaken idea of thealorem qco denouncing pleasure”</p>
-                    </div>
-                </article>
-
-
-            </div>
-
-        </div>
-    </section>
-
-
 
     <!--Blog News Section-->
     <section class="blog-news-section latest-news">
