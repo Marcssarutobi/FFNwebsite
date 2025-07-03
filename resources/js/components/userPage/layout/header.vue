@@ -98,17 +98,19 @@
     const openDropdown = ref(false)
     const openDropdownAbout = ref(false)
 
-    const closeDropdowns = () => {
-        openDropdown.value = false
-        openDropdownAbout.value = false
-    }
-
     const isMobile = () => window.innerWidth <= 767
     const isMenuOpen = ref(false)
 
     const closeMenu = () => {
         isMenuOpen.value = false
-        closeDropdowns()
+        openDropdown.value = false
+        openDropdownAbout.value = false
+    }
+
+    const closeDropdowns = () => {
+        openDropdown.value = false
+        openDropdownAbout.value = false
+        isMenuOpen.value = false
     }
 
     onMounted(() => {
@@ -140,6 +142,7 @@
         background: transparent !important;
         box-shadow: none !important;
         padding-left: 20px;
+        width: 100% !important;
     }
 
     /* ----- Desktop (par défaut) ----- */
@@ -279,11 +282,15 @@
         .navigation {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             width: 100%;
             padding: 0;
             margin: 0;
             gap: 10px;
+        }
+
+        .navigation li{
+            width: 100%;
         }
 
         .gtranslate_wrapper {
