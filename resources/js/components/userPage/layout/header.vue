@@ -26,6 +26,9 @@
             	<!-- Logo -->
                 <div class="logo">
                     <router-link to="/"><img src="/assets/images/logo.png" alt="Fungi For Nature"></router-link>
+                    <button type="button" @click="isMenuOpen = !isMenuOpen" class="navbar-toggle "  style="font-size: 18px; background-color: #179607; color: #fff;">
+                        <i class="fas fa-bars"></i>
+                    </button>
                  </div>
 
                  <!--Nav Outer-->
@@ -37,11 +40,9 @@
                     <nav class="main-menu">
 
                         <div class="navbar-header">
-                            <div class="gtranslate_wrapper mobile"></div>
+                            <!-- <div class="gtranslate_wrapper mobile"></div> -->
                             <!-- Toggle Button -->
-                            <button type="button" @click="isMenuOpen = !isMenuOpen" class="navbar-toggle "  style="font-size: 18px; background-color: #179607; color: #fff;">
-                                <i class="fas fa-bars"></i>
-                            </button>
+                            
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" :class="{ show: isMenuOpen }">
@@ -227,8 +228,21 @@
     }
 
     @media screen and (max-width: 767px) {
+
+        .header-upper{
+            padding: 0 0 !important;
+        }
+
         .nav-outer {
             width: 100%;
+            margin-top: 10px !important;
+        }
+
+        .logo{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .top-bar{

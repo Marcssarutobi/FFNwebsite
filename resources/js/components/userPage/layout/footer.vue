@@ -79,6 +79,7 @@
                                     </ul>
 
                                 </div>
+                                <div class="gtranslate_wrapper mobile"></div>
                             </div>
                     	</div>
                     </div><!--Two 4th column End-->
@@ -134,12 +135,42 @@
     }
 
     onMounted(()=>{
+
+        // Injecter les paramètres de configuration
+        window.gtranslateSettings = {
+            default_language: "en",
+            languages: ["en", "fr"],
+            wrapper_selector: ".gtranslate_wrapper",
+            switcher_horizontal_position: "inline",
+            alt_flags: {
+            en: "usa"
+            }
+        };
+
+        // Éviter d’ajouter plusieurs fois le script si déjà présent
+        if (!document.querySelector('script[src="https://cdn.gtranslate.net/widgets/latest/dwf.js"]')) {
+            const script = document.createElement("script");
+            script.src = "https://cdn.gtranslate.net/widgets/latest/dwf.js";
+            script.defer = true;
+            document.head.appendChild(script);
+        }
+
         AllProjectFunction()
         AllBlogFunction()
     })
 
 </script>
 
-<style>
+<style scoped>
+
+    .mobile{
+        display: none !important;
+    }
+
+    @media screen and (max-width: 767px){
+        .mobile{
+            display: block !important;
+        }
+    }
 
 </style>

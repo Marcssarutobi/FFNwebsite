@@ -1524,6 +1524,10 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         overflow: hidden;
     }
 
+    .outer-box{
+        padding: 0 !important;
+    }
+
     .featured-fluid-section .column,
     .featured-fluid-section .image-column,
     .featured-fluid-section .text-column {
