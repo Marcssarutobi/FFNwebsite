@@ -35,7 +35,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Boris-Olou-ID-Photo.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Boris Armel Olou</h3>
                             <div class="designation">Chief Executive Officer</div>
@@ -59,7 +59,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Basile.jpeg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Basile Gbetondji Hounwanou</h3>
                             <div class="designation">Program Lead</div>
@@ -83,7 +83,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/francois.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>François Olalèyè CHABI</h3>
                             <div class="designation"> Executive Assistant</div>
@@ -108,7 +108,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Photo_d'identité_DAIRO.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>DAÏRO Ogoudaré Julios  </h3>
                             <div class="designation">Finance Lead</div>
