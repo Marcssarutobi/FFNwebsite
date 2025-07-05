@@ -476,7 +476,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                     <div class="title-text">
                         We’re proud of the impact Fungi For Nature is making in preserving fungal biodiversity and promoting ecological sustainability
                     </div>
-                    <div class="text">We’re extremely proud of what we’ve achieved together with charitie lorem individuals, philanthropists and schools since the Big Give was founded in 2007, and here are some fact from our achivemnet.</div>
+                    <div class="text">
+                        Since its creation, Fungi For Nature has worked tirelessly to raise awareness about the ecological importance of fungi. Through education, research, and conservation, we are making an impact. 
+                    </div>
                     <br>
 
                     
@@ -598,7 +600,6 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                 <!--Sponsors Slider-->
                 <ul class="sponsors-slider">
                     <li><a href="#"><img src="/assets/images/clients/01.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/02.png" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/03.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li> 

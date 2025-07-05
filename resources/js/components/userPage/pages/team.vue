@@ -25,7 +25,9 @@
 
             <div class="sec-title text-center">
                 <h2>Our <span class="normal-font theme_color">Team</span></h2>
-                <div class="text">Lorem ipsum dolor sit amet, cum at inani interes setnisl omnium dolor amet amet qco modo cum text </div>
+                <div class="text">
+                    Behind every project and every discovery is a passionate and multidisciplinary team. From field researchers to legal experts, our team is united by a shared commitment: protecting fungal biodiversity for future generations.
+                </div>
             </div>
 
             <div class="row clearfix">
@@ -148,7 +150,6 @@
                 <!--Sponsors Slider-->
                 <ul class="sponsors-slider">
                     <li><a href="#"><img src="/assets/images/clients/01.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/02.png" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/03.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
                     <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li>
