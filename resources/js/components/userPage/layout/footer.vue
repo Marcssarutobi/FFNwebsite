@@ -39,7 +39,7 @@
                                 <h2>Our Project</h2>
                                 <div class="footer-widget links-widget">
                                     <ul>
-                                        <li v-for="project in allproject" :key="project.id"><router-link :to="`/singleproject/${project.slug}`">{{ project.title }}</router-link></li>
+                                        <li v-for="project in allproject" :key="project.id"><router-link :to="`/singleproject/${project.slug}`" class="project">{{ project.title }}</router-link></li>
                                     </ul>
 
                                 </div>
@@ -58,7 +58,7 @@
                                     <!--News Post-->
                                     <div class="news-post" v-for="(blog, index) in allblog" :key="index">
                                     	<div class="icon"></div>
-                                        <div class="news-content"><figure class="image-thumb"><img style="width: 65px; height: 65px; object-fit: cover;" :src="blog.image" alt=""></figure><router-link :to="`/blogsingle/${blog.slug}`">{{ blog.title }}</router-link></div>
+                                        <div class="news-content"><figure class="image-thumb"><img style="width: 65px; height: 65px; object-fit: cover;" :src="blog.image" alt=""></figure><router-link :to="`/blogsingle/${blog.slug}`" class="blog">{{ blog.title }}</router-link></div>
                                         <div style="font-style: italic; font-size: 12px;" class="post-author">Posted by {{ blog.user?.nom }} {{ blog.user?.prenom }}</div>
                                     </div>
 
@@ -162,6 +162,26 @@
 </script>
 
 <style scoped>
+
+    .project{
+        width: 100%;
+        height: 48px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Nombre de lignes max */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .blog{
+        width: 100%;
+        height: 41px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Nombre de lignes max */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
     .mobile{
         display: none !important;
