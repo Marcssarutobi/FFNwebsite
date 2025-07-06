@@ -35,7 +35,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h1><span class="normal-font">Fungi</span> for Life</h1></div>
+                    data-endeasing="Power4.easeIn"><h1><strong><span class="normal-font">Fungi</span> for Nature</strong></h1></div>
 
                     <div class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
@@ -406,7 +406,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     	<div class="outer clearfix">
 
             <!--Image Column-->
-            <div class="image-column" style="background-image:url(/assets/images/resource/fluid-image-1.jpg);"></div>
+            <div class="image-column" style="background-image:url(/assets/images/resource/IMG-20220731-WA0013.jpg);"></div>
 
             <!--Text Column-->
             <article class="column text-column dark-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms" style="background-image:url(/assets/images/resource/fluid-image-2.jpg);">

@@ -4,8 +4,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
         <div class="auto-container">
             <div class="sec-title">
-                <h1>Area of ​​intervention</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="domain" class="current">About Us</RouterLink></div>
+                <h1>About us</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="aboutUs" class="current">About Us</RouterLink></div>
             </div>
         </div>
     </section>
@@ -17,29 +17,25 @@
         	<div class="row clearfix">
 
                 <!--Column-->
-                <div class="column image-column col-md-6 col-sm-12 col-xs-12">
-                	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<figure class="image-box video-box">
-                        	<img src="/assets/images/resource/c1.jpg" alt="">
-                        </figure>
-                    </article>
-                </div>
+               
 
                 <!--Column-->
-                <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
+                <div class="column default-text-column with-margin col-md-12 col-sm-12 col-xs-12">
                 	<article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<h2>WE  Are Think <span class="theme_color normal-font">Ahead</span></h2>
+                		<h2>WE Are <span class="theme_color normal-font">Rooted in Purpose</span></h2>
                         <div class="bigger-text">Our NGO Fungi For Nature is committed to mycological conservation, research and education.</div>
                         <div class="text">
                             <p>
-                                Our NGO, Fungi For Nature, works to protect mushrooms, an essential but often overlooked component of our ecosystems. Through scientific research, public awareness, and community projects, we highlight the ecological, nutritional, and medicinal importance of mushrooms.
+                               Fungi For Nature is driven by a clear mission, strong objectives, and an inspiring vision to protect fungal biodiversity and promote its ecological importance. Here's how we define our purpose: 
 
                             </p></div>
                         <ul class="styled-list-one no-margin-bottom">
-                        	<li>Mycological Research and Documentation</li>
-                            <li>Promotion of Wild Mushroom Utilization </li>
-                            <li>Post-Harvest Loss Management</li>
-                            <li>Biodiversity Policy Advocacy</li>
+                        	<li>To contribute to the knowledge and documentation of the diverse types of fungi</li>
+                            <li>To support producers in managing post-harvest losses caused by pathogenic fungi, thereby enhancing food security and protecting human health; </li>
+                            <li>To encourage organic farming practices through the use of soil-based fungal bio-inoculants;</li>
+                            <li>To assist in the restoration of polluted ecosystems through mycoremediation;</li>
+                            <li>To raise public awareness about the risk of wild mushroom extinction in Benin;</li>
+                            <li>To advocate for the effective integration of fungi into national biodiversity conservation policies in Benin.</li>
                         </ul>
                     </article>
                 </div>
@@ -94,29 +90,7 @@
 
     <!--field Section-->
     <!-- Services Section -->
-<section class="services-section">
-    <div class="auto-container">
-        <div class="sec-title text-center">
-            <h2>Our Areas of Intervention</h2>
-            <div class="text">Discover how Fungi For Nature contributes to preserving biodiversity and improving lives.</div>
-        </div>
 
-        <div class="row clearfix">
-           <p>
-            
-           </p>
-
-           
-
-        
-
-            
-          
-
-          
-        </div>
-    </div>
-</section>
 
 
        <!--end Section-->

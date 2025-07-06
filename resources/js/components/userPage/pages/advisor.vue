@@ -1,7 +1,7 @@
 <template>
 
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
+    <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
         <div class="auto-container">
             <div class="sec-title">
                 <h1>Advisor</h1>
@@ -31,7 +31,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Lorem Ipsum</h3>
                             <div class="designation">Mycology & Biodiversity</div>
@@ -55,7 +55,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Lorem Ipsum</h3>
                             <div class="designation">Mycology & Biodiversity</div>
@@ -67,10 +67,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://www.facebook.com/share/1LCcqXvftL/"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
                                 <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Gbetondji-Basile-Hounwanou"><span class="fa fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/basile-gb%C3%A8tondji-hounwanou-89308a137?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Lorem Ipsum</h3>
                             <div class="designation"> Mycology & Biodiversity</div>
@@ -104,7 +104,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/team-image-2.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Lorem Ipsum</h3>
                             <div class="designation">Finance Lead</div>

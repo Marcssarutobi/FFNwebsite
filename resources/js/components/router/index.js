@@ -15,6 +15,10 @@ const routes = [
                 component: ()=>import('../userPage/pages/domain.vue'),
             },
             {
+                path: 'aboutUs',
+                component: ()=>import('../userPage/pages/aboutUs.vue'),
+            },
+            {
                 path: 'advisor',
                 component: ()=>import('../userPage/pages/advisor.vue'),
             },

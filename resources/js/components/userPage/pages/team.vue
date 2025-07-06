@@ -1,7 +1,7 @@
 <template>
 
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
+    <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
         <div class="auto-container">
             <div class="sec-title">
                 <h1>Teams</h1>
@@ -108,7 +108,31 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Photo_d'identité_DAIRO.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Adelaide.jpeg" alt=""></a></figure>
+                        <div class="member-info">
+                            <h3>Adélaïde Fagnibo</h3>
+                            <div class="designation">Program Lead</div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                    Adélaïde Fagnibo, soil scientist and PhD researcher, promotes sustainable agriculture, fungal symbioses, science communication, and youth engagement for a better future.
+                                </p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--Column-->
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>DAÏRO Ogoudaré Julios  </h3>
                             <div class="designation">Finance Lead</div>
@@ -129,13 +153,131 @@
                     </div>
                 </article>
 
+                <!--Column-->
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <div class="member-info">
+                            <h3>Jannatul Ferdaous</h3>
+                            <div class="designation">Development and Partnerships Lead</div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                </p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--Column-->
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <div class="member-info">
+                            <h3>Muhibbur Rashid</h3>
+                            <div class="designation">Communications Lead</div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                </p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--Column-->
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <div class="member-info">
+                            <h3>Henna</h3>
+                            <div class="designation">Executive Assistant</div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                </p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--Column-->
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <div class="member-info">
+                            <h3>Jmfy Aryelle</h3>
+                            <div class="designation">Co-Curator FFN Fungarium</div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                   Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                </p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!--Column-->
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                    <div class="inner-box">
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <div class="member-info">
+                            <h3>Darius Bled</h3>
+                            <div class="designation">External Auditor</div>
+                        </div>
+                        <div class="content">
+                            <div class="text">
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                                </p>
+                            </div>
+                            <div class="social-links">
+                                <a href="#"><span class="fa fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa fa-twitter"></span></a>
+                                <a href="#"><span class="fa fa-google-plus"></span></a>
+                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
 
         </div>
     </section>
 
-
-    <!--Testimonials-->
 
 
 

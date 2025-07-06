@@ -54,7 +54,8 @@
                                 <li class="dropdown" @mouseenter="openDropdownAbout = true" @mouseleave="openDropdownAbout = false">
                                     <a href="#" @click.prevent>About</a>
                                     <ul v-show="openDropdownAbout" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
-                                        <li><router-link @click="closeDropdowns"  to="/domain">Area of ​​intervention</router-link></li>
+                                        <li><router-link @click="closeDropdowns"  to="/aboutUs">About us</router-link></li>
+                                        <li><router-link @click="closeDropdowns"  to="/domain">Field of ​​intervention</router-link></li>
                                         <li><router-link @click="closeDropdowns"  to="/advisor">Advisor</router-link></li>
                                         <li><router-link @click="closeDropdowns"  to="/team">Teams</router-link></li>
                                     </ul>

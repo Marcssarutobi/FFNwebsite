@@ -1,6 +1,6 @@
 <template>
     <!--Page Title-->
-    <section class="page-title" style="background-image:url(/assets/images/background/page-title-bg.jpg);">
+    <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Single <span class="normal-font">Project</span></h1>
