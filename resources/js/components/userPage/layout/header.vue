@@ -51,6 +51,7 @@
                                 <li >
                                     <router-link exact-active-class="current" @click="closeMenu" to="/">Home</router-link>
                                 </li>
+
                                 <li class="dropdown" @mouseenter="openDropdownAbout = true" @mouseleave="openDropdownAbout = false">
                                     <a href="#" @click.prevent>About</a>
                                     <ul v-show="openDropdownAbout" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
@@ -60,9 +61,29 @@
                                         <li><router-link @click="closeDropdowns"  to="/team">Teams</router-link></li>
                                     </ul>
                                 </li>
-                                <li>
+
+                             <!--    <li>
                                     <router-link exact-active-class="current" @click="closeMenu" to="/project">Projects</router-link>
+                                </li>  -->
+
+                                <li class="dropdown" @mouseenter="openDropdownPrograms = true" @mouseleave="openDropdownPrograms = false">
+                                    <a href="#" @click.prevent>Programs</a>
+                                    <ul v-show="openDropdownPrograms" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
+                                        <li><router-link @click="closeDropdowns" to="/fungiEducation">Fungi Education</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/expeditions">Expeditions</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/project">Projects</router-link></li>
+                                    </ul>
                                 </li>
+
+                                <li class="dropdown" @mouseenter="openDropdownPublications = true" @mouseleave="openDropdownPublications = false">
+                                    <a href="#" @click.prevent>Publications</a>
+                                    <ul v-show="openDropdownPublications" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
+                                        <li><router-link @click="closeDropdowns" to="/scientificPapers">Scientific Papers</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/reports">Reports</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/annualReports">Annual Reports </router-link></li>
+                                    </ul>
+                                </li>
+
                                 <li class="dropdown" @mouseenter="openDropdown = true" @mouseleave="openDropdown = false">
                                     <a href="#" @click.prevent>Media & New </a>
                                     <ul v-show="openDropdown" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
@@ -99,6 +120,8 @@
 
     const openDropdown = ref(false)
     const openDropdownAbout = ref(false)
+    const openDropdownPrograms = ref(false)
+    const openDropdownPublications = ref(false)
 
     const isMobile = () => window.innerWidth <= 767
     const isMenuOpen = ref(false)
@@ -107,11 +130,15 @@
         isMenuOpen.value = false
         openDropdown.value = false
         openDropdownAbout.value = false
+        openDropdownPrograms.value = false
+        openDropdownPublications.value = false
     }
 
     const closeDropdowns = () => {
         openDropdown.value = false
         openDropdownAbout.value = false
+        openDropdownPrograms.value = false
+        openDropdownPublications.value = false
         isMenuOpen.value = false
     }
 

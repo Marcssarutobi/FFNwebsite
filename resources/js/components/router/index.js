@@ -31,6 +31,26 @@ const routes = [
                 component: ()=>import('../userPage/pages/project.vue'),
             },
             {
+                path: 'fungiEducation',
+                component: ()=>import('../userPage/pages/fungiEducation.vue'),
+            },
+            {
+                path: 'expeditions',
+                component: ()=>import('../userPage/pages/expeditions.vue'),
+            },
+            {
+                path: 'scientificPapers',
+                component: ()=>import('../userPage/pages/scientificPapers.vue'),
+            },
+            {
+                path: 'reports',
+                component: ()=>import('../userPage/pages/reports.vue'),
+            },
+            {
+                path: 'annualReports',
+                component: ()=>import('../userPage/pages/annualReports.vue'),
+            },
+            {
                 path: 'singleproject/:slug',
                 component: ()=>import('../userPage/pages/singleproject.vue'),
             },
