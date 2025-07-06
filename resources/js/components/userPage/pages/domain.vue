@@ -12,111 +12,128 @@
 
 
     <!--Default Section-->
-    <section class="default-section">
-    	<div class="auto-container">
-        	<div class="row clearfix">
 
-                <!--Column-->
-                <div class="column image-column col-md-6 col-sm-12 col-xs-12">
-                	<article class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<figure class="image-box video-box">
-                        	<img src="/assets/images/resource/c1.jpg" alt="">
-                        </figure>
-                    </article>
-                </div>
-
-                <!--Column-->
-                <div class="column default-text-column with-margin col-md-6 col-sm-12 col-xs-12">
-                	<article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<h2>WE  Are Think <span class="theme_color normal-font">Ahead</span></h2>
-                        <div class="bigger-text">Our NGO Fungi For Nature is committed to mycological conservation, research and education.</div>
-                        <div class="text">
-                            <p>
-                                Our NGO, Fungi For Nature, works to protect mushrooms, an essential but often overlooked component of our ecosystems. Through scientific research, public awareness, and community projects, we highlight the ecological, nutritional, and medicinal importance of mushrooms.
-
-                            </p></div>
-                        <ul class="styled-list-one no-margin-bottom">
-                        	<li>Mycological Research and Documentation</li>
-                            <li>Promotion of Wild Mushroom Utilization </li>
-                            <li>Post-Harvest Loss Management</li>
-                            <li>Biodiversity Policy Advocacy</li>
-                        </ul>
-                    </article>
-                </div>
-
-            </div>
-
-            <div class="row clearfix">
-
-                <!--Column-->
-                <div class="column default-text-column col-md-4 col-sm-6 col-xs-12">
-                	<div class="text-block">
-                    	<h3>Our Mission</h3>
-                        <div class="text no-margin-bottom">
-                        	<p>
-                               The mission of Fungi For Nature is to support national and international policies on the restoration and sustainable management of natural resources through the conservation of wild fungi, with the goal of preserving the vital ecological services they provide to life on Earth.
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!--Column-->
-                <div class="column default-text-column col-md-4 col-sm-6 col-xs-12">
-                	<div class="text-block">
-                    	<h3>We Established in <span class="theme_color">1984</span></h3>
-                        <div class="text no-margin-bottom">
-                        	<p>There are many variations of passages of Lorem real lypsum available, but the in the majority have suffered alteration in some form, by injected </p>
-                            <p>humour, or lipuan domised words which don't look evenIpsum, you need to be sure there isn't theanything embarrassing hidden in the lorem middle of simply lorem dummy text.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Column-->
-                <div class="column default-text-column col-md-4 col-sm-6 col-xs-12">
-                	<div class="text-block">
-                    	<h3>Our Goal</h3>
-                        <div class="text no-margin-bottom">
-                        	<p>To contribute to the knowledge and documentation of the diverse types of fungi.
-                            To promote the sustainable use of beneficial wild mushrooms.
-                            To support producers in managing post-harvest losses caused by pathogenic fungi, thereby enhancing food security and protecting human health.
-                            To assist in the restoration of polluted ecosystems through mycoremediation.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
 
 
     <!--field Section-->
     <!-- Services Section -->
-<section class="services-section">
-    <div class="auto-container">
-        <div class="sec-title text-center">
-            <h2>Our Areas of Intervention</h2>
-            <div class="text">Discover how Fungi For Nature contributes to preserving biodiversity and improving lives.</div>
+    <section class="main-features">
+    	<div class="auto-container">
+        	<div class="title-box text-center">
+            	<h2>Field of Intervention</h2>
+                <div class="text">
+                   At Fungi For Nature, we believe that fungi hold the key to solving many of today’s environmental, agricultural, and health challenges. <br>
+                   Through science, advocacy, and sustainable action, we explore the untapped potential of fungi to support biodiversity, protect ecosystems, and enhance food systems.
+                    Below are the key fields in which we focus our efforts to create lasting impact. <br>
+                    To achieve its mission effectively, it is technically structured into six (6) Action Units (AUs), namely : 
+                </div>
+            </div>
+
+            <div class="row clearfix">
+
+                <!--Default Icon Column-->
+                <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                	<article class="inner-box d-flex flex-column" style="height: 100%;">
+                    	<div class="icon-box">
+                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        </div>
+                        <h3>Mycological Research and Innovation (MycRI)</h3>
+                        <div class="text">
+                            Advancing the discovery and protection of fungi to preserve their vital role in ecosystems and human well-being.      
+                        </div>
+                                <div class="mt-auto pt-3 text-left">
+                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                </div>
+
+                    </article>
+                </div>
+
+                <!--Default Icon Column-->
+                <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                	<article class="inner-box d-flex flex-column" style="height: 100%;">
+                    	<div class="icon-box">
+                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        </div>
+                        <h3>Fungal Conservation and Ecosystem Management (EcoMyCo)</h3>
+                        <div class="text">
+                           Using fungi-based solutions to restore polluted ecosystems and mitigate the effects of climate change sustainably
+                        </div>
+                                <div class="mt-auto pt-3 text-left">
+                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                </div>
+                    </article>
+                </div>
+
+                <!--Default Icon Column-->
+                <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                	<article class="inner-box d-flex flex-column" style="height: 100%;">
+                    	<div class="icon-box">
+                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        </div>
+                        <h3>Biodiversity and Climate Change (BioClim)</h3>
+                        <div class="text">
+                            Promoting organic farming through fungal bio-inoculants to enhance soil health and reduce dependence on synthetic inputs
+                        </div>
+                                <div class="mt-auto pt-3 text-left">
+                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                </div>
+                    </article>
+                </div>
+
+                <!--Default Icon Column-->
+                <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                	<article class="inner-box d-flex flex-column" style="height: 100%;">
+                    	<div class="icon-box">
+                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        </div>
+                        <h3>Sustainable Agriculture and Food Security (AgriSA)</h3>
+                        <div class="text">
+                            Reducing post-harvest losses from pathogenic fungi to improve food availability and support global health
+                        </div>
+
+                                <div class="mt-auto pt-3 text-left">
+                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                </div>
+                    </article>
+                </div>
+
+                <!--Default Icon Column-->
+                <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                	<article class="inner-box d-flex flex-column" style="height: 100%;">
+                    	<div class="icon-box">
+                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        </div>
+                        <h3>Environmental Mycology (MycoEnv)</h3>
+                        <div class="text">
+                            Reducing post-harvest losses from pathogenic fungi to improve food availability and support global health
+                        </div>
+                                <div class="mt-auto pt-3 text-left">
+                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                </div>
+                    </article>
+                </div>
+
+                <!--Default Icon Column-->
+                <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                	<article class="inner-box d-flex flex-column" style="height: 100%;">
+                    	<div class="icon-box">
+                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        </div>
+                        <h3>Education, Awareness, and Mushroom Valorization (EduMyco)</h3>
+                        <div class="text">
+                            Reducing post-harvest losses from pathogenic fungi to improve food availability and support global health
+                        </div>
+
+                                <div class="mt-auto pt-3 text-left">
+                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                </div>
+                    </article>
+                </div>
+
+            </div>
         </div>
+    </section>
 
-        <div class="row clearfix">
-           <p>
-            
-           </p>
-
-           
-
-        
-
-            
-          
-
-          
-        </div>
-    </div>
-</section>
 
 
        <!--end Section-->
