@@ -43,6 +43,30 @@ const routes = [
                 component: ()=>import('../userPage/pages/scientificPapers.vue'),
             },
             {
+                path: 'mycrl',
+                component: ()=>import('../userPage/pages/mycrl.vue'),
+            },
+            {
+                path: 'agrisa',
+                component: ()=>import('../userPage/pages/agrisa.vue'),
+            },
+            {
+                path: 'edumyco',
+                component: ()=>import('../userPage/pages/edumyco.vue'),
+            },
+            {
+                path: 'mycoenv',
+                component: ()=>import('../userPage/pages/mycoenv.vue'),
+            },
+            {
+                path: 'bioclim',
+                component: ()=>import('../userPage/pages/bioclim.vue'),
+            },
+            {
+                path: 'ecomyco',
+                component: ()=>import('../userPage/pages/ecomyco.vue'),
+            },
+            {
                 path: 'reports',
                 component: ()=>import('../userPage/pages/reports.vue'),
             },

@@ -4,7 +4,7 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
         <div class="auto-container">
             <div class="sec-title">
-                <h1>Area of ​​intervention</h1>
+                <h1>Field of ​​intervention</h1>
                 <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="domain" class="current">About Us</RouterLink></div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                             Advancing the discovery and protection of fungi to preserve their vital role in ecosystems and human well-being.      
                         </div>
                                 <div class="mt-auto pt-3 text-left">
-                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                     <router-link to="/mycrl" class="theme-btn btn-style-two">View details</router-link>
                                 </div>
 
                     </article>
@@ -59,7 +59,7 @@
                            Using fungi-based solutions to restore polluted ecosystems and mitigate the effects of climate change sustainably
                         </div>
                                 <div class="mt-auto pt-3 text-left">
-                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                    <router-link to="/ecomyco" class="theme-btn btn-style-two">View details</router-link>
                                 </div>
                     </article>
                 </div>
@@ -74,8 +74,8 @@
                         <div class="text">
                             Promoting organic farming through fungal bio-inoculants to enhance soil health and reduce dependence on synthetic inputs
                         </div>
-                                <div class="mt-auto pt-3 text-left">
-                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                               <div class="mt-auto pt-3 text-left">
+                                    <router-link to="/bioclim" class="theme-btn btn-style-two">View details</router-link>
                                 </div>
                     </article>
                 </div>
@@ -92,7 +92,7 @@
                         </div>
 
                                 <div class="mt-auto pt-3 text-left">
-                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                    <router-link to="/agrisa" class="theme-btn btn-style-two">View details</router-link>
                                 </div>
                     </article>
                 </div>
@@ -107,8 +107,8 @@
                         <div class="text">
                             Reducing post-harvest losses from pathogenic fungi to improve food availability and support global health
                         </div>
-                                <div class="mt-auto pt-3 text-left">
-                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                                 <div class="mt-auto pt-3 text-left">
+                                    <router-link to="/mycoenv" class="theme-btn btn-style-two">View details</router-link>
                                 </div>
                     </article>
                 </div>
@@ -124,8 +124,8 @@
                             Reducing post-harvest losses from pathogenic fungi to improve food availability and support global health
                         </div>
 
-                                <div class="mt-auto pt-3 text-left">
-                                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                               <div class="mt-auto pt-3 text-left">
+                                    <router-link to="/edumyco" class="theme-btn btn-style-two">View details</router-link>
                                 </div>
                     </article>
                 </div>
