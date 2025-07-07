@@ -53,7 +53,7 @@
                         </div>
 
                         <!--Comments Area-->
-                        <div class="comments-area">
+                        <!-- <div class="comments-area">
                             <div class="group-title text-uppercase"><h2>3 Comments</h2></div>
 
                             <div class="comment-box">
@@ -78,42 +78,11 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div> -->
 
 
 
-                        <!-- Comment Form -->
-                        <div class="comment-form wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-
-                            <div class="group-title text-uppercase"><h2>Post Reply</h2><div class="default-line-left"></div></div>
-
-                            <!--Comment Form-->
-                            <form method="post" action="blog.html">
-                                <div class="row clearfix">
-                                    <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                                        <input type="text" name="username" placeholder="Your Name">
-                                    </div>
-
-                                    <div class=" col-lg-4 col-md-6 col-sm-12 col-xs-12 form-group">
-                                        <input type="email" name="email" placeholder="Email">
-                                    </div>
-
-                                    <div class=" col-lg-4 col-md-12 col-sm-12 col-xs-12 form-group">
-                                        <input type="text" name="url" placeholder="Website">
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                        <textarea name="message" placeholder="Your Message"></textarea>
-                                    </div>
-
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
-                                        <button class="theme-btn btn-style-two" type="submit" name="submit-form">Add Comment</button>
-                                    </div>
-
-                                </div>
-                            </form>
-
-                        </div><!--End Comment Form -->
+                       
 
                     </section>
 
