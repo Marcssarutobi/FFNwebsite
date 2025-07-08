@@ -22,7 +22,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><div class="circular-drop">0<sub>2</sub></div></div>
+                    data-endeasing="Power4.easeIn"></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
