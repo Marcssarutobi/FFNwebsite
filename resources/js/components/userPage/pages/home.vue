@@ -80,7 +80,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
 
                     </li>
 
@@ -125,7 +125,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -138,7 +138,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
 
                     </li>
 
@@ -184,7 +184,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -197,7 +197,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
 
                     </li>
                     <!--Main Features 2-->
@@ -242,7 +242,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -255,7 +255,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
 
                     </li>
                     <!--Main Features 3-->
@@ -300,7 +300,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of tomorrow.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -313,7 +313,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><a href="#" class="theme-btn btn-style-one">Learn More</a></div>
+                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
 
                     </li>
                     
@@ -329,7 +329,7 @@
     <section class="main-features">
     	<div class="auto-container">
         	<div class="title-box text-center">
-            	<h1>30000+</h1>
+            <!--	<h1>30000+</h1> -->
             	<h2>Field of Intervention</h2>
                 <div class="text">
                    At Fungi For Nature, we believe that fungi hold the key to solving many of today’s environmental, agricultural, and health challenges. Through science, advocacy, and sustainable action, we explore the untapped potential of fungi to support biodiversity, protect ecosystems, and enhance food systems.
@@ -415,8 +415,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                     <h2>Join <span class="theme_color">our event</span> &amp; helping us by donation</h2>
                 	<div class="title-text">Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset </div>
                     <div class="text">Lorem ipsum dolor sit amet, eu qui modo expetendis reformidans ex sit set appetere sententiae seo eum in simul homero. Duo consul lorem probatus no qu alterum sit at no simple dummy.</div>
-                    <a href="#" class="theme-btn btn-style-one">Join Now</a>
-                    <a href="#" class="theme-btn btn-style-two">View details</a>
+                    <RouterLink to="/contact" class="theme-btn btn-style-one">Join Now</RouterLink>
+                    <RouterLink to="/domain" class="theme-btn btn-style-two">View details</RouterLink>
+                   
                 </div>
 
                 <div class="clearfix"></div>
@@ -437,7 +438,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                     <div class="text">Explore our recent projects devoted to promoting fungi as key allies in ecological balance and sustainability. </div>
                 </div>
                 <div class="pull-right padd-top-30">
-                	<RouterLink to="/event" class="theme-btn btn-style-three">See All Projects</RouterLink>
+                	<RouterLink to="/project" class="theme-btn btn-style-three">See All Projects</RouterLink>
                 </div>
             </div>
         	<div class="row clearfix" v-if="allproject.length > 0">
@@ -636,7 +637,8 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                		<a href="#" class="theme-btn btn-style-one">Subscribe Now</a>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                		
                     </div>
                 </div>
             </div>

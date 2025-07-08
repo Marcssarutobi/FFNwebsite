@@ -34,6 +34,9 @@
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-regular.css">
 
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/duotone-light.css">
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-papj0eZNT+J/urXbdVxB5A+Z6Ixub/HD2BKwznmZZn5YctktSo1MPtFQgYq2zKXtfKyHO6yJYi4z1c6UXU8jMw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <title>Fungi for Nature</title>
 

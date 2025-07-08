@@ -69,7 +69,7 @@
                                 <li class="dropdown" @mouseenter="openDropdownPrograms = true" @mouseleave="openDropdownPrograms = false">
                                     <a href="#" @click.prevent>Programs</a>
                                     <ul v-show="openDropdownPrograms" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
-                                        <li><router-link @click="closeDropdowns" to="/fungiEducation">Fungi Education</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/blog">Fungi Education</router-link></li>
                                         <li><router-link @click="closeDropdowns" to="/expeditions">Expeditions</router-link></li>
                                         <li><router-link @click="closeDropdowns" to="/project">Projects</router-link></li>
                                     </ul>
@@ -91,9 +91,9 @@
                                         <li><router-link @click="closeDropdowns" to="/gallery">Gallery</router-link></li>
                                     </ul>
                                 </li>
-                                <li>
+                              <!--   <li>
                                     <router-link exact-active-class="current" @click="closeMenu" to="/blog">BLog</router-link>
-                                </li>
+                                </li> -->
                                 <li>
                                     <router-link exact-active-class="current" @click="closeMenu" to="/contact">Contact Us</router-link>
                                 </li>

@@ -47,10 +47,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://web.facebook.com/boris.olou"><span class="fa fa-facebook-f"></span></a>
-                                <a href="https://twitter.com/BorisOlou"><span class="fa fa-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Boris-Olou"><span class="fa fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/armel-boris-olou-050430125/"><span class="fa fa-linkedin"></span></a>
+                                <a href="https://web.facebook.com/boris.olou" target="_blank" rel="noopener noreferrer"><span class="fa fa-facebook-f"></span></a>
+                                <a href="https://twitter.com/BorisOlou" target="_blank" rel="noopener noreferrer"><span class="fa fa-twitter"></span></a>
+                                <a href="https://www.researchgate.net/profile/Boris-Olou" target="_blank" rel="noopener noreferrer"><span class="fa fa-google-plus"></span></a>
+                                <a href="https://www.linkedin.com/in/armel-boris-olou-050430125/" target="_blank" rel="noopener noreferrer"><span class="fa fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -71,10 +71,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://www.facebook.com/share/1LCcqXvftL/"><span class="fa fa-facebook-f"></span></a>
+                                <a href="https://www.facebook.com/share/1LCcqXvftL/" target="_blank" rel="noopener noreferrer"><span class="fa fa-facebook-f"></span></a>
                                 <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Gbetondji-Basile-Hounwanou"><span class="fa fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/basile-gb%C3%A8tondji-hounwanou-89308a137?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><span class="fa fa-linkedin"></span></a>
+                                <a href="https://www.researchgate.net/profile/Gbetondji-Basile-Hounwanou" target="_blank" rel="noopener noreferrer"><span class="fa fa-google-plus"></span></a>
+                                <a href="https://www.linkedin.com/in/basile-gb%C3%A8tondji-hounwanou-89308a137?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"><span class="fa fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Adelaide.jpeg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>Adélaïde Fagnibo</h3>
-                            <div class="designation">Program Lead</div>
+                            <div class="designation">Awarness Program Lead</div>
                         </div>
                         <div class="content">
                             <div class="text">
@@ -315,7 +315,8 @@
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                		<a href="#" class="theme-btn btn-style-one">Subscribe Now</a>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                		
                     </div>
                 </div>
             </div>

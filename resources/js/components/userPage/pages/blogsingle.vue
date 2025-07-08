@@ -153,31 +153,33 @@
         	<div class="text-center">
             	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
                 <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<a href="#" class="theme-btn btn-style-two">Donate Now!</a>
-                <a href="#" class="theme-btn btn-style-one">Join Event</a>
+            	<RouterLink to="/contact" class="theme-btn btn-style-one">Join Now</RouterLink>
+                <RouterLink to="/domain" class="theme-btn btn-style-two">View details</RouterLink>
             </div>
         </div>
     </section>
 
 
     <!--Intro Section-->
-    <section class="subscribe-intro">
+   <section class="subscribe-intro">
     	<div class="auto-container">
         	<div class="row clearfix">
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
                 	<h2>Subcribe for Newsletter</h2>
-                    Receive our latest news and special offers directly to your inbox.
+                   Receive our latest news and special offers directly to your inbox.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                		<a href="#" class="theme-btn btn-style-one">Subscribe Now</a>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                		
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 </template>
 
 <script setup>

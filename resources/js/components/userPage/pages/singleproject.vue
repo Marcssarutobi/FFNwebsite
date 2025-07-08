@@ -132,7 +132,7 @@
 
 
     <!--Intro Section-->
-    <section class="subscribe-intro">
+   <section class="subscribe-intro">
     	<div class="auto-container">
         	<div class="row clearfix">
             	<!--Column-->
@@ -143,7 +143,8 @@
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                		<a href="#" class="theme-btn btn-style-one">Subscribe Now</a>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                		
                     </div>
                 </div>
             </div>

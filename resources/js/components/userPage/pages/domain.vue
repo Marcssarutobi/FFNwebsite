@@ -35,7 +35,7 @@
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 	<article class="inner-box d-flex flex-column" style="height: 100%;">
                     	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        	<div class="icon"><i class="fas fa-microscope"></i></div>
                         </div>
                         <h3>Mycological Research and Innovation (MycRI)</h3>
                         <div class="text">
@@ -52,7 +52,7 @@
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 	<article class="inner-box d-flex flex-column" style="height: 100%;">
                     	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        	<div class="icon"><i class="fas fa-leaf"></i></div>
                         </div>
                         <h3>Fungal Conservation and Ecosystem Management (EcoMyCo)</h3>
                         <div class="text">
@@ -68,7 +68,7 @@
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 	<article class="inner-box d-flex flex-column" style="height: 100%;">
                     	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        	<div class="icon"><i class="fas fa-globe"></i></div>
                         </div>
                         <h3>Biodiversity and Climate Change (BioClim)</h3>
                         <div class="text">
@@ -84,7 +84,7 @@
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 	<article class="inner-box d-flex flex-column" style="height: 100%;">
                     	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        	<div class="icon"><i class="fas fa-wheat-awn"></i></div>
                         </div>
                         <h3>Sustainable Agriculture and Food Security (AgriSA)</h3>
                         <div class="text">
@@ -101,7 +101,7 @@
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 	<article class="inner-box d-flex flex-column" style="height: 100%;">
                     	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        	<div class="icon"><i class="fas fa-flask"></i></div>
                         </div>
                         <h3>Environmental Mycology (MycoEnv)</h3>
                         <div class="text">
@@ -117,7 +117,7 @@
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 	<article class="inner-box d-flex flex-column" style="height: 100%;">
                     	<div class="icon-box">
-                        	<div class="icon"><span class="flaticon-summer-3"></span></div>
+                        	<div class="icon"><i class="fas fa-book-open"></i></div>
                         </div>
                         <h3>Education, Awareness, and Mushroom Valorization (EduMyco)</h3>
                         <div class="text">
@@ -158,7 +158,7 @@
     </section>
 
     <!--Intro Section-->
-    <section class="subscribe-intro">
+   <section class="subscribe-intro">
     	<div class="auto-container">
         	<div class="row clearfix">
             	<!--Column-->
@@ -169,7 +169,8 @@
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                		<a href="#" class="theme-btn btn-style-one">Subscribe Now</a>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                		
                     </div>
                 </div>
             </div>
