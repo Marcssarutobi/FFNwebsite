@@ -43,10 +43,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://web.facebook.com/boris.olou"><span class="fa fa-facebook-f"></span></a>
-                                <a href="https://twitter.com/BorisOlou"><span class="fa fa-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Boris-Olou"><span class="fa fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/armel-boris-olou-050430125/"><span class="fa fa-linkedin"></span></a>
+                                <a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
+                                <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -67,10 +67,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
+                                <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -92,10 +92,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
+                                <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -116,10 +116,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
+                                <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
