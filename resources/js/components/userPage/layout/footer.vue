@@ -24,11 +24,10 @@
                                     </ul>
 
                                     <div class="social-links-two clearfix">
-                                    	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
-                                        <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>
-                                        <a href="#" class="google-plus img-circle"><span class="fa fa-google-plus"></span></a>
-                                        <a href="#" class="linkedin img-circle"><span class="fa fa-pinterest-p"></span></a>
-                                        <a href="#" class="linkedin img-circle"><span class="fa fa-linkedin"></span></a>
+                                    	<a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
+                                        <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
+                                        <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
+                                        <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
                                     </div>
 
                                 </div>
@@ -36,7 +35,7 @@
 
                             <!--Footer Column-->
                             <div class="col-lg-4 col-sm-6 col-xs-12 column">
-                                <h2>Our Project</h2>
+                                <h2>Our Projects</h2>
                                 <div class="footer-widget links-widget">
                                     <ul>
                                         <li v-for="project in allproject" :key="project.id"><router-link :to="`/singleproject/${project.slug}`" class="project">{{ project.title }}</router-link></li>

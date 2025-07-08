@@ -47,10 +47,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://web.facebook.com/boris.olou" target="_blank" rel="noopener noreferrer"><span class="fa fa-facebook-f"></span></a>
-                                <a href="https://twitter.com/BorisOlou" target="_blank" rel="noopener noreferrer"><span class="fa fa-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Boris-Olou" target="_blank" rel="noopener noreferrer"><span class="fa fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/armel-boris-olou-050430125/" target="_blank" rel="noopener noreferrer"><span class="fa fa-linkedin"></span></a>
+                                <a href="https://web.facebook.com/boris.olou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="https://twitter.com/BorisOlou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="https://www.researchgate.net/profile/Boris-Olou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="https://www.linkedin.com/in/armel-boris-olou-050430125/" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -71,10 +71,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://www.facebook.com/share/1LCcqXvftL/" target="_blank" rel="noopener noreferrer"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Gbetondji-Basile-Hounwanou" target="_blank" rel="noopener noreferrer"><span class="fa fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/basile-gb%C3%A8tondji-hounwanou-89308a137?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"><span class="fa fa-linkedin"></span></a>
+                                <a href="https://www.facebook.com/share/1LCcqXvftL/" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="https://www.researchgate.net/profile/Gbetondji-Basile-Hounwanou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="https://www.linkedin.com/in/basile-gb%C3%A8tondji-hounwanou-89308a137?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -96,10 +96,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -120,10 +120,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -144,10 +144,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -168,10 +168,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -192,10 +192,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -216,10 +216,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -240,10 +240,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -264,10 +264,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#"><span class="fa fa-facebook-f"></span></a>
-                                <a href="#"><span class="fa fa-twitter"></span></a>
-                                <a href="#"><span class="fa fa-google-plus"></span></a>
-                                <a href="#"><span class="fa fa-linkedin"></span></a>
+                                <a href="#"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a href="#"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a href="#"><span class="fa-brands fa-google-plus"></span></a>
+                                <a href="#"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -316,7 +316,7 @@
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
                         <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
-                		
+
                     </div>
                 </div>
             </div>

@@ -11,10 +11,10 @@
                     	<li><span class="icon flaticon-interface"></span><a href="mailto:contact@fungifornature.com">contact@fungifornature.com</a></li>
                     	<li><span class="icon flaticon-technology-5"></span><a href="#">(+229) 0196975772</a></li>
                         <li class="social-links-one">
-                        	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
-                            <a href="#" class="twitter img-circle"><span class="fa fa-twitter"></span></a>
-                            <a href="#" class="google-plus img-circle"><span class="fa fa-google-plus"></span></a>
-                            <a href="#" class="linkedin img-circle"><span class="fa fa-linkedin"></span></a>
+                        	<a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
+                            <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
+                            <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
+                            <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
                         </li>
                     </ul>
                  </div>
@@ -42,7 +42,7 @@
                         <div class="navbar-header">
                             <!-- <div class="gtranslate_wrapper mobile"></div> -->
                             <!-- Toggle Button -->
-                            
+
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" :class="{ show: isMenuOpen }">
