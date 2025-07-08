@@ -125,7 +125,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -184,7 +184,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -242,7 +242,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms of next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
