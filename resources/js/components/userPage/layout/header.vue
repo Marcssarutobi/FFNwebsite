@@ -142,25 +142,43 @@
         isMenuOpen.value = false
     }
 
-    onMounted(() => {
-        // Injecter les paramètres de configuration
-        window.gtranslateSettings = {
-            default_language: "en",
-            languages: ["en", "fr"],
-            wrapper_selector: ".gtranslate_wrapper",
-            switcher_horizontal_position: "inline",
-            alt_flags: {
-            en: "usa"
-            }
-        };
+    // onMounted(() => {
+    //     // Injecter les paramètres de configuration
+    //     window.gtranslateSettings = {
+    //         default_language: "en",
+    //         languages: ["en", "fr"],
+    //         wrapper_selector: ".gtranslate_wrapper",
+    //         switcher_horizontal_position: "inline",
+    //         alt_flags: {
+    //         en: "usa"
+    //         }
+    //     };
 
-        // Éviter d’ajouter plusieurs fois le script si déjà présent
-        if (!document.querySelector('script[src="https://cdn.gtranslate.net/widgets/latest/dwf.js"]')) {
-            const script = document.createElement("script");
-            script.src = "https://cdn.gtranslate.net/widgets/latest/dwf.js";
-            script.defer = true;
-            document.head.appendChild(script);
+    //     // Éviter d’ajouter plusieurs fois le script si déjà présent
+    //     if (!document.querySelector('script[src="https://cdn.gtranslate.net/widgets/latest/dwf.js"]')) {
+    //         const script = document.createElement("script");
+    //         script.src = "https://cdn.gtranslate.net/widgets/latest/dwf.js";
+    //         script.defer = true;
+    //         document.head.appendChild(script);
+    //     }
+    // })
+
+    onMounted(() => {
+        // 1. Définir la configuration
+        window.gtranslateSettings = {
+            default_language: 'en',
+            languages: ['en', 'fr'],
+            wrapper_selector: '.gtranslate_wrapper',
+            flag_size: 24
         }
+
+        // 2. Créer le tag script
+        const script = document.createElement('script')
+        script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
+        script.defer = true
+
+        // 3. Ajouter le script dans le DOM
+        document.head.appendChild(script)
     })
 </script>
 
