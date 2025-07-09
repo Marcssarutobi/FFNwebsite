@@ -169,8 +169,11 @@
             default_language: 'en',
             languages: ['en', 'fr'],
             wrapper_selector: '.gtranslate_wrapper',
+            switcher_horizontal_position: "inline",
             flag_size: 24,
-            layout: 'flags' // 👈 assure-toi de ne PAS mettre "dropdown"
+            alt_flags: {
+             en: "usa"
+            }
         }
 
         // Charger SEULEMENT le script fc.js (flags)
