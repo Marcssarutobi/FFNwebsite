@@ -164,20 +164,19 @@
     // })
 
     onMounted(() => {
-        // 1. Définir la configuration
+        // Configuration du widget AVEC DRAPEAUX SEULEMENT (pas de select)
         window.gtranslateSettings = {
             default_language: 'en',
             languages: ['en', 'fr'],
             wrapper_selector: '.gtranslate_wrapper',
-            flag_size: 24
+            flag_size: 24,
+            layout: 'flags' // 👈 assure-toi de ne PAS mettre "dropdown"
         }
 
-        // 2. Créer le tag script
+        // Charger SEULEMENT le script fc.js (flags)
         const script = document.createElement('script')
         script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
         script.defer = true
-
-        // 3. Ajouter le script dans le DOM
         document.head.appendChild(script)
     })
 </script>
@@ -190,6 +189,19 @@
         box-shadow: none !important;
         padding-left: 20px;
         width: 100% !important;
+    }
+
+    .gt_switcher{
+        display: none !important;
+    }
+
+    .glink img{
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .glink span{
+        font-size: 14px !important;
     }
 
     /* ----- Desktop (par défaut) ----- */
