@@ -125,7 +125,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -184,7 +184,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -242,7 +242,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -300,7 +300,7 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote the mushrooms for next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
 
                     <div class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
@@ -412,7 +412,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
             <article class="column text-column dark-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms" style="background-image:url(/assets/images/resource/fluid-image-2.jpg);">
 
                 <div class="content-box pull-left">
-                    <h2>Join <span class="theme_color">our event</span> &amp; helping us by donation</h2>
+                    <h2>Join <span class="theme_color">our event</span> </h2>
                 	<div class="title-text">Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset </div>
                     <div class="text">Lorem ipsum dolor sit amet, eu qui modo expetendis reformidans ex sit set appetere sententiae seo eum in simul homero. Duo consul lorem probatus no qu alterum sit at no simple dummy.</div>
                     <RouterLink to="/contact" class="theme-btn btn-style-one">Join Now</RouterLink>
