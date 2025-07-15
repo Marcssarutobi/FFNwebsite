@@ -132,7 +132,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/DAIROUpdate.jpg" alt=""></a></figure>
                         <div class="member-info">
                             <h3>DAÏRO Ogoudaré Julios  </h3>
                             <div class="designation">Finance Lead</div>
