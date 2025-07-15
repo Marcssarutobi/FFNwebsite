@@ -1,31 +1,29 @@
 <template>
-
+  
     <!--Page Title-->
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>Our <span class="normal-font">Projects</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#" class="current">Projects</a></div>
+                <h1>Category <span class="normal-font">Details</span></h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#" class="current">Category Details</a></div>
             </div>
         </div>
     </section>
 
-
-    <!--Sidebar Page-->
     <div class="events-section latest-events">
-    	<div class="auto-container">
-        	<div class="row clearfix">
 
-                <!--Content Side-->
-                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-12">
 
-                    <!--Projects Section-->
+
+                     <!--Projects Section-->
                     <section class="projects-section no-padd-bottom no-padd-top padd-right-20">
 
                         <div class="row clearfix">
 
                             <!--Default Featured Column-->
-                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12" v-for="project in filteredProjects" :key="project.id">
+                            <div class="column default-featured-column col-md-6 col-sm-6 col-xs-12" v-for="project in getCat?.projects" :key="project.id">
                                 <article class="inner-box">
                                     <figure class="image-box">
                                         <router-link :to="`/singleproject/${project.slug}`"><img :src="project.image" alt=""></router-link>
@@ -59,118 +57,39 @@
 
 
                 </div>
-                <!--Content Side-->
-
-                <!--Sidebar-->
-                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
-                    <aside class="sidebar">
-
-                        <!-- Search Form -->
-                        <div class="widget search-box">
-
-                            <div >
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" v-model="searchTerm" placeholder="Enter keyword">
-                                    <button disabled type="submit"><span class="icon flaticon-tool-5"></span></button>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Popular Categories -->
-                        <div class="widget popular-categories  " >
-                            <div class="sidebar-title"><h3>Categories</h3></div>
-
-                            <ul class="list">
-                            	<li v-for="cat in allcat6" :key="cat.id"><RouterLink class="clearfix" :to="`/catDetails/${cat.id}`">{{ cat.name }}</RouterLink></li>
-                            </ul>
-
-                        </div>
-
-                    </aside>
-
-
-                </div>
-                <!--Sidebar-->
-
-
             </div>
         </div>
+
     </div>
-
-    <!--Intro Section-->
-   <section class="subscribe-intro">
-    	<div class="auto-container">
-        	<div class="row clearfix">
-            	<!--Column-->
-                <div class="column col-md-9 col-sm-12 col-xs-12">
-                	<h2>Subcribe for Newsletter</h2>
-                   Receive our latest news and special offers directly to your inbox.
-                </div>
-                <!--Column-->
-                <div class="column col-md-3 col-sm-12 col-xs-12">
-                	<div class="text-right padd-top-20">
-                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
-                		
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 </template>
 
 <script setup>
+    import { onMounted, ref } from 'vue';
+    import { useRoute } from 'vue-router';
+    import { getSingleData } from '../../plugin/api';
 
-    import { computed, onMounted, ref } from 'vue';
-    import { getData } from '../../plugin/api';
-    import Paginate from 'vuejs-paginate-next'
+    const route = useRoute();
+    const getData = ref(route.params.id);
+    const getCat = ref({});
 
-    const allproject = ref([]);
-    const currentPage = ref(1);
-    const totalPage = ref(0);
-    const allcat6 = ref([]);
-    const searchTerm = ref('');
-
-    const AllProjectFunction = async (page) =>{
-        await getData('/allprojects?page='+page)
-            .then((response) => {
-                allproject.value = response.data.data.data;
-                totalPage.value = response.data.data.last_page;
-                currentPage.value = response.data.data.current_page;
+    const AllProjectFunction = async ()=>{
+        await getSingleData('/showcategory/'+getData.value)
+            .then(response=>{
+                getCat.value = response.data.category;
             })
-            .catch((error) => {
-                console.error('Error fetching projects:', error);
-            });
     }
-
-    const AllCategoryFunction = async () => {
-        await getData('/allcategories')
-            .then((response) => {
-                allcat6.value = response.data.categories.slice(0, 6);
-            })
-            .catch((error) => {
-                console.error('Error fetching categories:', error);
-            });
-    }
-
-    const filteredProjects = computed(() => {
-        if (!searchTerm.value.trim()) return allproject.value;
-        return allproject.value.filter(project =>
-            project.title?.toLowerCase().includes(searchTerm.value.toLowerCase()) 
-        );
-    });
 
     onMounted(() => {
         AllProjectFunction();
-        AllCategoryFunction();
     });
 
 </script>
 
-<style scoped >
-    .image-box{
-        width: 419.38px;
+<style scoped>
+
+.image-box{
+        width: 560px;
         height: 296.66px;
         overflow: hidden;
         display: flex;

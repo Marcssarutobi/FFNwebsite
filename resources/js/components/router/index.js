@@ -117,6 +117,10 @@ const routes = [
                 meta: {requiresAuth: true,roles:['superadmin','approver']},
                 component: ()=>import('../userPage/pages/blogpreview.vue'),
             },
+            {
+                path: 'catDetails/:id',
+                component: ()=>import('../userPage/pages/catProject.vue'),
+            }
         ]
     },
     {

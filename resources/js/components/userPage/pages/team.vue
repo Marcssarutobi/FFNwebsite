@@ -33,7 +33,7 @@
             <div class="row clearfix">
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Boris-Olou-ID-Photo.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -57,7 +57,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Basile.jpeg" alt=""></a></figure>
                         <div class="member-info">
@@ -67,7 +67,7 @@
                         <div class="content">
                             <div class="text">
                                 <p>
-                                    Program Lead managing research and community initiatives focused on fungal biodiversity, ecosystem restoration, and sustainable development in local and regional contexts.
+                                    Program Lead overseeing research and community-driven initiatives on fungal biodiversity, ecosystem restoration, and sustainable development across local and regional environments.
                                 </p>
                             </div>
                             <div class="social-links">
@@ -81,7 +81,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/francois.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -106,7 +106,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Adelaide.jpeg" alt=""></a></figure>
                         <div class="member-info">
@@ -130,7 +130,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -154,7 +154,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -178,7 +178,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -202,7 +202,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -226,7 +226,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -250,7 +250,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -332,6 +332,32 @@ import { RouterLink } from 'vue-router';
 
 </script>
 
-<style>
+<style scoped>
+
+.image a{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 270px !important;
+    height: 347px !important;
+    overflow: hidden !important;
+}
+.image a img{
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.content .text p {
+    width: 270px !important;
+    height: 135px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+}
 
 </style>
