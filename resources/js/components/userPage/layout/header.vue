@@ -142,46 +142,43 @@
         isMenuOpen.value = false
     }
 
-    // onMounted(() => {
-    //     // Injecter les paramètres de configuration
-    //     window.gtranslateSettings = {
-    //         default_language: "en",
-    //         languages: ["en", "fr"],
-    //         wrapper_selector: ".gtranslate_wrapper",
-    //         switcher_horizontal_position: "inline",
-    //         alt_flags: {
-    //         en: "usa"
-    //         }
-    //     };
-
-    //     // Éviter d’ajouter plusieurs fois le script si déjà présent
-    //     if (!document.querySelector('script[src="https://cdn.gtranslate.net/widgets/latest/dwf.js"]')) {
-    //         const script = document.createElement("script");
-    //         script.src = "https://cdn.gtranslate.net/widgets/latest/dwf.js";
-    //         script.defer = true;
-    //         document.head.appendChild(script);
-    //     }
-    // })
-
     onMounted(() => {
+        // 1. Ajouter la configuration
+        const configScript = document.createElement('script')
+        configScript.type = 'text/javascript'
+        configScript.innerHTML = `window.gtranslateSettings = {
+            default_language: "en",
+            languages: ["en", "fr"],
+            wrapper_selector: ".gtranslate_wrapper"
+        };`
+        document.head.appendChild(configScript)
+
+        // 2. Charger le script externe
+        const externalScript = document.createElement('script')
+        externalScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js"
+        externalScript.defer = true
+        document.head.appendChild(externalScript)
+    })
+
+    //onMounted(() => {
         // Configuration du widget AVEC DRAPEAUX SEULEMENT (pas de select)
-        window.gtranslateSettings = {
-            default_language: 'en',
-            languages: ['en', 'fr'],
-            wrapper_selector: '.gtranslate_wrapper',
-            switcher_horizontal_position: "inline",
-            flag_size: 24,
-            alt_flags: {
-             en: "usa"
-            }
-        }
+        //window.gtranslateSettings = {
+        //    default_language: 'en',
+        //    languages: ['en', 'fr'],
+        //    wrapper_selector: '.gtranslate_wrapper',
+        //    switcher_horizontal_position: "inline",
+        //    flag_size: 24,
+        //    alt_flags: {
+        //     en: "usa"
+        //    }
+        //}
 
         // Charger SEULEMENT le script fc.js (flags)
-        const script = document.createElement('script')
-        script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
-        script.defer = true
-        document.head.appendChild(script)
-    })
+        //const script = document.createElement('script')
+        //script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
+        //script.defer = true
+        //document.head.appendChild(script)
+    //})
 </script>
 
 <style>
@@ -241,6 +238,11 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+    }
+
+    .gtranslate_wrapper .gt_selector{
+        height: 50px;
+        border: 1px solid #000;
     }
 
     .gtranslate_wrapper .gt_switcher{
