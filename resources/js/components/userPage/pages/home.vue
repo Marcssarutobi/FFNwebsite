@@ -413,10 +413,10 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
                 <div class="content-box pull-left">
                     <h2>Join <span class="theme_color">our event</span> </h2>
-                	<div class="title-text">Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset </div>
-                    <div class="text">Lorem ipsum dolor sit amet, eu qui modo expetendis reformidans ex sit set appetere sententiae seo eum in simul homero. Duo consul lorem probatus no qu alterum sit at no simple dummy.</div>
+                <!--	<div class="title-text">Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset </div>
+                    <div class="text">Lorem ipsum dolor sit amet, eu qui modo expetendis reformidans ex sit set appetere sententiae seo eum in simul homero. Duo consul lorem probatus no qu alterum sit at no simple dummy.</div> -->
                     <RouterLink to="/contact" class="theme-btn btn-style-one">Join Now</RouterLink>
-                    <RouterLink to="/domain" class="theme-btn btn-style-two">View details</RouterLink>
+                    <RouterLink to="/domain" class="theme-btn btn-style-two">View details</RouterLink> 
                    
                 </div>
 

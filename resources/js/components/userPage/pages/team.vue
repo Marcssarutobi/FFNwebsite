@@ -85,7 +85,7 @@
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/francois.jpg" alt=""></a></figure>
                         <div class="member-info">
-                            <h3>François Olalèyè CHABI</h3>
+                            <h3>François Olalèyè Chabi</h3>
                             <div class="designation"> Executive Assistant</div>
                         </div>
                         <div class="content">
@@ -134,7 +134,7 @@
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/DAIROUpdate.jpg" alt=""></a></figure>
                         <div class="member-info">
-                            <h3>DAÏRO Ogoudaré Julios  </h3>
+                            <h3>Ogoudaré Julios Daïro</h3>
                             <div class="designation">Finance Lead</div>
                         </div>
                         <div class="content">
