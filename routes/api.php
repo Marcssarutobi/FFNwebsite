@@ -8,6 +8,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,11 @@ Route::post('/delimagesgal', [GalleryController::class, 'SuppImage']);
 
 //Contact
 Route::post('/addcontact', [ContactController::class, 'store']);
+
+//Teams and Advisors
+Route::get('/teams', [TeamController::class, 'indexTeams']);
+Route::get('/advisors', [TeamController::class, 'indexAdvisors']);
+Route::get('/showteam/{slug}', [TeamController::class, 'show']);
 
 
 Route::middleware('auth:sanctum')->group( function () {
@@ -125,6 +131,11 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::get('/showcontact/{id}', [ContactController::class, 'show']);
     Route::put('/updatecontact/{id}', [ContactController::class, 'markAsRead']);
     Route::delete('/deletecontact/{id}', [ContactController::class, 'destroy']);
+
+    //Teams and Advisors
+    Route::post('/addteam', [TeamController::class, 'store']);
+    Route::put('/updateteam/{slug}', [TeamController::class, 'update']);
+    Route::delete('/deleteteam/{slug}', [TeamController::class, 'destroy']);
 
     //User
     Route::get('/alluser', [UserController::class, 'index']);
