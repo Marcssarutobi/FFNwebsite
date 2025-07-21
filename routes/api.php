@@ -134,5 +134,13 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::put('/updatepwd/{id}', [UserController::class, 'changePassword']);
     Route::delete('/deleteuser/{id}', [UserController::class, 'destroy']);
 
+    //fungiEducation
+    Route::get('/fungieducation', [FungiEducationController::class, 'index']);
+    Route::get('/fungieducation/{id}', [FungiEducationController::class, 'show']);
+    Route::post('/addfungieducation', [FungiEducationController::class, 'store']);
+    Route::put('/updatefungieducation/{id}', [FungiEducationController::class, 'update']);
+    Route::delete('/deletefungieducation/{id}', [FungiEducationController::class, 'destroy']);
+    Route::get('/showfungieducation/{slug}', [FungiEducationController::class, 'showUser']);
+
 
 });

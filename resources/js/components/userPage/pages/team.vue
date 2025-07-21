@@ -140,7 +140,7 @@
                         <div class="content">
                             <div class="text">
                                 <p>
-                                    Executive Assistant & Legal Expert with 8+ years' experience in corporate law, contract negotiation, compliance, and executive support across various sectors.
+                                    Economist with 5+ years’ experience in agriculture, environment, gender, and economic studies, including work with the African Development Bank.
                                 </p>
                             </div>
                             <div class="social-links">
@@ -202,7 +202,7 @@
                 </article>
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
+             <!--    <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -224,6 +224,8 @@
                         </div>
                     </div>
                 </article>
+
+                -->
 
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
