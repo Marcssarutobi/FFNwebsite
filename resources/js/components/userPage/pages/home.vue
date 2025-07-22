@@ -85,7 +85,7 @@
                     </li>
 
                     <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/C7.png"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/C7.png"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <img src="/assets/images/main-slider/replace.jpeg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"

@@ -120,6 +120,11 @@ const routes = [
             {
                 path: 'catDetails/:id',
                 component: ()=>import('../userPage/pages/catProject.vue'),
+            },
+            {
+                path: 'fungiEducationpreview/:id',
+                meta: {requiresAuth: true,roles:['superadmin','approver']},
+                component: ()=>import('../userPage/pages/fungiEducationpreview.vue'),
             }
         ]
     },
@@ -139,6 +144,13 @@ const routes = [
             {
                 path: 'projects',
                 component: ()=>import('../adminPage/pages/project.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
+                path: 'fungiEducation',
+                component: ()=>import('../adminPage/pages/fungiEducation.vue'),
                 meta:{
                     roles:['superadmin','admin','author','viewer','approver']
                 }

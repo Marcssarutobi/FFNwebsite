@@ -48,6 +48,14 @@
                         <i class="iconoir-mail"></i> Contacts
                     </RouterLink>
                 </li>
+                
+                <li class="no-sub mb-2">
+                    <RouterLink exact-active-class="active" to="/admins/fungiEducation">
+                        <i class="iconoir-book"></i> Fungi Education
+                    </RouterLink>
+                </li>
+
+                
                 <!-- <li class="no-sub mb-2">
                     <a class="" href="widget.html">
                         <i class="iconoir-shield-check"></i> Role & Permissions
