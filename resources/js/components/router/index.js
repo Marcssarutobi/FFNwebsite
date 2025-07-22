@@ -156,6 +156,13 @@ const routes = [
                 }
             },
             {
+                path: 'expeditions',
+                component: ()=>import('../adminPage/pages/expeditions.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
                 path: 'category',
                 component: ()=>import('../adminPage/pages/category.vue'),
                 meta:{

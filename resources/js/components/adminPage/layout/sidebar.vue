@@ -55,6 +55,15 @@
                     </RouterLink>
                 </li>
 
+                <li class="no-sub mb-2">
+                    <RouterLink exact-active-class="active" to="/admins/expeditions">
+                        <i class="iconoir-book"></i> Expeditions
+                    </RouterLink>
+                </li>
+                
+
+                
+
                 
                 <!-- <li class="no-sub mb-2">
                     <a class="" href="widget.html">
