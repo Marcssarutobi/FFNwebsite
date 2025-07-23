@@ -42,7 +42,6 @@ class TeamController extends Controller
     public function store(Request $request){
         $request->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'required|string|unique:teams,slug',
             'brief_description' => 'nullable|string',
             'content' => 'nullable|string',
             'image' => 'nullable',

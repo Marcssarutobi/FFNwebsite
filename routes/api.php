@@ -4,6 +4,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\FungiEducationController;
+use App\Http\Controllers\ExpeditionsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProjectController;
@@ -65,6 +67,8 @@ Route::post('/addcontact', [ContactController::class, 'store']);
 Route::get('/teams', [TeamController::class, 'indexTeams']);
 Route::get('/advisors', [TeamController::class, 'indexAdvisors']);
 Route::get('/showteam/{slug}', [TeamController::class, 'show']);
+Route::post('/uploadimagesTeams', [TeamController::class, 'uploadImg']);
+Route::post('/delimagesTeams', [TeamController::class, 'deleteImage']);
 
 
 Route::middleware('auth:sanctum')->group( function () {

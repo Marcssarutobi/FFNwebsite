@@ -198,6 +198,13 @@ const routes = [
                 }
             },
             {
+                path: 'team',
+                component: ()=>import('../adminPage/pages/team.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
                 path: 'settings',
                 component: ()=>import('../adminPage/pages/setting.vue'),
                 meta:{
