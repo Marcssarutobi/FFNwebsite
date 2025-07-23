@@ -46,6 +46,10 @@ class TeamController extends Controller
             'content' => 'nullable|string',
             'image' => 'nullable',
             'type' => 'required|in:teams,advisors',
+            'facebook_link' => 'nullable|url',
+            'twitter_link' => 'nullable|url',
+            'linkedin_link' => 'nullable|url',
+            'instagram_link' => 'nullable|url',
         ]);
 
         // ✅ Générer un slug unique à partir du titre
@@ -58,6 +62,10 @@ class TeamController extends Controller
             'image' => $request->image,
             'content' => $request->content,
             'type' => $request->type,
+            'facebook_link' => $request->facebook_link,
+            'twitter_link' => $request->twitter_link,
+            'linkedin_link' => $request->linkedin_link,
+            'instagram_link' => $request->instagram_link,
         ]);
 
         return response()->json([
@@ -70,7 +78,7 @@ class TeamController extends Controller
     public function update(Request $request, $slug){
         $team = Team::where('slug',$slug)->first();
 
-        $data = $team->update([$request->all()]);
+        $data = $team->update($request->all());
 
         return response()->json([
             'status' => 200,

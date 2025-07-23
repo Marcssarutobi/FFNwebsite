@@ -19,6 +19,10 @@ return new class extends Migration
             $table->text('content')->nullable();
             $table->string('image')->nullable();
             $table->enum('type', ['teams', 'advisors'])->default('teams');
+            $table->string('facebook_link')->nullable(); 
+            $table->string('twitter_link')->nullable();
+            $table->string('linkedin_link')->nullable();
+            $table->string('instagram_link')->nullable();
             $table->timestamps();
         });
     }

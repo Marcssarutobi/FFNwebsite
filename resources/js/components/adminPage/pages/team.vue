@@ -63,11 +63,43 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Facebook Link</label>
+                                            <input v-model="data.facebook_link" :class="{ 'is-invalid': isEmpty.facebook_link }" type="text" class="form-control" @input="validateSocialLinks" placeholder="Enter Facebook link">
+                                            <span v-if="isEmpty.facebook_link" class="text-danger">{{ msgInput.facebook_link }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Twitter Link</label>
+                                            <input v-model="data.twitter_link" :class="{ 'is-invalid': isEmpty.twitter_link }" type="text" @input="validateSocialLinks" class="form-control" placeholder="Enter Twitter link">
+                                            <span v-if="isEmpty.twitter_link" class="text-danger">{{ msgInput.twitter_link }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Linkedin Link</label>
+                                            <input v-model="data.linkedin_link" :class="{ 'is-invalid': isEmpty.linkedin_link }" @input="validateSocialLinks" type="text" class="form-control" placeholder="Enter Linkedin link">
+                                            <span v-if="isEmpty.linkedin_link" class="text-danger">{{ msgInput.linkedin_link }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Instagram Link</label>
+                                            <input v-model="data.instagram_link" :class="{ 'is-invalid': isEmpty.instagram_link }" @input="validateSocialLinks" type="text" class="form-control" placeholder="Enter Instagram link">
+                                            <span v-if="isEmpty.instagram_link" class="text-danger">{{ msgInput.instagram_link }}</span>
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-12 mb-3">
                                         <div class="form-group">
                                             <label for="">Description</label>
                                             <textarea v-model="data.brief_description" :class="{ 'is-invalid': isEmpty.brief_description }" maxlength="200" class="form-control" rows="5" id=""></textarea>
-                                            <span class=" text-muted">{{ data.brief_description.length }}/ 200 charatere</span>
+                                            <span class=" text-muted">{{ data.brief_description.length }}/ 200 </span>
                                             <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
                                         </div>
                                     </div>
@@ -138,6 +170,39 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Facebook Link</label>
+                                            <input v-model="getTeam.facebook_link" :class="{ 'is-invalid': isEmpty.facebook_link }" type="text" class="form-control" @input="validateSocialLinks" placeholder="Enter Facebook link">
+                                            <span v-if="isEmpty.facebook_link" class="text-danger">{{ msgInput.facebook_link }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Twitter Link</label>
+                                            <input v-model="getTeam.twitter_link" :class="{ 'is-invalid': isEmpty.twitter_link }" type="text" @input="validateSocialLinks" class="form-control" placeholder="Enter Twitter link">
+                                            <span v-if="isEmpty.twitter_link" class="text-danger">{{ msgInput.twitter_link }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Linkedin Link</label>
+                                            <input v-model="getTeam.linkedin_link" :class="{ 'is-invalid': isEmpty.linkedin_link }" @input="validateSocialLinks" type="text" class="form-control" placeholder="Enter Linkedin link">
+                                            <span v-if="isEmpty.linkedin_link" class="text-danger">{{ msgInput.linkedin_link }}</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 mb-3">
+                                        <div class="form-group">
+                                            <label for="">Instagram Link</label>
+                                            <input v-model="getTeam.instagram_link" :class="{ 'is-invalid': isEmpty.instagram_link }" @input="validateSocialLinks" type="text" class="form-control" placeholder="Enter Instagram link">
+                                            <span v-if="isEmpty.instagram_link" class="text-danger">{{ msgInput.instagram_link }}</span>
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-12 mb-3">
                                         <div class="form-group">
                                             <label for="">Description</label>
@@ -195,6 +260,10 @@ const data = ref({
     content:"",
     image:"",
     type:"teams",
+    facebook_link: "",
+    twitter_link: "",
+    linkedin_link: "",
+    instagram_link: "",
 })
 const isEmpty = ref({})
 const msgInput = ref({})
@@ -285,8 +354,31 @@ const delImage = async () =>{
     }
 }
 
+function validateSocialLinks() {
+    const socialFields = ['facebook_link', 'twitter_link', 'linkedin_link', 'instagram_link'];
+
+    const pattern = /^(https?:\/\/)[^\s/$.?#].[^\s]*$/i;
+
+    socialFields.forEach((field) => {
+        const value = data.value[field];
+
+        if (!value) {
+            msgInput.value[field] = "";
+            isEmpty.value[field] = false;
+        } else if (!pattern.test(value)) {
+            msgInput.value[field] = `Please enter a valid URL for ${field.replace('_', ' ')}`;
+            isEmpty.value[field] = true;
+        } else {
+            msgInput.value[field] = "";
+            isEmpty.value[field] = false;
+        }
+    });
+}
+
 async function AddTeamsFunction() {
+    const excludedFields = ['facebook_link', 'twitter_link', 'linkedin_link', 'instagram_link'];
     for (const field in data.value) {
+        if (excludedFields.includes(field)) continue;
         isEmpty.value[field] = !data.value[field]
         msgInput.value[field] = `Please enter ${field.replace('_', ' ')}`;
     }
@@ -368,7 +460,7 @@ const columns = ref([
         // Personnalise ici l'affichage des actions si nécessaire
         return `
             <a class="btn btn-secondary" onClick="GetTeamInfo('${row.slug}')" ><i class="far fa-edit"></i></a>
-            <a class="btn btn-danger" onClick="DeleteUserFunction(${row.id})" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="far fa-trash-alt"></i></a>
+            <a class="btn btn-danger" onClick="DeleteTeamsFunction('${row.slug}')" data-bs-toggle="modal" data-bs-target="#delete_modal"><i class="far fa-trash-alt"></i></a>
         `;
         }
     }
@@ -440,24 +532,7 @@ const handleFileImgUpdate = async (event)=>{
 
         } catch (error) {
             console.log(error)
-            if (error.response.status === 422) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Image size must not exceed 5MB',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-
-            }
+            
         }
     }
 }
@@ -470,21 +545,75 @@ const delImageUpdate = async () =>{
 }
 
 async function UpdateTeams(){
-    isLoader.value = true
-    await putData('/updateteam/'+getTeam.value.slug,getTeam.value)
-        .then(function(res){
-            if (res.status === 200) {
-                isLoader.value = false
-                getTeam.value = {}
+    try {
+        isLoader.value = true
+        await putData('/updateteam/'+getTeam.value.slug,getTeam.value)
+            .then(function(res){
+                if (res.status === 200) {
+                    isLoader.value = false
+                    getTeam.value = {}
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Update performed",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    fetchTeamMembers()
+                    updatemodal.hide()
+                }
+            })
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function DeleteTeamsFunction (slug){
+    Swal.fire({
+            title: "Do you want to delete this Member?",
+            text: "You can't go back!",
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonColor: "#d33",
+            confirmButtonColor: "#3085d6",
+            confirmButtonText: "Delete",
+            cancelButtonText: "Close"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                // Affiche un loader pendant la suppression
                 Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Update performed",
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                fetchTeamMembers()
-                updatemodal.hide()
+                    title: "Deletion in progress...",
+                    allowOutsideClick: false,
+                    allowEscapeKey: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                await getSingleData('/showteam/'+slug)
+                    .then(async(response)=>{
+                        if (response.status === 200) {
+                            const team = response.data.team;
+                            if (team.image) {
+                                await axiosInstance.post('/delimagesTeams', { image: team.image });
+                            }
+                            const deleteResponse = await axiosInstance.delete('/deleteteam/'+team.slug);
+                            if (deleteResponse.status === 200) {
+
+                                Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "Deletion performed",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+
+                                fetchTeamMembers()
+                            }
+                        }
+                    })
             }
         })
 }
@@ -545,6 +674,7 @@ onMounted(() => {
     });
 
     window.GetTeamInfo = GetTeamInfo
+    window.DeleteTeamsFunction = DeleteTeamsFunction
 
     fetchTeamMembers()
 
