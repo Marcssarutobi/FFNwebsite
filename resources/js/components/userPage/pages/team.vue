@@ -33,30 +33,30 @@
             <div class="row clearfix">
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" >
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" v-for="member in teamMembers" :key="member.id" data-wow-delay="0ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Boris-Olou-ID-Photo.jpg" alt=""></a></figure>
+                        <figure class="image"><RouterLink :to="`/details/${member.slug}`"><img :src="member.image" alt=""></RouterLink></figure>
                         <div class="member-info">
-                            <h3>Boris Armel Olou</h3>
-                            <div class="designation">Chief Executive Officer</div>
+                            <h3> <RouterLink :to="`/details/${member.slug}`">{{ member.name }}</RouterLink></h3>
+                            <div class="designation">{{ member.profession }}</div>
                         </div>
                         <div class="content">
                             <div class="text">
                                 <p>
-                                    Visionary CEO with extensive experience in sustainable development and biodiversity, leading strategic initiatives for impactful environmental action and organizational growth.
+                                    {{ member.brief_description }}
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="https://web.facebook.com/boris.olou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
-                                <a href="https://twitter.com/BorisOlou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
-                                <a href="https://www.researchgate.net/profile/Boris-Olou" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-google-plus"></span></a>
-                                <a href="https://www.linkedin.com/in/armel-boris-olou-050430125/" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
+                                <a v-if="member.facebook_link !== '' || member.facebook_link !== null" :href="member.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a v-if="member.twitter_link !== '' || member.twitter_link !== null" :href="member.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a v-if="member.instagram_link !== '' || member.instagram_link !== null" :href="member.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-instagram"></span></a>
+                                <a v-if="member.linkedin_link !== '' || member.linkedin_link !== null" :href="member.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Basile.jpeg" alt=""></a></figure>
@@ -78,9 +78,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/francois.jpg" alt=""></a></figure>
@@ -103,9 +103,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/Adelaide.jpeg" alt=""></a></figure>
@@ -127,9 +127,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/DAIROUpdate.jpg" alt=""></a></figure>
@@ -151,9 +151,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
@@ -175,9 +175,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
@@ -199,7 +199,7 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
                 <!--Column-->
              <!--    <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
@@ -228,7 +228,7 @@
                 -->
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
+                <!-- <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -249,10 +249,10 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article> -->
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
+                <!-- <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms" >
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
                         <div class="member-info">
@@ -273,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article> -->
 
             </div>
 
@@ -330,7 +330,25 @@
 
 <script  setup>
 import { RouterLink } from 'vue-router';
+import { getData } from '../../plugin/api';
+import { onMounted, ref } from 'vue';
 
+// Exemple de variable réactive
+const teamMembers = ref([])
+
+// Exemple de fonction pour charger les membres de l'équipe
+async function fetchTeamMembers() {
+    await getData('/teams')
+        .then(function (res){
+            if (res.status === 200) {
+                teamMembers.value = res.data.teams
+            }
+        })
+}
+
+onMounted(()=>{
+    fetchTeamMembers()
+})
 
 </script>
 

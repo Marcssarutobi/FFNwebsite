@@ -48,7 +48,11 @@
                         <i class="iconoir-group"></i> Team
                     </RouterLink>
                 </li>
-                
+                <li class="no-sub mb-2">
+                    <RouterLink exact-active-class="active" to="/admins/advisor">
+                        <i class="iconoir-group"></i> Advisor
+                    </RouterLink>
+                </li>
                 <li class="no-sub mb-2">
                     <RouterLink exact-active-class="active" to="/admins/fungiEducation">
                         <i class="iconoir-book"></i> Fungi Education

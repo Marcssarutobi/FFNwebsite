@@ -29,30 +29,30 @@
             <div class="row clearfix">
 
                 <!--Column-->
-                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" v-for="member in teamMembers" :key="member.id" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
+                        <figure class="image"><RouterLink :to="`/details/${member.slug}`"><img :src="member.image" alt=""></RouterLink></figure>
                         <div class="member-info">
-                            <h3>Lorem Ipsum</h3>
-                            <div class="designation">Mycology & Biodiversity</div>
+                            <h3> <RouterLink :to="`/details/${member.slug}`">{{ member.name }}</RouterLink></h3>
+                            <div class="designation">{{ member.profession }}</div>
                         </div>
                         <div class="content">
                             <div class="text">
                                 <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                    {{ member.brief_description }}
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
-                                <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
-                                <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
-                                <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
+                                <a v-if="member.facebook_link !== '' || member.facebook_link !== null" :href="member.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a v-if="member.twitter_link !== '' || member.twitter_link !== null" :href="member.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a v-if="member.instagram_link !== '' || member.instagram_link !== null" :href="member.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-instagram"></span></a>
+                                <a v-if="member.linkedin_link !== '' || member.linkedin_link !== null" :href="member.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
                 </article>
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
@@ -74,9 +74,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="600ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
@@ -99,9 +99,9 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
-                <!--Column-->
+                <!--Column
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="900ms" data-wow-duration="1500ms">
                     <div class="inner-box">
                         <figure class="image"><a href="mailto:mail@email.com"><img src="/assets/images/resource/avatarimage.jpg" alt=""></a></figure>
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </article>-->
 
             </div>
 
@@ -182,10 +182,54 @@
 
 <script  setup>
 import { RouterLink } from 'vue-router';
+import { getData } from '../../plugin/api';
+import { onMounted, ref } from 'vue';
 
+// Exemple de variable réactive
+const teamMembers = ref([])
+
+// Exemple de fonction pour charger les membres de l'équipe
+async function fetchTeamMembers() {
+    await getData('/advisors')
+        .then(function (res){
+            if (res.status === 200) {
+                teamMembers.value = res.data.advisors
+            }
+        })
+}
+
+onMounted(()=>{
+    fetchTeamMembers()
+})
 
 </script>
 
-<style>
+<style scoped>
+
+.image a{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 270px !important;
+    height: 347px !important;
+    overflow: hidden !important;
+}
+.image a img{
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.content .text p {
+    width: 270px !important;
+    height: 135px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 5 !important;
+    -webkit-box-orient: vertical !important;
+}
 
 </style>

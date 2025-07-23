@@ -4,7 +4,7 @@
 
             <div class="row mb-4">
                 <div class="col-12 d-flex justify-content-between align-items-center">
-                    <h4 class="main-title">List of Teams</h4>
+                    <h4 class="main-title">List of Advisor</h4>
                     <button @click="showModal" class="btn btn-primary mb-2" >
                         <i class="iconoir-plus"></i> New Members
                     </button>
@@ -186,6 +186,7 @@
                                         </div>
                                     </div>
 
+
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
                                             <label for="">Facebook Link</label>
@@ -221,8 +222,8 @@
                                     <div class="col-lg-12 mb-3">
                                         <div class="form-group">
                                             <label for="">Description</label>
-                                            <textarea v-model="getTeam.brief_description" :class="{ 'is-invalid': isEmpty.brief_description }" maxlength="200" class="form-control" rows="5" id=""></textarea>
-                                            <span class=" text-muted">{{ getTeam.brief_description?.length }}/ 200 charatere</span>
+                                            <textarea v-model="getTeam.brief_description" :class="{ 'is-invalid': isEmpty.brief_description }" maxlength="230" class="form-control" rows="5" id=""></textarea>
+                                            <span class=" text-muted">{{ getTeam.brief_description?.length }}/ 230 </span>
                                             <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
                                         </div>
                                     </div>
@@ -272,10 +273,10 @@ const getTeam = ref({})
 const data = ref({
     name:"",
     brief_description:"",
+    profession:"",
     content:"",
     image:"",
-    profession:"",
-    type:"teams",
+    type:"advisors",
     facebook_link: "",
     twitter_link: "",
     linkedin_link: "",
@@ -294,10 +295,10 @@ const isDragging = ref(false);
 
 // Exemple de fonction pour charger les membres de l'équipe
 async function fetchTeamMembers() {
-    await getData('/teams')
+    await getData('/advisors')
         .then(function (res){
             if (res.status === 200) {
-                teamMembers.value = res.data.teams
+                teamMembers.value = res.data.advisors
             }
         })
 }

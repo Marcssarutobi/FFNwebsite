@@ -27,6 +27,10 @@ const routes = [
                 component: ()=>import('../userPage/pages/team.vue'),
             },
             {
+                path: 'details/:slug',
+                component: ()=>import('../userPage/pages/detailsTeamAdvisor.vue'),
+            },
+            {
                 path: 'project',
                 component: ()=>import('../userPage/pages/project.vue'),
             },
@@ -200,6 +204,13 @@ const routes = [
             {
                 path: 'team',
                 component: ()=>import('../adminPage/pages/team.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
+                path: 'advisor',
+                component: ()=>import('../adminPage/pages/advisor.vue'),
                 meta:{
                     roles:['superadmin','admin','author','viewer','approver']
                 }

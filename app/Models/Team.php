@@ -13,6 +13,7 @@ class Team extends Model
         'name',
         'slug',
         'brief_description',
+        'profession',
         'content',
         'image',
         'type',
