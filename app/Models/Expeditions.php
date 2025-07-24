@@ -10,12 +10,14 @@ class Expeditions extends Model
     use HasFactory;
     protected $fillable = [
         'slug',
+        'title',
         'brefdescription',
         'start_date',
         'end_date',
         'location',
         'image',
         'bailleur',
+        'content',
         'user_id',
     ];
 

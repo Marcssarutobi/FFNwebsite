@@ -70,6 +70,12 @@ Route::get('/showteam/{slug}', [TeamController::class, 'show']);
 Route::post('/uploadimagesTeams', [TeamController::class, 'uploadImg']);
 Route::post('/delimagesTeams', [TeamController::class, 'deleteImage']);
 
+//Expéditions
+Route::get('/allExpeditions', [ExpeditionsController::class, 'allExpeditions']);
+Route::get('/showexpedition/{slug}', [ExpeditionsController::class, 'showUser']);
+Route::post('/uploadimagesExpeditions', [ExpeditionsController::class, 'uploadImg']);
+Route::post('/delimagesExpeditions', [ExpeditionsController::class, 'deleteImage']);
+
 
 Route::middleware('auth:sanctum')->group( function () {
 
@@ -163,7 +169,7 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/addexpedition', [ExpeditionsController::class, 'store']);
     Route::put('/updateexpedition/{id}', [ExpeditionsController::   class, 'update']);
     Route::delete('/deleteexpedition/{id}', [ExpeditionsController::class, 'destroy']);
-    Route::get('/showexpedition/{slug}', [ExpeditionsController::class, 'showUser']);
+    
 
 
 });

@@ -61,8 +61,8 @@
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
-                                        <label for="title">Sponsors</label>
-                                        <input v-model="data.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter Sponsors">
+                                        <label for="title">Title</label>
+                                        <input v-model="data.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter Title">
                                         <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
                                     </div>
                                 </div>
@@ -77,15 +77,34 @@
 
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
-                                        <label for="">End Date (Optional)</label>
-                                        <input v-model="data.end_date" type="datetime-local" class="form-control" id="end_date" placeholder="Enter end date">
+                                        <label for="">End Date</label>
+                                        <input v-model="data.end_date" type="datetime-local" :class="{ 'is-invalid': isEmpty.end_date }" class="form-control" id="end_date" placeholder="Enter end date">
+                                        <span v-if="isEmpty.end_date" class="text-danger">{{ msgInput.end_date }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Bailleur</label>
+                                        <input v-model="data.bailleur" type="text" :class="{ 'is-invalid': isEmpty.bailleur }" class="form-control" id="location" placeholder="Enter bailleur">
+                                        <span v-if="isEmpty.bailleur" class="text-danger">{{ msgInput.bailleur }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input v-model="data.location" type="text" :class="{ 'is-invalid': isEmpty.location }" class="form-control" id="location" placeholder="Enter location">
+                                        <span v-if="isEmpty.location" class="text-danger">{{ msgInput.location }}</span>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
-                                        <label for="location">Location (Optional)</label>
-                                        <input v-model="data.location" type="text" class="form-control" id="location" placeholder="Enter location">
+                                        <label for="location">Description</label>
+                                        <textarea v-model="data.brefdescription" rows="5" :class="{ 'is-invalid': isEmpty.brefdescription }" maxlength="250" id="description" class="form-control" placeholder="Enter description"></textarea>
+                                        <span class="text-muted">{{ data.brefdescription.length }}/250</span>
+                                        <span v-if="isEmpty.brefdescription" class="text-danger">{{ msgInput.brefdescription }}</span>
                                     </div>
                                 </div>
 
@@ -229,13 +248,15 @@
     let updatemodal;
 
     const data = ref({
-        title:"",
-        content:"",
-        image:"",
-        start_date:"",
-        end_date:"",
-        location:"",
-        user_id:"",
+        title: "",
+        brefdescription: "",
+        start_date: "",
+        end_date: "",
+        location: "",
+        image: "",
+        content: "",
+        bailleur: "",
+        user_id: ""
     })
     const isEmpty = ref({})
     const msgInput = ref({})
@@ -254,16 +275,6 @@
     const size = ref('')
     const isDragging = ref(false);
 
-  /*  const AllCategory = async ()=>{
-        try {
-            const response = await getData('/categories');
-            if (response.status === 200) {
-                allCategories.value = response.data.categories;
-            }
-        } catch (error) {
-            console.error("Error fetching categories:", error);
-        }
-    } */
 
     const AllexpeditionsFunction = async ()=>{
         const response = await getData('/expeditions');
@@ -324,16 +335,16 @@
             }
         },
 
-       /* {
-            title: 'Category', data: 'category.name', render: (data, type, row) => {
-                return row.category ? row.category.name : 'N/A'; // Assure-toi que `row.category` existe
+        {
+            title: 'Location', data: 'location', render: (data, type, row) => {
+                return row.location ? row.location : 'N/A';
             }
         },
         {
-            title:'Status', data: 'status', render: (data, type, row) => {
-                return `<span class="badge bg-${row.status === 'published' ? 'success' : row.status === 'draft' ? 'danger' : row.status === 'approbation' ? 'warning' : 'secondary'}">${row.status}</span>`;
+            title:'Bailleur', data: 'bailleur', render: (data, type, row) => {
+                return `<span class="text-capitalize" >${row.bailleur}</span>`;
             }
-        }, */
+        }, 
         {
           title: 'Created', data: 'created_at', render: (data, type, row) => {
             // Formater la date
@@ -360,13 +371,8 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" target="_blank" href="/expeditionspreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
-                                ${row.status === 'draft' || (row.status === 'published' && currentUser.value.role?.name === 'viewer') ? `
-                                    
-                                    <a class="dropdown-item" onClick="GetexpeditionsFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
-                                    <button class="dropdown-item delete-expeditions" onClick="DeleteexpeditionsFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
-                                ` : ''}
-
+                                <a class="dropdown-item" onClick="GetexpeditionsFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
+                                <button class="dropdown-item delete-expeditions" onClick="DeleteexpeditionsFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
                             </div>
                         </div>
                     </div>
@@ -401,7 +407,7 @@
 
             try {
 
-                const res = await axiosInstance.post('/uploadexpeditionsimg',formData,{
+                const res = await axiosInstance.post('/uploadimagesExpeditions',formData,{
                     onUploadProgress: (ProgressEvent)=>{
                         const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
                         percent.value = percentCompleted
@@ -453,60 +459,8 @@
         }
     }
 
-    const inputEmpty = ()=>{
-        if (data.value.title.trim() === '') {
-            isEmpty.value.title = true
-            msgInput.value.title = 'Ce champs est vide'
-        }else{
-            isEmpty.value.title = false
-            msgInput.value.title = ''
-        }
-       /* if (data.value.brief_description.trim() === '') {
-            isEmpty.value.brief_description = true
-            msgInput.value.brief_description = 'Ce champs est vide'
-        }else{
-            isEmpty.value.brief_description = false
-            msgInput.value.brief_description = ''
-        }*/
-        if (data.value.content.trim() === '') {
-            isEmpty.value.content = true
-            msgInput.value.content = 'Ce champs est vide'
-        }else{
-            isEmpty.value.content = false
-            msgInput.value.content = ''
-        }
-        if (data.value.image.trim() === '') {
-            isEmpty.value.image = true
-            msgInput.value.image = 'Ce champs est vide'
-        }else{
-            isEmpty.value.image = false
-            msgInput.value.image = ''
-        }
-        if (data.value.start_date.trim() === '') {
-            isEmpty.value.start_date = true
-            msgInput.value.start_date = 'Ce champs est vide'
-        }else{
-            isEmpty.value.start_date = false
-            msgInput.value.start_date = ''
-        }
-       /* if (data.value.category_id === '') {
-            isEmpty.value.category_id = true
-            msgInput.value.category_id = 'Ce champs est vide'
-        }else{
-            isEmpty.value.category_id = false
-            msgInput.value.category_id = ''
-        }
-        if (data.value.status === '') {
-            isEmpty.value.status = true
-            msgInput.value.status = 'Ce champs est vide'
-        }else{
-            isEmpty.value.status = false
-            msgInput.value.status = ''
-        }*/
-    }
-
     const delImage = async () =>{
-        const res = await axiosInstance.post('/deleteexpeditionsimg',{image: data.value.image})
+        const res = await axiosInstance.post('/delimagesExpeditions',{image: data.value.image})
         if (res.status === 200) {
             data.value.image = ""
         }
@@ -526,28 +480,31 @@
         data.value.status = "draft"
         data.value.user_id = currentUser.value.id
 
-        inputEmpty()
+        for (const field in data.value) {
+            isEmpty.value[field] = !data.value[field]
+            msgInput.value[field] = `Please enter ${field.replace('_', ' ')}`;
+        }
+        
         const allEmpty = Object.values(isEmpty.value).every(value => value === false)
         if (allEmpty) {
             isLoader.value = true
-            postData('/addexpeditions', data.value)
+           await postData('/addexpedition', data.value)
                 .then(response =>{
                     if (response.status === 200) {
                         isLoader.value = false
                         data.value = {
-                            title:"",
-                           // brief_description:"",
-                            content:"",
-                            image:"",
-                            start_date:"",
-                            end_date:"",
-                            location:"",
-                            //category_id:"",
-                            //status:"",
-                            user_id:"",
+                            title: "",
+                            brefdescription: "",
+                            start_date: "",
+                            end_date: "",
+                            location: "",
+                            image: "",
+                            content: "",
+                            bailleur: "",
+                            user_id: ""
                         }
                         msgToast.value = "Expeditions added successfully"
-                        classToast.value = "bg-success"
+                        
 
                         Swal.fire({
                             position: "center",
@@ -575,7 +532,7 @@
     }
 
     const GetexpeditionsFunction = async (id) => {
-        const res = await axiosInstance.get('/showexpeditions/'+id,{
+        const res = await axiosInstance.get('/showexpedition/'+id,{
             headers:{
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
@@ -612,7 +569,7 @@
 
             try {
 
-                const res = await axiosInstance.post('/uploadexpeditionsimg',formData,{
+                const res = await axiosInstance.post('/uploadimagesExpeditions',formData,{
                     onUploadProgress: (ProgressEvent)=>{
                         const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
                         percent.value = percentCompleted
@@ -665,7 +622,7 @@
     }
 
     const delImageUpdate = async () =>{
-        const res = await axiosInstance.post('/deleteexpeditionsimg',{image: getexpeditions.value.image})
+        const res = await axiosInstance.post('/delimagesExpeditions',{image: getexpeditions.value.image})
         if (res.status === 200) {
             getexpeditions.value.image = ""
         }
@@ -673,13 +630,11 @@
 
     const UpdateexpeditionsFunction = async () =>{
         isLoader.value = true
-        await putData('/updateexpeditions/'+getexpeditions.value.id, getexpeditions.value)
+        await putData('/updateexpedition/'+getexpeditions.value.id, getexpeditions.value)
             .then(response =>{
                 if (response.status === 200) {
                     isLoader.value = false
                     getexpeditions.value = {}
-                    msgToast.value = "Expeditions updated successfully"
-                    classToast.value = "bg-success"
 
                     Swal.fire({
                         position: "center",
@@ -726,14 +681,14 @@
                     }
                 });
 
-                await getSingleData('/showexpeditions/'+id)
+                await getSingleData('/showexpedition/'+id)
                     .then(async(response)=>{
                         if (response.status === 200) {
                             const expeditions = response.data.data;
                             if (expeditions.image) {
-                                await axiosInstance.post('/deleteexpeditionsimg', { image: expeditions.image });
+                                await axiosInstance.post('/delimagesExpeditions', { image: expeditions.image });
                             }
-                            const deleteResponse = await axiosInstance.delete('/deleteexpeditions/'+expeditions.id);
+                            const deleteResponse = await axiosInstance.delete('/deleteexpedition/'+expeditions.id);
                             if (deleteResponse.status === 200) {
                                 msgToast.value = "Expeditions deleted successfully"
                                 classToast.value = "bg-success"
@@ -781,13 +736,13 @@
                 try {
                     for (let i = 0; i < ids.length; i++) {
                         const id = ids[i];
-                        const response = await getSingleData('/showexpeditions/' + id);
+                        const response = await getSingleData('/showexpedition/' + id);
                         if (response.status === 200) {
                             const expeditions = response.data.data;
                             if (expeditions.image) {
-                                await axiosInstance.post('/deleteexpeditionsimg', { image: expeditions.image });
+                                await axiosInstance.post('/delimagesExpeditions', { image: expeditions.image });
                             }
-                            await axiosInstance.delete('/deleteexpeditions/' + expeditions.id);
+                            await axiosInstance.delete('/deleteexpedition/' + expeditions.id);
                         }
                     }
 
@@ -912,7 +867,6 @@
 
         window.GetexpeditionsFunction = GetexpeditionsFunction
         window.DeleteexpeditionsFunction = DeleteexpeditionsFunction
-        window.sendApproverMail = sendApproverMail
 
         AllexpeditionsFunction()
       //  AllCategory()

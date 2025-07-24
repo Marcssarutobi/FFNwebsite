@@ -836,7 +836,6 @@
 
         window.GetfungiEducationFunction = GetfungiEducationFunction
         window.DeletefungiEducationFunction = DeletefungiEducationFunction
-        window.sendApproverMail = sendApproverMail
 
         AllfungiEducationFunction()
       //  AllCategory()

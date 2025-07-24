@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Expeditions;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ExpeditionsController extends Controller
 {
@@ -47,9 +49,11 @@ class ExpeditionsController extends Controller
     public function store(Request $request){
         $request->validate([
             'brefdescription'=>'required',
+            'title'=>'required',
             'start_date'=>'required',
             'end_date'=>'required',
             'location'=>'required',
+            'content'=>'required',
             'image'=>'required',
             'bailleur'=>'required',
             'user_id'=>'required'
@@ -60,12 +64,14 @@ class ExpeditionsController extends Controller
 
         $Expedition = Expeditions::create([
             'slug' => $baseSlug,
+            'title' => $request->title,
             'brefdescription' => $request->brefdescription,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'location' => $request->location,
             'image' => $request->image,
             'bailleur' => $request->bailleur,
+            'content' => $request->content,
             'user_id' => $request->user_id
         ]);
 
@@ -83,7 +89,7 @@ class ExpeditionsController extends Controller
     }
 
     public function destroy($id){
-        $data = Event::find($id);
+        $data = Expeditions::find($id);
         $expeditions = $data->delete();
         return response()->json([
             "data"=>$expeditions
