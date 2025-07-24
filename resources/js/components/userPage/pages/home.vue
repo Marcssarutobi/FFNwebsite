@@ -413,9 +413,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
                 <div class="content-box pull-left">
                     <h2>Join <span class="theme_color">our event</span> </h2>
-                <!--	<div class="title-text">
-                        Lorem ipsum dolor <a href="#"><strong>some link</strong></a> sit amet, cum at inani interesset 
-                    </div> -->
+                	<div class="title-text">
+                        Get Involved with <a href="#"><strong>Fungi For Nature</strong></a> 
+                    </div>
                     <div class="text">
                         This section allows you to stay updated and get involved with FFN’s ongoing activities. If we have any current or upcoming events, you’ll find all the details here, whether it’s a workshop, a community outreach program, a webinar, or a conservation campaign.
                     <br>    Visitors can explore the event information and directly register or join us. It’s a simple way to connect, participate, and contribute to our mission!
