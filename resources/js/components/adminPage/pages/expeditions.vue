@@ -168,32 +168,51 @@
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
-                                        <label for="title">Sponsors</label>
-                                        <input v-model="getexpeditions.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
+                                        <label for="title">Title</label>
+                                        <input v-model="getexpeditions.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter Title">
                                         <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
                                     </div>
-                                </div>                            
+                                </div>                          
                                  <div class="col-lg-6 mb-3">
                                     <div class="form-group">
                                         <label for="">Start Date</label>
-                                        <input v-model="data.start_date" :class="{ 'is-invalid': isEmpty.start_date }" type="datetime-local" class="form-control" id="start_date" placeholder="Enter start date">
+                                        <input v-model="getexpeditions.start_date" :class="{ 'is-invalid': isEmpty.start_date }" type="datetime-local" class="form-control" id="start_date" placeholder="Enter start date">
                                         <span v-if="isEmpty.start_date" class="text-danger">{{ msgInput.start_date }}</span>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-6 mb-3">
                                     <div class="form-group">
-                                        <label for="">End Date (Optional)</label>
-                                        <input v-model="data.end_date" type="datetime-local" class="form-control" id="end_date" placeholder="Enter end date">
+                                        <label for="">End Date </label>
+                                        <input v-model="getexpeditions.end_date" type="datetime-local" class="form-control" id="end_date" placeholder="Enter end date">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Bailleur</label>
+                                        <input v-model="getexpeditions.bailleur" type="text" :class="{ 'is-invalid': isEmpty.bailleur }" class="form-control" id="location" placeholder="Enter bailleur">
+                                        <span v-if="isEmpty.bailleur" class="text-danger">{{ msgInput.bailleur }}</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input v-model="getexpeditions.location" type="text" :class="{ 'is-invalid': isEmpty.location }" class="form-control" id="location" placeholder="Enter location">
+                                        <span v-if="isEmpty.location" class="text-danger">{{ msgInput.location }}</span>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
-                                        <label for="location">Location (Optional)</label>
-                                        <input v-model="data.location" type="text" class="form-control" id="location" placeholder="Enter location">
+                                        <label for="location">Description</label>
+                                        <textarea v-model="getexpeditions.brefdescription" rows="5" :class="{ 'is-invalid': isEmpty.brefdescription }" maxlength="250" id="description" class="form-control" placeholder="Enter description"></textarea>
+                                        <span class="text-muted">{{ getexpeditions.brefdescription?.length }}/250</span>
+                                        <span v-if="isEmpty.brefdescription" class="text-danger">{{ msgInput.brefdescription }}</span>
                                     </div>
                                 </div>
+
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
                                         <label for="content">Content</label>
@@ -532,7 +551,7 @@
     }
 
     const GetexpeditionsFunction = async (id) => {
-        const res = await axiosInstance.get('/showexpedition/'+id,{
+        const res = await axiosInstance.get('/showexpeditionID/'+id,{
             headers:{
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
@@ -681,7 +700,7 @@
                     }
                 });
 
-                await getSingleData('/showexpedition/'+id)
+                await getSingleData('/showexpeditionID/'+id)
                     .then(async(response)=>{
                         if (response.status === 200) {
                             const expeditions = response.data.data;
@@ -736,7 +755,7 @@
                 try {
                     for (let i = 0; i < ids.length; i++) {
                         const id = ids[i];
-                        const response = await getSingleData('/showexpedition/' + id);
+                        const response = await getSingleData('/showexpeditionID/' + id);
                         if (response.status === 200) {
                             const expeditions = response.data.data;
                             if (expeditions.image) {

@@ -165,7 +165,7 @@ Route::middleware('auth:sanctum')->group( function () {
 
     //expeditions
     Route::get('/expeditions', [ExpeditionsController::class, 'index']);
-    Route::get('/showexpedition/{id}', [ExpeditionsController::class, 'show']);
+    Route::get('/showexpeditionID/{id}', [ExpeditionsController::class, 'show']);
     Route::post('/addexpedition', [ExpeditionsController::class, 'store']);
     Route::put('/updateexpedition/{id}', [ExpeditionsController::   class, 'update']);
     Route::delete('/deleteexpedition/{id}', [ExpeditionsController::class, 'destroy']);

@@ -42,7 +42,7 @@ class ExpeditionsController extends Controller
     public function showUser($slug){
         $data = Expeditions::where('slug',$slug)->first();
         return response()->json([
-            "data"=>$data
+            "data"=>$data,
         ]);
     }
 
@@ -60,7 +60,7 @@ class ExpeditionsController extends Controller
         ]);
 
         // ✅ Générer un slug unique à partir du titre
-        $baseSlug = Str::slug($request->brefdescription);
+        $baseSlug = Str::slug($request->title);
 
         $Expedition = Expeditions::create([
             'slug' => $baseSlug,
