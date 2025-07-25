@@ -97,8 +97,8 @@
 
                                     <div class="col-lg-6 mb-3">
                                         <div class="form-group">
-                                            <label for="">Instagram Link</label>
-                                            <input v-model="data.instagram_link" :class="{ 'is-invalid': isEmpty.instagram_link }" @input="validateSocialLinks" type="text" class="form-control" placeholder="Enter Instagram link">
+                                            <label for="">Researchgate Link</label>
+                                            <input v-model="data.instagram_link" :class="{ 'is-invalid': isEmpty.instagram_link }" @input="validateSocialLinks" type="text" class="form-control" placeholder="Enter researchgate link">
                                             <span v-if="isEmpty.instagram_link" class="text-danger">{{ msgInput.instagram_link }}</span>
                                         </div>
                                     </div>
