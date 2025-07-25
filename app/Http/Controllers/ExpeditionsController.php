@@ -18,7 +18,7 @@ class ExpeditionsController extends Controller
     }
 
     public function allExpeditions () {
-        $data = Expeditions::orderBy('id','desc')->paginate(6);
+        $data = Expeditions::with('user')->orderBy('id','desc')->paginate(6);
         return response()->json([
             "data"=>$data
         ]);
@@ -40,7 +40,7 @@ class ExpeditionsController extends Controller
     }
 
     public function showUser($slug){
-        $data = Expeditions::where('slug',$slug)->first();
+        $data = Expeditions::with('user')->where('slug',$slug)->first();
         return response()->json([
             "data"=>$data,
         ]);

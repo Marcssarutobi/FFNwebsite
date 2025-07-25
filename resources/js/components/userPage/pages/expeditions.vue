@@ -15,14 +15,39 @@
     <section class="default-section">
             <div class="auto-container">
                 <div class="row clearfix">
-                    <!--Column-->
-                    <div class="column default-text-column with-margin col-md-12 col-sm-12 col-xs-12">
-                        <article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                            <h2><span class="theme_color normal-font">Expeditions</span></h2>
-                            
+                    <!--News Column-->
+                    <div class="column blog-news-column col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(educ, index) in allExpedition" :key="index">
+                        <article class="inner-box">
+                            <figure class="image-box">
+                                <router-link :to="`/expeditionSingle/${educ.slug}`"><img :src="educ.image" alt=""></router-link>
+                            </figure>
+                            <div class="content-box">
+                                <h3 class="title"><router-link :to="`/expeditionSingle/${educ.slug}`">{{ educ.title }}</router-link></h3>
+                                <div class="post-info clearfix">
+                                    <div class="post-author">Posted by {{ educ.user?.nom }} {{ educ.user?.prenom }}</div>
+                                    <!-- <div class="post-options clearfix">
+                                        <a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
+                                        <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
+                                    </div> -->
+                                </div>
+                                <div class="text">{{ educ.brefdescription }}</div>
+                                <router-link :to="`/expeditionSingle/${educ.slug}`" class="theme-btn btn-style-three">Read More</router-link>
+                            </div>
                         </article>
                     </div>
 
+                </div>
+
+                <!-- Styled Pagination -->
+                <div class="styled-pagination text-center padd-top-20 margin-bott-40">
+                    <Paginate v-model="currentPage" :page-count="totalPage" :clickHandler="GetAllExpedition" :prevText="' <span class=\'fa fa-angle-left\'></span>&ensp;Prev'" :nextText="'Next&ensp;<span class=\'fa fa-angle-right\'></span>'" :container-class="''" :page-class="'page-item'" :active-class="'active'" :tag-name="'ul'"></Paginate>
+                    <!-- <ul>
+                        <li><a class="prev" href="#"><span class="fa fa-angle-left"></span>&ensp;Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#" class="active">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a class="next" href="#">Next&ensp;<span class="fa fa-angle-right"></span></a></li>
+                    </ul> -->
                 </div>
             </div>
         </section>
@@ -71,10 +96,81 @@
 
 <script  setup>
 import { RouterLink } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import { getData } from '../../plugin/api';
+import Paginate from 'vuejs-paginate-next'
 
+const allExpedition = ref([]);
+const currentPage = ref(1);
+const totalPage = ref(0);
+
+const GetAllExpedition = async (page) => {
+    await getData(`/allExpeditions?page=${page}`)
+        .then((response) => {
+            allExpedition.value = response.data.data.data;
+            currentPage.value = response.data.data.current_page;
+            totalPage.value = response.data.data.total;
+        })
+        .catch((error) => {
+            console.error('Error fetching all expeditions:', error);
+        });
+};
+
+onMounted(() => {
+    GetAllExpedition();
+});
 
 </script>
 
-<style>
+<style scoped>
+
+    .image-box a{
+        width: 419.38px;
+        height: 296.66px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image-box a img{
+        max-width: 100%;
+        max-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .content-box{
+        padding-top: 0px;
+    }
+    .content-box .title{
+        width: 100%;
+        height: 60.41px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Nombre de lignes max */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .content-box .text{
+        width: 100%;
+        height: 75.61px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;        /* Nombre de lignes max */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    ::v-deep(.page-item.active .page-link){
+        background: #3A3A3A !important;
+        color: white !important;
+        width: 40px !important;
+        height: 40px !important;
+        padding: 6px 5px !important;
+        border-radius: 3px !important;
+    }
+    ::v-deep(.page-item .page-link){
+        padding: 6px 25px !important;
+    }
 
 </style>

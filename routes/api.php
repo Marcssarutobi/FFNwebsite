@@ -76,6 +76,11 @@ Route::get('/showexpedition/{slug}', [ExpeditionsController::class, 'showUser'])
 Route::post('/uploadimagesExpeditions', [ExpeditionsController::class, 'uploadImg']);
 Route::post('/delimagesExpeditions', [ExpeditionsController::class, 'deleteImage']);
 
+//Fungi Education
+Route::get('/allFungiEducation', [FungiEducationController::class, 'allFungiEducation']);
+Route::get('/showfungieducation/{slug}', [FungiEducationController::class, 'showUser']);
+Route::post('/uploadimagesFungiEducation', [FungiEducationController::class, 'uploadImg']);
+Route::post('/delfungieducationimg', [FungiEducationController::class, 'deleteImage']);
 
 Route::middleware('auth:sanctum')->group( function () {
 
@@ -157,11 +162,11 @@ Route::middleware('auth:sanctum')->group( function () {
 
     //fungiEducation
     Route::get('/fungieducation', [FungiEducationController::class, 'index']);
-    Route::get('/fungieducation/{id}', [FungiEducationController::class, 'show']);
+    Route::get('/fungieducationID/{id}', [FungiEducationController::class, 'show']);
     Route::post('/addfungieducation', [FungiEducationController::class, 'store']);
     Route::put('/updatefungieducation/{id}', [FungiEducationController::class, 'update']);
     Route::delete('/deletefungieducation/{id}', [FungiEducationController::class, 'destroy']);
-    Route::get('/showfungieducation/{slug}', [FungiEducationController::class, 'showUser']);
+    
 
     //expeditions
     Route::get('/expeditions', [ExpeditionsController::class, 'index']);

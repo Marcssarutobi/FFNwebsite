@@ -14,14 +14,14 @@ class FungiEducationController extends Controller
 {
     //
     public function index(){
-        $data = FungiEducation::orderBy('id','desc')->get();
+        $data = FungiEducation::with('user')->orderBy('id','desc')->get();
         return response()->json([
             "data"=>$data
         ]);
     }
 
     public function allFungiEducation () {
-        $data = FungiEducation::orderBy('id','desc')->paginate(6);
+        $data = FungiEducation::with('user')->orderBy('id','desc')->paginate(6);
         return response()->json([
             "data"=>$data
         ]);
@@ -43,7 +43,7 @@ class FungiEducationController extends Controller
     }
 
     public function showUser($slug){
-        $data = FungiEducation::where('slug',$slug)->first();
+        $data = FungiEducation::with('user')->where('slug',$slug)->first();
         return response()->json([
             "data"=>$data
         ]);
@@ -52,6 +52,7 @@ class FungiEducationController extends Controller
     public function store(Request $request){
         $request->validate([
             'title'=>'required',
+            'brief_description'=>'required',
             'content'=>'required',
             'image'=>'required',
             'user_id'=>'required',
@@ -63,6 +64,7 @@ class FungiEducationController extends Controller
         $fungiEducation = FungiEducation::create([
             'slug' => $baseSlug,
             'title' => $request->title,
+            'brief_description' => $request->brief_description,
             'content' => $request->content,
             'image' => $request->image,
             'user_id' => $request->user_id

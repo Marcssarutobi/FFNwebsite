@@ -39,8 +39,16 @@ const routes = [
                 component: ()=>import('../userPage/pages/fungiEducation.vue'),
             },
             {
+                path: 'fungiEducationSingle/:slug',
+                component: ()=>import('../userPage/pages/fungiEducationSingle.vue'),
+            },
+            {
                 path: 'expeditions',
                 component: ()=>import('../userPage/pages/expeditions.vue'),
+            },
+            {
+                path: 'expeditionSingle/:slug',
+                component: ()=>import('../userPage/pages/expeditionSingle.vue'),
             },
             {
                 path: 'scientificPapers',
@@ -129,7 +137,8 @@ const routes = [
                 path: 'fungiEducationpreview/:id',
                 meta: {requiresAuth: true,roles:['superadmin','approver']},
                 component: ()=>import('../userPage/pages/fungiEducationpreview.vue'),
-            }
+            },
+            
         ]
     },
     {

@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class FungiEducation extends Model
 {
     use HasFactory;
+
+    protected $table = 'fungi_educations';
+
     protected $fillable = [
         'slug',
         'title',
+        'brief_description', // Added field for brief description
         'content',
         'image',
         'user_id'

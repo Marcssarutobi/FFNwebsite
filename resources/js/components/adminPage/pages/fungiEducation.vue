@@ -67,7 +67,14 @@
                                     </div>
                                 </div>
 
-                                
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Description</label>
+                                        <textarea v-model="data.brief_description" rows="5" :class="{ 'is-invalid': isEmpty.brief_description }" maxlength="250" id="description" class="form-control" placeholder="Enter description"></textarea>
+                                        <span class="text-muted">{{ data.brief_description.length }}/250</span>
+                                        <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
+                                    </div>
+                                </div>
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
@@ -133,7 +140,16 @@
                                         <input v-model="getfungiEducation.title" :class="{ 'is-invalid': isEmpty.title }" type="text" class="form-control" id="title" placeholder="Enter title">
                                         <span v-if="isEmpty.title" class="text-danger">{{ msgInput.title }}</span>
                                     </div>
-                                </div>                            
+                                </div>   
+                                
+                                <div class="col-lg-12 mb-3">
+                                    <div class="form-group">
+                                        <label for="location">Description</label>
+                                        <textarea v-model="getfungiEducation.brief_description" rows="5" :class="{ 'is-invalid': isEmpty.brief_description }" maxlength="250" id="description" class="form-control" placeholder="Enter description"></textarea>
+                                        <span class="text-muted">{{ getfungiEducation.brief_description?.length }}/250</span>
+                                        <span v-if="isEmpty.brief_description" class="text-danger">{{ msgInput.brief_description }}</span>
+                                    </div>
+                                </div>
 
                                 <div class="col-lg-12 mb-3">
                                     <div class="form-group">
@@ -190,6 +206,7 @@
 
     const data = ref({
         title:"",
+        brief_description:"",
         content:"",
         image:"",
         user_id:"",
@@ -211,19 +228,10 @@
     const size = ref('')
     const isDragging = ref(false);
 
-  /*  const AllCategory = async ()=>{
-        try {
-            const response = await getData('/categories');
-            if (response.status === 200) {
-                allCategories.value = response.data.categories;
-            }
-        } catch (error) {
-            console.error("Error fetching categories:", error);
-        }
-    } */
+
 
     const AllfungiEducationFunction = async ()=>{
-        const response = await getData('/fungiEducation');
+        const response = await getData('/fungieducation');
         if (response.status === 200) {
             allfungiEducation.value = response.data.data;
         } else {
@@ -258,16 +266,6 @@
                     </div>`;
             }
         },
-       /* {
-            title: 'Category', data: 'category.name', render: (data, type, row) => {
-                return row.category ? row.category.name : 'N/A'; // Assure-toi que `row.category` existe
-            }
-        },
-        {
-            title:'Status', data: 'status', render: (data, type, row) => {
-                return `<span class="badge bg-${row.status === 'published' ? 'success' : row.status === 'draft' ? 'danger' : row.status === 'approbation' ? 'warning' : 'secondary'}">${row.status}</span>`;
-            }
-        }, */
         {
           title: 'Created', data: 'created_at', render: (data, type, row) => {
             // Formater la date
@@ -288,22 +286,8 @@
             searchable: false,
             render: function (data, type, row) {
                 return `
-                    <div class="d-flex justify-content-center">
-                        <div class="dropdown dropdown-action">
-                            <a href="#" class="btn-action-icon" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-ellipsis-v"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" target="_blank" href="/fungiEducationpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
-                                ${row.status === 'draft' || (row.status === 'published' && currentUser.value.role?.name === 'viewer') ? `
-                                    
-                                    <a class="dropdown-item" onClick="GetfungiEducationFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
-                                    <button class="dropdown-item delete-fungiEducation" onClick="DeletefungiEducationFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
-                                ` : ''}
-
-                            </div>
-                        </div>
-                    </div>
+                    <a class="btn btn-secondary" onClick="GetfungiEducationFunction(${row.id})"><i class="fas fa-edit"></i></a>
+                    <button class="btn btn-danger delete-fungiEducation" onClick="DeletefungiEducationFunction(${row.id})"><i class="fas fa-trash"></i></button>
                 `;
             }
         }
@@ -335,7 +319,7 @@
 
             try {
 
-                const res = await axiosInstance.post('/uploadfungiEducationimg',formData,{
+                const res = await axiosInstance.post('/uploadimagesFungiEducation',formData,{
                     onUploadProgress: (ProgressEvent)=>{
                         const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
                         percent.value = percentCompleted
@@ -387,53 +371,10 @@
         }
     }
 
-    const inputEmpty = ()=>{
-        if (data.value.title.trim() === '') {
-            isEmpty.value.title = true
-            msgInput.value.title = 'Ce champs est vide'
-        }else{
-            isEmpty.value.title = false
-            msgInput.value.title = ''
-        }
-       /* if (data.value.brief_description.trim() === '') {
-            isEmpty.value.brief_description = true
-            msgInput.value.brief_description = 'Ce champs est vide'
-        }else{
-            isEmpty.value.brief_description = false
-            msgInput.value.brief_description = ''
-        }*/
-        if (data.value.content.trim() === '') {
-            isEmpty.value.content = true
-            msgInput.value.content = 'Ce champs est vide'
-        }else{
-            isEmpty.value.content = false
-            msgInput.value.content = ''
-        }
-        if (data.value.image.trim() === '') {
-            isEmpty.value.image = true
-            msgInput.value.image = 'Ce champs est vide'
-        }else{
-            isEmpty.value.image = false
-            msgInput.value.image = ''
-        }
-       /* if (data.value.category_id === '') {
-            isEmpty.value.category_id = true
-            msgInput.value.category_id = 'Ce champs est vide'
-        }else{
-            isEmpty.value.category_id = false
-            msgInput.value.category_id = ''
-        }
-        if (data.value.status === '') {
-            isEmpty.value.status = true
-            msgInput.value.status = 'Ce champs est vide'
-        }else{
-            isEmpty.value.status = false
-            msgInput.value.status = ''
-        }*/
-    }
+    
 
     const delImage = async () =>{
-        const res = await axiosInstance.post('/deletefungiEducationimg',{image: data.value.image})
+        const res = await axiosInstance.post('/delfungieducationimg',{image: data.value.image})
         if (res.status === 200) {
             data.value.image = ""
         }
@@ -450,28 +391,27 @@
 
     const AddfungiEducationFunction = async ()=>{
 
-        data.value.status = "draft"
         data.value.user_id = currentUser.value.id
 
-        inputEmpty()
+        for (const field in data.value) {
+            isEmpty.value[field] = !data.value[field]
+            msgInput.value[field] = `Please enter ${field.replace('_', ' ')}`;
+        }
+
         const allEmpty = Object.values(isEmpty.value).every(value => value === false)
         if (allEmpty) {
             isLoader.value = true
-            postData('/addfungiEducation', data.value)
+            postData('/addfungieducation', data.value)
                 .then(response =>{
                     if (response.status === 200) {
                         isLoader.value = false
                         data.value = {
                             title:"",
-                           // brief_description:"",
+                            brief_description:"",
                             content:"",
                             image:"",
-                            //category_id:"",
-                            //status:"",
                             user_id:"",
                         }
-                        msgToast.value = "fungi Education added successfully"
-                        classToast.value = "bg-success"
 
                         Swal.fire({
                             position: "center",
@@ -499,7 +439,7 @@
     }
 
     const GetfungiEducationFunction = async (id) => {
-        const res = await axiosInstance.get('/showfungiEducation/'+id,{
+        const res = await axiosInstance.get('/fungieducationID/'+id,{
             headers:{
                 Authorization: `Bearer ${localStorage.getItem("token")}`,
             }
@@ -536,7 +476,7 @@
 
             try {
 
-                const res = await axiosInstance.post('/uploadfungiEducationimg',formData,{
+                const res = await axiosInstance.post('/uploadimagesFungiEducation',formData,{
                     onUploadProgress: (ProgressEvent)=>{
                         const percentCompleted = Math.round((ProgressEvent.loaded * 100) / ProgressEvent.total)
                         percent.value = percentCompleted
@@ -589,7 +529,7 @@
     }
 
     const delImageUpdate = async () =>{
-        const res = await axiosInstance.post('/deletefungiEducationimg',{image: getfungiEducation.value.image})
+        const res = await axiosInstance.post('/delfungieducationimg',{image: getfungiEducation.value.image})
         if (res.status === 200) {
             getfungiEducation.value.image = ""
         }
@@ -597,7 +537,7 @@
 
     const UpdatefungiEducationFunction = async () =>{
         isLoader.value = true
-        await putData('/updatefungiEducation/'+getfungiEducation.value.id, getfungiEducation.value)
+        await putData('/updatefungieducation/'+getfungiEducation.value.id, getfungiEducation.value)
             .then(response =>{
                 if (response.status === 200) {
                     isLoader.value = false
@@ -650,14 +590,14 @@
                     }
                 });
 
-                await getSingleData('/showfungiEducation/'+id)
+                await getSingleData('/fungieducationID/'+id)
                     .then(async(response)=>{
                         if (response.status === 200) {
                             const fungiEducation = response.data.data;
                             if (fungiEducation.image) {
-                                await axiosInstance.post('/deletefungiEducationimg', { image: fungiEducation.image });
+                                await axiosInstance.post('/delfungieducationimg', { image: fungiEducation.image });
                             }
-                            const deleteResponse = await axiosInstance.delete('/deletefungiEducation/'+fungiEducation.id);
+                            const deleteResponse = await axiosInstance.delete('/deletefungieducation/'+fungiEducation.id);
                             if (deleteResponse.status === 200) {
                                 msgToast.value = "fungi Education deleted successfully"
                                 classToast.value = "bg-success"
@@ -705,13 +645,13 @@
                 try {
                     for (let i = 0; i < ids.length; i++) {
                         const id = ids[i];
-                        const response = await getSingleData('/showfungiEducation/' + id);
+                        const response = await getSingleData('/fungieducationID/' + id);
                         if (response.status === 200) {
                             const fungiEducation = response.data.data;
                             if (fungiEducation.image) {
-                                await axiosInstance.post('/deletefungiEducationimg', { image: fungiEducation.image });
+                                await axiosInstance.post('/delfungieducationimg', { image: fungiEducation.image });
                             }
-                            await axiosInstance.delete('/deletefungiEducation/' + fungiEducation.id);
+                            await axiosInstance.delete('/deletefungieducation/' + fungiEducation.id);
                         }
                     }
 

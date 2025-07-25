@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
-        Schema::create('fungiEducation', function (Blueprint $table) {
+        Schema::create('fungi_educations', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
             $table->string('title');
+            $table->text('brief_description');
             $table->text('content');
             $table->string('image')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Assumes a users table exists
@@ -28,7 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('fungiEducation');
+        Schema::dropIfExists('fungi_educations');
     }
 };
