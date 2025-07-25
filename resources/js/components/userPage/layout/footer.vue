@@ -18,7 +18,7 @@
                                     </div>
 
                                     <ul class="contact-info">
-                                    	<li><span class="icon fa fa-map-marker"></span> Bénin, Parakou</li>
+                                    	<li><span class="icon fa fa-map-marker"></span>Parakou, Bénin</li>
                                         <li><span class="icon fa fa-phone"></span>(+229) 0196975772</li>
                                         <li><span class="icon fa fa-envelope"></span>contact@fungifornature.com</li>
                                     </ul>

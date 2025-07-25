@@ -110,16 +110,6 @@
 
 
      <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
-    	<div class="auto-container">
-        	<div class="text-center">
-            	<h2>The Best time to <span class="theme_color">plant tree</span> is now</h2>
-                <div class="text">Some lorem ipsum subtitle will be here ipsum dolor</div>
-            	<RouterLink to="/contact" class="theme-btn btn-style-one">Join Now</RouterLink>
-                <RouterLink to="/domain" class="theme-btn btn-style-two">View details</RouterLink>
-            </div>
-        </div>
-    </section>
 
 
     <!--Intro Section-->
