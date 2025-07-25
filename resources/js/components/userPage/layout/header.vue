@@ -142,43 +142,43 @@
         isMenuOpen.value = false
     }
 
+    // onMounted(() => {
+    //     // 1. Ajouter la configuration
+    //     const configScript = document.createElement('script')
+    //     configScript.type = 'text/javascript'
+    //     configScript.innerHTML = `window.gtranslateSettings = {
+    //         default_language: "en",
+    //         languages: ["en", "fr"],
+    //         wrapper_selector: ".gtranslate_wrapper"
+    //     };`
+    //     document.head.appendChild(configScript)
+
+    //     // 2. Charger le script externe
+    //     const externalScript = document.createElement('script')
+    //     externalScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js"
+    //     externalScript.defer = true
+    //     document.head.appendChild(externalScript)
+    // })
+
     onMounted(() => {
-        // 1. Ajouter la configuration
-        const configScript = document.createElement('script')
-        configScript.type = 'text/javascript'
-        configScript.innerHTML = `window.gtranslateSettings = {
-            default_language: "en",
-            languages: ["en", "fr"],
-            wrapper_selector: ".gtranslate_wrapper"
-        };`
-        document.head.appendChild(configScript)
+        //Configuration du widget AVEC DRAPEAUX SEULEMENT (pas de select)
+        window.gtranslateSettings = {
+           default_language: 'en',
+           languages: ['en', 'fr'],
+           wrapper_selector: '.gtranslate_wrapper',
+           switcher_horizontal_position: "inline",
+           flag_size: 24,
+           alt_flags: {
+            en: "usa"
+           }
+        }
 
-        // 2. Charger le script externe
-        const externalScript = document.createElement('script')
-        externalScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js"
-        externalScript.defer = true
-        document.head.appendChild(externalScript)
+        //Charger SEULEMENT le script fc.js (flags)
+        const script = document.createElement('script')
+        script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
+        script.defer = true
+        document.head.appendChild(script)
     })
-
-    //onMounted(() => {
-        // Configuration du widget AVEC DRAPEAUX SEULEMENT (pas de select)
-        //window.gtranslateSettings = {
-        //    default_language: 'en',
-        //    languages: ['en', 'fr'],
-        //    wrapper_selector: '.gtranslate_wrapper',
-        //    switcher_horizontal_position: "inline",
-        //    flag_size: 24,
-        //    alt_flags: {
-        //     en: "usa"
-        //    }
-        //}
-
-        // Charger SEULEMENT le script fc.js (flags)
-        //const script = document.createElement('script')
-        //script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
-        //script.defer = true
-        //document.head.appendChild(script)
-    //})
 </script>
 
 <style>
@@ -191,7 +191,7 @@
         width: 100% !important;
     }
 
-    .gt_switcher{
+    .glink {
         display: none !important;
     }
 
