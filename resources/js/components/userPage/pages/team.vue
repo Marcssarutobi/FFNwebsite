@@ -49,7 +49,7 @@
                             <div class="social-links">
                                 <a v-if="member.facebook_link !== '' || member.facebook_link !== null" :href="member.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
                                 <a v-if="member.twitter_link !== '' || member.twitter_link !== null" :href="member.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
-                                <a v-if="member.instagram_link !== '' || member.instagram_link !== null" :href="member.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-google-plus"></span></a>
+                                <a v-if="member.instagram_link !== '' || member.instagram_link !== null" :href="member.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fab fa-researchgate"></span></a>
                                 <a v-if="member.linkedin_link !== '' || member.linkedin_link !== null" :href="member.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
