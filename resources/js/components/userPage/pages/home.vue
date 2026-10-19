@@ -7,24 +7,13 @@
             <div class="tp-banner">
                 <ul>
 
-                    <li class="imgs" data-transition="fade" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[0]"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img :src="slides[0]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <!-- Diapositives modifiables dans l'admin (Home Slider). La 1re est alignée à gauche avec un sous-titre, les autres sont centrées -->
+                    <li v-for="(slide, index) in slides" :key="slide.position" class="imgs" :data-transition="index === 0 ? 'fade' : 'slidedown'" data-slotamount="1" data-masterspeed="1000" :data-thumb="slide.image"  data-saveperformance="off"  data-title="Fungi For Nature">
+                    <img :src="slide.image"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
+                    <template v-if="index === 0">
 
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="left" data-hoffset="15"
-                    data-y="center" data-voffset="-150"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
+                    <div v-if="slide.title_light || slide.title" class="tp-caption sfr sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
                     data-y="center" data-voffset="-50"
                     data-speed="1500"
@@ -35,9 +24,9 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h1><strong><span class="normal-font">Fungi</span> for Nature</strong></h1></div>
+                    data-endeasing="Power4.easeIn"><h1><strong><span class="normal-font">{{ slide.title_light }}</span> {{ slide.title }}</strong></h1></div>
 
-                    <div class="tp-caption sfl sfb tp-resizeme"
+                    <div v-if="slide.subtitle" class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
                     data-y="center" data-voffset="40"
                     data-speed="1500"
@@ -48,9 +37,9 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h3 class="bg-color">Save the world of mushrooms</h3></div>
+                    data-endeasing="Power4.easeIn"><h3 class="bg-color">{{ slide.subtitle }}</h3></div>
 
-                    <div class="tp-caption sfl sfb tp-resizeme"
+                    <div v-if="slide.text" class="tp-caption sfl sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
                     data-y="center" data-voffset="110"
                     data-speed="1500"
@@ -62,14 +51,9 @@
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
                     data-endeasing="Power4.easeIn">
-                    <div class="text">
-                        Our NGO works to protect mushrooms, an essential yet often overlooked
-                       <br> part of our ecosystems.
-                         Through scientific research, and community projects,
-                         <br> we highlight the ecological, nutritional, and medicinal importance of mushrooms.
-                    </div></div>
+                    <div class="text"><template v-for="(line, i) in lines(slide.text)" :key="i"><br v-if="i > 0">{{ line }}</template></div></div>
 
-                    <div class="tp-caption sfr sfb tp-resizeme"
+                    <div v-if="slide.button_label && slide.button_link" class="tp-caption sfr sfb tp-resizeme"
                     data-x="left" data-hoffset="90"
                     data-y="center" data-voffset="190"
                     data-speed="1500"
@@ -80,15 +64,16 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
+                    data-endeasing="Power4.easeIn">
+                        <RouterLink v-if="isInternal(slide.button_link)" :to="slide.button_link" class="theme-btn btn-style-one">{{ slide.button_label }}</RouterLink>
+                        <a v-else :href="slide.button_link" target="_blank" rel="noopener" class="theme-btn btn-style-one">{{ slide.button_label }}</a>
+                    </div>
 
-                    </li>
+                    </template>
 
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[1]"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img :src="slides[1]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <template v-else>
 
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
+                    <div v-if="slide.title_light" class="tp-caption sfl sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
                     data-y="center" data-voffset="-120"
                     data-speed="1500"
@@ -99,9 +84,9 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
+                    data-endeasing="Power4.easeIn"><h2 class="normal-font">{{ slide.title_light }}</h2></div>
 
-                    <div class="tp-caption sfr sfb tp-resizeme"
+                    <div v-if="slide.title" class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
                     data-y="center" data-voffset="-30"
                     data-speed="1500"
@@ -112,9 +97,9 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
+                    data-endeasing="Power4.easeIn"><h2>{{ slide.title }}</h2></div>
 
-                    <div class="tp-caption sfl sfb tp-resizeme"
+                    <div v-if="slide.text" class="tp-caption sfl sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
                     data-y="center" data-voffset="50"
                     data-speed="1500"
@@ -125,9 +110,9 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
+                    data-endeasing="Power4.easeIn"><h4><template v-for="(line, i) in lines(slide.text)" :key="i"><br v-if="i > 0">{{ line }}</template></h4></div>
 
-                    <div class="tp-caption sfr sfb tp-resizeme"
+                    <div v-if="slide.button_label && slide.button_link" class="tp-caption sfr sfb tp-resizeme"
                     data-x="center" data-hoffset="0"
                     data-y="center" data-voffset="120"
                     data-speed="1500"
@@ -138,186 +123,15 @@
                     data-elementdelay="0.01"
                     data-endelementdelay="0.3"
                     data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
+                    data-endeasing="Power4.easeIn">
+                        <RouterLink v-if="isInternal(slide.button_link)" :to="slide.button_link" class="theme-btn btn-style-one">{{ slide.button_label }}</RouterLink>
+                        <a v-else :href="slide.button_link" target="_blank" rel="noopener" class="theme-btn btn-style-one">{{ slide.button_label }}</a>
+                    </div>
+
+                    </template>
 
                     </li>
 
-                    <!--Main Features 1-->
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[2]"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img :src="slides[2]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="-120"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="-30"
-                    data-speed="1500"
-                    data-start="1000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="50"
-                    data-speed="1500"
-                    data-start="1500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="120"
-                    data-speed="1500"
-                    data-start="2000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
-
-                    </li>
-                    <!--Main Features 2-->
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[3]"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img :src="slides[3]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="-120"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="-30"
-                    data-speed="1500"
-                    data-start="1000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="50"
-                    data-speed="1500"
-                    data-start="1500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="120"
-                    data-speed="1500"
-                    data-start="2000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
-
-                    </li>
-                    <!--Main Features 3-->
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[4]"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img :src="slides[4]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="-120"
-                    data-speed="1500"
-                    data-start="500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2 class="normal-font">Help us</h2></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="-30"
-                    data-speed="1500"
-                    data-start="1000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h2>promote the mushrooms</h2></div>
-
-                    <div class="tp-caption sfl sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="50"
-                    data-speed="1500"
-                    data-start="1500"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><h4>Working together to preserve and promote mushrooms for the next generation.</h4></div>
-
-                    <div class="tp-caption sfr sfb tp-resizeme"
-                    data-x="center" data-hoffset="0"
-                    data-y="center" data-voffset="120"
-                    data-speed="1500"
-                    data-start="2000"
-                    data-easing="easeOutExpo"
-                    data-splitin="none"
-                    data-splitout="none"
-                    data-elementdelay="0.01"
-                    data-endelementdelay="0.3"
-                    data-endspeed="1200"
-                    data-endeasing="Power4.easeIn"><RouterLink to="/domain" class="theme-btn btn-style-one">Learn More</RouterLink></div>
-
-                    </li>
-                    
-                    
                 </ul>
 
             </div>
@@ -664,28 +478,46 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     const allblog = ref([]);
     const allevent = ref([]);
 
-    // Images de fond du slider (modifiables dans l'admin) ; valeurs du thème tant que l'API n'a pas répondu
+    // Diapositives du slider (modifiables dans l'admin) ; contenu d'origine tant que l'API n'a pas répondu
+    const defaultSlide = (position, image) => ({
+        position,
+        image: '/assets/images/main-slider/' + image,
+        title_light: 'Help us',
+        title: 'promote the mushrooms',
+        subtitle: null,
+        text: 'Working together to preserve and promote mushrooms for the next generation.',
+        button_label: 'Learn More',
+        button_link: '/domain',
+    });
+
     const slides = ref([
-        '/assets/images/main-slider/direct.JPG',
-        '/assets/images/main-slider/replace.jpeg',
-        '/assets/images/main-slider/DSC00662.JPG',
-        '/assets/images/main-slider/DSC00680.JPG',
-        '/assets/images/main-slider/DSC00712.JPG',
+        {
+            ...defaultSlide(1, 'direct.JPG'),
+            title_light: 'Fungi',
+            title: 'for Nature',
+            subtitle: 'Save the world of mushrooms',
+            text: "Our NGO works to protect mushrooms, an essential yet often overlooked\npart of our ecosystems. Through scientific research, and community projects,\nwe highlight the ecological, nutritional, and medicinal importance of mushrooms.",
+        },
+        defaultSlide(2, 'replace.jpeg'),
+        defaultSlide(3, 'DSC00662.JPG'),
+        defaultSlide(4, 'DSC00680.JPG'),
+        defaultSlide(5, 'DSC00712.JPG'),
     ]);
 
     const SlidesFunction = async () =>{
         await getData('/homeslides')
             .then((response) => {
-                response.data.slides.forEach((slide) => {
-                    if (slide.position >= 1 && slide.position <= slides.value.length) {
-                        slides.value[slide.position - 1] = slide.image;
-                    }
-                });
+                if (response.data.slides.length > 0) {
+                    slides.value = response.data.slides;
+                }
             })
             .catch((error) => {
                 console.error('Error fetching slides:', error);
             });
     }
+
+    const lines = (text) => (text ?? '').split(/\r?\n/);
+    const isInternal = (link) => typeof link === 'string' && link.startsWith('/') && !link.startsWith('//');
 
     const AllProjectFunction = async () =>{
         await getData('/allprojects')

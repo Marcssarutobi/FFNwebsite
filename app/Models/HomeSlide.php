@@ -12,6 +12,12 @@ class HomeSlide extends Model
     protected $fillable = [
         'position',
         'image',
+        'title_light',
+        'title',
+        'subtitle',
+        'text',
+        'button_label',
+        'button_link',
     ];
 
 }

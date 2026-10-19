@@ -17,12 +17,19 @@ class HomeSlideController extends Controller
 
     public function update(Request $request, $id){
         $request->validate([
-            "image"=>["required","string","max:255","regex:#^/(images/Slider|assets/images/main-slider)/[^/]+$#"]
+            "image"=>["required","string","max:255","regex:#^/(images/Slider|assets/images/main-slider)/[^/]+$#"],
+            "title_light"=>"nullable|string|max:255",
+            "title"=>"nullable|string|max:255",
+            "subtitle"=>"nullable|string|max:255",
+            "text"=>"nullable|string|max:1000",
+            "button_label"=>"nullable|string|max:60",
+            // Lien interne (/contact) ou externe (https://...)
+            "button_link"=>["nullable","string","max:255","regex:#^(/(?!/)|https?://)#"],
         ]);
 
         $slide = HomeSlide::findOrFail($id);
         $oldImage = $slide->image;
-        $slide->update(['image' => $request->image]);
+        $slide->update($request->only(["image","title_light","title","subtitle","text","button_label","button_link"]));
 
         // Les images d'origine du thème (/assets/...) ne sont jamais supprimées : seulement les anciens téléversements
         if ($oldImage !== $slide->image) {
