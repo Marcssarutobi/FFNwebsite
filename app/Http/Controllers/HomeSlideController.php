@@ -4,19 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeSlide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeSlideController extends Controller
 {
 
     public function index(){
-        $slides = HomeSlide::orderBy('position')->get();
+        $slides = HomeSlide::orderBy('position')->orderBy('id')->get();
         return response()->json([
             "slides"=>$slides
         ]);
     }
 
-    public function update(Request $request, $id){
-        $request->validate([
+    private function rules(): array
+    {
+        return [
             "image"=>["required","string","max:255","regex:#^/(images/Slider|assets/images/main-slider)/[^/]+$#"],
             "title_light"=>"nullable|string|max:255",
             "title"=>"nullable|string|max:255",
@@ -25,7 +27,21 @@ class HomeSlideController extends Controller
             "button_label"=>"nullable|string|max:60",
             // Lien interne (/contact) ou externe (https://...)
             "button_link"=>["nullable","string","max:255","regex:#^(/(?!/)|https?://)#"],
+        ];
+    }
+
+    public function store(Request $request){
+        $data = $request->validate($this->rules());
+        $data['position'] = (int) HomeSlide::max('position') + 1;
+        $slide = HomeSlide::create($data);
+
+        return response()->json([
+            "slide"=>$slide
         ]);
+    }
+
+    public function update(Request $request, $id){
+        $request->validate($this->rules());
 
         $slide = HomeSlide::findOrFail($id);
         $oldImage = $slide->image;
@@ -39,6 +55,37 @@ class HomeSlideController extends Controller
         return response()->json([
             "slide"=>$slide
         ]);
+    }
+
+    public function destroy($id){
+        // Le diaporama doit garder au moins une diapositive
+        if (HomeSlide::count() <= 1) {
+            return response()->json(["message"=>"The slider must keep at least one slide."], 422);
+        }
+
+        $slide = HomeSlide::findOrFail($id);
+        $this->deletePublicImage($slide->image);
+        $slide->delete();
+
+        return response()->json([
+            "deleted"=>true
+        ]);
+    }
+
+    // Nouvel ordre d'affichage : liste complète des identifiants, dans l'ordre voulu
+    public function reorder(Request $request){
+        $request->validate([
+            'ids' => 'required|array',
+            'ids.*' => 'integer|exists:home_slides,id',
+        ]);
+
+        DB::transaction(function () use ($request) {
+            foreach (array_values($request->ids) as $index => $id) {
+                HomeSlide::where('id', $id)->update(['position' => $index + 1]);
+            }
+        });
+
+        return $this->index();
     }
 
     public function uploadImg(Request $request){

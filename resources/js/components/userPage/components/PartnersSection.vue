@@ -1,6 +1,6 @@
 <template>
     <!--Partners Section-->
-    <section class="ffn-partners">
+    <section class="ffn-partners" v-if="partners.length">
         <div class="auto-container">
             <div class="sec-title text-center">
                 <h2>Our <span class="normal-font theme_color">Partners</span> &amp; Supporters</h2>
@@ -19,8 +19,11 @@
 </template>
 
 <script setup>
-    // Logos des partenaires (renseigner url pour rendre un logo cliquable)
-    const partners = [
+    import { onMounted, ref } from 'vue';
+    import { getData } from '../../plugin/api';
+
+    // Logos gérés dans l'admin (page Partners) ; liste d'origine affichée en secours si l'API ne répond pas
+    const fallback = [
         { name: 'The Rufford Foundation', logo: '/assets/images/clients/01.png', url: '' },
         { name: 'SPUN – Society for the Protection of Underground Networks', logo: '/assets/images/clients/03.jpg', url: '' },
         { name: 'Université de Parakou', logo: '/assets/images/clients/04.jpg', url: '' },
@@ -32,6 +35,17 @@
         { name: 'MOPGA', logo: '/assets/images/clients/mopga.jpg', url: '' },
         { name: 'Partner', logo: '/assets/images/clients/WhatsApp.jpeg', url: '' },
     ];
+
+    const partners = ref(fallback)
+
+    onMounted(async () => {
+        try {
+            const res = await getData('/partners')
+            if (res.data.partners.length) partners.value = res.data.partners
+        } catch (error) {
+            // la liste d'origine reste affichée
+        }
+    })
 </script>
 
 <style scoped>

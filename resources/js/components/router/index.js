@@ -220,6 +220,20 @@ const routes = [
                 }
             },
             {
+                path: 'siteSettings',
+                component: ()=>import('../adminPage/pages/siteSettings.vue'),
+                meta:{
+                    roles:['superadmin','admin']
+                }
+            },
+            {
+                path: 'partners',
+                component: ()=>import('../adminPage/pages/partners.vue'),
+                meta:{
+                    roles:['superadmin','admin']
+                }
+            },
+            {
                 path: 'homeSlider',
                 component: ()=>import('../adminPage/pages/homeSlider.vue'),
                 meta:{

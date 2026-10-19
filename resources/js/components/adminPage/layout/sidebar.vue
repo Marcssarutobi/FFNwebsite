@@ -19,6 +19,16 @@
                     </router-link>
                 </li>
                 <li class="no-sub mb-2">
+                    <router-link exact-active-class="active" to="/admins/siteSettings">
+                        <i class="iconoir-settings"></i> Site settings
+                    </router-link>
+                </li>
+                <li class="no-sub mb-2">
+                    <router-link exact-active-class="active" to="/admins/partners">
+                        <i class="iconoir-community"></i> Partners
+                    </router-link>
+                </li>
+                <li class="no-sub mb-2">
                     <router-link exact-active-class="active" to="/admins/homeSlider">
                         <i class="iconoir-media-image"></i> Home Slider
                     </router-link>

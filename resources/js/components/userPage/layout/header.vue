@@ -86,7 +86,7 @@
 
     import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
     import { useRoute } from 'vue-router';
-    import { contactInfo, socialLinks } from '../../plugin/site';
+    import { contactInfo, socialLinks, loadSettings } from '../../plugin/site';
 
     // Langue affichée : GTranslate mémorise la traduction dans le cookie googtrans (/en/fr)
     const currentLang = ref((document.cookie.match(/googtrans=\/en\/([a-z]{2})/) || [])[1] || 'en')
@@ -164,6 +164,7 @@
 
     onMounted(() => {
         window.addEventListener('resize', onResize)
+        loadSettings()
 
         // 1. Ajouter la configuration
         const configScript = document.createElement('script')

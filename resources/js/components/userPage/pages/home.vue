@@ -295,12 +295,8 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
                 <div class="content-box pull-right">
                     <h2>Some <span class="normal-font theme_color">Facts</span></h2>
-                    <div class="title-text">
-                        We’re proud of the impact Fungi For Nature is making in preserving fungal biodiversity and promoting ecological sustainability
-                    </div>
-                    <div class="text">
-                        Since its creation, Fungi For Nature has worked tirelessly to raise awareness about the ecological importance of fungi. Through education, research, and conservation, we are making an impact. 
-                    </div>
+                    <div class="title-text">{{ siteSettings.facts_title }}</div>
+                    <div class="text">{{ siteSettings.facts_text }}</div>
                     <br>
 
                     
@@ -319,15 +315,13 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                         <!--Text Content-->
                         <div class="text-content">
                             <div class="text">
-                                <p>
-                                    At Fungi For Nature, we believe fungi are not just organisms, but vital allies in restoring ecological balance. Our mission is to protect and promote fungal biodiversity, empower communities, and drive sustainable innovation through nature. Together, we can transform how we see and care for the world beneath our feet
-                                </p>
+                                <p class="ffn-preline">{{ siteSettings.ceo_message }}</p>
                             </div>
                             <div class="information clearfix">
                                 <div class="info">
-                                    <figure class="image-thumb"><img src="/assets/images/resource/Boris-Olou-ID-Photo.jpg" alt=""></figure>
-                                    <h3>Boris Armel Olou</h3>
-                                    <p>CEO of Fungi For Nature</p>
+                                    <figure class="image-thumb" v-if="siteSettings.ceo_photo"><img :src="siteSettings.ceo_photo" :alt="siteSettings.ceo_name"></figure>
+                                    <h3>{{ siteSettings.ceo_name }}</h3>
+                                    <p>{{ siteSettings.ceo_role }}</p>
                                 </div>
                                 
                             </div>
@@ -443,6 +437,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 <script setup>
 
     import PartnersSection from '../components/PartnersSection.vue';
+    import { siteSettings } from '../../plugin/site';
     import { computed, onMounted, ref, nextTick } from 'vue';
     import { getData } from '../../plugin/api';
     import { RouterLink } from 'vue-router';
@@ -574,6 +569,11 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 </script>
 
 <style scoped>
+
+.ffn-preline{
+    white-space: pre-line;
+}
+
 
 /* Réserve la place du diaporama pendant le chargement des diapositives */
 .ffn-slider-loading{

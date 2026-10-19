@@ -10,9 +10,11 @@ use App\Http\Controllers\FungiEducationController;
 use App\Http\Controllers\ExpeditionsController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeSlideController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SeoController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
@@ -55,6 +57,10 @@ Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
 
 //Slider de la page d'accueil
 Route::get('/homeslides', [HomeSlideController::class, 'index']);
+
+//Paramètres du site et partenaires
+Route::get('/settings', [SettingController::class, 'index']);
+Route::get('/partners', [PartnerController::class, 'index']);
 
 //Titre et description d'une page publique (navigation dans la SPA)
 Route::get('/seo', [SeoController::class, 'meta']);
@@ -162,6 +168,20 @@ Route::middleware('auth:sanctum')->group( function () {
     //Slider de la page d'accueil
     Route::post('/uploadslideimg', [HomeSlideController::class, 'uploadImg']);
     Route::put('/updateslide/{id}', [HomeSlideController::class, 'update']);
+    Route::post('/addslide', [HomeSlideController::class, 'store']);
+    Route::delete('/deleteslide/{id}', [HomeSlideController::class, 'destroy']);
+    Route::put('/reorderslides', [HomeSlideController::class, 'reorder']);
+
+    //Paramètres du site
+    Route::put('/settings', [SettingController::class, 'update']);
+    Route::post('/uploadsettingimg', [SettingController::class, 'uploadImg']);
+
+    //Partenaires
+    Route::post('/addpartner', [PartnerController::class, 'store']);
+    Route::put('/updatepartner/{id}', [PartnerController::class, 'update']);
+    Route::delete('/deletepartner/{id}', [PartnerController::class, 'destroy']);
+    Route::put('/reorderpartners', [PartnerController::class, 'reorder']);
+    Route::post('/uploadpartnerimg', [PartnerController::class, 'uploadImg']);
 
     //Videos
     Route::post('/addvideo', [VideoController::class, 'store']);
