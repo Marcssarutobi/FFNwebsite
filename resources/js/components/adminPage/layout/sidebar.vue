@@ -44,6 +44,11 @@
                     </RouterLink>
                 </li>
                 <li class="no-sub mb-2">
+                    <RouterLink exact-active-class="active" to="/admins/videos">
+                        <i class="iconoir-media-video-list"></i> Videos
+                    </RouterLink>
+                </li>
+                <li class="no-sub mb-2">
                     <RouterLink exact-active-class="active" to="/admins/team">
                         <i class="iconoir-group"></i> Team
                     </RouterLink>

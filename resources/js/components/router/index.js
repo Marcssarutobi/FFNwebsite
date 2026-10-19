@@ -111,6 +111,10 @@ const routes = [
                 component: ()=>import('../userPage/pages/gallery.vue'),
             },
             {
+                path: 'videos',
+                component: ()=>import('../userPage/pages/videos.vue'),
+            },
+            {
                 path: 'contact',
                 component: ()=>import('../userPage/pages/contact.vue'),
             },
@@ -206,6 +210,13 @@ const routes = [
             {
                 path: 'gallery',
                 component: ()=>import('../adminPage/pages/gallery.vue'),
+                meta:{
+                    roles:['superadmin','admin','author','viewer','approver']
+                }
+            },
+            {
+                path: 'videos',
+                component: ()=>import('../adminPage/pages/videos.vue'),
                 meta:{
                     roles:['superadmin','admin','author','viewer','approver']
                 }

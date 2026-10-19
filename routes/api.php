@@ -12,6 +12,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -59,6 +60,9 @@ Route::get('/allimages', [GalleryController::class, 'index']);
 Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
 Route::post('/uploadimagesgal', [GalleryController::class, 'UploadImage']);
 Route::post('/delimagesgal', [GalleryController::class, 'SuppImage']);
+
+//Videos
+Route::get('/allvideos', [VideoController::class, 'index']);
 
 //Contact
 Route::post('/addcontact', [ContactController::class, 'store']);
@@ -140,6 +144,13 @@ Route::middleware('auth:sanctum')->group( function () {
     //Gallery
     Route::post('/addimages', [GalleryController::class, 'createGallery']);
     Route::delete('/delimages/{id}', [GalleryController::class, 'deleteImage']);
+
+    //Videos
+    Route::post('/addvideo', [VideoController::class, 'store']);
+    Route::put('/updatevideo/{id}', [VideoController::class, 'update']);
+    Route::delete('/deletevideo/{id}', [VideoController::class, 'destroy']);
+    Route::post('/uploadvideo', [VideoController::class, 'uploadVideo']);
+    Route::post('/deletevideofile', [VideoController::class, 'deleteVideoFile']);
 
     //Contacts
     Route::get('/contacts', [ContactController::class, 'index']);

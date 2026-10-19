@@ -89,6 +89,7 @@
                                     <ul v-show="openDropdown" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
                                         <li><router-link @click="closeDropdowns" to="/event">Events</router-link></li>
                                         <li><router-link @click="closeDropdowns" to="/gallery">Gallery</router-link></li>
+                                        <li><router-link @click="closeDropdowns" to="/videos">Videos</router-link></li>
                                     </ul>
                                 </li>
                                  <li>
