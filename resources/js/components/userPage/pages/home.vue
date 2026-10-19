@@ -7,8 +7,8 @@
             <div class="tp-banner">
                 <ul>
 
-                    <li class="imgs" data-transition="fade" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/direct.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/direct.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li class="imgs" data-transition="fade" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[0]"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img :src="slides[0]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -84,8 +84,8 @@
 
                     </li>
 
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/C7.png"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/replace.jpeg"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[1]"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img :src="slides[1]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -143,8 +143,8 @@
                     </li>
 
                     <!--Main Features 1-->
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00662.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/DSC00662.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[2]"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img :src="slides[2]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -201,8 +201,8 @@
 
                     </li>
                     <!--Main Features 2-->
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00680.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/DSC00680.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[3]"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img :src="slides[3]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -259,8 +259,8 @@
 
                     </li>
                     <!--Main Features 3-->
-                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" data-thumb="/assets/images/main-slider/DSC00712.JPG"  data-saveperformance="off"  data-title="Awesome Title Here">
-                    <img src="/assets/images/main-slider/DSC00712.JPG"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                    <li class="imgs" data-transition="slidedown" data-slotamount="1" data-masterspeed="1000" :data-thumb="slides[4]"  data-saveperformance="off"  data-title="Awesome Title Here">
+                    <img :src="slides[4]"  alt=""  data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
 
 
                     <div class="tp-caption sfl sfb tp-resizeme"
@@ -664,6 +664,29 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     const allblog = ref([]);
     const allevent = ref([]);
 
+    // Images de fond du slider (modifiables dans l'admin) ; valeurs du thème tant que l'API n'a pas répondu
+    const slides = ref([
+        '/assets/images/main-slider/direct.JPG',
+        '/assets/images/main-slider/replace.jpeg',
+        '/assets/images/main-slider/DSC00662.JPG',
+        '/assets/images/main-slider/DSC00680.JPG',
+        '/assets/images/main-slider/DSC00712.JPG',
+    ]);
+
+    const SlidesFunction = async () =>{
+        await getData('/homeslides')
+            .then((response) => {
+                response.data.slides.forEach((slide) => {
+                    if (slide.position >= 1 && slide.position <= slides.value.length) {
+                        slides.value[slide.position - 1] = slide.image;
+                    }
+                });
+            })
+            .catch((error) => {
+                console.error('Error fetching slides:', error);
+            });
+    }
+
     const AllProjectFunction = async () =>{
         await getData('/allprojects')
             .then((response) => {
@@ -727,7 +750,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         });
     });
 
-    onMounted(()=>{
+    onMounted(async ()=>{
+        // Le slider lit ses images à l'initialisation (themeInit, lancé après les projets) : on les charge avant
+        await SlidesFunction()
         AllProjectFunction()
         AllBlogFunction()
         AllEventsFunction()

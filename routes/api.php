@@ -8,6 +8,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\FungiEducationController;
 use App\Http\Controllers\ExpeditionsController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HomeSlideController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
@@ -49,6 +50,9 @@ Route::get('/allcategories', [CategoryController::class, 'index']);
 //Gallery
 Route::get('/allimages', [GalleryController::class, 'index']);
 Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
+
+//Slider de la page d'accueil
+Route::get('/homeslides', [HomeSlideController::class, 'index']);
 
 //Videos
 Route::get('/allvideos', [VideoController::class, 'index']);
@@ -146,6 +150,10 @@ Route::middleware('auth:sanctum')->group( function () {
     //Gallery
     Route::post('/addimages', [GalleryController::class, 'createGallery']);
     Route::delete('/delimages/{id}', [GalleryController::class, 'deleteImage']);
+
+    //Slider de la page d'accueil
+    Route::post('/uploadslideimg', [HomeSlideController::class, 'uploadImg']);
+    Route::put('/updateslide/{id}', [HomeSlideController::class, 'update']);
 
     //Videos
     Route::post('/addvideo', [VideoController::class, 'store']);

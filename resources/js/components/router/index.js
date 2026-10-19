@@ -215,6 +215,13 @@ const routes = [
                 }
             },
             {
+                path: 'homeSlider',
+                component: ()=>import('../adminPage/pages/homeSlider.vue'),
+                meta:{
+                    roles:['superadmin','admin']
+                }
+            },
+            {
                 path: 'videos',
                 component: ()=>import('../adminPage/pages/videos.vue'),
                 meta:{
