@@ -13,6 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+        // Sauvegarde quotidienne (nécessite la tâche cron « schedule:run » dans le hPanel)
+        $schedule->command('site:backup')->dailyAt('03:00');
     }
 
     /**
