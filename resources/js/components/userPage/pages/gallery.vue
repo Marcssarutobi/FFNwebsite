@@ -14,42 +14,12 @@
     <section class="gallery-section">
         <div class="auto-container">
 
-            <!--Filter-->
-            <div class="filters text-center">
-                <ul class="filter-tabs filter-btns clearfix anim-3-all">
-                    <li class="active filter" data-role="button" data-filter="all">All</li>
-                <!--    <li class="filter" data-role="button" data-filter=".environment">Environment</li>
-                    <li class="filter" data-role="button" data-filter=".eco">Eco</li>
-                    <li class="filter" data-role="button" data-filter=".energy">Energy</li>
-                    <li class="filter" data-role="button" data-filter=".animals">Animals</li>
-                    <li class="filter" data-role="button" data-filter=".plants">Plants</li> -->
-                </ul>
-            </div>
-
-            <!--Filter List-->
-            <div class="row filter-list clearfix" v-if="allimage.length > 0">
-
-                <!--Column-->
-                <div class="column mix mix_all eco plants col-md-4 col-sm-6 col-xs-12" v-for="(img,index) in allimage" :key="index">
-                    <!--Default Portfolio Item-->
-                    <div class="default-portfolio-item">
-                        <div class="inner-box text-center">
-                            <!--Image Box-->
-                            <figure class="image-box"><img :src="img.image" alt=""></figure>
-                            <div class="overlay-box">
-                                <div class="inner-content">
-                                    <div class="content">
-                                        <a class="arrow lightbox-image" :href="img.image" title="Image Caption Here"><span class="icon flaticon-cross-4"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
+            <!-- Grille à vignettes uniformes : chaque photo est recadrée au même format -->
+            <div class="ffn-gallery" v-if="allimage.length > 0">
+                <a v-for="(img,index) in allimage" :key="index" class="ffn-gallery-item lightbox-image" rel="gallery" :href="img.image" title="Fungi For Nature">
+                    <img :src="img.image" alt="Fungi For Nature" loading="lazy">
+                    <span class="ffn-gallery-overlay"><span class="flaticon-cross-4"></span></span>
+                </a>
             </div>
 
         </div>
@@ -106,6 +76,56 @@
 
 </script>
 
-<style>
-
+<style scoped>
+    .ffn-gallery{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+    .ffn-gallery-item{
+        position: relative;
+        display: block;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 6px;
+        background: #f2f2f2;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, .08);
+    }
+    .ffn-gallery-item img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform .5s ease;
+    }
+    .ffn-gallery-overlay{
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(23, 150, 7, .55);
+        color: #fff;
+        font-size: 28px;
+        opacity: 0;
+        transition: opacity .3s ease;
+    }
+    .ffn-gallery-item:hover img{
+        transform: scale(1.06);
+    }
+    .ffn-gallery-item:hover .ffn-gallery-overlay{
+        opacity: 1;
+    }
+    @media (max-width: 991px){
+        .ffn-gallery{
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+    }
+    @media (max-width: 575px){
+        .ffn-gallery{
+            grid-template-columns: 1fr;
+        }
+    }
 </style>
