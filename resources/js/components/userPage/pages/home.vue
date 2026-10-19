@@ -297,7 +297,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                     <h2>Some <span class="normal-font theme_color">Facts</span></h2>
                     <div class="title-text">{{ siteSettings.facts_title }}</div>
                     <div class="text">{{ siteSettings.facts_text }}</div>
-                    <br>
+                    <div class="ffn-facts">
+                        <div v-for="fact in facts" :key="fact.label"><b>{{ fact.value }}</b><span>{{ fact.label }}</span></div>
+                    </div>
 
                     
                 </div>
@@ -345,24 +347,15 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                 <h2>Latest <span class="normal-font theme_color">Event</span></h2>
                 <div class="text">From forest walks to expert talks, our recent events celebrate fungi and their vital role in ecosystems. Come see what we've been up to! </div>
             </div>
-        	<div class="row clearfix">
-
-                <!--Featured Column-->
-                <div class="column default-featured-column style-two col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(event, index) in allevent" :key="index">
-                	<article class="inner-box">
-                		<figure class="image-box blogs">
-                        	<router-link :to="'/eventsingle/'+event.slug"><img :src="event.image" alt=""></router-link>
-                            <div class="post-tag" v-if="event.eventstatus === 'Upcoming'">{{ event.eventstatus }}</div>
-                        </figure>
-                        <div class="content-box blog-content">
-                        	<h3 class="title"><router-link :to="'/eventsingle/'+event.slug">{{ event.title }}</router-link></h3>
-                            <div class="column-info">In {{ event.location }}</div>
-                            <div class="text">{{ event.brefdescription }} </div>
-                            <router-link :to="'/eventsingle/'+event.slug" class="theme-btn btn-style-three">Read More</router-link>
-                        </div>
-                    </article>
-                </div>
-
+            <div class="ffn-events" :class="{ single: allevent.length === 1 }">
+                <RouterLink v-for="event in allevent" :key="event.id" :to="'/eventsingle/' + event.slug" class="ffn-event-card">
+                    <div class="date"><b>{{ eventDay(event) }}</b><span>{{ eventMonth(event) }}</span></div>
+                    <div class="bd">
+                        <h4>{{ event.title }}</h4>
+                        <small v-if="event.location"><span class="fa fa-map-marker"></span> {{ event.location }}</small>
+                        <em v-if="event.eventstatus === 'Upcoming'">Upcoming</em>
+                    </div>
+                </RouterLink>
             </div>
         </div>
     </section>
@@ -447,6 +440,21 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     const allblog = ref([]);
     const allevent = ref([]);
 
+    // Compteurs de « Some Facts » : tirés de la base (6 unités d'action = structure de l'ONG)
+    const totals = ref({ projects: 0, events: 0, partners: 0 });
+    const facts = computed(() => [
+        { value: totals.value.projects, label: 'Projects' },
+        { value: 6, label: 'Action units' },
+        { value: totals.value.partners, label: 'Partners' },
+        { value: totals.value.events, label: 'Events' },
+    ]);
+
+    const MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+    // « 2025-11-03 08:00:00 » : Safari ne lit pas l'espace, on le remplace par T
+    const eventDate = (e) => new Date(String(e.start_date).replace(' ', 'T'));
+    const eventDay = (e) => eventDate(e).getDate().toString().padStart(2, '0');
+    const eventMonth = (e) => { const d = eventDate(e); return `${MONTHS[d.getMonth()]} ${String(d.getFullYear()).slice(2)}`; };
+
 
     // Diapositives du slider (modifiables dans l'admin) ; contenu d'origine tant que l'API n'a pas répondu
     const defaultSlide = (position, image) => ({
@@ -498,6 +506,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         await getData('/allprojects')
             .then((response) => {
                 allproject.value = response.data.data.data.slice(0,4);
+                totals.value.projects = response.data.data.total;
                 nextTick(); // wait for DOM updates
                 setTimeout(() => {
                     themeInit();
@@ -522,6 +531,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         await getData('/allevents')
             .then((response) => {
                 allevent.value = response.data.data.data.slice(0,3);
+                totals.value.events = response.data.data.total;
 
                 allevent.value.forEach((event) => {
                     const now = new Date();
@@ -557,18 +567,43 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         });
     });
 
+    const PartnersCount = async () => {
+        await getData('/partners')
+            .then((response) => { totals.value.partners = (response.data.partners ?? []).length; })
+            .catch((error) => console.error('Error fetching partners:', error));
+    };
+
     onMounted(async ()=>{
         // Le slider lit ses images à l'initialisation (themeInit, lancé après les projets) : on les charge avant
         await SlidesFunction()
         AllProjectFunction()
         AllBlogFunction()
         AllEventsFunction()
+        PartnersCount()
     })
 
 
 </script>
 
 <style scoped>
+
+.ffn-facts{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 24px; }
+.ffn-facts div{ background: #fff; padding: 16px 18px; border-left: 3px solid #179607; }
+.ffn-facts b{ display: block; font-size: 32px; font-weight: 800; color: #179607; line-height: 1; }
+.ffn-facts span{ font-size: 12px; font-weight: 700; text-transform: uppercase; color: #444; }
+
+.ffn-events{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.ffn-events.single{ grid-template-columns: minmax(0, 560px); justify-content: center; }
+.ffn-event-card{ display: flex; border: 1px solid #e6e6e6; background: #fff; color: #222; transition: box-shadow .2s; }
+.ffn-event-card:hover{ box-shadow: 0 6px 18px rgba(0,0,0,.08); }
+.ffn-event-card .date{ background: #179607; color: #fff; min-width: 84px; padding: 18px 10px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+.ffn-event-card .date b{ font-size: 30px; line-height: 1; }
+.ffn-event-card .date span{ font-size: 12px; text-transform: uppercase; margin-top: 4px; }
+.ffn-event-card .bd{ padding: 16px 18px; text-align: left; }
+.ffn-event-card h4{ font-size: 15px; font-weight: 800; text-transform: uppercase; line-height: 1.35; margin: 0 0 6px; color: #222; }
+.ffn-event-card small{ color: #6b716c; font-size: 13px; }
+.ffn-event-card em{ display: inline-block; margin-left: 8px; font-style: normal; font-size: 11px; font-weight: 700; color: #179607; text-transform: uppercase; }
+@media (max-width: 991px){ .ffn-events{ grid-template-columns: 1fr; } }
 
 .ffn-preline{
     white-space: pre-line;
