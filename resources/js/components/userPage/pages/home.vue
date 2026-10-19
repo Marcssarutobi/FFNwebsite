@@ -396,10 +396,6 @@ Below are the key fields in which we focus our efforts to create lasting impact.
                         	<h3 class="title"><router-link :to="`/blogsingle/${blog.slug}`">{{ blog.title }}</router-link></h3>
                         	<div class="post-info clearfix">
                             	<div class="post-author">Posted by {{ blog.user?.nom }} {{ blog.user?.prenom }}</div>
-                                <div class="post-options clearfix">
-                                	<a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                    <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                </div>
                             </div>
                             <div class="text">{{ blog.brief_description }}</div>
                             <router-link :to="`/blogsingle/${blog.slug}`" class="theme-btn btn-style-three">Read More</router-link>
@@ -451,13 +447,13 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         	<div class="row clearfix">
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
-                	<h2>Subcribe for Newsletter</h2>
-                    Receive our latest news and special offers directly to your inbox.
+                	<h2>Join our mission</h2>
+                    Want to support our work, become a partner or volunteer? Get in touch with our team.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Contact Us</RouterLink>
                 		
                     </div>
                 </div>

@@ -66,7 +66,7 @@ class GalleryController extends Controller
                 $picName = time() . '_' . uniqid() . '.' . $image->extension();
 
                 // Déplacement du fichier vers le répertoire public/images/gallery
-                $image->move(public_path('images/gallery'), $picName);
+                $this->optimizeImage($image->move(public_path('images/gallery'), $picName)->getPathname());
 
                 // Ajouter l'URL de l'image téléchargée au tableau
                 $imageUrls[] = "/images/gallery/$picName";

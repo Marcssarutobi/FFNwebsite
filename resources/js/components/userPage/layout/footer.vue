@@ -18,16 +18,13 @@
                                     </div>
 
                                     <ul class="contact-info">
-                                    	<li><span class="icon fa fa-map-marker"></span>Parakou, Bénin</li>
-                                        <li><span class="icon fa fa-phone"></span>(+229) 0196975772</li>
-                                        <li><span class="icon fa fa-envelope"></span>contact@fungifornature.com</li>
+                                    	<li><span class="icon fa fa-map-marker"></span>{{ contactInfo.address }}</li>
+                                        <li><span class="icon fa fa-phone"></span><a :href="contactInfo.phoneLink">{{ contactInfo.phoneDisplay }}</a></li>
+                                        <li><span class="icon fa fa-envelope"></span><a :href="'mailto:' + contactInfo.email">{{ contactInfo.email }}</a></li>
                                     </ul>
 
-                                    <div class="social-links-two clearfix">
-                                    	<a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
-                                        <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
-                                        <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
-                                        <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
+                                    <div class="social-links-two clearfix" v-if="socialLinks.length">
+                                    	<a v-for="link in socialLinks" :key="link.name" :href="link.url" :class="link.css + ' img-circle'" target="_blank" rel="noopener" :aria-label="link.name"><span :class="link.icon"></span></a>
                                     </div>
 
                                 </div>
@@ -69,11 +66,11 @@
                                 <div class="footer-widget links-widget">
                                 	<h2>Quick Links</h2>
                                     <ul>
-                                        <li><router-link to="about">About-us</router-link></li>
-                                        <li><router-link to="project">Projects</router-link></li>
-                                        <li><router-link to="event">Events</router-link></li>
-                                        <li><router-link to="blog">Blog</router-link></li>
-                                        <li><router-link to="contact">Contact</router-link></li>
+                                        <li><router-link to="/aboutUs">About us</router-link></li>
+                                        <li><router-link to="/project">Projects</router-link></li>
+                                        <li><router-link to="/event">Events</router-link></li>
+                                        <li><router-link to="/blog">Blog</router-link></li>
+                                        <li><router-link to="/contact">Contact</router-link></li>
                                         <li><a target="_blank" href="/admins">Admin</a></li>
                                     </ul>
 
@@ -92,7 +89,7 @@
     	<div class="footer-bottom">
             <div class="auto-container clearfix">
                 <!--Copyright-->
-                <div class="copyright text-center">Copyright 2025 &copy;  <a href="#">Fungi For Nature</a></div>
+                <div class="copyright text-center">Copyright {{ currentYear }} &copy; <RouterLink to="/">Fungi For Nature</RouterLink></div>
             </div>
         </div>
 
@@ -105,6 +102,9 @@
     import { getData } from '../../plugin/api';
     import { RouterLink } from 'vue-router';
     import {themeInit} from '../../plugin/themeInit'
+    import { contactInfo, socialLinks } from '../../plugin/site';
+
+    const currentYear = new Date().getFullYear();
 
     const allproject = ref([]);
     const allblog = ref([]);

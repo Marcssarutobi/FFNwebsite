@@ -33,22 +33,12 @@
                                     <h3>{{ EducationData.title }}</h3>
                                     <div class="post-info clearfix">
                                         <div class="post-author">Posted by {{ EducationData.user?.nom }} {{ EducationData.user?.prenom }}</div>
-                                        <!-- <div class="post-options clearfix">
-                                            <a href="#" class="comments-count"><span class="icon flaticon-communication-2"></span> 6</a>
-                                            <a href="#" class="fav-count"><span class="icon flaticon-favorite-1"></span> 14</a>
-                                        </div> -->
+                                        <!-- -->
                                     </div>
                                     <div class="text" style="text-align: justify;" v-html="EducationData.content"></div>
                                 </div>
 
-                               <div class="post-share-options clearfix">
-                                	<div class="pull-left tags"><strong>Share this post</strong> : </div>
-                                    <div class="pull-right social-links-two clearfix">
-                                    	<a href="#" class="facebook img-circle"><span class="fa fa-facebook-f"></span></a>
-                                        <a href="#" class="twitter img-circle"><span class="fa fa-x-twitter"></span></a>
-                                        <a href="#" class="linkedin img-circle"><span class="fa fa-linkedin"></span></a>
-                                    </div>
-                                </div>
+                               <ShareLinks :title="EducationData.title" />
 
                             </article>
                         </div>
@@ -62,18 +52,6 @@
                 <!--Sidebar-->
                 <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                     <aside class="sidebar">
-
-                        <!-- Search Form -->
-                        <div class="widget search-box">
-
-                            <form method="post" action="index.html">
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="Enter keyword">
-                                    <button type="submit"><span class="icon flaticon-tool-5"></span></button>
-                                </div>
-                            </form>
-
-                        </div>
 
 
 
@@ -112,13 +90,13 @@
         	<div class="row clearfix">
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
-                	<h2>Subcribe for Newsletter</h2>
-                   Receive our latest news and special offers directly to your inbox.
+                	<h2>Join our mission</h2>
+                   Want to support our work, become a partner or volunteer? Get in touch with our team.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Contact Us</RouterLink>
                 		
                     </div>
                 </div>
@@ -132,6 +110,7 @@
 
 <script setup>
 
+    import ShareLinks from '../components/ShareLinks.vue';
 import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { getData, getSingleData } from '../../plugin/api';

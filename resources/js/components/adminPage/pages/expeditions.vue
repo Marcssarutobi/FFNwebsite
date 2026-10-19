@@ -460,7 +460,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Image size must not exceed 5MB',
+                        text: 'Image size must not exceed 20MB',
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -622,7 +622,7 @@
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'Image size must not exceed 5MB',
+                        text: 'Image size must not exceed 20MB',
                         showConfirmButton: false,
                         timer: 1500
                     });

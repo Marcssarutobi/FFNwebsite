@@ -48,7 +48,7 @@ class HomeSlideController extends Controller
 
         $image = $request->file('image');
         $picName = time() . '_' . uniqid() . '.' . $image->extension();
-        $image->move(public_path('images/Slider'), $picName);
+        $this->optimizeImage($image->move(public_path('images/Slider'), $picName)->getPathname(), 2400);
 
         return response()->json(['image_url' => "/images/Slider/$picName"]);
     }

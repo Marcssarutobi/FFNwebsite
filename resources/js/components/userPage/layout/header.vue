@@ -8,13 +8,10 @@
                  <div class="info-outer">
                  	<!--Info Box-->
                     <ul class="info-box clearfix">
-                    	<li><span class="icon flaticon-interface"></span><a href="mailto:contact@fungifornature.com">contact@fungifornature.com</a></li>
-                    	<li><span class="icon flaticon-technology-5"></span><a href="#">(+229) 0196975772</a></li>
-                        <li class="social-links-one">
-                        	<a href="#" class="facebook img-circle"><span class="fa-brands fa-facebook-f"></span></a>
-                            <a href="#" class="twitter img-circle"><span class="fa-brands fa-x-twitter"></span></a>
-                            <a href="#" class="google-plus img-circle"><span class="fa-brands fa-instagram"></span></a>
-                            <a href="#" class="linkedin img-circle"><span class="fa-brands fa-linkedin"></span></a>
+                    	<li><span class="icon flaticon-interface"></span><a :href="'mailto:' + contactInfo.email">{{ contactInfo.email }}</a></li>
+                    	<li><span class="icon flaticon-technology-5"></span><a :href="contactInfo.phoneLink">{{ contactInfo.phoneDisplay }}</a></li>
+                        <li class="social-links-one" v-if="socialLinks.length">
+                            <a v-for="link in socialLinks" :key="link.name" :href="link.url" :class="link.css + ' img-circle'" target="_blank" rel="noopener" :aria-label="link.name"><span :class="link.icon"></span></a>
                         </li>
                     </ul>
                  </div>
@@ -56,7 +53,7 @@
                                     <a href="#" @click.prevent>About</a>
                                     <ul v-show="openDropdownAbout" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
                                         <li><router-link @click="closeDropdowns"  to="/aboutUs">About us</router-link></li>
-                                        <li><router-link @click="closeDropdowns"  to="/domain">Field of ​​intervention</router-link></li>
+                                        <li><router-link @click="closeDropdowns"  to="/domain">Field of intervention</router-link></li>
                                         <li><router-link @click="closeDropdowns"  to="/advisor">Advisor</router-link></li>
                                         <li><router-link @click="closeDropdowns"  to="/team">Teams</router-link></li>
                                     </ul>
@@ -85,7 +82,7 @@
                                 </li>
 
                                 <li class="dropdown" @mouseenter="openDropdown = true" @mouseleave="openDropdown = false">
-                                    <a href="#" @click.prevent>Media & New </a>
+                                    <a href="#" @click.prevent>Media & News</a>
                                     <ul v-show="openDropdown" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
                                         <li><router-link @click="closeDropdowns" to="/event">Events</router-link></li>
                                         <li><router-link @click="closeDropdowns" to="/gallery">Gallery</router-link></li>
@@ -93,7 +90,7 @@
                                     </ul>
                                 </li>
                                  <li>
-                                    <router-link exact-active-class="current" @click="closeMenu" to="/blog">BLog</router-link>
+                                    <router-link exact-active-class="current" @click="closeMenu" to="/blog">Blog</router-link>
                                 </li> 
                                 <li>
                                     <router-link exact-active-class="current" @click="closeMenu" to="/contact">Contact Us</router-link>
@@ -118,6 +115,7 @@
 <script setup>
 
     import { onMounted, ref } from 'vue';
+    import { contactInfo, socialLinks } from '../../plugin/site';
 
     const openDropdown = ref(false)
     const openDropdownAbout = ref(false)
@@ -143,43 +141,43 @@
         isMenuOpen.value = false
     }
 
-    // onMounted(() => {
-    //     // 1. Ajouter la configuration
-    //     const configScript = document.createElement('script')
-    //     configScript.type = 'text/javascript'
-    //     configScript.innerHTML = `window.gtranslateSettings = {
-    //         default_language: "en",
-    //         languages: ["en", "fr"],
-    //         wrapper_selector: ".gtranslate_wrapper"
-    //     };`
-    //     document.head.appendChild(configScript)
-
-    //     // 2. Charger le script externe
-    //     const externalScript = document.createElement('script')
-    //     externalScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js"
-    //     externalScript.defer = true
-    //     document.head.appendChild(externalScript)
-    // })
-
     onMounted(() => {
-        //Configuration du widget AVEC DRAPEAUX SEULEMENT (pas de select)
-        window.gtranslateSettings = {
-           default_language: 'en',
-           languages: ['en', 'fr'],
-           wrapper_selector: '.gtranslate_wrapper',
-           switcher_horizontal_position: "inline",
-           flag_size: 24,
-           alt_flags: {
-            en: "usa"
-           }
-        }
+        // 1. Ajouter la configuration
+        const configScript = document.createElement('script')
+        configScript.type = 'text/javascript'
+        configScript.innerHTML = `window.gtranslateSettings = {
+            default_language: "en",
+            languages: ["en", "fr"],
+            wrapper_selector: ".gtranslate_wrapper"
+        };`
+        document.head.appendChild(configScript)
 
-        //Charger SEULEMENT le script fc.js (flags)
-        const script = document.createElement('script')
-        script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
-        script.defer = true
-        document.head.appendChild(script)
+        // 2. Charger le script externe
+        const externalScript = document.createElement('script')
+        externalScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js"
+        externalScript.defer = true
+        document.head.appendChild(externalScript)
     })
+
+    //onMounted(() => {
+        // Configuration du widget AVEC DRAPEAUX SEULEMENT (pas de select)
+        //window.gtranslateSettings = {
+        //    default_language: 'en',
+        //    languages: ['en', 'fr'],
+        //    wrapper_selector: '.gtranslate_wrapper',
+        //    switcher_horizontal_position: "inline",
+        //    flag_size: 24,
+        //    alt_flags: {
+        //     en: "usa"
+        //    }
+        //}
+
+        // Charger SEULEMENT le script fc.js (flags)
+        //const script = document.createElement('script')
+        //script.src = 'https://cdn.gtranslate.net/widgets/latest/fc.js'
+        //script.defer = true
+        //document.head.appendChild(script)
+    //})
 </script>
 
 <style>
@@ -192,7 +190,7 @@
         width: 100% !important;
     }
 
-    .glink {
+    .gt_switcher{
         display: none !important;
     }
 

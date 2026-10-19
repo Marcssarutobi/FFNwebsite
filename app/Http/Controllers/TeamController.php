@@ -110,16 +110,16 @@ class TeamController extends Controller
     public function uploadImg(Request $request){ # Uploder une image dans un dossier
 
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:5048'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:20480'
         ]);
 
         if ($request->hasFile('image')) {
 
             // Génération d'un nom unique pour l'image
-            $picName = time() . '.' . $request->file('image')->extension();
+            $picName = time() . '_' . uniqid() . '.' . $request->file('image')->extension();
 
             // Déplacement du fichier vers le répertoire public/images
-            $request->file('image')->move(public_path('images/User'), $picName);
+            $this->optimizeImage($request->file('image')->move(public_path('images/User'), $picName)->getPathname());
 
             // Retourner l'URL de l'image téléchargée
             return response()->json(['image_url' => "/images/User/$picName"]);

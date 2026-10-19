@@ -110,18 +110,6 @@
                 <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                     <aside class="sidebar">
 
-                        <!-- Search Form -->
-                        <div class="widget search-box">
-
-                            <form method="post" action="index.html">
-                                <div class="form-group">
-                                    <input type="search" name="search-field" value="" placeholder="Enter keyword">
-                                    <button type="submit"><span class="icon flaticon-tool-5"></span></button>
-                                </div>
-                            </form>
-
-                        </div>
-
                         <!-- Popular Categories -->
                         <div class="widget popular-categories wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <div class="sidebar-title"><h3>Categories</h3></div>

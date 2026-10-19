@@ -124,10 +124,10 @@ class UserController extends Controller
         if ($request->hasFile('image')) {
 
             // Génération d'un nom unique pour l'image
-            $picName = time() . '.' . $request->file('image')->extension();
+            $picName = time() . '_' . uniqid() . '.' . $request->file('image')->extension();
 
             // Déplacement du fichier vers le répertoire public/images
-            $request->file('image')->move(public_path('images/Profils'), $picName);
+            $this->optimizeImage($request->file('image')->move(public_path('images/Profils'), $picName)->getPathname());
 
             // Retourner l'URL de l'image téléchargée
             return response()->json(['image_url' => "/images/Profils/$picName"]);

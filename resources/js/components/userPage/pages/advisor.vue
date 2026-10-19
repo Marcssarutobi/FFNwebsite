@@ -5,7 +5,7 @@
         <div class="auto-container">
             <div class="sec-title">
                 <h1>Advisor</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="domain" class="current">About Us</RouterLink></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain" class="current">About Us</RouterLink></div>
             </div>
         </div>
     </section>
@@ -163,13 +163,13 @@
         	<div class="row clearfix">
             	<!--Column-->
                 <div class="column col-md-9 col-sm-12 col-xs-12">
-                	<h2>Subcribe for Newsletter</h2>
-                   Receive our latest news and special offers directly to your inbox.
+                	<h2>Join our mission</h2>
+                   Want to support our work, become a partner or volunteer? Get in touch with our team.
                 </div>
                 <!--Column-->
                 <div class="column col-md-3 col-sm-12 col-xs-12">
                 	<div class="text-right padd-top-20">
-                        <RouterLink to="/contact" class="theme-btn btn-style-one">Subscribe Now</RouterLink>
+                        <RouterLink to="/contact" class="theme-btn btn-style-one">Contact Us</RouterLink>
                 		
                     </div>
                 </div>
