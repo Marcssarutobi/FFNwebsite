@@ -79,3 +79,96 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
     cursor: pointer;
 }
+
+/* ================= Finitions 2026-10-20 ================= */
+
+/* Lisibilité du texte courant */
+.default-section .text, .default-text-column .text, .project-details .text,
+.sec-title .text, .default-icon-column .text, .default-featured-column .text,
+.title-box .text, .main-features .text, .two-column-fluid .left-column .title-text{
+    color: #4f5551;
+    line-height: 1.7;
+}
+
+/* Cartes : même hauteur dans une rangée, bouton toujours en bas */
+.row.clearfix:has(> .default-featured-column){
+    display: flex;
+    flex-wrap: wrap;
+}
+.row.clearfix:has(> .default-featured-column)::before,
+.row.clearfix:has(> .default-featured-column)::after{ display: none; }
+.row.clearfix > .default-featured-column{ display: flex; float: none; }
+.row.clearfix > .default-featured-column > .inner-box{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+}
+.row.clearfix > .default-featured-column > .inner-box > .content-box{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.row.clearfix > .default-featured-column > .inner-box > .content-box > .theme-btn{
+    margin-top: auto;
+    align-self: flex-start;
+}
+/* Une seule carte : centrée */
+.row.clearfix.ffn-center-row{ justify-content: center; }
+
+/* Fil d'Ariane : élément courant sans lien */
+.page-title .bread-crumb span.current{ color: #fff; opacity: .75; }
+
+/* Ligne d'infos sous un titre (catégorie, date, lieu) */
+.ffn-meta{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin: 6px 0 22px;
+    font-size: 14px;
+    color: #179607;
+}
+.ffn-meta .fa{ margin-right: 6px; }
+
+/* Texte riche (TinyMCE) : la police, la taille et la couleur du site s'imposent aux styles collés */
+.ffn-richtext, .ffn-richtext *{
+    font-family: inherit !important;
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: #4f5551 !important;
+    background: transparent !important;
+}
+.ffn-richtext{ text-align: left !important; }
+.ffn-richtext a, .ffn-richtext a *{ color: #179607 !important; }
+.ffn-richtext strong, .ffn-richtext b{ font-weight: 700; color: #222 !important; }
+.ffn-richtext p{ margin: 0 0 14px; }
+.ffn-richtext ul, .ffn-richtext ol{ padding-left: 22px; margin: 0 0 14px; }
+.ffn-richtext li{ margin-bottom: 6px; }
+.ffn-richtext img, .ffn-richtext iframe, .ffn-richtext video{ max-width: 100%; height: auto; }
+.ffn-richtext h1, .ffn-richtext h2, .ffn-richtext h3, .ffn-richtext h4{
+    font-size: 20px !important; font-weight: 700; color: #222 !important; margin: 24px 0 10px;
+}
+
+/* Partage + lien retour en bas d'article */
+.ffn-share{ margin-top: 30px; padding-top: 20px; border-top: 1px solid #e6e6e6; }
+.ffn-back{
+    display: inline-block; margin-top: 18px; font-weight: 700; font-size: 13px;
+    text-transform: uppercase; letter-spacing: .04em; color: #179607;
+}
+.ffn-back .fa{ margin-right: 6px; }
+
+/* Bloc « Coming soon » */
+.ffn-coming-soon{ padding: 90px 0; text-align: center; }
+.ffn-coming-soon .icon{
+    width: 72px; height: 72px; margin: 0 auto 22px; border-radius: 50%;
+    border: 2px solid #179607; color: #179607; font-size: 28px;
+    display: flex; align-items: center; justify-content: center;
+}
+.ffn-coming-soon h2{ font-size: 28px; font-weight: 800; text-transform: uppercase; margin: 0 0 12px; }
+.ffn-coming-soon p{ max-width: 520px; margin: 0 auto 26px; color: #4f5551; line-height: 1.7; }
+
+@media (max-width: 767px){
+    .row.clearfix > .default-featured-column{ width: 100%; }
+    .ffn-coming-soon{ padding: 60px 0; }
+}
