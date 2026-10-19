@@ -29,27 +29,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login',[UserController::class, 'login']);
 
-//Image Profils
-Route::post('/uploadimg', [UserController::class, 'uploadImg']);
-Route::post('/deleteimg', [UserController::class, 'deleteImage']);
-
 //Project Public
 Route::get('/allprojects', [ProjectController::class, 'allProject']);
 Route::get('/project/{slug}', [ProjectController::class, 'showUser']);
-Route::post('/uploadprojectimg', [ProjectController::class, 'uploadImg']);
-Route::post('/deleteprojectimg', [ProjectController::class, 'deleteImage']);
 
 //Event Public
 Route::get('/allevents', [EventController::class, 'allEvent']);
 Route::get('/event/{slug}', [EventController::class, 'showUser']);
-Route::post('/uploadeventtimg', [EventController::class, 'uploadImg']);
-Route::post('/deleteeventimg', [EventController::class, 'deleteImage']);
 
 //Blogs Public
 Route::get('/allblogs', [BlogController::class, 'allBlog']);
 Route::get('/blog/{slug}', [BlogController::class, 'showUser']);
-Route::post('/uploadblogimg', [BlogController::class, 'uploadImg']);
-Route::post('/deleteblogimg', [BlogController::class, 'deleteImage']);
 
 //Categorie
 Route::get('/showcategory/{id}', [CategoryController::class, 'show']);
@@ -58,8 +48,6 @@ Route::get('/allcategories', [CategoryController::class, 'index']);
 //Gallery
 Route::get('/allimages', [GalleryController::class, 'index']);
 Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
-Route::post('/uploadimagesgal', [GalleryController::class, 'UploadImage']);
-Route::post('/delimagesgal', [GalleryController::class, 'SuppImage']);
 
 //Videos
 Route::get('/allvideos', [VideoController::class, 'index']);
@@ -71,22 +59,34 @@ Route::post('/addcontact', [ContactController::class, 'store']);
 Route::get('/teams', [TeamController::class, 'indexTeams']);
 Route::get('/advisors', [TeamController::class, 'indexAdvisors']);
 Route::get('/showteam/{slug}', [TeamController::class, 'show']);
-Route::post('/uploadimagesTeams', [TeamController::class, 'uploadImg']);
-Route::post('/delimagesTeams', [TeamController::class, 'deleteImage']);
 
 //Expéditions
 Route::get('/allExpeditions', [ExpeditionsController::class, 'allExpeditions']);
 Route::get('/showexpedition/{slug}', [ExpeditionsController::class, 'showUser']);
-Route::post('/uploadimagesExpeditions', [ExpeditionsController::class, 'uploadImg']);
-Route::post('/delimagesExpeditions', [ExpeditionsController::class, 'deleteImage']);
 
 //Fungi Education
 Route::get('/allFungiEducation', [FungiEducationController::class, 'allFungiEducation']);
 Route::get('/showfungieducation/{slug}', [FungiEducationController::class, 'showUser']);
-Route::post('/uploadimagesFungiEducation', [FungiEducationController::class, 'uploadImg']);
-Route::post('/delfungieducationimg', [FungiEducationController::class, 'deleteImage']);
 
 Route::middleware('auth:sanctum')->group( function () {
+
+    //Upload et suppression des images (back-office uniquement)
+    Route::post('/uploadimg', [UserController::class, 'uploadImg']);
+    Route::post('/deleteimg', [UserController::class, 'deleteImage']);
+    Route::post('/uploadprojectimg', [ProjectController::class, 'uploadImg']);
+    Route::post('/deleteprojectimg', [ProjectController::class, 'deleteImage']);
+    Route::post('/uploadeventtimg', [EventController::class, 'uploadImg']);
+    Route::post('/deleteeventimg', [EventController::class, 'deleteImage']);
+    Route::post('/uploadblogimg', [BlogController::class, 'uploadImg']);
+    Route::post('/deleteblogimg', [BlogController::class, 'deleteImage']);
+    Route::post('/uploadimagesgal', [GalleryController::class, 'UploadImage']);
+    Route::post('/delimagesgal', [GalleryController::class, 'SuppImage']);
+    Route::post('/uploadimagesTeams', [TeamController::class, 'uploadImg']);
+    Route::post('/delimagesTeams', [TeamController::class, 'deleteImage']);
+    Route::post('/uploadimagesExpeditions', [ExpeditionsController::class, 'uploadImg']);
+    Route::post('/delimagesExpeditions', [ExpeditionsController::class, 'deleteImage']);
+    Route::post('/uploadimagesFungiEducation', [FungiEducationController::class, 'uploadImg']);
+    Route::post('/delfungieducationimg', [FungiEducationController::class, 'deleteImage']);
 
     //CurrentUser
     Route::get('/user', [UserController::class, 'getUser']);

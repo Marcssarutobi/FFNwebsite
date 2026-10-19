@@ -116,13 +116,7 @@ class BlogController extends Controller
             'image'=>'required'
         ]);
 
-        if (!$hasFullPath) {
-            $filePath = public_path() .$request->image;
-        }
-
-        if(file_exists($filePath)){
-            @unlink($filePath);
-        }
+        $this->deletePublicImage($request->image);
 
         return 'done';
 
