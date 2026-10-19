@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EditorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FungiEducationController;
 use App\Http\Controllers\ExpeditionsController;
@@ -71,6 +72,7 @@ Route::get('/showfungieducation/{slug}', [FungiEducationController::class, 'show
 Route::middleware('auth:sanctum')->group( function () {
 
     //Upload et suppression des images (back-office uniquement)
+    Route::post('/uploadimgTi', [EditorController::class, 'uploadImage']);
     Route::post('/uploadimg', [UserController::class, 'uploadImg']);
     Route::post('/deleteimg', [UserController::class, 'deleteImage']);
     Route::post('/uploadprojectimg', [ProjectController::class, 'uploadImg']);
