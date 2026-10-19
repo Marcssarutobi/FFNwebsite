@@ -287,23 +287,7 @@
     <!--Blog News Section-->
 
 
-    <!--Sponsors Section-->
-    <section class="sponsors-section">
-        <div class="auto-container">
-            <div class="slider-outer">
-                <!--Sponsors Slider-->
-                <ul class="sponsors-slider">
-                    <li><a href="#"><img src="/assets/images/clients/01.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/03.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/06.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
+    <PartnersSection />
 
     <!--Intro Section-->
     <section class="subscribe-intro">
@@ -329,6 +313,7 @@
 </template>
 
 <script  setup>
+    import PartnersSection from '../components/PartnersSection.vue';
 import { RouterLink } from 'vue-router';
 import { getData } from '../../plugin/api';
 import { onMounted, ref } from 'vue';

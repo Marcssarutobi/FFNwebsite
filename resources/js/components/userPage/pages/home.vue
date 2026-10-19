@@ -376,7 +376,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     <!--Testimonials-->
 
     <!--Blog News Section-->
-    <section class="blog-news-section latest-news">
+    <section class="blog-news-section latest-news" v-if="allblog.length">
     	<div class="auto-container">
 
             <div class="sec-title text-center">
@@ -410,31 +410,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     </section>
 
 
-    <!--Sponsors Section-->
-    <section class="sponsors-section">
-        <div class="auto-container">
-            <div class="slider-outer">
-                <!--Sponsors Slider-->
-                <ul class="sponsors-slider">
-                    <li><a href="#"><img src="/assets/images/clients/01.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/03.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/04.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/05.jpg" alt=""></a></li> 
-                    <li><a href="#"><img src="/assets/images/clients/06.png" alt=""></a></li>
-                    <li><a href="#"><img src="/assets/images/clients/07.jpeg" alt=""></a></li>  
-                    <li><a href="#"><img src="/assets/images/clients/image001.jpg" alt=""></a></li>  
-                    <li><a href="#"><img src="/assets/images/clients/image003.png" alt=""></a></li>    
-                    <li><a href="#"><img src="/assets/images/clients/image007.jpg" alt=""></a></li>  
-                    <li><a href="#"><img src="/assets/images/clients/WhatsApp.jpeg" alt=""></a></li>       
-
-
-
-
-                </ul>
-            </div>
-
-        </div>
-    </section>
+    <PartnersSection />
 
 
     <!--Parallax Section-->
@@ -465,6 +441,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 
 <script setup>
 
+    import PartnersSection from '../components/PartnersSection.vue';
     import { computed, onMounted, ref, nextTick } from 'vue';
     import { getData } from '../../plugin/api';
     import { RouterLink } from 'vue-router';
@@ -473,6 +450,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     const allproject = ref([]);
     const allblog = ref([]);
     const allevent = ref([]);
+
 
     // Diapositives du slider (modifiables dans l'admin) ; contenu d'origine tant que l'API n'a pas répondu
     const defaultSlide = (position, image) => ({
@@ -678,20 +656,7 @@ Below are the key fields in which we focus our efforts to create lasting impact.
     text-overflow: ellipsis;
 }
 
-.sponsors-slider li a {
-    width: 292px;
-    height: 126px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.sponsors-slider li a img{
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
+
 
 
 @media screen and (max-width: 991px) {
