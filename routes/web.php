@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '^(?!api/?)(?!admins/?).*$');
+// Plan du site pour les moteurs de recherche
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap']);
+
+// Site public (SPA Vue) : titre, description et aperçu de partage calculés côté serveur
+Route::get('/{any}', [SeoController::class, 'page'])->where('any', '^(?!api/?)(?!admins/?).*$');
 
 // route to serve admin include api
 Route::get('/admins',function(){

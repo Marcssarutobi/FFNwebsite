@@ -55,16 +55,7 @@
                 		<!--Map Container-->
                         <div class="map-container">
                             <!--Map Canvas-->
-                            <div class="map-canvas"
-                                data-zoom="12"
-                                data-lat="-37.817085"
-                                data-lng="144.955631"
-                                data-type="roadmap"
-                                data-hue="#ffc400"
-                                data-title="Envato"
-                                data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>"
-                                style="height: 380px;">
-                            </div>
+                            <iframe class="ffn-map" title="Fungi For Nature – Parakou, Benin" src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1sParakou,+B%C3%A9nin!6i13" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
 
                         </div>
                     </article>
@@ -114,26 +105,6 @@
 
 
     <!--Parallax Section-->
-
-    <!--Intro Section-->
-   <section class="subscribe-intro">
-    	<div class="auto-container">
-        	<div class="row clearfix">
-            	<!--Column-->
-                <div class="column col-md-9 col-sm-12 col-xs-12">
-                	<h2>Join our mission</h2>
-                   Want to support our work, become a partner or volunteer? Get in touch with our team.
-                </div>
-                <!--Column-->
-                <div class="column col-md-3 col-sm-12 col-xs-12">
-                	<div class="text-right padd-top-20">
-                        <RouterLink to="/contact" class="theme-btn btn-style-one">Contact Us</RouterLink>
-                		
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 </template>
 
 <script setup>

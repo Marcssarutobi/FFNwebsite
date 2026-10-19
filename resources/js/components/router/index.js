@@ -138,6 +138,11 @@ const routes = [
                 component: ()=>import('../userPage/pages/catProject.vue'),
             },
             {
+                path: ':pathMatch(.*)*',
+                name: 'notFound',
+                component: ()=>import('../userPage/pages/notFound.vue'),
+            },
+            {
                 path: 'fungiEducationpreview/:id',
                 meta: {requiresAuth: true,roles:['superadmin','approver']},
                 component: ()=>import('../userPage/pages/fungiEducationpreview.vue'),
@@ -359,6 +364,23 @@ router.beforeEach(async (to, from, next) => {
         } else {
             next();
         }
+    }
+})
+
+// Titre de l'onglet et description : mêmes valeurs que celles écrites par le serveur (SeoController)
+router.afterEach(async (to, from) => {
+    if (to.path.startsWith('/admins') || (from.matched.length === 0)) {
+        return; // premier chargement : le serveur a déjà écrit les bonnes balises
+    }
+    try {
+        const res = await axiosInstance.get('/seo', { params: { path: to.path } })
+        document.title = res.data.title
+        const description = document.querySelector('meta[name="description"]')
+        if (description) {
+            description.setAttribute('content', res.data.description)
+        }
+    } catch (error) {
+        // le titre précédent reste affiché
     }
 })
 

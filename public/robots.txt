@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /admins
+Disallow: /api/
+
+Sitemap: https://fungifornature.com/sitemap.xml

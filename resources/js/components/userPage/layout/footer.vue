@@ -71,7 +71,6 @@
                                         <li><router-link to="/event">Events</router-link></li>
                                         <li><router-link to="/blog">Blog</router-link></li>
                                         <li><router-link to="/contact">Contact</router-link></li>
-                                        <li><a target="_blank" href="/admins">Admin</a></li>
                                     </ul>
 
                                 </div>
@@ -164,7 +163,6 @@
 
     .project{
         width: 100%;
-        height: 48px;
         display: -webkit-box;
         -webkit-line-clamp: 2;        /* Nombre de lignes max */
         -webkit-box-orient: vertical;

@@ -12,6 +12,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeSlideController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SeoController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
@@ -54,6 +55,9 @@ Route::get('/showimages/{id}', [GalleryController::class, 'showImage']);
 
 //Slider de la page d'accueil
 Route::get('/homeslides', [HomeSlideController::class, 'index']);
+
+//Titre et description d'une page publique (navigation dans la SPA)
+Route::get('/seo', [SeoController::class, 'meta']);
 
 //Videos
 Route::get('/allvideos', [VideoController::class, 'index']);

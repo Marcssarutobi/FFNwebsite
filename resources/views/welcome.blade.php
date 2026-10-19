@@ -9,7 +9,26 @@
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png')}}">
 
 
-    <title>Fungi for Nature</title>
+    <title>{{ $seo['title'] }}</title>
+    <meta name="description" content="{{ $seo['description'] }}">
+    @if ($seo['noindex'])
+    <meta name="robots" content="noindex, follow">
+    @else
+    <link rel="canonical" href="{{ $seo['url'] }}">
+    @endif
+
+    <!-- Aperçu de partage (WhatsApp, Facebook, LinkedIn, X) -->
+    <meta property="og:site_name" content="Fungi For Nature">
+    <meta property="og:type" content="{{ $seo['type'] }}">
+    <meta property="og:title" content="{{ $seo['title'] }}">
+    <meta property="og:description" content="{{ $seo['description'] }}">
+    <meta property="og:url" content="{{ $seo['url'] }}">
+    <meta property="og:image" content="{{ $seo['image'] }}">
+    <meta property="og:locale" content="en_GB">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seo['title'] }}">
+    <meta name="twitter:description" content="{{ $seo['description'] }}">
+    <meta name="twitter:image" content="{{ $seo['image'] }}">
 
     <link href="{{asset('assets/css/bootstrap.css')}}" rel="stylesheet">
     {{-- <link href="https://cdn.jsdelivr.net/npm/fastbootstrap@2.2.0/dist/css/fastbootstrap.min.css" rel="stylesheet" integrity="sha256-V6lu+OdYNKTKTsVFBuQsyIlDiRWiOmtC8VQ8Lzdm2i4=" crossorigin="anonymous"> --}}

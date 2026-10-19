@@ -98,7 +98,11 @@
                             </ul>
                         </div>
 
-                        <div class="gtranslate_wrapper desktop"></div>
+                        <div class="ffn-lang notranslate" role="group" aria-label="Language">
+                            <button type="button" :class="{ active: currentLang === 'en' }" :aria-pressed="currentLang === 'en'" @click="setLang('en')">EN</button>
+                            <button type="button" :class="{ active: currentLang === 'fr' }" :aria-pressed="currentLang === 'fr'" @click="setLang('fr')">FR</button>
+                        </div>
+                        <div class="gtranslate_wrapper desktop ffn-gt-hidden" aria-hidden="true"></div>
                     </nav>
 
 
@@ -116,6 +120,17 @@
 
     import { onMounted, ref } from 'vue';
     import { contactInfo, socialLinks } from '../../plugin/site';
+
+    // Langue affichée : GTranslate mémorise la traduction dans le cookie googtrans (/en/fr)
+    const currentLang = ref((document.cookie.match(/googtrans=\/en\/([a-z]{2})/) || [])[1] || 'en')
+
+    const setLang = (lang) => {
+        const select = document.querySelector('.gtranslate_wrapper select.gt_selector')
+        if (!select) return
+        select.value = lang === 'en' ? 'en|en' : 'en|' + lang
+        select.dispatchEvent(new Event('change'))
+        currentLang.value = lang
+    }
 
     const openDropdown = ref(false)
     const openDropdownAbout = ref(false)
@@ -228,6 +243,47 @@
         display: flex;
         align-items: center;
         gap: 0px;
+    }
+
+    /* La liste GTranslate reste dans la page (elle fait la traduction) mais on affiche nos boutons EN | FR */
+    .gtranslate_wrapper.ffn-gt-hidden{
+        display: none !important;
+    }
+
+    .ffn-lang{
+        display: flex;
+        align-items: center;
+        margin-left: 18px;
+        border: 1px solid #d6dcd4;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .ffn-lang button{
+        border: 0;
+        background: transparent;
+        padding: 6px 12px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        color: #555;
+        cursor: pointer;
+        transition: background .2s ease, color .2s ease;
+    }
+
+    .ffn-lang button + button{
+        border-left: 1px solid #d6dcd4;
+    }
+
+    .ffn-lang button.active{
+        background: #179607;
+        color: #fff;
+    }
+
+    .ffn-lang button:hover:not(.active),
+    .ffn-lang button:focus-visible{
+        background: rgba(23, 150, 7, .1);
+        outline: none;
     }
 
     .gtranslate_wrapper {
@@ -374,6 +430,10 @@
             display: flex;
             justify-content: center;
             margin-top: 10px;
+        }
+
+        .ffn-lang{
+            margin: 12px auto 4px;
         }
     }
 
