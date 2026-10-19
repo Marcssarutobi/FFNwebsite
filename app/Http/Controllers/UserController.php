@@ -151,30 +151,38 @@ class UserController extends Controller
 
     }
 
-    public function changePassword(Request $request,$id){
+    // Changement du mot de passe de l'utilisateur connecté ({id} conservé dans l'URL pour compatibilité, mais ignoré :
+    // on ne peut changer que son propre mot de passe)
+    public function changePassword(Request $request, $id = null){
         $request->validate([
-            "current_password"=>"required",
-            "new_password"=>"required|confirmed"
+            "current_password" => "required|string",
+            "new_password" => "required|string|min:8|max:255|confirmed|different:current_password",
+        ], [
+            "new_password.min" => "The new password must be at least 8 characters.",
+            "new_password.confirmed" => "The two new passwords do not match.",
+            "new_password.different" => "The new password must be different from the current one.",
         ]);
 
-         // Récupérer l'utilisateur par son ID
-        $user = User::find($id);
+        $user = $request->user();
 
         if (!Hash::check($request->current_password, $user->password)) {
             return response()->json([
-                'error'=>'Le mot de passe actuel est incorrect.'
-            ],403);
+                "message" => "The current password is incorrect.",
+                "errors" => ["current_password" => ["The current password is incorrect."]],
+            ], 422);
         }
 
         $user->update([
-            'password' => Hash::make($request->new_password),
+            "password" => Hash::make($request->new_password),
         ]);
 
-        // Retourner une réponse de succès
+        // Déconnecte les autres appareils / sessions ; la session en cours reste ouverte
+        $current = $user->currentAccessToken();
+        $user->tokens()->when($current, fn ($query) => $query->where("id", "!=", $current->id))->delete();
+
         return response()->json([
-            'message' => 'Le mot de passe a été changé avec succès.'
+            "message" => "Your password has been changed.",
         ]);
-
     }
 
 
