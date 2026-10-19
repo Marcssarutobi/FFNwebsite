@@ -21,3 +21,61 @@
     border: 0;
     border-radius: 6px;
 }
+
+/* ---------- Lisibilité : gris du thème trop clairs (#8d8d8d ≈ 3,4:1) -> #5f6368 (≈ 6:1) ---------- */
+.default-icon-column .text,
+.default-featured-column .text,
+.two-column-fluid .left-column .text,
+.blog-news-column .content-box,
+.blog-news-column .content-box .text,
+.accordion-box .accordion .accord-content p,
+.team-section .team-member .text,
+.sidebar-page .blog-detail .post-tags,
+.other-info .info-box li{
+    color: #5f6368;
+}
+
+/* ---------- En-tête fixe au défilement (classe posée par themeInit) ---------- */
+.fixed-header.main-header .header-upper{
+    z-index: 999;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, .08);
+    border-bottom-color: transparent;
+}
+
+/* ---------- Navigation au clavier : contour visible ---------- */
+.main-header a:focus-visible,
+.main-header button:focus-visible,
+.page-wrapper a:focus-visible,
+.page-wrapper button:focus-visible,
+.page-wrapper input:focus-visible,
+.page-wrapper textarea:focus-visible,
+.scroll-to-top:focus-visible{
+    outline: 2px solid #179607;
+    outline-offset: 2px;
+}
+
+/* ---------- Menu : sous-menu ouvert au clic / clavier / toucher ---------- */
+.main-menu .navigation > li.dropdown.ffn-open > ul{
+    display: block;
+}
+
+@media (max-width: 767px){
+    /* Flèche qui indique les rubriques avec sous-menu, tournée quand c'est ouvert */
+    .main-menu .navigation > li.dropdown > a::after{
+        content: "\f107";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        float: right;
+        transition: transform .2s ease;
+    }
+    .main-menu .navigation > li.dropdown.ffn-open > a::after{
+        transform: rotate(180deg);
+    }
+}
+
+/* ---------- Bouton « retour en haut » ---------- */
+.scroll-to-top{
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    cursor: pointer;
+}

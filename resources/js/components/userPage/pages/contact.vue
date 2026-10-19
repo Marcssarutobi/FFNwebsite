@@ -66,31 +66,50 @@
                 	<h2>Send Message</h2>
                 	<!--COntact Form-->
                 	<div class="inner-box contact-form">
-                    	<form @submit.prevent="AddContact" >
+                    	<!-- Confirmation qui reste affichée après l'envoi -->
+                        <div class="ffn-form-success" v-if="sent" role="status">
+                            <span class="fa-solid fa-circle-check"></span>
+                            <div>
+                                <strong>Thank you, your message has been sent.</strong>
+                                <p>We have also sent a confirmation to your email address. Our team will get back to you as soon as possible.</p>
+                                <button type="button" class="ffn-link-btn" @click="sent = false">Send another message</button>
+                            </div>
+                        </div>
+
+                    	<form v-else @submit.prevent="AddContact" novalidate>
                         	<div class="row clearfix">
                             	<!--Form Group-->
                                 <div class="form-group col-md-6 col-xs-12">
-                                	<input type="text" :class="{ 'is-invalid': isEmpty.name }" v-model="data.name" name="username" value="" placeholder="Your Name">
-                                    <span v-if="isEmpty.name" class="invalid-feedback">{{ msgInput.name }}</span>
+                                    <label class="ffn-label" for="contact-name">Your name</label>
+                                	<input id="contact-name" type="text" autocomplete="name" maxlength="100" :class="{ 'is-invalid': errors.name }" :aria-invalid="!!errors.name" aria-describedby="contact-name-error" v-model="data.name" placeholder="e.g. Jane Doe">
+                                    <span v-if="errors.name" id="contact-name-error" class="ffn-field-error">{{ errors.name }}</span>
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-xs-12">
-                                	<input type="text" :class="{ 'is-invalid': isEmpty.email }" v-model="data.email" name="email" value="" placeholder="Your Email">
-                                    <span v-if="isEmpty.email" class="invalid-feedback">{{ msgInput.email }}</span>
+                                    <label class="ffn-label" for="contact-email">Your email</label>
+                                	<input id="contact-email" type="email" autocomplete="email" maxlength="255" :class="{ 'is-invalid': errors.email }" :aria-invalid="!!errors.email" aria-describedby="contact-email-error" v-model="data.email" placeholder="you@example.com">
+                                    <span v-if="errors.email" id="contact-email-error" class="ffn-field-error">{{ errors.email }}</span>
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-xs-12">
-                                	<textarea :class="{ 'is-invalid': isEmpty.message }" v-model="data.message" name="message" placeholder="Message"></textarea>
-                                    <span v-if="isEmpty.message" class="invalid-feedback">{{ msgInput.message }}</span>
+                                    <label class="ffn-label" for="contact-message">Message</label>
+                                	<textarea id="contact-message" maxlength="5000" :class="{ 'is-invalid': errors.message }" :aria-invalid="!!errors.message" aria-describedby="contact-message-error" v-model="data.message" placeholder="How can we help you?"></textarea>
+                                    <span v-if="errors.message" id="contact-message-error" class="ffn-field-error">{{ errors.message }}</span>
+                                </div>
+
+                                <!-- Champ piège pour les robots (invisible pour les visiteurs) -->
+                                <div class="ffn-hp" aria-hidden="true">
+                                    <label for="contact-website">Website</label>
+                                    <input id="contact-website" type="text" tabindex="-1" autocomplete="off" v-model="data.website">
                                 </div>
 
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-xs-12">
+                                    <p class="ffn-form-error" v-if="serverError" role="alert">{{ serverError }}</p>
                                 	<div class="text-right">
-                                        <button type="button" class="theme-btn btn-style-two"  v-if="isloader" >
-                                            <span>Sending...</span>
+                                        <button type="submit" class="theme-btn btn-style-two" :disabled="isloader">
+                                            {{ isloader ? 'Sending…' : 'Send message' }}
                                         </button>
-                                        <button v-else type="submit" class="theme-btn btn-style-two">Send</button>
                                     </div>
                                 </div>
                             </div>
@@ -111,88 +130,115 @@
 
     import { ref } from 'vue';
     import {postData} from '../../plugin/api'
-    import Swal from 'sweetalert2';
 
-    const data = ref({
-        name: '',
-        email: '',
-        message: '',
-        is_read: false,
-    });
-    const isEmpty = ref({})
-    const msgInput = ref({})
+    const emptyForm = () => ({ name: '', email: '', message: '', website: '' })
+
+    const data = ref(emptyForm());
+    const errors = ref({})
+    const serverError = ref('')
     const isloader = ref(false)
+    const sent = ref(false)
 
-    const inputEmpty = ()=>{
-        if (data.value.name.trim() === '') {
-            isEmpty.value.name = true
-            msgInput.value.name = 'This field is required'
-        }else{
-            isEmpty.value.name = false
-            msgInput.value.name = ''
-        }
-        if (data.value.email.trim() === '') {
-            isEmpty.value.email = true
-            msgInput.value.email = 'This field is required'
-        }else{
-            isEmpty.value.email = false
-            msgInput.value.email = ''
-        }
-        if (data.value.message.trim() === '') {
-            isEmpty.value.message = true
-            msgInput.value.message = 'This field is required'
-        }else{
-            isEmpty.value.message = false
-            msgInput.value.message = ''
-        }
+    const validate = () => {
+        const e = {}
+        if (!data.value.name.trim()) e.name = 'Please enter your name.'
+        if (!data.value.email.trim()) e.email = 'Please enter your email address.'
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.value.email.trim())) e.email = 'Please enter a valid email address.'
+        if (!data.value.message.trim()) e.message = 'Please write your message.'
+        else if (data.value.message.trim().length < 10) e.message = 'Your message is a bit short (10 characters minimum).'
+        errors.value = e
+        return Object.keys(e).length === 0
     }
 
     const AddContact = async ()=>{
-        inputEmpty();
-        const allEmpty = Object.values(isEmpty.value).every(value => value === false)
-        if (allEmpty) {
-            isloader.value = true;
-            await postData('/addcontact', data.value)
-                .then((response) => {
-                    if (response.status === 200) {
-                        isloader.value = false;
-                        data.value.name = '';
-                        data.value.email = '';
-                        data.value.message = '';
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "Your message has been sent successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    } else {
-                        isloader.value = false;
-                        Swal.fire({
-                            position: "center",
-                            icon: "success",
-                            title: "An error occurred while sending your message",
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    }
-                })
-                .catch((error) => {
-                    isloader.value = false;
-                    console.error(error);
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "An error occurred while sending your message",
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                });
+        serverError.value = ''
+        if (!validate()) return
+
+        isloader.value = true;
+        try {
+            const response = await postData('/addcontact', data.value)
+            if (response.status === 200) {
+                data.value = emptyForm()
+                errors.value = {}
+                sent.value = true
+            }
+        } catch (error) {
+            const status = error.response?.status
+            if (status === 422) {
+                // Erreurs renvoyées par le serveur, affichées sous chaque champ
+                const fieldErrors = error.response.data.errors || {}
+                errors.value = Object.fromEntries(Object.entries(fieldErrors).map(([field, messages]) => [field, messages[0]]))
+            } else if (status === 429) {
+                serverError.value = 'Too many messages in a short time. Please wait a minute and try again.'
+            } else {
+                serverError.value = 'Your message could not be sent. Please try again, or write to us at contact@fungifornature.com.'
+            }
+        } finally {
+            isloader.value = false
         }
     }
 
 </script>
 
-<style>
-
+<style scoped>
+    .ffn-label{
+        display: block;
+        margin-bottom: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #333;
+    }
+    .ffn-field-error{
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+        color: #c0392b;
+    }
+    .is-invalid{
+        border-color: #c0392b !important;
+    }
+    .ffn-form-error{
+        padding: 12px 16px;
+        border-radius: 6px;
+        background: #fdecea;
+        color: #8a1f17;
+        font-size: 14px;
+    }
+    .ffn-hp{
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    .ffn-form-success{
+        display: flex;
+        gap: 16px;
+        padding: 24px;
+        border-radius: 8px;
+        background: #eef7ec;
+        border: 1px solid #cfe7ca;
+    }
+    .ffn-form-success > .fa-solid{
+        font-size: 28px;
+        color: #179607;
+        margin-top: 2px;
+    }
+    .ffn-form-success p{
+        margin: 6px 0 12px;
+    }
+    .ffn-link-btn{
+        border: 0;
+        background: none;
+        padding: 0;
+        color: #179607;
+        font-weight: 700;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    button[disabled]{
+        opacity: .7;
+        cursor: wait;
+    }
 </style>
+

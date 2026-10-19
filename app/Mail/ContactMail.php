@@ -5,6 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -29,8 +30,10 @@ class ContactMail extends Mailable
      */
     public function envelope(): Envelope
     {
+        // « Répondre » dans la messagerie répond directement au visiteur
         return new Envelope(
-            subject: 'New contact message',
+            subject: 'New contact message from ' . $this->data['name'],
+            replyTo: [new Address($this->data['email'], $this->data['name'])],
         );
     }
 

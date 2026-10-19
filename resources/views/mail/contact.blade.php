@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Email responsive</title>
+  <title>Fungi For Nature</title>
 
   <style>
     /* Reset de base */
@@ -98,17 +98,16 @@
 
     <!-- Corps -->
     <div class="email-body">
-
-      Hi, <br><br>
-      {{$data['message']}}<br><br>
-      <strong>{{$data['name']}}</strong><br>
-      <strong>Email: </strong><a href="mailto:{{$data['email']}}"> {{$data['email']}} </a> <br>
-
+      <p>New message received from the website contact form.</p>
+      <p><strong>Name:</strong> {{ $data['name'] }}<br>
+      <strong>Email:</strong> <a href="mailto:{{ $data['email'] }}">{{ $data['email'] }}</a></p>
+      <p style="padding:16px;background:#f5f7f4;border-left:4px solid #179607;">{!! nl2br(e($data['message'])) !!}</p>
+      <p style="color:#777;font-size:14px;">Reply to this email to answer {{ $data['name'] }} directly.</p>
     </div>
 
     <!-- Pied de page -->
     <div class="email-footer">
-      © 2025 Itumo Institute. Tous droits réservés.<br>
+      © {{ date('Y') }} Fungi For Nature – Parakou, Benin<br>
     </div>
 
   </div>

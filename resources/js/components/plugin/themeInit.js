@@ -13,10 +13,14 @@ export function themeInit() {
 		if($('.main-header').length){
 			var windowpos = $(window).scrollTop();
 			if (windowpos >= 80) {
+				// réserve la hauteur de l'en-tête avant qu'il passe en position fixe (évite que la page saute)
+				if (!$('.main-header').hasClass('fixed-header')) {
+					$('.main-header').css('min-height', $('.main-header').outerHeight());
+				}
 				$('.main-header').addClass('fixed-header');
 				$('.scroll-to-top').fadeIn(300);
 			} else {
-				$('.main-header').removeClass('fixed-header');
+				$('.main-header').removeClass('fixed-header').css('min-height', '');
 				$('.scroll-to-top').fadeOut(300);
 			}
 		}
@@ -25,27 +29,13 @@ export function themeInit() {
 	headerStyle();
 
 
-	//Submenu Dropdown Toggle
-	if($('.main-menu li.dropdown ul').length){
-		$('.main-menu li.dropdown').append('<div class="dropdown-btn"></div>');
-
-		//Dropdown Button
-		$('.main-menu li.dropdown .dropdown-btn').on('click', function() {
-			$(this).prev('ul').slideToggle(500);
-		});
-
-		//Disable dropdown parent link
-		$('.navigation li.dropdown > a').on('click', function(e) {
-			e.preventDefault();
-		});
-	}
-
+	// (Sous-menus : gérés par Vue dans header.vue)
 
 
 	//Revolution Slider
 	if($('.revolution-slider .tp-banner').length){
 
-		jQuery('.revolution-slider .tp-banner').show().revolution({
+		jQuery('.revolution-slider .tp-banner').not('.ffn-init').addClass('ffn-init').show().revolution({
 
 		  delay:10000,
 		  startwidth:1200,
@@ -124,7 +114,7 @@ export function themeInit() {
 
 	//Related Posts Carousel
 	if ($('.related-posts-carousel').length) {
-		$('.related-posts-carousel').owlCarousel({
+		$('.related-posts-carousel').not('.owl-loaded').owlCarousel({
 			loop:true,
 			margin:30,
 			nav:true,
@@ -151,7 +141,7 @@ export function themeInit() {
 
 	//Testimonials Carousel Slider
 	if ($('.testimonials-carousel').length) {
-		$('.testimonials-carousel').owlCarousel({
+		$('.testimonials-carousel').not('.owl-loaded').owlCarousel({
 			loop:true,
 			margin:60,
 			nav:true,
@@ -182,7 +172,7 @@ export function themeInit() {
 
 	//Sponsors Slider
 	if ($('.sponsors-slider').length) {
-		$('.sponsors-slider').owlCarousel({
+		$('.sponsors-slider').not('.owl-loaded').owlCarousel({
 			loop:true,
 			margin:0,
 			nav:true,
@@ -212,7 +202,7 @@ export function themeInit() {
 
 	//Accordion Box
 	if($('.accordion-box').length){
-		$(".accordion-box").on('click', '.accord-btn', function() {
+		$(".accordion-box").off('click.ffn').on('click.ffn', '.accord-btn', function() {
 
 			if($(this).hasClass('active')!==true){
 			$('.accordion .accord-btn').removeClass('active');
@@ -349,7 +339,7 @@ export function themeInit() {
 
 	//Gallery With Filters List
 	if($('.filter-list').length){
-		$('.filter-list').mixItUp({});
+		$('.filter-list').not('.ffn-init').addClass('ffn-init').mixItUp({});
 	}
 
 
@@ -380,20 +370,19 @@ export function themeInit() {
 
 	// Scroll to a Specific Div
 	if($('.scroll-to-target').length){
-		$(".scroll-to-target").on('click', function() {
-			var HeaderHeight = $('.header-lower').height();
+		$(".scroll-to-target").off('click.ffn keydown.ffn').on('click.ffn keydown.ffn', function(e) {
+			if (e.type === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
+			e.preventDefault();
 			var target = $(this).attr('data-target');
-		   // animate
-		   $('html, body').animate({
-			   scrollTop: $(target).offset().top - HeaderHeight
-			 }, 1000);
-
+			var top = target === '.main-header' || !$(target).length ? 0 : $(target).offset().top - ($('.main-header .header-upper').outerHeight() || 0);
+			$('html, body').stop().animate({ scrollTop: Math.max(0, top) }, 700);
 		});
 	}
 
 
 	// Elements Animation
-	if($('.wow').length){
+	if($('.wow').length && !window.__ffnWowInit){
+		window.__ffnWowInit = true;
 		var wow = new WOW(
 		  {
 			boxClass:     'wow',      // animated element css class (default is wow)
@@ -410,7 +399,7 @@ export function themeInit() {
    When document is Scrollig, do
    ========================================================================== */
 
-	$(window).on('scroll', function() {
+	$(window).off('scroll.ffn').on('scroll.ffn', function() {
 		headerStyle();
 		factCounter();
 	});
@@ -419,7 +408,7 @@ export function themeInit() {
    When document is loading, do
    ========================================================================== */
 
-	$(window).on('load', function() {
+	$(window).off('load.ffn').on('load.ffn', function() {
 		handlePreloader();
 		enableMasonry();
 	});

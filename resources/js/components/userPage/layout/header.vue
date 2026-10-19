@@ -23,8 +23,8 @@
             	<!-- Logo -->
                 <div class="logo">
                     <router-link to="/"><img src="/assets/images/logo.png" alt="Fungi For Nature"></router-link>
-                    <button type="button" @click="isMenuOpen = !isMenuOpen" class="navbar-toggle "  style="font-size: 18px; background-color: #179607; color: #fff;">
-                        <i class="fas fa-bars"></i>
+                    <button type="button" @click="isMenuOpen = !isMenuOpen" class="navbar-toggle" :aria-expanded="isMenuOpen" aria-controls="ffn-main-nav" :aria-label="isMenuOpen ? 'Close menu' : 'Open menu'" style="font-size: 18px; background-color: #179607; color: #fff;">
+                        <i :class="isMenuOpen ? 'fas fa-xmark' : 'fas fa-bars'"></i>
                     </button>
                  </div>
 
@@ -43,57 +43,23 @@
                         </div>
 
                         <div class="navbar-collapse collapse clearfix" :class="{ show: isMenuOpen }">
-                            <ul class="navigation">
+                            <ul class="navigation" id="ffn-main-nav">
+                                <li v-for="item in menu" :key="item.label"
+                                    :class="{ dropdown: item.children, current: item.children && isSectionActive(item), 'ffn-open': openKey === item.label }"
+                                    @mouseenter="item.children && !isMobileView && (openKey = item.label)"
+                                    @mouseleave="item.children && !isMobileView && (openKey = null)">
 
-                                <li >
-                                    <router-link exact-active-class="current" @click="closeMenu" to="/">Home</router-link>
-                                </li>
+                                    <router-link v-if="!item.children" exact-active-class="current" :to="item.to" @click="closeMenu">{{ item.label }}</router-link>
 
-                                <li class="dropdown" @mouseenter="openDropdownAbout = true" @mouseleave="openDropdownAbout = false">
-                                    <a href="#" @click.prevent>About</a>
-                                    <ul v-show="openDropdownAbout" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
-                                        <li><router-link @click="closeDropdowns"  to="/aboutUs">About us</router-link></li>
-                                        <li><router-link @click="closeDropdowns"  to="/domain">Field of intervention</router-link></li>
-                                        <li><router-link @click="closeDropdowns"  to="/advisor">Advisor</router-link></li>
-                                        <li><router-link @click="closeDropdowns"  to="/team">Teams</router-link></li>
-                                    </ul>
-                                </li>
-
-                             <!--    <li>
-                                    <router-link exact-active-class="current" @click="closeMenu" to="/project">Projects</router-link>
-                                </li>  -->
-
-                                <li class="dropdown" @mouseenter="openDropdownPrograms = true" @mouseleave="openDropdownPrograms = false">
-                                    <a href="#" @click.prevent>Programs</a>
-                                    <ul v-show="openDropdownPrograms" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
-                                        <li><router-link @click="closeDropdowns" to="/fungiEducation">Fungi Education</router-link></li>
-                                        <li><router-link @click="closeDropdowns" to="/expeditions">Expeditions</router-link></li>
-                                        <li><router-link @click="closeDropdowns" to="/project">Projects</router-link></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown" @mouseenter="openDropdownPublications = true" @mouseleave="openDropdownPublications = false">
-                                    <a href="#" @click.prevent>Publications</a>
-                                    <ul v-show="openDropdownPublications" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
-                                        <li><router-link @click="closeDropdowns" to="/scientificPapers">Scientific Papers</router-link></li>
-                                        <li><router-link @click="closeDropdowns" to="/reports">Reports</router-link></li>
-                                        <li><router-link @click="closeDropdowns" to="/annualReports">Annual Reports </router-link></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown" @mouseenter="openDropdown = true" @mouseleave="openDropdown = false">
-                                    <a href="#" @click.prevent>Media & News</a>
-                                    <ul v-show="openDropdown" :class="{ 'dropdown-mobile': isMobile() }" style="display: block;">
-                                        <li><router-link @click="closeDropdowns" to="/event">Events</router-link></li>
-                                        <li><router-link @click="closeDropdowns" to="/gallery">Gallery</router-link></li>
-                                        <li><router-link @click="closeDropdowns" to="/videos">Videos</router-link></li>
-                                    </ul>
-                                </li>
-                                 <li>
-                                    <router-link exact-active-class="current" @click="closeMenu" to="/blog">Blog</router-link>
-                                </li> 
-                                <li>
-                                    <router-link exact-active-class="current" @click="closeMenu" to="/contact">Contact Us</router-link>
+                                    <template v-else>
+                                        <a href="#" role="button" aria-haspopup="true" :aria-expanded="openKey === item.label"
+                                           @click.prevent="toggleDropdown(item.label)" @keydown.esc="openKey = null">{{ item.label }}</a>
+                                        <ul v-show="openKey === item.label" :class="{ 'dropdown-mobile': isMobileView }" style="display: block;">
+                                            <li v-for="child in item.children" :key="child.to">
+                                                <router-link :to="child.to" @click="closeMenu" @keydown.esc="openKey = null">{{ child.label }}</router-link>
+                                            </li>
+                                        </ul>
+                                    </template>
                                 </li>
                             </ul>
                         </div>
@@ -118,7 +84,8 @@
 
 <script setup>
 
-    import { onMounted, ref } from 'vue';
+    import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
+    import { useRoute } from 'vue-router';
     import { contactInfo, socialLinks } from '../../plugin/site';
 
     // Langue affichée : GTranslate mémorise la traduction dans le cookie googtrans (/en/fr)
@@ -132,31 +99,72 @@
         currentLang.value = lang
     }
 
-    const openDropdown = ref(false)
-    const openDropdownAbout = ref(false)
-    const openDropdownPrograms = ref(false)
-    const openDropdownPublications = ref(false)
+    // Menu principal : un lien simple (to) ou une rubrique avec sous-menu (children)
+    const menu = [
+        { label: 'Home', to: '/' },
+        { label: 'About', children: [
+            { label: 'About us', to: '/aboutUs' },
+            { label: 'Field of intervention', to: '/domain' },
+            { label: 'Advisors', to: '/advisor' },
+            { label: 'Team', to: '/team' },
+        ] },
+        { label: 'Programs', children: [
+            { label: 'Fungi Education', to: '/fungiEducation' },
+            { label: 'Expeditions', to: '/expeditions' },
+            { label: 'Projects', to: '/project' },
+        ] },
+        { label: 'Publications', children: [
+            { label: 'Scientific Papers', to: '/scientificPapers' },
+            { label: 'Reports', to: '/reports' },
+            { label: 'Annual Reports', to: '/annualReports' },
+        ] },
+        { label: 'Media & News', children: [
+            { label: 'Events', to: '/event' },
+            { label: 'Gallery', to: '/gallery' },
+            { label: 'Videos', to: '/videos' },
+        ] },
+        { label: 'Blog', to: '/blog' },
+        { label: 'Contact Us', to: '/contact' },
+    ]
 
-    const isMobile = () => window.innerWidth <= 767
+    // Pages de détail rattachées à une rubrique (pour la mettre en évidence dans le menu)
+    const sectionPrefixes = {
+        About: ['/details/'],
+        Programs: ['/fungiEducationSingle/', '/expeditionSingle/', '/singleproject/', '/catDetails/'],
+        'Media & News': ['/eventsingle/'],
+    }
+
+    const route = useRoute()
+    const openKey = ref(null)
     const isMenuOpen = ref(false)
+    const isMobileView = ref(window.innerWidth <= 767)
+
+    const isSectionActive = (item) =>
+        item.children.some(child => route.path === child.to) ||
+        (sectionPrefixes[item.label] || []).some(prefix => route.path.startsWith(prefix))
+
+    // Survol sur ordinateur, toucher / clic / clavier partout
+    const toggleDropdown = (key) => {
+        openKey.value = openKey.value === key ? null : key
+    }
 
     const closeMenu = () => {
         isMenuOpen.value = false
-        openDropdown.value = false
-        openDropdownAbout.value = false
-        openDropdownPrograms.value = false
-        openDropdownPublications.value = false
+        openKey.value = null
     }
 
-    const closeDropdowns = () => {
-        openDropdown.value = false
-        openDropdownAbout.value = false
-        openDropdownPrograms.value = false
-        openDropdownPublications.value = false
-        isMenuOpen.value = false
+    const onResize = () => {
+        isMobileView.value = window.innerWidth <= 767
     }
+
+    // Fermer le menu à chaque changement de page
+    watch(() => route.fullPath, closeMenu)
+
+    onBeforeUnmount(() => window.removeEventListener('resize', onResize))
 
     onMounted(() => {
+        window.addEventListener('resize', onResize)
+
         // 1. Ajouter la configuration
         const configScript = document.createElement('script')
         configScript.type = 'text/javascript'

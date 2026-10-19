@@ -1,9 +1,10 @@
 <template>
 
     <!--Main Slider-->
-    <section class="main-slider revolution-slider">
+    <section class="main-slider revolution-slider" :class="{ 'ffn-slider-loading': !slidesLoaded }">
 
-        <div class="tp-banner-container">
+        <!-- Affiché une fois les diapositives chargées : le Revolution Slider lit ses images une seule fois -->
+        <div class="tp-banner-container" v-if="slidesLoaded">
             <div class="tp-banner">
                 <ul>
 
@@ -478,6 +479,8 @@ Below are the key fields in which we focus our efforts to create lasting impact.
         defaultSlide(5, 'DSC00712.JPG'),
     ]);
 
+    const slidesLoaded = ref(false);
+
     const SlidesFunction = async () =>{
         await getData('/homeslides')
             .then((response) => {
@@ -487,6 +490,9 @@ Below are the key fields in which we focus our efforts to create lasting impact.
             })
             .catch((error) => {
                 console.error('Error fetching slides:', error);
+            })
+            .finally(() => {
+                slidesLoaded.value = true;
             });
     }
 
@@ -568,6 +574,13 @@ Below are the key fields in which we focus our efforts to create lasting impact.
 </script>
 
 <style scoped>
+
+/* Réserve la place du diaporama pendant le chargement des diapositives */
+.ffn-slider-loading{
+    min-height: 70vh;
+    background: #1f2a1d;
+}
+
 
 
 

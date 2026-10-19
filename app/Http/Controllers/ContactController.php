@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactAcknowledgementMail;
 use App\Mail\ContactMail;
 use App\Models\Contact;
 use Illuminate\Http\Request;
@@ -34,32 +35,41 @@ class ContactController extends Controller
     }
 
     public function store(Request $request){
+        // Champ piège invisible : rempli uniquement par les robots, on fait semblant d'avoir enregistré
+        if (filled($request->input('website'))) {
+            return response()->json(['status' => 200, 'message' => 'Contact created successfully']);
+        }
+
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:100',
             'email' => 'required|email|max:255',
-            'is_read' => 'required|boolean',
-            'message' => 'required|string',
+            'message' => 'required|string|min:10|max:5000',
         ]);
 
         $contact = Contact::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'is_read' => $request->is_read,
-            'message' => $request->message,
+            'name' => trim($request->name),
+            'email' => trim($request->email),
+            'is_read' => false,
+            'message' => trim($request->message),
         ]);
 
         $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message,
+            'name' => $contact->name,
+            'email' => $contact->email,
+            'message' => $contact->message,
         ];
 
-        Mail::to('contact@fungifornature.com')->send(new ContactMail($data));
+        // Le message est enregistré : un souci d'envoi de mail ne doit pas faire échouer la demande
+        try {
+            Mail::to('contact@fungifornature.com')->send(new ContactMail($data));
+            Mail::to($contact->email)->send(new ContactAcknowledgementMail($data));
+        } catch (\Throwable $e) {
+            report($e);
+        }
 
         return response()->json([
             'status' => 200,
             'message' => 'Contact created successfully',
-            'data' => $contact
         ]);
     }
 

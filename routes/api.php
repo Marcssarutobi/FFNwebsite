@@ -63,7 +63,7 @@ Route::get('/seo', [SeoController::class, 'meta']);
 Route::get('/allvideos', [VideoController::class, 'index']);
 
 //Contact
-Route::post('/addcontact', [ContactController::class, 'store']);
+Route::post('/addcontact', [ContactController::class, 'store'])->middleware('throttle:5,1');
 
 //Teams and Advisors
 Route::get('/teams', [TeamController::class, 'indexTeams']);
