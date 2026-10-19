@@ -100,7 +100,6 @@
     <script src="{{asset('admin/assets/vendor/filepond/filepond.min.js')}}"></script>
 
     <!-- Project Dashboard js-->
-    <script src="{{asset('admin/assets/js/project_dashboard.js')}}"></script>
 
     <!-- App js-->
     {{-- <script src="{{asset('admin/assets/js/script.js')}}"></script> --}}

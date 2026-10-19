@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\FungiEducationController;
@@ -93,6 +94,9 @@ Route::middleware('auth:sanctum')->group( function () {
     Route::post('/delimagesExpeditions', [ExpeditionsController::class, 'deleteImage']);
     Route::post('/uploadimagesFungiEducation', [FungiEducationController::class, 'uploadImg']);
     Route::post('/delfungieducationimg', [FungiEducationController::class, 'deleteImage']);
+
+    //Tableau de bord du back-office
+    Route::get('/dashboard', [DashboardController::class, 'index']);
 
     //CurrentUser
     Route::get('/user', [UserController::class, 'getUser']);
