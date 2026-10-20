@@ -4,8 +4,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>Category <span class="normal-font">Details</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#" class="current">Category Details</a></div>
+                <h1>Category</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/project">Projects</RouterLink> / <span class="current">{{ getCat?.name || 'Category' }}</span></div>
             </div>
         </div>
     </section>

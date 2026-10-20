@@ -3,8 +3,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>Single <span class="normal-font">Project</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#">Projects</a> / <a href="#" class="current">Single Project</a></div>
+                <h1>Project</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/project">Projects</RouterLink> / <span class="current">Project</span></div>
             </div>
         </div>
     </section>
@@ -30,12 +30,16 @@
                                     <div class="row detail-header clearfix">
                                         <div class="col-md-12 ">
                                             <h2>{{ projectData.title }}</h2>
+                                            <div class="ffn-meta">
+                                                <span v-if="categoryName"><span class="fa fa-tag"></span>{{ categoryName }}</span>
+                                                <span v-if="projectData.created_at"><span class="fa fa-calendar"></span>{{ formatDate(projectData.created_at) }}</span>
+                                            </div>
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" v-html="projectData.content">
-
-                                    </div>
+                                    <div class="text ffn-richtext" v-html="projectData.content"></div>
+                                    <div class="ffn-share"><ShareLinks :title="projectData.title" /></div>
+                                    <RouterLink to="/project" class="ffn-back"><span class="fa fa-arrow-left"></span>All projects</RouterLink>
 
                                 </div>
                             </article>
@@ -93,7 +97,7 @@
                             <div class="sidebar-title"><h3>Categories</h3></div>
 
                             <ul class="list">
-                            	<li v-for="(cat,index) in allcategory" :key="index"><a class="clearfix" href="#">{{ cat.name }}</a></li>
+                            	<li v-for="(cat,index) in allcategory" :key="index"><RouterLink class="clearfix" :to="`/catDetails/${cat.id}`">{{ cat.name }}</RouterLink></li>
                                 <!-- <li><a class="clearfix" href="#">Forest</a></li>
                                 <li><a class="clearfix" href="#">Water</a></li>
                                 <li><a class="clearfix" href="#">Nature</a></li>
@@ -104,16 +108,13 @@
                         </div>
 
 
-                        <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" v-if="categoryData.length > 0">
-                            <div class="sidebar-title"><h3>Latest Posts</h3></div>
-
-                            <article class="post" v-for="(project, index) in categoryData" :key="index">
-                            	<figure class="post-thumb"><img :src="project.image" alt=""></figure>
-                                <h4><RouterLink :to="`/singleproject/${project.slug}`">{{ project.title }}</RouterLink></h4>
-                                <div class="post-info"><span class="icon flaticon-people-1"></span> By {{ project.user?.nom }} {{ project.user?.prenom }} </div>
+                        <!-- Recent projects -->
+                        <div class="widget recent-posts ffn-recent-projects" v-if="recentProjects.length">
+                            <div class="sidebar-title"><h3>Recent projects</h3></div>
+                            <article class="post" v-for="p in recentProjects" :key="p.id">
+                            	<figure class="post-thumb"><RouterLink :to="`/singleproject/${p.slug}`"><img :src="p.image" alt=""></RouterLink></figure>
+                                <h4><RouterLink :to="`/singleproject/${p.slug}`">{{ p.title }}</RouterLink></h4>
                             </article>
-
                         </div>
 
                     </aside>
@@ -157,6 +158,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import ShareLinks from '../components/ShareLinks.vue';
 
     const route = useRoute();
     const projectData = ref({});
@@ -164,6 +166,16 @@
     const categoryData = ref({});
     const categoryName = ref('');
     const allcategory = ref([])
+    const recentProjects = ref([]);
+
+    // « 2025-08-25T17:02:27.000000Z » -> « 25 August 2025 »
+    const formatDate = (d) => new Date(String(d).replace(' ', 'T')).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    const RecentProjects = async () => {
+        await getData('/allprojects')
+            .then((response) => { recentProjects.value = response.data.data.data.filter(p => p.slug !== projectSlug.value).slice(0, 3); })
+            .catch((error) => console.error('Error fetching recent projects:', error));
+    };
 
     const GetProject = async ()=>{
         await getSingleData('/project/' + projectSlug.value)
@@ -214,12 +226,14 @@
 
     watch(projectSlug,()=>{
         GetProject();
+        RecentProjects();
     })
 
 
     onMounted(() => {
         GetProject();
         AllCategorieFunction();
+        RecentProjects();
     });
 
 

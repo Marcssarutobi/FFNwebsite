@@ -4,7 +4,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Events</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <a href="#" class="current">Events</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <span class="current">Events</span></div>
             </div>
         </div>
     </section>
@@ -14,7 +14,7 @@
     <section class="events-section latest-events">
     	<div class="auto-container">
 
-        	<div class="row clearfix">
+        	<div class="row clearfix" :class="{ 'ffn-center-row': allevent.length === 1 }">
 
                 <!--Featured Column-->
                 <div class="column default-featured-column style-two col-lg-4 col-md-6 col-sm-6 col-xs-12" v-for="(event, index) in allevent" :key="index">

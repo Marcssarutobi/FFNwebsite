@@ -5,7 +5,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Our <span class="normal-font">Projects</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#" class="current">Projects</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <span class="current">Projects</span></div>
             </div>
         </div>
     </section>

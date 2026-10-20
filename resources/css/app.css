@@ -114,11 +114,21 @@
     margin-top: auto;
     align-self: flex-start;
 }
+.row.clearfix > .default-featured-column > .inner-box > .content-box{ padding: 20px 22px 24px; }
+/* Largeurs fixes du thème (419px, 281px…) plus larges que la colonne : l'image suit la carte */
+.row.clearfix > .default-featured-column > .inner-box > figure,
+.row.clearfix > .default-featured-column > .inner-box > figure > a{ width: 100% !important; }
 /* Une seule carte : centrée */
 .row.clearfix.ffn-center-row{ justify-content: center; }
 
 /* Fil d'Ariane : élément courant sans lien */
-.page-title .bread-crumb span.current{ color: #fff; opacity: .75; }
+.page-title .bread-crumb span.current{
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 0 5px;
+    color: #fff;
+    opacity: .75;
+}
 
 /* Ligne d'infos sous un titre (catégorie, date, lieu) */
 .ffn-meta{
@@ -151,6 +161,18 @@
 }
 
 /* Partage + lien retour en bas d'article */
+/* Boutons du thème blancs (prévus pour fond sombre) : invisibles sur fond blanc */
+.post-share-options .social-links-two a{
+    width: 34px; height: 34px; line-height: 34px; margin-left: 8px;
+    background: #545454; border: none; color: #fff !important; font-size: 14px;
+    transition: background .2s;
+}
+.post-share-options .social-links-two a:hover{ background: #179607; }
+.post-share-options .tags{ line-height: 34px; }
+/* Titres des projets récents (colonne de droite) : 3 lignes au plus */
+.ffn-recent-projects h4 a{
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
 .ffn-share{ margin-top: 30px; padding-top: 20px; border-top: 1px solid #e6e6e6; }
 .ffn-back{
     display: inline-block; margin-top: 18px; font-weight: 700; font-size: 13px;

@@ -3,8 +3,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>SIngle <span class="normal-font">Event</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#">Events</a> / <a href="#" class="current">Single Event</a></div>
+                <h1>Event</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/event">Events</RouterLink> / <span class="current">Event</span></div>
             </div>
         </div>
     </section>
@@ -29,52 +29,36 @@
                                 <div class="content-box padd-top-40">
                                     <div class="row detail-header clearfix">
                                         <div class="col-md-12 col-sm-12">
-                                            <h3><a href="#">{{ eventData.title }}</a></h3>
-                                            <div class="column-info no-margin-bottom">In {{ eventData.location }}</div>
+                                            <h3>{{ eventData.title }}</h3>
+                                            <div class="ffn-meta">
+                                                <span v-if="eventData.start_date"><span class="fa fa-calendar"></span>{{ dateRange(eventData) }}</span>
+                                                <span v-if="eventData.location"><span class="fa fa-map-marker"></span>{{ eventData.location }}</span>
+                                            </div>
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">Join With Us</a></div> -->
                                     </div>
                                     <hr>
 
-                                    <div class="text mt-4" v-html="eventData.content">
-
-                                    </div>
+                                    <div class="text mt-4 ffn-richtext" v-html="eventData.content"></div>
 
                                     <br>
 
                                     <div class="other-info">
                                     	<div class="row clearfix">
                                         	<!--Info Column-->
-                                            <div class="info-column column col-md-6 col-xs-12">
+                                            <div class="info-column column col-md-12 col-xs-12">
                                             	<h3>Event Details</h3>
                                                 <ul class="info-box">
                                                     <li><span class="icon fa fa-map-marker"></span><strong>Location</strong> {{ eventData.location }}</li>
-                                                    <li><span class="icon fa fa-calendar"></span><strong>Date</strong> {{ formatDateWithMonthName(eventData.start_date) }} - {{ formatDateWithMonthName(eventData.end_date) }}</li>
+                                                    <li><span class="icon fa fa-calendar"></span><strong>Date</strong> {{ formatDateWithMonthName(eventData.start_date) }}<template v-if="eventData.end_date"> - {{ formatDateWithMonthName(eventData.end_date) }}</template></li>
                                                     <!-- <li><span class="icon fa fa-clock-o"></span><strong>Time</strong> 10:00 am - 2:00 pm</li> -->
                                                 </ul>
                                             </div>
 
-                                            <!--Map Column-->
-                                            <div class="map-column column col-md-6 col-xs-12">
-                                                <!--Map Container-->
-                                                <div class="map-container">
-                                                    <!--Map Canvas-->
-                                                    <div class="map-canvas"
-                                                        data-zoom="12"
-                                                        data-lat="-37.817085"
-                                                        data-lng="144.955631"
-                                                        data-type="roadmap"
-                                                        data-hue="#ffc400"
-                                                        data-title="Envato"
-                                                        data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>"
-                                                        style="height: 300px;">
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
+                                    <div class="ffn-share"><ShareLinks :title="eventData.title" /></div>
+                                    <RouterLink to="/event" class="ffn-back"><span class="fa fa-arrow-left"></span>All events</RouterLink>
 
                                 </div>
                             </article>
@@ -94,7 +78,7 @@
                             <div class="sidebar-title"><h3>Categories</h3></div>
 
                             <ul class="list">
-                            	<li v-for="(cat,index) in allcategory" :key="index"><a class="clearfix" href="#">{{ cat.name }}</a></li>
+                            	<li v-for="(cat,index) in allcategory" :key="index"><span class="clearfix">{{ cat.name }}</span></li>
                                 <!-- <li><a class="clearfix" href="#">Forest</a></li>
                                 <li><a class="clearfix" href="#">Water</a></li>
                                 <li><a class="clearfix" href="#">Nature</a></li>
@@ -106,7 +90,7 @@
 
 
                         <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms" v-if="categoryData.length">
                             <div class="sidebar-title"><h3>Latest Events</h3></div>
 
                             <article class="post" v-for="(event, index) in categoryData" :key="index">
@@ -162,6 +146,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import ShareLinks from '../components/ShareLinks.vue';
 
     const route = useRoute();
     const eventData = ref({});
@@ -169,6 +154,17 @@
     const categoryData = ref({});
     const categoryName = ref('');
     const allcategory = ref([])
+
+    // « 3 – 7 November 2025 » ; dates « Y-m-d H:i:s » lues avec un T (Safari)
+    const toDate = (d) => new Date(String(d).replace(' ', 'T'));
+    const fmt = (d, opts) => toDate(d).toLocaleDateString('en-GB', opts);
+    const dateRange = (e) => {
+        const full = { day: 'numeric', month: 'long', year: 'numeric' };
+        if (!e.end_date || fmt(e.start_date, full) === fmt(e.end_date, full)) return fmt(e.start_date, full);
+        const a = toDate(e.start_date), b = toDate(e.end_date);
+        if (a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear()) return `${a.getDate()} – ${fmt(e.end_date, full)}`;
+        return `${fmt(e.start_date, { day: 'numeric', month: 'long' })} – ${fmt(e.end_date, full)}`;
+    };
 
     const GetEvent = async ()=>{
         await getSingleData('/event/' + eventSlug.value)
@@ -222,7 +218,7 @@
 
     function formatDateWithMonthName(data) {
         if (!data) return null;
-        const date = new Date(data);
+        const date = new Date(String(data).replace(' ', 'T'));
         if (isNaN(date)) return null;
 
         const options = {

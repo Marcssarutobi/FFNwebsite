@@ -3,8 +3,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
     	<div class="auto-container">
         	<div class="sec-title">
-                <h1>Blog <span class="normal-font">Details</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <a href="#" class="current">Blog Details</a></div>
+                <h1>Article</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/blog">Blog</RouterLink> / <span class="current">Article</span></div>
             </div>
         </div>
     </section>
@@ -33,10 +33,11 @@
                                     <div class="post-info clearfix">
                                         <div class="post-author">Posted by {{ blogData.user?.nom }} {{ blogData.user?.prenom }}</div>
                                     </div>
-                                    <div class="text" style="text-align: justify;" v-html="blogData.content"></div>
+                                    <div class="text ffn-richtext" v-html="blogData.content"></div>
                                 </div>
 
-                               <ShareLinks :title="blogData.title" />
+                               <div class="ffn-share"><ShareLinks :title="blogData.title" /></div>
+                               <RouterLink to="/blog" class="ffn-back"><span class="fa fa-arrow-left"></span>All articles</RouterLink>
 
                             </article>
                         </div>
