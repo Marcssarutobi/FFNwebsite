@@ -4,8 +4,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
         <div class="auto-container">
             <div class="sec-title">
-                <h1>Details</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain" class="current">About Us</RouterLink></div>
+                <h1>{{ member?.name || 'Team member' }}</h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink :to="member?.type === 'advisors' ? '/advisor' : '/team'">{{ member?.type === 'advisors' ? 'Advisors' : 'Team' }}</RouterLink> / <span class="current">{{ member?.name }}</span></div>
             </div>
         </div>
     </section>
@@ -17,7 +17,7 @@
                 <!--Column-->
                 <article class="column team-member col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                     <div class="inner-box">
-                        <figure class="image"><a href="#"><img :src="member?.image" alt=""></a></figure>
+                        <figure class="image"><img :src="member?.image" :alt="member?.name"></figure>
                         <div class="member-info" style="margin-bottom: 15px !important;">
                             <h3>{{ member?.name }}</h3>
                             <div class="designation">{{ member?.profession }}</div>
@@ -29,10 +29,10 @@
                                 </p>
                             </div> -->
                             <div class="social-links">
-                                <a v-if="member?.facebook_link !== '' || member?.facebook_link !== null" :href="member?.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
-                                <a v-if="member?.twitter_link !== '' || member?.twitter_link !== null" :href="member?.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
-                                <a v-if="member?.instagram_link !== '' || member?.instagram_link !== null" :href="member?.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fab fa-researchgate"></span></a>
-                                <a v-if="member?.linkedin_link !== '' || member?.linkedin_link !== null" :href="member?.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
+                                <a v-if="hasLink(member?.facebook_link)" :href="member?.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a v-if="hasLink(member?.twitter_link)" :href="member?.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a v-if="hasLink(member?.instagram_link)" :href="member?.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fab fa-researchgate"></span></a>
+                                <a v-if="hasLink(member?.linkedin_link)" :href="member?.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                         <h1 class="mb-3">Biography</h1>
                     </div>
 
-                    <div class="contentesD" style="text-align: justify !important; color: #9D9D9D !important;" v-html="member?.content">
+                    <div class="contentesD ffn-richtext" v-html="member?.content">
 
                     </div>
 
@@ -66,6 +66,9 @@ import { getSingleData } from '../../plugin/api';
 
 const route = useRoute();
 const member = ref(null);
+
+// Lien social affiché seulement s'il est renseigné (la condition précédente était toujours vraie)
+const hasLink = (u) => typeof u === 'string' && u.trim() !== '' && u.trim() !== '#' && u.trim() !== 'null';
 
 async function GetDetailsUser() {
     await getSingleData('/showteam/'+route.params.slug)

@@ -4,8 +4,8 @@
     <section class="page-title" style="background-image:url(/assets/images/background/imagesMenu.jpeg);">
         <div class="auto-container">
             <div class="sec-title">
-                <h1>Advisor</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain" class="current">About Us</RouterLink></div>
+                <h1>Our <span class="normal-font">Advisors</span></h1>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <span class="current">About</span> / <span class="current">Advisors</span></div>
             </div>
         </div>
     </section>
@@ -43,10 +43,10 @@
                                 </p>
                             </div>
                             <div class="social-links">
-                                <a v-if="member.facebook_link !== '' || member.facebook_link !== null" :href="member.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
-                                <a v-if="member.twitter_link !== '' || member.twitter_link !== null" :href="member.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
-                                <a v-if="member.instagram_link !== '' || member.instagram_link !== null" :href="member.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fab fa-researchgate"></span></a>
-                                <a v-if="member.linkedin_link !== '' || member.linkedin_link !== null" :href="member.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
+                                <a v-if="hasLink(member.facebook_link)" :href="member.facebook_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-facebook-f"></span></a>
+                                <a v-if="hasLink(member.twitter_link)" :href="member.twitter_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-x-twitter"></span></a>
+                                <a v-if="hasLink(member.instagram_link)" :href="member.instagram_link" target="_blank" rel="noopener noreferrer"><span class="fab fa-researchgate"></span></a>
+                                <a v-if="hasLink(member.linkedin_link)" :href="member.linkedin_link" target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-linkedin"></span></a>
                             </div>
                         </div>
                     </div>
@@ -172,6 +172,9 @@ import { onMounted, ref } from 'vue';
 
 // Exemple de variable réactive
 const teamMembers = ref([])
+
+// Lien social affiché seulement s'il est renseigné (la condition précédente était toujours vraie)
+const hasLink = (u) => typeof u === 'string' && u.trim() !== '' && u.trim() !== '#' && u.trim() !== 'null';
 
 // Exemple de fonction pour charger les membres de l'équipe
 async function fetchTeamMembers() {

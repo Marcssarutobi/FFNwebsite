@@ -5,7 +5,7 @@
         <div class="auto-container">
             <div class="sec-title">
                 <h1>About us</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/aboutUs" class="current">About Us</RouterLink></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <span class="current">About</span> / <span class="current">About us</span></div>
             </div>
         </div>
     </section>
@@ -85,7 +85,7 @@
 
 
     <!--Sponsors Section-->
-    <section class="default-section">
+    <section class="default-section ffn-no-top">
     	<div class="auto-container">
         	<div class="row clearfix">
 

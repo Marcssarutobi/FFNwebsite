@@ -4,7 +4,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Field <span class="normal-font">Intervention</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#">FIELD </a> / <a href="#" class="current">MycRI</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain">Programs</RouterLink> / <span class="current">MycRI</span></div>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" >
+                                    <div class="text">
                                             This unit is dedicated to generating scientific knowledge on fungi, with a focus on taxonomy, ecology, genetics, and the symbiotic or pathogenic interactions of fungal species.
                                             It develops and applies innovative technologies such as DNA sequencing, artificial intelligence for species recognition, and in vitro cultivation methods.
                                             MycRI also promotes applied research in fields such as medicine, biotechnology, and industry, where fungi offer promising and sustainable solutions.
@@ -48,6 +48,10 @@
 
 
 
+                </div>
+                <!--Sidebar-->
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar"><ProgramsNav /></aside>
                 </div>
                 <!--Content Side-->
 
@@ -89,6 +93,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import ProgramsNav from '../components/ProgramsNav.vue';
 
     const route = useRoute();
     const projectData = ref({});

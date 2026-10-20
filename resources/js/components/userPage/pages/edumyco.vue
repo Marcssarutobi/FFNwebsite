@@ -4,7 +4,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Field <span class="normal-font">Intervention</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#">FIELD </a> / <a href="#" class="current">EduMyco</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain">Programs</RouterLink> / <span class="current">EduMyco</span></div>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" >
+                                    <div class="text">
                                         EduMyco is responsible for spreading knowledge about fungi to diverse audiences, including students, decision-makers, rural communities, and the general public.
                                         It organizes workshops, training sessions, exhibitions, scientific events (such as Benin Fungus Day), and produces educational materials and popular science publications.
                                         The unit also highlights the traditional, nutritional, medicinal, and cultural uses of fungi while promoting environmentally responsible fungal practices.
@@ -48,6 +48,10 @@
 
 
 
+                </div>
+                <!--Sidebar-->
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar"><ProgramsNav /></aside>
                 </div>
                 <!--Content Side-->
 
@@ -89,6 +93,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import ProgramsNav from '../components/ProgramsNav.vue';
 
     const route = useRoute();
     const projectData = ref({});

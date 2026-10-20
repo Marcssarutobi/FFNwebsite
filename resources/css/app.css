@@ -194,3 +194,29 @@
     .row.clearfix > .default-featured-column{ width: 100%; }
     .ffn-coming-soon{ padding: 60px 0; }
 }
+
+/* About us : deux sections de texte qui se suivent, pas de double marge */
+.default-section.ffn-no-top{ padding-top: 0; }
+
+/* Field of intervention : blocs de même hauteur, boutons sur la même ligne */
+.ffn-domain-row{ display: flex; flex-wrap: wrap; }
+.ffn-domain-row::before, .ffn-domain-row::after{ display: none; }
+.ffn-domain-row > [class*="col-"]{ display: flex; float: none; }
+.ffn-domain-row .inner-box{ display: flex; flex-direction: column; width: 100%; }
+
+/* Fil d'Ariane : rubrique sans page propre (About) avant la page courante */
+.page-title .bread-crumb span.current + span.current{ opacity: .75; }
+
+/* Équipe / conseillers (au moins 2 cartes, pas la fiche d'un membre) : cartes de même hauteur, icônes sociales en bas, rangée d'icônes vide masquée */
+.team-section .row.clearfix:has(> .team-member ~ .team-member){ display: flex; flex-wrap: wrap; }
+.team-section .row.clearfix:has(> .team-member ~ .team-member)::before,
+.team-section .row.clearfix:has(> .team-member ~ .team-member)::after{ display: none; }
+.team-section .row.clearfix:has(> .team-member ~ .team-member) > .team-member{ display: flex; float: none; }
+.team-section .row.clearfix:has(> .team-member ~ .team-member) > .team-member > .inner-box{ display: flex; flex-direction: column; width: 100%; }
+.team-section .row.clearfix:has(> .team-member ~ .team-member) > .team-member > .inner-box > .content{ display: flex; flex-direction: column; flex: 1; }
+.team-section .row.clearfix:has(> .team-member ~ .team-member) > .team-member > .inner-box > .content > .social-links{ margin-top: auto; }
+.social-links:empty{ display: none; }
+
+/* Introductions centrées (Field of intervention…) : règle du thème plus précise, gris trop clair */
+.main-features .title-box .text{ color: #4f5551; }
+.ffn-domain-row .inner-box .mt-auto{ margin-top: auto; padding-top: 14px; }

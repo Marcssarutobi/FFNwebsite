@@ -4,7 +4,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Field <span class="normal-font">Intervention</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#">FIELD </a> / <a href="#" class="current">BioClim</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain">Programs</RouterLink> / <span class="current">BioClim</span></div>
             </div>
         </div>
     </section>
@@ -33,7 +33,7 @@
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" >
+                                    <div class="text">
                                         BioClim focuses on understanding the impacts of climate change on fungal biodiversity.
                                         It conducts studies on shifts in fungal distribution, the effects of droughts, wildfires, and extreme weather events, and develops predictive models of fungal diversity trends.
                                         The unit also advocates for the use of fungi as bioindicators of ecosystem health and as nature-based solutions to enhance climate resilience.
@@ -48,6 +48,10 @@
 
 
 
+                </div>
+                <!--Sidebar-->
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar"><ProgramsNav /></aside>
                 </div>
                 <!--Content Side-->
 
@@ -88,6 +92,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import ProgramsNav from '../components/ProgramsNav.vue';
 
     const route = useRoute();
     const projectData = ref({});

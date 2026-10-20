@@ -5,7 +5,7 @@
         <div class="auto-container">
             <div class="sec-title">
                 <h1>Field of intervention</h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain" class="current">About Us</RouterLink></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <span class="current">About</span> / <span class="current">Field of intervention</span></div>
             </div>
         </div>
     </section>
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="row clearfix">
+            <div class="row clearfix ffn-domain-row">
 
                 <!--Default Icon Column-->
                 <div class="default-icon-column col-lg-4 col-md-4 col-sm-6 col-xs-12">

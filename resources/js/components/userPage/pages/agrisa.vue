@@ -4,7 +4,7 @@
     	<div class="auto-container">
         	<div class="sec-title">
                 <h1>Field <span class="normal-font">Intervention</span></h1>
-                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink>  / <a href="#">FIELD </a> / <a href="#" class="current">AgriSA</a></div>
+                <div class="bread-crumb"><RouterLink to="/">Home</RouterLink> / <RouterLink to="/domain">Programs</RouterLink> / <span class="current">AgriSA</span></div>
             </div>
         </div>
     </section>
@@ -24,7 +24,7 @@
                         <div class="column default-featured-column">
                             <article class="inner-box">
                                 <figure class="image-boxs">
-                                    <img src="/assets/images/resource/health.jpg" alt="">
+                                    <img src="/assets/images/resource/health.JPG" alt="">
                                 </figure>
                                 <div class="content-box padd-top-40">
                                     <div class="row detail-header clearfix">
@@ -33,7 +33,7 @@
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" >
+                                    <div class="text">
                                         AgriSA develops fungal-based solutions to support more resilient and sustainable agricultural systems. It explores the use of fungi in biological fertilization (mycorrhizae), biocontrol of pests, composting, and the production of alternative proteins through edible mushrooms.
                                         The unit also supports farmers, cooperatives, and rural women in the cultivation and commercialization of local mushrooms, thereby contributing to food security and poverty reduction.
                                     </div>
@@ -46,6 +46,10 @@
 
 
 
+                </div>
+                <!--Sidebar-->
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                    <aside class="sidebar"><ProgramsNav /></aside>
                 </div>
                 <!--Content Side-->
 
@@ -87,6 +91,7 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import ProgramsNav from '../components/ProgramsNav.vue';
 
     const route = useRoute();
     const projectData = ref({});
