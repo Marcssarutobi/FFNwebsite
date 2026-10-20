@@ -167,7 +167,7 @@
   }
 
   const AllVideoFunction = async ()=>{
-    await getData('/allvideos')
+    await getData('/admin-videos')
           .then(response =>{
             if (response.status === 200) {
               allVideo.value = response.data.videos

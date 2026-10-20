@@ -295,7 +295,7 @@ const isDragging = ref(false);
 
 // Exemple de fonction pour charger les membres de l'équipe
 async function fetchTeamMembers() {
-    await getData('/advisors')
+    await getData('/admin-advisors')
         .then(function (res){
             if (res.status === 200) {
                 teamMembers.value = res.data.advisors
@@ -488,7 +488,7 @@ const columns = ref([
 ])
 
 async function GetTeamInfo(slug){
-    await getSingleData('/showteam/'+slug)
+    await getSingleData('/admin-showteam/'+slug)
         .then(function(res){
             if (res.status === 200) {
                 getTeam.value = res.data.team
@@ -613,7 +613,7 @@ async function DeleteTeamsFunction (slug){
                     }
                 });
 
-                await getSingleData('/showteam/'+slug)
+                await getSingleData('/admin-showteam/'+slug)
                     .then(async(response)=>{
                         if (response.status === 200) {
                             const team = response.data.team;

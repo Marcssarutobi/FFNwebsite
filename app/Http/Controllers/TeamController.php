@@ -8,8 +8,9 @@ use Illuminate\Support\Str;
 
 class TeamController extends Controller
 {
+    // Site public : fiches masquées (is_hidden) exclues ; l'admin passe par les méthodes admin*()
     public function indexTeams(){
-        $data = Team::where('type', 'teams')->orderBy('id', 'desc')->get();
+        $data = Team::where('type', 'teams')->where('is_hidden', false)->orderBy('id', 'desc')->get();
         return response()->json([
             'status' => 200,
             'teams' => $data,
@@ -17,15 +18,30 @@ class TeamController extends Controller
     }
 
     public function indexAdvisors(){
-        $data = Team::where('type', 'advisors')->orderBy('id', 'desc')->get();
+        $data = Team::where('type', 'advisors')->where('is_hidden', false)->orderBy('id', 'desc')->get();
         return response()->json([
             'status' => 200,
             'advisors' => $data,
         ]);
     }
 
-    public function show($slug){
+    public function adminTeams(){
+        return response()->json(['status' => 200, 'teams' => Team::where('type', 'teams')->orderBy('id', 'desc')->get()]);
+    }
+
+    public function adminAdvisors(){
+        return response()->json(['status' => 200, 'advisors' => Team::where('type', 'advisors')->orderBy('id', 'desc')->get()]);
+    }
+
+    public function adminShow($slug){
         $data = Team::where('slug', $slug)->first();
+        return $data
+            ? response()->json(['status' => 200, 'team' => $data])
+            : response()->json(['status' => 404, 'message' => 'Team not found']);
+    }
+
+    public function show($slug){
+        $data = Team::where('slug', $slug)->where('is_hidden', false)->first();
         if ($data) {
             return response()->json([
                 'status' => 200,

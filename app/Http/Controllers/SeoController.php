@@ -80,13 +80,16 @@ class SeoController extends Controller
             $query = $model::query()->select(['slug', 'updated_at']);
             if ($publishedOnly) {
                 $query->where('status', 'published');
+            } else {
+                // Tables sans statut : fiches masquées du site public
+                $query->where('is_hidden', false);
             }
             foreach ($query->get() as $row) {
                 $urls[] = ['loc' => url("$prefix/{$row->slug}"), 'lastmod' => optional($row->updated_at)->toAtomString()];
             }
         }
 
-        foreach (Team::select(['slug', 'updated_at'])->get() as $member) {
+        foreach (Team::select(['slug', 'updated_at'])->where('is_hidden', false)->get() as $member) {
             $urls[] = ['loc' => url("details/{$member->slug}"), 'lastmod' => optional($member->updated_at)->toAtomString()];
         }
 
@@ -118,6 +121,8 @@ class SeoController extends Controller
                 $query = $model::where('slug', $slug);
                 if ($publishedOnly) {
                     $query->where('status', 'published');
+                } else {
+                    $query->where('is_hidden', false);
                 }
                 $item = $query->first();
                 if ($item) {
@@ -126,7 +131,7 @@ class SeoController extends Controller
             }
 
             if ($prefix === 'details') {
-                $member = Team::where('slug', $slug)->first();
+                $member = Team::where('slug', $slug)->where('is_hidden', false)->first();
                 if ($member) {
                     $description = $member->brief_description ?: trim($member->name . ' – ' . $member->profession, ' –');
                     return $this->build($member->name, $description, $member->image, $path, 'profile');

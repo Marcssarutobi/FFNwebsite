@@ -21,7 +21,7 @@ class FungiEducationController extends Controller
     }
 
     public function allFungiEducation () {
-        $data = FungiEducation::with('user')->orderBy('id','desc')->paginate(6);
+        $data = FungiEducation::with('user')->where('is_hidden', false)->orderBy('id','desc')->paginate(6);
         return response()->json([
             "data"=>$data
         ]);
@@ -43,7 +43,7 @@ class FungiEducationController extends Controller
     }
 
     public function showUser($slug){
-        $data = FungiEducation::with('user')->where('slug',$slug)->first();
+        $data = FungiEducation::with('user')->where('slug',$slug)->where('is_hidden', false)->first();
         return response()->json([
             "data"=>$data
         ]);

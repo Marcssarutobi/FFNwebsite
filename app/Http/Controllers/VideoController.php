@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
 
+    // Site public : vidéos masquées (is_hidden) exclues
+    public function publicIndex(){
+        return response()->json([
+            "videos"=>Video::where('is_hidden', false)->orderBy('id','desc')->get()
+        ]);
+    }
+
     public function index(){
         $videos = Video::orderBy('id','desc')->get();
         return response()->json([

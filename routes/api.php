@@ -66,7 +66,7 @@ Route::get('/partners', [PartnerController::class, 'index']);
 Route::get('/seo', [SeoController::class, 'meta']);
 
 //Videos
-Route::get('/allvideos', [VideoController::class, 'index']);
+Route::get('/allvideos', [VideoController::class, 'publicIndex']);
 
 //Contact
 Route::post('/addcontact', [ContactController::class, 'store'])->middleware('throttle:5,1');
@@ -85,6 +85,12 @@ Route::get('/allFungiEducation', [FungiEducationController::class, 'allFungiEduc
 Route::get('/showfungieducation/{slug}', [FungiEducationController::class, 'showUser']);
 
 Route::middleware('auth:sanctum')->group( function () {
+
+    // Listes de l'admin : y compris les fiches masquées du site public (is_hidden)
+    Route::get('/admin-teams', [TeamController::class, 'adminTeams']);
+    Route::get('/admin-advisors', [TeamController::class, 'adminAdvisors']);
+    Route::get('/admin-showteam/{slug}', [TeamController::class, 'adminShow']);
+    Route::get('/admin-videos', [VideoController::class, 'index']);
 
     //Upload et suppression des images (back-office uniquement)
     Route::post('/uploadimgTi', [EditorController::class, 'uploadImage']);
