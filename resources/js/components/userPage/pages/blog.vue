@@ -11,7 +11,7 @@
 
 
     <!--Blog News Section-->
-    <section class="blog-news-section latest-news">
+    <section class="blog-news-section latest-news" v-if="!loaded || allblog.length">
     	<div class="auto-container">
 
         	<div class="row clearfix">
@@ -50,6 +50,7 @@
 
         </div>
     </section>
+    <ComingSoon v-if="loaded && !allblog.length" title="Blog articles" />
 
 
     <!--Parallax Section-->
@@ -77,6 +78,7 @@
 </template>
 
 <script setup>
+    import ComingSoon from '../components/ComingSoon.vue';
 
     import { computed, onMounted, ref } from 'vue';
     import { getData } from '../../plugin/api';
@@ -84,6 +86,7 @@
     import { RouterLink } from 'vue-router';
 
     const allblog = ref([]);
+    const loaded = ref(false);
     const currentPage = ref(1);
     const totalPage = ref(0);
 
@@ -97,6 +100,7 @@
             .catch((error) => {
                 console.error('Error fetching projects:', error);
             });
+        loaded.value = true;
     }
 
     const formattedDates = computed(() => {

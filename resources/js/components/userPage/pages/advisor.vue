@@ -16,7 +16,7 @@
 
 
     <!--Team Section-->
-    <section class="team-section">
+    <section class="team-section" v-if="!loaded || teamMembers.length">
         <div class="auto-container">
 
             <div class="sec-title text-center">
@@ -129,6 +129,7 @@
 
         </div>
     </section>
+    <ComingSoon v-if="loaded && !teamMembers.length" title="Advisors" />
 
 
     <!--Testimonials-->
@@ -165,6 +166,7 @@
 </template>
 
 <script  setup>
+    import ComingSoon from '../components/ComingSoon.vue';
     import PartnersSection from '../components/PartnersSection.vue';
 import { RouterLink } from 'vue-router';
 import { getData } from '../../plugin/api';
@@ -172,6 +174,7 @@ import { onMounted, ref } from 'vue';
 
 // Exemple de variable réactive
 const teamMembers = ref([])
+const loaded = ref(false)
 
 // Lien social affiché seulement s'il est renseigné (la condition précédente était toujours vraie)
 const hasLink = (u) => typeof u === 'string' && u.trim() !== '' && u.trim() !== '#' && u.trim() !== 'null';
@@ -184,6 +187,7 @@ async function fetchTeamMembers() {
                 teamMembers.value = res.data.advisors
             }
         })
+        .finally(() => { loaded.value = true })
 }
 
 onMounted(()=>{

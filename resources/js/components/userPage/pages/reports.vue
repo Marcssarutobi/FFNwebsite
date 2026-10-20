@@ -11,25 +11,8 @@
     </section>
 
 
-    <!--Default Section-->
-    <section class="default-section">
-    	<div class="auto-container">
-        	<div class="row clearfix">
-
-                <!--Column-->
-               
-
-                <!--Column-->
-                <div class="column default-text-column with-margin col-md-12 col-sm-12 col-xs-12">
-                	<article class="inner-box wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-                		<h2><span class="theme_color normal-font">Reports</span></h2>
-                        
-                    </article>
-                </div>
-
-            </div>
-        </div>
-    </section>
+    <!--Contenu à venir-->
+    <ComingSoon title="Reports" />
 
 
     <!--field Section-->
@@ -66,6 +49,7 @@
 </template>
 
 <script  setup>
+    import ComingSoon from '../components/ComingSoon.vue';
     import PartnersSection from '../components/PartnersSection.vue';
 import { RouterLink } from 'vue-router';
 

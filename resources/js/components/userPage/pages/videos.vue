@@ -32,9 +32,7 @@
 
             </div>
 
-            <div class="text-center" style="padding: 80px 0;" v-else-if="loaded">
-                <h3>No videos yet</h3>
-            </div>
+            <ComingSoon v-else-if="loaded" title="Videos" />
 
         </div>
     </section>
@@ -63,6 +61,7 @@
 </template>
 
 <script  setup>
+    import ComingSoon from '../components/ComingSoon.vue';
     import { onMounted, ref } from 'vue';
     import { getData } from '../../plugin/api';
     import { getEmbedUrl } from '../../plugin/video';

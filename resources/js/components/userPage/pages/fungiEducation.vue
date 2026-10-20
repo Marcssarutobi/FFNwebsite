@@ -10,7 +10,7 @@
         </div>
     </section>
 
-        <section class="default-section">
+        <section class="default-section" v-if="!loaded || allfungiEducation.length">
             <div class="auto-container">
                 <div class="row clearfix">
                     
@@ -46,6 +46,7 @@
                 </div>
             </div>
         </section>
+    <ComingSoon v-if="loaded && !allfungiEducation.length" title="Fungi education" />
 
 
        <!--end Section-->
@@ -77,6 +78,7 @@
 </template>
 
 <script  setup>
+    import ComingSoon from '../components/ComingSoon.vue';
     import PartnersSection from '../components/PartnersSection.vue';
 import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
@@ -84,6 +86,7 @@ import { getData } from '../../plugin/api';
 import Paginate from 'vuejs-paginate-next'
 
 const allfungiEducation = ref([]);
+const loaded = ref(false);
 const currentPage = ref(1);
 const totalPage = ref(0);
 
@@ -99,6 +102,7 @@ const AllFungiEducationFunction = async (page)=>{
         .catch((error) => {
             console.error('Error fetching fungi education:', error);
         });
+    loaded.value = true;
 }
 
 onMounted(() => {

@@ -12,7 +12,7 @@
 
 
     <!--Default Section-->
-    <section class="default-section">
+    <section class="default-section" v-if="!loaded || allExpedition.length">
             <div class="auto-container">
                 <div class="row clearfix">
                     <!--News Column-->
@@ -48,6 +48,7 @@
                 </div>
             </div>
         </section>
+    <ComingSoon v-if="loaded && !allExpedition.length" title="Expeditions" />
 
 
     <PartnersSection />
@@ -76,6 +77,7 @@
 </template>
 
 <script  setup>
+    import ComingSoon from '../components/ComingSoon.vue';
     import PartnersSection from '../components/PartnersSection.vue';
 import { RouterLink } from 'vue-router';
 import { onMounted, ref } from 'vue';
@@ -83,6 +85,7 @@ import { getData } from '../../plugin/api';
 import Paginate from 'vuejs-paginate-next'
 
 const allExpedition = ref([]);
+const loaded = ref(false);
 const currentPage = ref(1);
 const totalPage = ref(0);
 
@@ -96,6 +99,7 @@ const GetAllExpedition = async (page) => {
         .catch((error) => {
             console.error('Error fetching all expeditions:', error);
         });
+    loaded.value = true;
 };
 
 onMounted(() => {
