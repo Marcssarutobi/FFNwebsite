@@ -33,7 +33,7 @@
                                     <div class="post-info clearfix">
                                         <div class="post-author">Posted by {{ blogData.user?.nom }} {{ blogData.user?.prenom }}</div>
                                     </div>
-                                    <div class="text ffn-richtext" v-html="blogData.content"></div>
+                                    <div class="text ffn-richtext" v-html="formatRichText(blogData.content)"></div>
                                 </div>
 
                                <div class="ffn-share"><ShareLinks :title="blogData.title" /></div>
@@ -101,7 +101,7 @@
 
 
                         <!-- Recent Posts -->
-                        <div class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+                        <div v-if="categoryData.length" class="widget recent-posts wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
                             <div class="sidebar-title"><h3>Latest Posts</h3></div>
 
                             <article class="post" v-for="(blog, index) in categoryData" :key="index">
@@ -167,11 +167,12 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
+    import { formatRichText } from '../../plugin/richtext'
 
     const route = useRoute();
     const blogData = ref({});
     const blogSlug = computed(() => route.params.slug);
-    const categoryData = ref({});
+    const categoryData = ref([]);
     const categoryName = ref('');
     const allcategory = ref([]);
 
@@ -195,6 +196,7 @@
                     categoryName.value = response.data.category.name;
                     categoryData.value = response.data.category.blogs
                         .filter(blog => blog.id !== blogData.value.id)
+                        .filter(blog => blog.status === 'published')
                         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
                         .slice(0, 3);
 

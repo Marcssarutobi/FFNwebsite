@@ -220,3 +220,17 @@
 /* Introductions centrées (Field of intervention…) : règle du thème plus précise, gris trop clair */
 .main-features .title-box .text{ color: #4f5551; }
 .ffn-domain-row .inner-box .mt-auto{ margin-top: auto; padding-top: 14px; }
+
+/* Texte collé depuis un réseau social : "white-space: pre" empêche le retour à la ligne et élargit la page */
+.ffn-richtext{ overflow-wrap: anywhere; }
+.ffn-richtext [style*="white-space: pre"], .ffn-richtext [style*="white-space:pre"]{ white-space: pre-wrap !important; }
+
+/* Paragraphe de hashtags transformé en étiquettes (plugin/richtext.js) */
+.ffn-richtext .ffn-hashtags{ display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 6px; padding-top: 18px; border-top: 1px solid #eee; }
+.ffn-richtext .ffn-hashtag{
+    display: inline-block; padding: 3px 11px; border-radius: 14px;
+    background: #eef6ec !important; color: #179607 !important;
+    font-size: 13px !important; line-height: 1.6 !important; font-weight: 600; text-decoration: none;
+    transition: background .2s, color .2s;
+}
+.ffn-richtext a.ffn-hashtag:hover{ background: #179607 !important; color: #fff !important; }
