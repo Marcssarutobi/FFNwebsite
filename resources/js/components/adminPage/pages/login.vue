@@ -146,7 +146,8 @@
 
             } catch (error) {
                 if (error.response) {
-                    if (error.response.status === 401) {
+                    // 403 : compte désactivé
+                    if (error.response.status === 401 || error.response.status === 403) {
                         isLoader.value = false
                         isEmpty.value.email = true
                         isEmpty.value.password = true

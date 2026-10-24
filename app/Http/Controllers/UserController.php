@@ -6,9 +6,30 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    // Gestion des comptes réservée à superadmin et admin ; seul un superadmin touche aux comptes et au rôle superadmin
+    private function roleName(?User $user): ?string
+    {
+        return $user?->loadMissing('role')->role?->name;
+    }
+
+    private function isManager(?User $user): bool
+    {
+        return in_array($this->roleName($user), ['superadmin', 'admin'], true);
+    }
+
+    private function superadminRoleId(): ?int
+    {
+        return \App\Models\Role::where('name', 'superadmin')->value('id');
+    }
+
+    private function forbidden()
+    {
+        return response()->json(['message' => 'You are not allowed to do this.'], 403);
+    }
 
     public function index(){
         $user = User::with('role')->orderBy('id','desc')->get();
@@ -28,6 +49,14 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
+        $me = $request->user();
+        if (!$this->isManager($me)) {
+            return $this->forbidden();
+        }
+        if ((int) $request->role_id === $this->superadminRoleId() && $this->roleName($me) !== 'superadmin') {
+            return $this->forbidden();
+        }
+
         $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
@@ -52,16 +81,63 @@ class UserController extends Controller
         ]);
     }
 
+    // Chacun peut modifier son propre profil ; rôle et activation : superadmin/admin uniquement, jamais sur son propre compte.
+    // Le mot de passe ne passe jamais par ici (création : store ; changement : changePassword)
     public function update(Request $request, $id){
+        $me = $request->user();
         $data = User::find($id);
-        $user = $data->update($request->all());
+        if (!$data) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $isSelf = $me->id === $data->id;
+        $isManager = $this->isManager($me);
+        $isSuperadmin = $this->roleName($me) === 'superadmin';
+        $superadminRole = $this->superadminRoleId();
+
+        if (!$isSelf && !$isManager) {
+            return $this->forbidden();
+        }
+        if (!$isSelf && $data->role_id === $superadminRole && !$isSuperadmin) {
+            return $this->forbidden();
+        }
+
+        $rules = [
+            'nom' => 'sometimes|required|string|max:255',
+            'prenom' => 'sometimes|required|string|max:255',
+            'email' => ['sometimes', 'required', 'email', 'max:255', Rule::unique('users', 'email')->ignore($data->id)],
+            'image' => 'nullable|string|max:255',
+            'telephone' => 'nullable|string|max:30',
+        ];
+        if ($isManager && !$isSelf) {
+            $rules['role_id'] = 'sometimes|required|exists:roles,id';
+            $rules['is_active'] = 'sometimes|boolean';
+        }
+        $fields = $request->validate($rules);
+
+        if (isset($fields['role_id']) && (int) $fields['role_id'] === $superadminRole && !$isSuperadmin) {
+            return $this->forbidden();
+        }
+
+        $user = $data->update($fields);
         return response()->json([
             'user' => $user
         ]);
     }
 
-    public function destroy($id){
+    public function destroy(Request $request, $id){
+        $me = $request->user();
         $data = User::find($id);
+        if (!$data) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+        if (!$this->isManager($me) || $me->id === $data->id) {
+            return $this->forbidden();
+        }
+        if ($data->role_id === $this->superadminRoleId() && $this->roleName($me) !== 'superadmin') {
+            return $this->forbidden();
+        }
+
         $user = $data->delete();
         return response()->json([
             'user' => $user
@@ -85,6 +161,14 @@ class UserController extends Controller
         }
 
         $user = Auth::user();
+
+        // Compte désactivé dans l'admin : pas de jeton
+        if (!$user->is_active) {
+            return response()->json([
+                "message"=>"This account is disabled"
+            ],403);
+        }
+
         $token = $user->createToken('auth_token')->plainTextToken;
 
 

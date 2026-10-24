@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    // Création, renommage et suppression des rôles : superadmin uniquement (les noms de rôles donnent les droits)
+    private function denyUnlessSuperadmin(Request $request)
+    {
+        if ($request->user()?->loadMissing('role')->role?->name !== 'superadmin') {
+            abort(response()->json(['message' => 'You are not allowed to do this.'], 403));
+        }
+    }
+
     public function index()
     {
         $roles = Role::with('permissions')->orderBy('id', 'desc')->get();
@@ -25,6 +33,7 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
+        $this->denyUnlessSuperadmin($request);
         $request->validate([
             'name' => 'required|string|max:255|unique:roles,name',
         ]);
@@ -40,18 +49,23 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = Role::find($id);
+        $this->denyUnlessSuperadmin($request);
+        $request->validate([
+            'name' => 'required|string|max:255|unique:roles,name,' . $id,
+        ]);
+        $data = Role::findOrFail($id);
 
-        $role = $data->update($request->all());
+        $role = $data->update(['name' => $request->name]);
 
         return response()->json([
             'role' => $role
         ]);
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $role = Role::find($id);
+        $this->denyUnlessSuperadmin($request);
+        $role = Role::findOrFail($id);
         
         $role->delete();
 

@@ -385,7 +385,10 @@
                     }
                 })
                 .catch(error => {
-                    if (error.response.status === 422){
+                    if (error.response.status === 403){
+                        isLoader.value = false
+                        Swal.fire({ icon: "error", title: "Error", text: error.response.data.message })
+                    }else if (error.response.status === 422){
                         isLoader.value = false
                         isEmpty.value.password_confirmation = true
                         // msgInput.value.password_confirmation = error.response.data.message
@@ -437,9 +440,9 @@
             .catch(error =>{
                 isLoader.value = false
                 console.log(error)
-                if (error.response.status === 422){
-                    isEmpty.value.password_confirmation = true
-                    msgInput.value.password_confirmation = error.response.data.message
+                // 403 : droits insuffisants ; 422 : champ refusé (ex. e-mail déjà utilisé)
+                if (error.response?.status === 403 || error.response?.status === 422){
+                    Swal.fire({ icon: "error", title: "Error", text: error.response.data.message })
                 }else if (error.response.status === 500) {
                     Swal.fire({
                         toast: true,
@@ -470,7 +473,11 @@
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
+                }).catch(error => {
+                    Swal.fire({ icon: "error", title: "Error", text: error.response?.data?.message ?? "Please try again." })
+                    return null
                 })
+                if (!del) return
                 if (del.status === 200) {
                     Swal.fire({
                         position: "center",

@@ -76,6 +76,10 @@
                         })
                     }
                 })
+                .catch(error=>{
+                    isLoader.value = false
+                    Swal.fire({ icon: "error", title: "Error", text: error.response?.data?.message ?? "Please try again." })
+                })
     }
 
     onMounted(()=>{
