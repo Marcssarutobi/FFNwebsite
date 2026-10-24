@@ -274,6 +274,9 @@
         currentUser.value = await isAuthenticated()
     })
 
+    // Une fiche publiée reste modifiable (sans repasser en approbation) par ces rôles
+    const canEditPublished = () => ['superadmin', 'admin', 'approver'].includes(currentUser.value?.role?.name)
+
     const columns = [
         {
             title: `
@@ -334,10 +337,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" target="_blank" href="/projectpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
-                                ${row.status === 'draft' || (row.status === 'published' && currentUser.value.role?.name === 'viewer') ? `
+                                ${row.status === 'draft' ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
                                     <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                     <button class="dropdown-item delete-project" onClick="DeleteProjectFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
+                                ` : ''}
+                                ${row.status === 'published' && canEditPublished() ? `
+                                    <a class="dropdown-item" onClick="GetProjectFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                 ` : ''}
 
                             </div>
@@ -877,9 +883,9 @@
         window.DeleteProjectFunction = DeleteProjectFunction
         window.sendApproverMail = sendApproverMail
 
-        AllProjectFunction()
         AllCategory()
-        CurrentUserFunction()
+        // Le rôle doit être connu avant d’afficher le tableau (bouton Edit des fiches publiées)
+        CurrentUserFunction().then(AllProjectFunction)
     })
 
 </script>

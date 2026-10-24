@@ -257,6 +257,9 @@
         currentUser.value = await isAuthenticated()
     })
 
+    // Une fiche publiée reste modifiable (sans repasser en approbation) par ces rôles
+    const canEditPublished = () => ['superadmin', 'admin', 'approver'].includes(currentUser.value?.role?.name)
+
     const columns = [
         {
             title: `
@@ -317,10 +320,13 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a class="dropdown-item" target="_blank" href="/blogpreview/${row.id}"><i class="fas fa-eye"></i> Preview</a>
-                                ${row.status === 'draft' || (row.status === 'published' && currentUser.value.role?.name === 'viewer') ? `
+                                ${row.status === 'draft' ? `
                                     <a class="dropdown-item" onClick="sendApproverMail(${row.id})"><i class="fas fa-paper-plane"></i> Send for Approval</a>
                                     <a class="dropdown-item" onClick="GetBlogFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                     <button class="dropdown-item delete-project" onClick="DeleteBlogFunction(${row.id})"><i class="fas fa-trash"></i> Delete</button>
+                                ` : ''}
+                                ${row.status === 'published' && canEditPublished() ? `
+                                    <a class="dropdown-item" onClick="GetBlogFunction(${row.id})"><i class="fas fa-edit"></i> Edit</a>
                                 ` : ''}
 
                             </div>
@@ -613,13 +619,14 @@
 
     const UpdateBlogFunction = async () =>{
         isLoader.value = true
+        // Contenu de l'éditeur relu au moment d'enregistrer ("change" ne part qu'à la perte du focus)
+        const editor = tinymce.get('my-Updateditor')
+        if (editor) getblog.value.content = editor.getContent()
         await putData('/updateblog/'+getblog.value.id, getblog.value)
             .then(response =>{
                 if (response.status === 200) {
                     isLoader.value = false
                     getblog.value = {}
-                    msgToast.value = "Blog updated successfully"
-                    classToast.value = "bg-success"
 
                     Swal.fire({
                         position: "center",
@@ -634,7 +641,15 @@
                 }
             })
             .catch(error => {
-                console.error("Error updating project:", error);
+                isLoader.value = false
+                console.error("Error updating blog:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             });
     }
 
@@ -849,8 +864,8 @@
         window.sendApproverMail = sendApproverMail
 
         AllCategory();
-        AllBlogFunction();
-        CurrentUserFunction()
+        // Le rôle doit être connu avant d’afficher le tableau (bouton Edit des fiches publiées)
+        CurrentUserFunction().then(AllBlogFunction)
     })
 
 
