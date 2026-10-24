@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
-// Paramètres du site modifiables dans l'admin : coordonnées, réseaux sociaux, textes de l'accueil
+// Paramètres du site modifiables dans l'admin : coordonnées, réseaux sociaux, textes de l'accueil, bandeau des articles
 class SettingController extends Controller
 {
     // Clés autorisées et leurs règles de validation
@@ -26,6 +26,12 @@ class SettingController extends Controller
             'ceo_name' => 'nullable|string|max:120',
             'ceo_role' => 'nullable|string|max:120',
             'ceo_photo' => ['nullable', 'string', 'max:255', 'regex:#^/(images/Settings|assets/images/resource)/[^/]+$#'],
+            // Bandeau « Every mushroom matters » en bas des articles de blog
+            'parallax_image' => ['nullable', 'string', 'max:255', 'regex:#^/(images/Settings|assets/images/parallax)/[^/]+$#'],
+            'parallax_title_start' => 'nullable|string|max:60',
+            'parallax_title_highlight' => 'nullable|string|max:60',
+            'parallax_title_end' => 'nullable|string|max:60',
+            'parallax_text' => 'nullable|string|max:300',
         ];
     }
 
@@ -40,7 +46,9 @@ class SettingController extends Controller
         $rules = $this->rules();
         $data = $request->validate($rules);
 
-        $oldPhoto = Setting::where('key', 'ceo_photo')->value('value');
+        // Images téléversées : l'ancienne est supprimée quand elle est remplacée
+        $imageKeys = ['ceo_photo', 'parallax_image'];
+        $oldImages = Setting::whereIn('key', $imageKeys)->pluck('value', 'key');
 
         foreach (array_keys($rules) as $key) {
             if (array_key_exists($key, $data)) {
@@ -49,9 +57,12 @@ class SettingController extends Controller
             }
         }
 
-        // Ancienne photo téléversée remplacée : on la supprime (les images d'origine du thème sont conservées)
-        if (array_key_exists('ceo_photo', $data) && $oldPhoto && $oldPhoto !== $data['ceo_photo']) {
-            $this->deletePublicImage($oldPhoto);
+        // (les images d'origine du thème, hors public/images, sont conservées par deletePublicImage)
+        foreach ($imageKeys as $key) {
+            $old = $oldImages[$key] ?? null;
+            if (array_key_exists($key, $data) && $old && $old !== $data[$key]) {
+                $this->deletePublicImage($old);
+            }
         }
 
         return $this->index();
@@ -64,7 +75,9 @@ class SettingController extends Controller
 
         $image = $request->file('image');
         $picName = time() . '_' . uniqid() . '.' . $image->extension();
-        $this->optimizeImage($image->move(public_path('images/Settings'), $picName)->getPathname(), 800);
+        // Image de fond : pleine largeur ; photo du CEO : petite
+        $maxSide = $request->input('target') === 'parallax' ? 1920 : 800;
+        $this->optimizeImage($image->move(public_path('images/Settings'), $picName)->getPathname(), $maxSide);
 
         return response()->json(['image_url' => "/images/Settings/$picName"]);
     }

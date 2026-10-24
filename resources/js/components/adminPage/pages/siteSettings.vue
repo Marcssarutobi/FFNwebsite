@@ -108,6 +108,58 @@
                     </div>
                 </div>
 
+                <!-- Bandeau des articles -->
+                <div class="col-xl-12 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-transparent"><h5 class="mb-0">Blog articles – « Every mushroom matters » banner</h5></div>
+                        <div class="card-body">
+                            <p class="text-muted small">Shown at the bottom of each blog article. Use a wide image (landscape, at least 1920 px wide).</p>
+                            <div class="row">
+                                <div class="col-lg-6 mb-3">
+                                    <div class="parallax-preview" :style="{ backgroundImage: 'url(' + (form.parallax_image || defaultParallax) + ')' }">
+                                        <div class="parallax-preview-text">
+                                            <strong>{{ form.parallax_title_start }} <span>{{ form.parallax_title_highlight }}</span> {{ form.parallax_title_end }}</strong>
+                                            <small>{{ form.parallax_text }}</small>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div v-if="isUploadingParallax" class="spinner-border spinner-border-sm text-primary" role="status"></div>
+                                        <label v-else class="btn btn-outline-primary m-0">
+                                            <i class="fas fa-upload"></i> Change image
+                                            <input type="file" accept="image/jpeg,image/png,image/webp" hidden @change="uploadParallax">
+                                        </label>
+                                        <div class="text-danger small mt-1" v-if="errors.parallax_image">{{ errors.parallax_image }}</div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label" for="s-px-start">Title – start</label>
+                                            <input id="s-px-start" type="text" class="form-control" :class="{ 'is-invalid': errors.parallax_title_start }" v-model="form.parallax_title_start" placeholder="Every">
+                                            <div class="invalid-feedback">{{ errors.parallax_title_start }}</div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label" for="s-px-highlight">Title – green word</label>
+                                            <input id="s-px-highlight" type="text" class="form-control" :class="{ 'is-invalid': errors.parallax_title_highlight }" v-model="form.parallax_title_highlight" placeholder="mushroom">
+                                            <div class="invalid-feedback">{{ errors.parallax_title_highlight }}</div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label" for="s-px-end">Title – end</label>
+                                            <input id="s-px-end" type="text" class="form-control" :class="{ 'is-invalid': errors.parallax_title_end }" v-model="form.parallax_title_end" placeholder="matters">
+                                            <div class="invalid-feedback">{{ errors.parallax_title_end }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-0">
+                                        <label class="form-label" for="s-px-text">Text</label>
+                                        <textarea id="s-px-text" rows="2" class="form-control" :class="{ 'is-invalid': errors.parallax_text }" v-model="form.parallax_text"></textarea>
+                                        <div class="invalid-feedback">{{ errors.parallax_text }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="save-bar">
@@ -136,11 +188,21 @@
     { key: 'social_linkedin', label: 'LinkedIn', icon: 'fa-brands fa-linkedin', placeholder: 'https://www.linkedin.com/company/…' },
   ]
 
+  // Valeurs affichées sur le site tant qu'aucune n'est enregistrée (mêmes que plugin/site.js)
+  const defaultParallax = '/assets/images/parallax/ffn-parallax.jpg'
+  const parallaxDefaults = {
+    parallax_title_start: 'Every',
+    parallax_title_highlight: 'mushroom',
+    parallax_title_end: 'matters',
+    parallax_text: 'Help us document, protect and promote mushrooms for the next generation.',
+  }
+
   const form = ref({})
   const errors = ref({})
   const isLoading = ref(true)
   const isSaving = ref(false)
   const isUploading = ref(false)
+  const isUploadingParallax = ref(false)
   const savedAt = ref('')
 
   const load = async () => {
@@ -148,6 +210,9 @@
     try {
       const res = await getData('/settings')
       form.value = Object.fromEntries(Object.entries(res.data.settings).map(([key, value]) => [key, value ?? '']))
+      Object.entries(parallaxDefaults).forEach(([key, value]) => {
+        if (!(key in res.data.settings)) form.value[key] = value
+      })
     } finally {
       isLoading.value = false
     }
@@ -194,6 +259,27 @@
     }
   }
 
+  // Nouvelle image du bandeau, enregistrée aussitôt (comme la photo du CEO)
+  const uploadParallax = async (event) => {
+    const file = event.target.files[0]
+    event.target.value = ''
+    if (!file) return
+
+    const formData = new FormData()
+    formData.append('image', file)
+    formData.append('target', 'parallax')
+    isUploadingParallax.value = true
+    try {
+      const res = await axiosInstance.post('/uploadsettingimg', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
+      form.value.parallax_image = res.data.image_url
+      await save()
+    } catch (error) {
+      Swal.fire({ icon: 'error', title: 'Upload failed', text: error.response?.data?.message ?? 'Please try again.' })
+    } finally {
+      isUploadingParallax.value = false
+    }
+  }
+
   onMounted(load)
 </script>
 
@@ -204,6 +290,36 @@
     border-radius: 50%;
     object-fit: cover;
   }
+  .parallax-preview{
+    position: relative;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .parallax-preview::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+  }
+  .parallax-preview-text{
+    position: relative;
+    color: #fff;
+    padding: 0 16px;
+  }
+  .parallax-preview-text strong{
+    display: block;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+  .parallax-preview-text span{ color: #179607; }
+  .parallax-preview-text small{ font-size: 13px; }
   .save-bar{
     position: sticky;
     bottom: 0;

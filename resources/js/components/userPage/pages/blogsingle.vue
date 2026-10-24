@@ -126,11 +126,11 @@
 
 
     <!--Parallax Section-->
-    <section class="parallax-section" style="background-image:url(/assets/images/parallax/image-1.jpg);">
+    <section class="parallax-section ffn-parallax" :style="{ backgroundImage: 'url(' + (siteSettings.parallax_image || defaultParallax) + ')' }">
     	<div class="auto-container">
         	<div class="text-center">
-            	<h2>Every <span class="theme_color">mushroom</span> matters</h2>
-                <div class="text">Help us document, protect and promote mushrooms for the next generation.</div>
+            	<h2>{{ siteSettings.parallax_title_start }} <span class="theme_color">{{ siteSettings.parallax_title_highlight }}</span> {{ siteSettings.parallax_title_end }}</h2>
+                <div class="text" v-if="siteSettings.parallax_text">{{ siteSettings.parallax_text }}</div>
             	<RouterLink to="/contact" class="theme-btn btn-style-one">Join Now</RouterLink>
                 <RouterLink to="/domain" class="theme-btn btn-style-two">View details</RouterLink>
             </div>
@@ -168,6 +168,10 @@
     import { getData, getSingleData } from '../../plugin/api';
     import {themeInit} from '../../plugin/themeInit'
     import { formatRichText } from '../../plugin/richtext'
+    import { siteSettings } from '../../plugin/site'
+
+    // Image du bandeau « Every mushroom matters » si aucune n'est choisie dans Site settings
+    const defaultParallax = '/assets/images/parallax/ffn-parallax.jpg'
 
     const route = useRoute();
     const blogData = ref({});

@@ -234,3 +234,7 @@
     transition: background .2s, color .2s;
 }
 .ffn-richtext a.ffn-hashtag:hover{ background: #179607 !important; color: #fff !important; }
+
+/* Bandeau « Every mushroom matters » (image choisie dans Site settings) : voile plus sombre pour garder le texte lisible sur une photo claire */
+.ffn-parallax:before{ background: rgba(0,0,0,0.55); }
+.ffn-parallax h2, .ffn-parallax .text{ text-shadow: 0 2px 10px rgba(0,0,0,.5); }

@@ -17,6 +17,11 @@ export const siteSettings = reactive({
     ceo_name: 'Boris Armel Olou',
     ceo_role: 'CEO of Fungi For Nature',
     ceo_photo: '/assets/images/resource/Boris-Olou-ID-Photo.jpg',
+    parallax_image: '/assets/images/parallax/ffn-parallax.jpg',
+    parallax_title_start: 'Every',
+    parallax_title_highlight: 'mushroom',
+    parallax_title_end: 'matters',
+    parallax_text: 'Help us document, protect and promote mushrooms for the next generation.',
 })
 
 let loading = null
