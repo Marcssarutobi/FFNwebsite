@@ -37,7 +37,7 @@
                                         </div>
                                         <!-- <div class="col-md-4 col-sm-12 pull-right text-right"><a href="#" class="theme-btn btn-style-two">DOnate NOW</a></div> -->
                                     </div>
-                                    <div class="text ffn-richtext" v-html="projectData.content"></div>
+                                    <div class="text ffn-richtext" v-html="formatRichText(projectData.content)"></div>
                                     <div class="ffn-share"><ShareLinks :title="projectData.title" /></div>
                                     <RouterLink to="/project" class="ffn-back"><span class="fa fa-arrow-left"></span>All projects</RouterLink>
 
@@ -157,6 +157,7 @@
     import { computed, nextTick, onMounted, ref, watch } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
+    import { formatRichText } from '../../plugin/richtext'
     import {themeInit} from '../../plugin/themeInit'
     import ShareLinks from '../components/ShareLinks.vue';
 

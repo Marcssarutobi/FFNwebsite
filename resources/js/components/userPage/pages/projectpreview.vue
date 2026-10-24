@@ -54,7 +54,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" v-html="projectData.content"></div>
+                                    <div class="text ffn-richtext" v-html="formatRichText(projectData.content)"></div>
                                 </div>
                             </article>
                         </div>
@@ -125,6 +125,7 @@
     import { onMounted, ref } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { getSingleData, postData, putData } from '../../plugin/api';
+    import { formatRichText } from '../../plugin/richtext'
     import Swal from 'sweetalert2';
     import {themeInit} from '../../plugin/themeInit'
 

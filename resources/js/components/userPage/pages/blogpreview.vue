@@ -55,7 +55,7 @@
                                         <div class="post-author">Posted by {{ blogData.user?.nom }} {{ blogData.user?.prenom }}</div>
                                         <!-- -->
                                     </div>
-                                    <div class="text" style="text-align: justify !important;" v-html="blogData.content"></div>
+                                    <div class="text ffn-richtext" v-html="formatRichText(blogData.content)"></div>
                                 </div>
 
                                 <ShareLinks :title="blogData.title" />
@@ -131,6 +131,7 @@
     import { computed, onMounted, ref } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData, postData, putData } from '../../plugin/api';
+    import { formatRichText } from '../../plugin/richtext'
     import Swal from 'sweetalert2';
 
 

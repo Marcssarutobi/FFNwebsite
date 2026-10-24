@@ -39,7 +39,7 @@
                                     </div>
                                     <hr>
 
-                                    <div class="text mt-4 ffn-richtext" v-html="eventData.content"></div>
+                                    <div class="text mt-4 ffn-richtext" v-html="formatRichText(eventData.content)"></div>
 
                                     <br>
 
@@ -145,6 +145,7 @@
     import { computed, nextTick, onMounted, ref, watch } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { getData, getSingleData } from '../../plugin/api';
+    import { formatRichText } from '../../plugin/richtext'
     import {themeInit} from '../../plugin/themeInit'
     import ShareLinks from '../components/ShareLinks.vue';
 

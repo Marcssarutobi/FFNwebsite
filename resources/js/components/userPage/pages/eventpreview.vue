@@ -57,7 +57,7 @@
                                     </div>
                                     <hr>
 
-                                    <div class="text" style="text-align: justify !important;" v-html="eventData.content">
+                                    <div class="text ffn-richtext" v-html="formatRichText(eventData.content)">
                                     	
                                     </div>
 
@@ -167,6 +167,7 @@
     import { onMounted, ref } from 'vue';
     import { RouterLink, useRoute } from 'vue-router';
     import { getSingleData, postData, putData } from '../../plugin/api';
+    import { formatRichText } from '../../plugin/richtext'
     import Swal from 'sweetalert2';
 
     const route = useRoute();
